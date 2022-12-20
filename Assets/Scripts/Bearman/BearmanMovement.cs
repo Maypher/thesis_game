@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class Bearman_movement : MonoBehaviour
+public class BearmanMovement : MonoBehaviour
 {
     [Header("Components")]
     private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
-    private Bearman_combat combat_controller;
+    private BearmanCombat combatController;
     private CapsuleCollider2D hitbox;
 
     [Header("Movement variables")]
@@ -32,7 +32,7 @@ public class Bearman_movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         groundCheck = this.transform.Find("GroundCheck");
-        combat_controller = GetComponent<Bearman_combat>();
+        combatController = GetComponent<BearmanCombat>();
         hitbox = GetComponent<CapsuleCollider2D>();
     }
 
@@ -43,7 +43,7 @@ public class Bearman_movement : MonoBehaviour
         HorizontalDirection = GetInput().x;
         IsRunning = Input.GetKey(KeyCode.LeftShift);
 
-        if (IsGrounded && Input.GetKeyDown(KeyCode.Space) && !combat_controller.IsAttacking)
+        if (IsGrounded && Input.GetKeyDown(KeyCode.Space) && !combatController.IsAttacking)
         {
             Jump();
         }
