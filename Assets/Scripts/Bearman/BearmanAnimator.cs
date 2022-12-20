@@ -1,82 +1,41 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BearmanAnimator : MonoBehaviour
+public class BearmanAnimator
 {
-    private BearmanMovement movementController;
-    private Animator characterAnimator;
-    private BearmanCombat combatController;
-    private ParticleSystem punchChargeParticles;
-    private ParticleSystem.MainModule punchChargeParticlesSettings;
+    private readonly Animator _animator;
+    private readonly Transform _transform;
 
-    private bool isFacingRight = true;
-
-    // Used to time flex animation
-    private float idleTime = 0f;
-
-    // Start is called before the first frame update
-    void Start()
+    public BearmanAnimator(Animator animator, Transform transform)
     {
-        movementController = GetComponent<BearmanMovement>();
-        characterAnimator = GetComponent<Animator>();
-        combatController = GetComponent<BearmanCombat>();
-        punchChargeParticles = GetComponentInChildren<ParticleSystem>();
-        punchChargeParticlesSettings = punchChargeParticles.main;
+        _animator = animator;
+        _transform = transform;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CorrectRotation(float xInput)
     {
-        AnimatorStateInfo currentAnimationState = characterAnimator.GetCurrentAnimatorStateInfo(0);
-        characterAnimator.SetBool("isMoving", movementController.HorizontalDirection != 0);
-        characterAnimator.SetBool("isAirborne", !movementController.IsGrounded);
-        characterAnimator.SetBool("isAttacking", combatController.IsAttacking);
-        characterAnimator.SetBool("chargedAttack", combatController.ChargedAttack);
-
-        // Flip character if moving right and facing left or moving left and facing right
-        if (movementController.CanMove() && 
-            ((movementController.HorizontalDirection > 0 && !isFacingRight) || (movementController.HorizontalDirection < 0 && isFacingRight))) Flip();
-
-
-        // If the walking animation is less than 50% done skip its transition to idle
-        if (movementController.HorizontalDirection == 0 && currentAnimationState.IsName("Bearman_walk") &&
-            currentAnimationState.normalizedTime % 1 < 0.5) characterAnimator.CrossFade("Idle", 0, 0);
-
-
-        // If time is greater than 10 seconds play flex animation
-        if (currentAnimationState.IsName("Idle")) idleTime += Time.deltaTime;
-        else idleTime = 0;
-        characterAnimator.SetFloat("idleTime", idleTime);
-
-        // Attack animations
-        if (combatController.IsCharging)
+        if (xInput != 0)
         {
-            characterAnimator.SetBool("isCharging", true);
-            if (combatController.ChargeTime > 0.5 && !punchChargeParticles.isEmitting) punchChargeParticles.Play();
-
-            // Change particles color depending on charge time
-            if (combatController.ChargeTime >= 2.5) punchChargeParticlesSettings.startColor = Color.yellow;
-            else if (combatController.ChargeTime >= 1.5) punchChargeParticlesSettings.startColor = Color.blue;
-            else punchChargeParticlesSettings.startColor = Color.white;
+            _transform.localScale = new Vector3(Mathf.Sign(xInput), _transform.localScale.y, _transform.localScale.z);
         }
-        else
-        {
-            characterAnimator.SetBool("isCharging", false);
-            punchChargeParticles.Stop();
-        }
-
-        //Crouching
-        if (movementController.IsCrouching) characterAnimator.SetBool("isCrouching", true);
-        else characterAnimator.SetBool("isCrouching", false);
     }
 
-    private void Flip()
+    public void MovingAnimation(bool isGrounded)
     {
-        Vector3 currentScale = transform.localScale;
-        currentScale.x *= -1;
-        transform.localScale = currentScale;
+        _animator.SetBool("isMoving", isGrounded);
+    }
 
-        isFacingRight = !isFacingRight;
+    public void JumpAnimation(bool isAirborne)
+    {
+        _animator.SetBool("isAirborne", isAirborne);
+    }
+
+    public float GetCurrentLoopProgress() => _animator.GetCurrentAnimatorStateInfo(0).normalizedTime % 1;
+    
+    public IEnumerator Wait(Func<bool> waitUntil)
+    {
+        yield return new WaitUntil(waitUntil);
     }
 }
