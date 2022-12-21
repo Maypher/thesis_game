@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38ae1ea4a7a99fb4c9ae4af423f084f8, type: 3}
-  m_Name: Bearman Walk
+  m_Script: {fileID: 11500000, guid: 91d794793ea12984cbaa07b5645962dc, type: 3}
+  m_Name: Bearman Crouch
   m_EditorClassIdentifier: 
-  maxSpeed: 7
-  runMultiplier: 1.2
-  acceleration: 10
-  lerpAmount: 0.71

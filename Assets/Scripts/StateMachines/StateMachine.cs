@@ -1,7 +1,10 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+// Thanks to x1r15/PitilT for the state machine implementation
+// https://github.com/x1r15/StateMachine/tree/master/Scripts/StateMachine
+//https://www.youtube.com/watch?v=HK2gEE1ugZk
 
 // Inherited by the controller. Used to actually handle states
 public abstract class StateMachine<T> : MonoBehaviour where T : MonoBehaviour

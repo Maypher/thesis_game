@@ -22,6 +22,7 @@ public class WalkingState : State<BearmanCtrl>
     // Used to trigger other states
     private bool _jump;
     private bool _chargePunch;
+    private bool _crouch;
 
     public override void Init(BearmanCtrl parent)
     {
@@ -44,6 +45,7 @@ public class WalkingState : State<BearmanCtrl>
         _running = Input.GetKey(KeyCode.LeftShift);
         _jump = Input.GetKeyDown(KeyCode.Space);
         _chargePunch = Input.GetKeyDown(KeyCode.Mouse0);
+        _crouch = Input.GetKeyDown(KeyCode.LeftControl);
     }
 
     public override void ChangeState()
@@ -51,7 +53,8 @@ public class WalkingState : State<BearmanCtrl>
         if (_groundCheck.Check())
         {
             if (_jump) controller.SetState(typeof(JumpState));
-            else if (_xDirection == 0) controller.SetState(typeof(IdleState));
+            else if (_rb.velocity.x == 0 && _xDirection == 0) controller.SetState(typeof(IdleState));
+            else if (_crouch) controller.SetState(typeof(CrouchState));
             // else if (_chargePunch) controller.SetState(typeof(Punch));
         }
     }
@@ -86,6 +89,6 @@ public class WalkingState : State<BearmanCtrl>
 
     public override void Exit()
     {
-        controller.Animator.MovingAnimation(false);
+        _animator.MovingAnimation(false);
     }
 }

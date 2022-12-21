@@ -22,20 +22,13 @@ public class BearmanAnimator
         }
     }
 
-    public void MovingAnimation(bool isGrounded)
-    {
-        _animator.SetBool("isMoving", isGrounded);
-    }
+    public void MovingAnimation(bool isGrounded) => _animator.SetBool("isMoving", isGrounded);
 
-    public void JumpAnimation(bool isAirborne)
-    {
-        _animator.SetBool("isAirborne", isAirborne);
-    }
+    public void JumpAnimation(bool isAirborne) =>_animator.SetBool("isAirborne", isAirborne);
+
+    public void CrouchAnimation(bool isCrouching) => _animator.SetBool("isCrouching", isCrouching);
 
     public float GetCurrentLoopProgress() => _animator.GetCurrentAnimatorStateInfo(0).normalizedTime % 1;
-    
-    public IEnumerator Wait(Func<bool> waitUntil)
-    {
-        yield return new WaitUntil(waitUntil);
-    }
+
+    public float GetAnimationDuration() => _animator.GetCurrentAnimatorStateInfo(0).length;
 }
