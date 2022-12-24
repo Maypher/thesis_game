@@ -28,6 +28,16 @@ public class BearmanAnimator
 
     public void CrouchAnimation(bool isCrouching) => _animator.SetBool("isCrouching", isCrouching);
 
+    public void ChargeAnimation(bool isCharging) => _animator.SetBool("isCharging", isCharging);
+
+    public void AttackAnimation(bool isAttacking) => _animator.SetBool("isAttacking", isAttacking);
+    
+    public void ChargedAttackAnimation(bool chargeAttack) => _animator.SetBool("isChargedAttack", chargeAttack);
+
+    public void PickUpRock(bool holdingRock) => _animator.SetBool("holdingRock", holdingRock);
+
+    public void Damaged() => _animator.SetTrigger("Damaged");
+
     public float GetCurrentLoopProgress() => _animator.GetCurrentAnimatorStateInfo(0).normalizedTime % 1;
 
     public float GetAnimationDuration() => _animator.GetCurrentAnimatorStateInfo(0).length;

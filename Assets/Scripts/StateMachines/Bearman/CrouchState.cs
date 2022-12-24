@@ -6,6 +6,8 @@ using UnityEngine;
 public class CrouchState : State<BearmanCtrl>
 {
     private bool _isCrouching;
+    private bool _pickUpRock;
+
     private CapsuleCollider2D _collider;
     private BearmanAnimator _animator;
 
@@ -16,12 +18,13 @@ public class CrouchState : State<BearmanCtrl>
         if (_animator == null) _animator = controller.Animator;
 
         _isCrouching = true;
-        _collider.size = new Vector2(_collider.size.x, _collider.size.y * .5f);
+        _pickUpRock = false;
     }
 
     public override void CaptureInput() 
     {
         _isCrouching = Input.GetKey(KeyCode.LeftControl);
+        _pickUpRock = Input.GetKeyDown(KeyCode.Mouse0);
     }
 
     public override void Update()
@@ -32,6 +35,7 @@ public class CrouchState : State<BearmanCtrl>
     public override void ChangeState()
     {
         if (!_isCrouching) controller.SetState(typeof(IdleState));
+        else if (_pickUpRock) controller.SetState(typeof(RockState));
     }
 
 
@@ -39,6 +43,7 @@ public class CrouchState : State<BearmanCtrl>
     public override void Exit()
     {
         _collider.size = new Vector2(_collider.size.x, _collider.size.y * 2);
+        _animator.CrouchAnimation(false);
     }
 
 }

@@ -55,7 +55,7 @@ public class WalkingState : State<BearmanCtrl>
             if (_jump) controller.SetState(typeof(JumpState));
             else if (_rb.velocity.x == 0 && _xDirection == 0) controller.SetState(typeof(IdleState));
             else if (_crouch) controller.SetState(typeof(CrouchState));
-            // else if (_chargePunch) controller.SetState(typeof(Punch));
+            else if (_chargePunch) controller.SetState(typeof(PunchState));
         }
     }
     

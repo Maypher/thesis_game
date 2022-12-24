@@ -10,7 +10,7 @@ using UnityEngine;
 public abstract class StateMachine<T> : MonoBehaviour where T : MonoBehaviour
 {
     [SerializeField]
-    private List<State<T>> _states;
+    protected List<State<T>> _states;
     [SerializeField] private State<T> _activeState;
 
     // Initialize the StateMachine with the first state in _states
