@@ -12,6 +12,7 @@ public abstract class StateMachine<T> : MonoBehaviour where T : MonoBehaviour
     [SerializeField]
     protected List<State<T>> _states;
     [SerializeField] private State<T> _activeState;
+    public State<T> PreviousState { get; private set; };
 
     // Initialize the StateMachine with the first state in _states
     protected virtual void Awake()
@@ -23,8 +24,14 @@ public abstract class StateMachine<T> : MonoBehaviour where T : MonoBehaviour
     {
         if (_activeState != null) _activeState.Exit();
 
+        PreviousState = _activeState;
         _activeState = _states.Find(x => x.GetType() == newStateType);
         _activeState.Init(GetComponent<T>());
+    }
+
+    public State<T> GetState(Type state)
+    {
+        return _states.Find(s => s.GetType() == state);
     }
 
     // Update is called once per frame
@@ -38,7 +45,7 @@ public abstract class StateMachine<T> : MonoBehaviour where T : MonoBehaviour
         _activeState.ChangeState();
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         _activeState.FixedUpdate();
     }
