@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.Events;
 
 // Make the controller a state machine and pass itself as a reference 
-public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable
+public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable, IAttack
 {
     public BearmanAnimator Animator;
+    public CharacterEvents.EventsHandler EventsHandler;
+    public BearmanAnimationHandler AnimationHandler;
 
     [SerializeField] private int maxHealth = 40;
     private int health;
@@ -14,7 +16,9 @@ public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable
     protected override void Awake()
     {
         base.Awake();
-        Animator = new BearmanAnimator(GetComponent<Animator>(), GetComponent<Transform>());
+        Animator = new BearmanAnimator(GetComponent<Animator>(), transform);
+        EventsHandler = new CharacterEvents.EventsHandler();
+        AnimationHandler = GetComponent<BearmanAnimationHandler>();
     }
 
     private void Start()
@@ -39,5 +43,15 @@ public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable
     [HideInInspector] public void Kill()
     {
         Destroy(this.gameObject);
+    }
+
+    public void Attack()
+    {
+        EventsHandler.InvokeAttackEvent();
+    }
+
+    public void FinishAttack()
+    {
+        EventsHandler.InvokeFinishAttackEvent();
     }
 }

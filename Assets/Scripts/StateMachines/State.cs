@@ -1,5 +1,7 @@
 
 using UnityEngine;
+using System;
+using System.Collections.Generic;
 
 // Abstract because it's used as a blueprint to create actual states.
 // ScriptableObject to be able to create them from within the editor.

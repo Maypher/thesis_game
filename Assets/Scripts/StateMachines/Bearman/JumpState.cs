@@ -7,7 +7,6 @@ using UnityEngine;
 public class JumpState : State<BearmanCtrl>
 {
     // Components
-    private BearmanAnimator _animator;
     private Rigidbody2D _rb;
     private GroundCheck _groundCheck;
 
@@ -28,7 +27,6 @@ public class JumpState : State<BearmanCtrl>
     {
         base.Init(parent);
 
-        if (_animator == null) _animator = parent.Animator;
         if (_rb == null) _rb = parent.GetComponent<Rigidbody2D>();
         if (_groundCheck == null) _groundCheck = parent.GetComponentInChildren<GroundCheck>();
 
@@ -46,7 +44,7 @@ public class JumpState : State<BearmanCtrl>
         _jumpTime += Time.deltaTime;
 
         _isAirborne = !_groundCheck.Check();
-        _animator.JumpAnimation(_isAirborne);
+        controller.EventsHandler.InvokeJumpEvent(_isAirborne);
 
         if (_rb.velocity.y < 0) _rb.gravityScale = fallGravity;
         else _rb.gravityScale = gravity;

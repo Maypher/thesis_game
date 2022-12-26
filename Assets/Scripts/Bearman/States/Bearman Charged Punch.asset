@@ -9,6 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26dfd20a27be7124e8b527d20fe21d64, type: 3}
-  m_Name: BearmanDamage
+  m_Script: {fileID: 11500000, guid: 9f04cf40b1ab3044c89317727b1d0b87, type: 3}
+  m_Name: Bearman Charged Punch
   m_EditorClassIdentifier: 
+  _smallDamage: 20
+  _mediumDamage: 30
+  _heavyDamage: 50
+  _mediumCharge: 2
+  _heavyCharge: 2.5
+  _punchRadius: 0.5

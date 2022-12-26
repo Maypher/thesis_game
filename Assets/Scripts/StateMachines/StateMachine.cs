@@ -12,7 +12,7 @@ public abstract class StateMachine<T> : MonoBehaviour where T : MonoBehaviour
     [SerializeField]
     protected List<State<T>> _states;
     [SerializeField] private State<T> _activeState;
-    public State<T> PreviousState { get; private set; };
+    public State<T> PreviousState { get; private set; }
 
     // Initialize the StateMachine with the first state in _states
     protected virtual void Awake()

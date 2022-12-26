@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class BearmanAnimator
 {
-    private readonly Animator _animator;
-    private readonly Transform _transform;
+    readonly Animator _animator;
+    readonly Transform _transform;
 
     public BearmanAnimator(Animator animator, Transform transform)
     {
@@ -36,9 +36,5 @@ public class BearmanAnimator
 
     public void PickUpRock(bool holdingRock) => _animator.SetBool("holdingRock", holdingRock);
 
-    public void Damaged() => _animator.SetTrigger("Damaged");
-
-    public float GetCurrentLoopProgress() => _animator.GetCurrentAnimatorStateInfo(0).normalizedTime % 1;
-
-    public float GetAnimationDuration() => _animator.GetCurrentAnimatorStateInfo(0).length;
+    public void DamagedAnimation() => _animator.SetTrigger("Damaged");
 }

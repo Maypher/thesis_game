@@ -1,12 +1,13 @@
 using UnityEngine;
+using System;
 
 [CreateAssetMenu(menuName ="States/Character/Walk")]
 public class WalkingState : State<BearmanCtrl>
 {
     // Components
     private Rigidbody2D _rb;
-    private BearmanAnimator _animator;
     private GroundCheck _groundCheck;
+    private CharacterEvents.EventsHandler _eventsHandler;
 
     [Header("Movement variables")]
     [SerializeField] private float maxSpeed = 5f;
@@ -30,8 +31,8 @@ public class WalkingState : State<BearmanCtrl>
 
         // If the component has already been cached don't search for it again
         if (_rb == null) _rb = parent.GetComponent<Rigidbody2D>();
-        if (_animator == null) _animator = parent.Animator;
         if (_groundCheck == null) _groundCheck = parent.GetComponentInChildren<GroundCheck>();
+        if (_eventsHandler == null) _eventsHandler = controller.EventsHandler;
 
         _jump = false;
         _chargePunch = false;
@@ -55,14 +56,14 @@ public class WalkingState : State<BearmanCtrl>
             if (_jump) controller.SetState(typeof(JumpState));
             else if (_rb.velocity.x == 0 && _xDirection == 0) controller.SetState(typeof(IdleState));
             else if (_crouch) controller.SetState(typeof(CrouchState));
-            else if (_chargePunch) controller.SetState(typeof(PunchState));
+            else if (_chargePunch) controller.SetState(typeof(ChargeState));
         }
     }
     
     public override void Update()
     {
-        _animator.MovingAnimation(_groundCheck.Check());
-        _animator.CorrectRotation(_xDirection);
+        _eventsHandler.InvokeWalkingEvent(_xDirection != 0);
+        controller.AnimationHandler.CorrectRotation(_xDirection);
     }
 
     public override void FixedUpdate()
@@ -87,8 +88,5 @@ public class WalkingState : State<BearmanCtrl>
         _rb.AddForce(movement * Vector2.right, ForceMode2D.Force);
     }
 
-    public override void Exit()
-    {
-        _animator.MovingAnimation(false);
-    }
+    public override void Exit() {}
 }

@@ -385,7 +385,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 327961703}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 464e15a9f37cc65418d6a606d8dfafe5, type: 3}
   m_Name: 
@@ -644,10 +644,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cc992deffcd286c4582b34ecd4c53573, type: 2}
   - {fileID: 11400000, guid: 6c359b0e140412f4fad853349872532e, type: 2}
   - {fileID: 11400000, guid: f18a4cec1c9b6cb4980e9ac335caff6a, type: 2}
-  - {fileID: 11400000, guid: d9735af11c385244ea1dad24fb94b145, type: 2}
   - {fileID: 11400000, guid: b7a0fc1c7c0a93f449057c94ee7c090f, type: 2}
   - {fileID: 11400000, guid: f5fe4fd2975528c43b7ae2af47c28dd7, type: 2}
+  - {fileID: 11400000, guid: d9735af11c385244ea1dad24fb94b145, type: 2}
+  - {fileID: 11400000, guid: 95ed380a021134c4b9ac4b4869c545fa, type: 2}
+  - {fileID: 11400000, guid: 7854e3f35090d0f4e94fafb94aa89a60, type: 2}
   _activeState: {fileID: 0}
+  AnimationHandler: {fileID: 0}
   maxHealth: 40
 --- !u!114 &512370394
 MonoBehaviour:
@@ -658,15 +661,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 512370382}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0de75c180af1b7c40a4e4cf016433dcc, type: 3}
+  m_Script: {fileID: 11500000, guid: d542c0ae81b03c741b22dfc907bbb3c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackAnimationEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  FinishAttackAnimationEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

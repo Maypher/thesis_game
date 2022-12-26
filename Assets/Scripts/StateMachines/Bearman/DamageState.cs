@@ -13,7 +13,7 @@ public class DamageState : State<BearmanCtrl>
 
         if (_animator == null) _animator = controller.Animator;
 
-        _animator.Damaged();
+        _animator.DamagedAnimation();
     }
 
     public override void CaptureInput() {}
