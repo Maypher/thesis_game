@@ -6,7 +6,6 @@ using UnityEngine.Events;
 // Make the controller a state machine and pass itself as a reference 
 public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable, IAttack
 {
-    public BearmanAnimator Animator;
     public CharacterEvents.EventsHandler EventsHandler;
     public BearmanAnimationHandler AnimationHandler;
 
@@ -16,7 +15,6 @@ public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable, IAttack
     protected override void Awake()
     {
         base.Awake();
-        Animator = new BearmanAnimator(GetComponent<Animator>(), transform);
         EventsHandler = new CharacterEvents.EventsHandler();
         AnimationHandler = GetComponent<BearmanAnimationHandler>();
     }

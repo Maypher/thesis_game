@@ -5,15 +5,15 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "States/Character/Damage")]
 public class DamageState : State<BearmanCtrl>
 {
-    private BearmanAnimator _animator;
+    private BearmanAnimationHandler _animationHandler;
 
     public override void Init(BearmanCtrl parent)
     {
         base.Init(parent);
 
-        if (_animator == null) _animator = controller.Animator;
+        if (_animationHandler == null) _animationHandler = controller.AnimationHandler;
 
-        _animator.DamagedAnimation();
+        _animationHandler.DamageAnimation();
     }
 
     public override void CaptureInput() {}

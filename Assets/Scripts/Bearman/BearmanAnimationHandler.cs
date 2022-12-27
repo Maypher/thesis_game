@@ -5,20 +5,16 @@ using UnityEngine;
 public class BearmanAnimationHandler : MonoBehaviour
 {
     private Animator _animator;
-    private  CharacterEvents.EventsHandler _eventsHandler;
     private Transform _transform;
 
     // Start is called before the first frame update
     void Start()
     {
         _animator = GetComponent<Animator>();
-        _eventsHandler = GetComponent<BearmanCtrl>().EventsHandler;
         _transform = transform;
-
-        _eventsHandler.WalkingEvent += WalkingAnimation;
-        _eventsHandler.JumpEvent += JumpAnimation;
-        _eventsHandler.ChargeEvent += ChargeAnimation;
     }
+
+    public void DamageAnimation() => _animator.SetTrigger("damaged");
 
     // Handled directly within the animation handler to avoid repetition in multiple states
     public void CorrectRotation(float xInput)
@@ -29,13 +25,17 @@ public class BearmanAnimationHandler : MonoBehaviour
         }
     }
 
-    private void WalkingAnimation(bool isMoving) => _animator.SetBool("isMoving", isMoving);
+    public void WalkingAnimation(bool isMoving) => _animator.SetBool("isMoving", isMoving);
 
-    private void JumpAnimation(bool isAirborne) => _animator.SetBool("isAirborne", isAirborne);
+    public void JumpAnimation(bool isAirborne) => _animator.SetBool("isAirborne", isAirborne);
 
-    private void ChargeAnimation(bool isCharging) => _animator.SetBool("isCharging", isCharging);
+    public void ChargeAnimation(bool isCharging) => _animator.SetBool("isCharging", isCharging);
 
-    public void AttackAnimation() => _animator.SetTrigger("Attack");
+    public void CrouchAnimation(bool isCrouching) => _animator.SetBool("isCrouching", isCrouching);
 
-    public void ChargedAttackAnimation() => _animator.SetTrigger("ChargedAttack");
+    public void PickUpRockAnimation(bool holdingRock) => _animator.SetBool("holdingRock", holdingRock);
+
+    public void AttackAnimation() => _animator.SetTrigger("attack");
+
+    public void ChargedAttackAnimation() => _animator.SetTrigger("chargedAttack");
 }

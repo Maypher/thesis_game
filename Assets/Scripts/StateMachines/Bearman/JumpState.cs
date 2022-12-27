@@ -9,6 +9,7 @@ public class JumpState : State<BearmanCtrl>
     // Components
     private Rigidbody2D _rb;
     private GroundCheck _groundCheck;
+    private BearmanAnimationHandler _animationHandler;
 
     // Variables
     [SerializeField] private float jumpForce = 10f;
@@ -19,7 +20,6 @@ public class JumpState : State<BearmanCtrl>
     // The frame the jump happens the character is technically airborne but the groundCheck is still true due to the radius
     // so it would trigger the transition immediately.
     private float _jumpTime;
-
     private bool _isAirborne;
 
 
@@ -29,9 +29,11 @@ public class JumpState : State<BearmanCtrl>
 
         if (_rb == null) _rb = parent.GetComponent<Rigidbody2D>();
         if (_groundCheck == null) _groundCheck = parent.GetComponentInChildren<GroundCheck>();
+        if (_animationHandler == null) _animationHandler = controller.AnimationHandler;
 
         _jumpTime = 0;
         _isAirborne = false;
+        _animationHandler.JumpAnimation(true);
 
         // Apply jump force immediately after entering state
         _rb.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
@@ -44,7 +46,6 @@ public class JumpState : State<BearmanCtrl>
         _jumpTime += Time.deltaTime;
 
         _isAirborne = !_groundCheck.Check();
-        controller.EventsHandler.InvokeJumpEvent(_isAirborne);
 
         if (_rb.velocity.y < 0) _rb.gravityScale = fallGravity;
         else _rb.gravityScale = gravity;
@@ -54,9 +55,9 @@ public class JumpState : State<BearmanCtrl>
     
     public override void ChangeState()
     {
-        if (!_isAirborne && _jumpTime > .5f) controller.SetState(typeof(IdleState));
+        if (!_isAirborne && _jumpTime > .3f) controller.SetState(typeof(IdleState));
     }
 
-    public override void Exit() {}
+    public override void Exit() => _animationHandler.JumpAnimation(false);
 
 }

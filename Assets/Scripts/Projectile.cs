@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -7,6 +6,8 @@ public class Projectile : MonoBehaviour
     private GameObject _launcher;
     [SerializeField] private float _speed = 10f;
     [SerializeField] private int _damage;
+
+    public event Action OnKill;
 
     private Rigidbody2D _rb;
 
@@ -29,6 +30,8 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         IDamageable opponent = other.gameObject.GetComponent<IDamageable>();
-        opponent?.TakeDamage(_damage);
+        bool? killedOponent = opponent?.TakeDamage(_damage);
+
+        if ((bool)killedOponent) OnKill();
     }
 }

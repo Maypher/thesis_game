@@ -47,11 +47,14 @@ public class Enemy : MonoBehaviour, IDamageable, IAttack
 
     public void Attack()
     {
-        Instantiate(_arrow);
+        GameObject arrow = Instantiate(_arrow);
+        arrow.GetComponent<Projectile>().OnKill += OnKill;
     }
 
-    public void FinishAttack()
-    {
+    public void FinishAttack() {}
 
+    private void OnKill()
+    {
+        this.GetComponent<SpriteRenderer>().color = Color.green;
     }
 }

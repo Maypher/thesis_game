@@ -20,7 +20,8 @@ public class ChargedPunchState : State<BearmanCtrl>, IAttack
     [SerializeField] private float _heavyCharge = 2.5f;
 
     [Header("Components")]
-    Transform _punchLocation;
+    private Transform _punchLocation;
+    private BearmanAnimationHandler _animationHandler;
     [SerializeField] private float _punchRadius = .5f;
 
     public override void Init(BearmanCtrl parent)
@@ -28,6 +29,7 @@ public class ChargedPunchState : State<BearmanCtrl>, IAttack
         base.Init(parent);
 
         if (_punchLocation == null) _punchLocation = controller.transform.Find("PunchCheck");
+        if (_animationHandler == null) _animationHandler = controller.AnimationHandler;
 
         _chargeTime = (controller.PreviousState as ChargeState).ChargeTime;
         _smallCharge = (controller.PreviousState as ChargeState).ChargeToHeavyAttack;
@@ -35,7 +37,7 @@ public class ChargedPunchState : State<BearmanCtrl>, IAttack
 
         controller.EventsHandler.FinishAttackEvent += FinishAttack;
 
-        controller.AnimationHandler.ChargedAttackAnimation();
+        _animationHandler.ChargedAttackAnimation();
     }
 
     public override void CaptureInput() { }

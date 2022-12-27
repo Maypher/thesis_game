@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "States/Character/Idle")]
 public class IdleState : State<BearmanCtrl>
 {
+
     // variables
     [SerializeField] private float _timeToFlex = 10f; // How much time has to pass before playing flex animation
     private float _idleTime; // To time flex animation

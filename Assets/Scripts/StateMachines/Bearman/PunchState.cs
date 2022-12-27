@@ -10,21 +10,23 @@ public class PunchState : State<BearmanCtrl>, IAttack
     [SerializeField] private int _damage = 10;
 
     private bool _attacking;
-
     Transform _punchLocation;
+
+    private BearmanAnimationHandler _animationHandler;
 
     public override void Init(BearmanCtrl parent)
     {
         base.Init(parent);
 
         if (_punchLocation == null) _punchLocation = controller.transform.Find("PunchCheck");
+        if (_animationHandler == null) _animationHandler = controller.AnimationHandler;
 
         controller.EventsHandler.AttackEvent += Attack;
         controller.EventsHandler.FinishAttackEvent += FinishAttack;
         
 
         _attacking = true;
-        controller.AnimationHandler.AttackAnimation();
+        _animationHandler.AttackAnimation();
     }
 
     public override void CaptureInput() {}

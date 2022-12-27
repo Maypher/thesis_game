@@ -5,6 +5,8 @@ using System.Collections.Generic;
 [CreateAssetMenu(menuName = "States/Character/Charge")]
 public class ChargeState : State<BearmanCtrl>
 {
+    private BearmanAnimationHandler _animationHandler;
+
     private bool _charging;
     public float ChargeTime { get; private set; }
     public float ChargeToHeavyAttack { get; private set; }
@@ -14,9 +16,12 @@ public class ChargeState : State<BearmanCtrl>
     public override void Init(BearmanCtrl parent)
     {
         base.Init(parent);
+        _animationHandler = controller.AnimationHandler;
 
         ChargeTime = 0;
         ChargeToHeavyAttack = _chargeToHeavyAttack;
+
+        _animationHandler.ChargeAnimation(true);
     }
 
     public override void CaptureInput()
@@ -26,7 +31,6 @@ public class ChargeState : State<BearmanCtrl>
 
     public override void Update()
     {
-        controller.EventsHandler.InvokeChargeEvent(_charging);
         if (_charging) ChargeTime += Time.deltaTime;
     }
 
@@ -44,8 +48,5 @@ public class ChargeState : State<BearmanCtrl>
         }
     }
 
-    public override void Exit()
-    {
-        // throw new System.NotImplementedException();
-    }
+    public override void Exit() => _animationHandler.ChargeAnimation(false);
 }

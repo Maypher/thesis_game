@@ -6,7 +6,7 @@ using UnityEngine;
 public class RockState : State<BearmanCtrl>
 {
     private Rigidbody2D _rb;
-    private BearmanAnimator _animator;
+    private BearmanAnimationHandler _animationHandler;
 
     private float _xDirection;
     [SerializeField] private float _speed;
@@ -20,11 +20,11 @@ public class RockState : State<BearmanCtrl>
         base.Init(parent);
 
         if (_rb == null) _rb = controller.GetComponent<Rigidbody2D>();
-        if (_animator == null) _animator = controller.Animator;
+        if (_animationHandler == null) _animationHandler = controller.AnimationHandler;
 
         _stepTimer = 0;
         _throw = false;
-        _animator.PickUpRock(true);
+        _animationHandler.PickUpRockAnimation(true);
     }
 
     public override void CaptureInput()
@@ -36,7 +36,7 @@ public class RockState : State<BearmanCtrl>
     public override void Update()
     {
         _stepTimer += Time.deltaTime;
-        _animator.CorrectRotation(_xDirection);
+        _animationHandler.CorrectRotation(_xDirection);
     }
 
     public override void FixedUpdate()
@@ -55,7 +55,7 @@ public class RockState : State<BearmanCtrl>
 
     public override void Exit()
     {
-        _animator.PickUpRock(false);
+        _animationHandler.PickUpRockAnimation(false);
     }
 
 }

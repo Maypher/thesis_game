@@ -7,7 +7,7 @@ public class WalkingState : State<BearmanCtrl>
     // Components
     private Rigidbody2D _rb;
     private GroundCheck _groundCheck;
-    private CharacterEvents.EventsHandler _eventsHandler;
+    private BearmanAnimationHandler _animationHandler;
 
     [Header("Movement variables")]
     [SerializeField] private float maxSpeed = 5f;
@@ -32,12 +32,14 @@ public class WalkingState : State<BearmanCtrl>
         // If the component has already been cached don't search for it again
         if (_rb == null) _rb = parent.GetComponent<Rigidbody2D>();
         if (_groundCheck == null) _groundCheck = parent.GetComponentInChildren<GroundCheck>();
-        if (_eventsHandler == null) _eventsHandler = controller.EventsHandler;
+        if (_animationHandler == null) _animationHandler = controller.AnimationHandler;
 
         _jump = false;
         _chargePunch = false;
         _running = false;
         _xDirection = 0;
+
+        _animationHandler.WalkingAnimation(true);
     }
 
     public override void CaptureInput()
@@ -62,7 +64,6 @@ public class WalkingState : State<BearmanCtrl>
     
     public override void Update()
     {
-        _eventsHandler.InvokeWalkingEvent(_xDirection != 0);
         controller.AnimationHandler.CorrectRotation(_xDirection);
     }
 
@@ -88,5 +89,5 @@ public class WalkingState : State<BearmanCtrl>
         _rb.AddForce(movement * Vector2.right, ForceMode2D.Force);
     }
 
-    public override void Exit() {}
+    public override void Exit() => _animationHandler.WalkingAnimation(false);
 }

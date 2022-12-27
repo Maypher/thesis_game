@@ -7,30 +7,31 @@ public class CrouchState : State<BearmanCtrl>
 {
     private bool _isCrouching;
     private bool _pickUpRock;
+    private float _xDirection;
 
     private CapsuleCollider2D _collider;
-    private BearmanAnimator _animator;
+    private BearmanAnimationHandler _animationHandler;
 
     public override void Init(BearmanCtrl parent)
     {
         base.Init(parent);
         if (_collider == null) _collider = controller.GetComponent<CapsuleCollider2D>();
-        if (_animator == null) _animator = controller.Animator;
+        if (_animationHandler == null) _animationHandler = controller.AnimationHandler;
 
         _isCrouching = true;
         _pickUpRock = false;
+
+        _animationHandler.CrouchAnimation(true);
     }
 
     public override void CaptureInput() 
     {
         _isCrouching = Input.GetKey(KeyCode.LeftControl);
         _pickUpRock = Input.GetKeyDown(KeyCode.Mouse0);
+        _xDirection = Input.GetAxisRaw("Horizontal");
     }
 
-    public override void Update()
-    {
-        _animator.CrouchAnimation(_isCrouching);
-    }
+    public override void Update() => _animationHandler.CorrectRotation(_xDirection);
 
     public override void ChangeState()
     {
@@ -43,7 +44,7 @@ public class CrouchState : State<BearmanCtrl>
     public override void Exit()
     {
         _collider.size = new Vector2(_collider.size.x, _collider.size.y * 2);
-        _animator.CrouchAnimation(false);
+        _animationHandler.CrouchAnimation(false);
     }
 
 }
