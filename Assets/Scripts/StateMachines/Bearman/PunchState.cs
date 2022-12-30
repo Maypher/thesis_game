@@ -6,11 +6,7 @@ using System;
 [CreateAssetMenu(menuName = "States/Character/Punch")]
 public class PunchState : State<BearmanCtrl>, IAttack
 {
-    [SerializeField] private float _punchRadius = .5f;
-    [SerializeField] private int _damage = 10;
-
     private bool _attacking;
-    Transform _punchLocation;
 
     private BearmanAnimationHandler _animationHandler;
 
@@ -18,7 +14,6 @@ public class PunchState : State<BearmanCtrl>, IAttack
     {
         base.Init(parent);
 
-        if (_punchLocation == null) _punchLocation = controller.transform.Find("PunchCheck");
         if (_animationHandler == null) _animationHandler = controller.AnimationHandler;
 
         controller.EventsHandler.AttackEvent += Attack;
@@ -48,11 +43,11 @@ public class PunchState : State<BearmanCtrl>, IAttack
 
     public void Attack()
     {
-         Collider2D[] enemies = Physics2D.OverlapCircleAll(_punchLocation.position, _punchRadius);
+         Collider2D[] enemies = Physics2D.OverlapCircleAll(controller.punchLocation.position, controller.punchRadius);
 
         foreach (Collider2D enemy in enemies)
         {
-            enemy.GetComponent<IDamageable>()?.TakeDamage(_damage);
+            enemy.GetComponent<IDamageable>()?.TakeDamage(controller.damage);
         }
     }
 

@@ -1,4 +1,3 @@
-using UnityEngine;
 using System;
 
 namespace CharacterEvents
@@ -13,5 +12,8 @@ namespace CharacterEvents
 
         public event Action FinishAttackEvent;
         public void InvokeFinishAttackEvent() => FinishAttackEvent?.Invoke();
+
+        public event Action ThrowRaccoon;
+        public void InvokeThrowRaccoon() => ThrowRaccoon?.Invoke();
     }
 }

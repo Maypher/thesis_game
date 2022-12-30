@@ -11,17 +11,11 @@ public class JumpState : State<BearmanCtrl>
     private GroundCheck _groundCheck;
     private BearmanAnimationHandler _animationHandler;
 
-    // Variables
-    [SerializeField] private float jumpForce = 10f;
-    [SerializeField] private float gravity = 1f; // When going up apply less gravity than when falling
-    [SerializeField] private float fallGravity = 2f; // When falling apply bigger gravity for faster fall
-
     // To allow time for the jump to happen
     // The frame the jump happens the character is technically airborne but the groundCheck is still true due to the radius
     // so it would trigger the transition immediately.
     private float _jumpTime;
     private bool _isAirborne;
-
 
     public override void Init(BearmanCtrl parent)
     {
@@ -36,7 +30,7 @@ public class JumpState : State<BearmanCtrl>
         _animationHandler.JumpAnimation(true);
 
         // Apply jump force immediately after entering state
-        _rb.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
+        _rb.AddForce(controller.jumpForce * Vector2.up, ForceMode2D.Impulse);
     }
 
     public override void CaptureInput() {}
@@ -47,8 +41,8 @@ public class JumpState : State<BearmanCtrl>
 
         _isAirborne = !_groundCheck.Check();
 
-        if (_rb.velocity.y < 0) _rb.gravityScale = fallGravity;
-        else _rb.gravityScale = gravity;
+        if (_rb.velocity.y < 0) _rb.gravityScale = controller.fallGravity;
+        else _rb.gravityScale = controller.gravity;
     }
 
     public override void FixedUpdate() {}

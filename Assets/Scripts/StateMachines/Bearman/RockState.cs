@@ -9,8 +9,6 @@ public class RockState : State<BearmanCtrl>
     private BearmanAnimationHandler _animationHandler;
 
     private float _xDirection;
-    [SerializeField] private float _speed;
-    [SerializeField] private float _stepInterval;
 
     private float _stepTimer;
     private bool _throw;
@@ -36,14 +34,13 @@ public class RockState : State<BearmanCtrl>
     public override void Update()
     {
         _stepTimer += Time.deltaTime;
-        _animationHandler.CorrectRotation(_xDirection);
     }
 
     public override void FixedUpdate()
     {
-        if (_stepTimer > _stepInterval)
+        if (_stepTimer > controller.stepInterval)
         {
-            _rb.AddForce(_speed * _xDirection * Vector2.right, ForceMode2D.Impulse);
+            _rb.AddForce(controller.speed * _xDirection * Vector2.right, ForceMode2D.Impulse);
             _stepTimer = 0;
         }
     }

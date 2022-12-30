@@ -8,19 +8,13 @@ public class ChargeState : State<BearmanCtrl>
     private BearmanAnimationHandler _animationHandler;
 
     private bool _charging;
-    public float ChargeTime { get; private set; }
-    public float ChargeToHeavyAttack { get; private set; }
-
-    [SerializeField] private float _chargeToHeavyAttack = 1;
 
     public override void Init(BearmanCtrl parent)
     {
         base.Init(parent);
         _animationHandler = controller.AnimationHandler;
 
-        ChargeTime = 0;
-        ChargeToHeavyAttack = _chargeToHeavyAttack;
-
+        controller.chargeTime = 0;
         _animationHandler.ChargeAnimation(true);
     }
 
@@ -31,7 +25,7 @@ public class ChargeState : State<BearmanCtrl>
 
     public override void Update()
     {
-        if (_charging) ChargeTime += Time.deltaTime;
+        if (_charging) controller.chargeTime += Time.deltaTime;
     }
 
     public override void FixedUpdate()
@@ -43,7 +37,7 @@ public class ChargeState : State<BearmanCtrl>
     {
         if (!_charging)
         {
-            if (ChargeTime < ChargeToHeavyAttack) controller.SetState(typeof(PunchState));
+            if (controller.chargeTime < controller.chargeToHeavyAttack) controller.SetState(typeof(PunchState));
             else controller.SetState(typeof(ChargedPunchState));
         }
     }
