@@ -9,10 +9,10 @@ using UnityEngine;
 // Inherited by the controller. Used to actually handle states
 public abstract class StateMachine<T> : MonoBehaviour where T : MonoBehaviour
 {
+    [Header("State Machine")]
     [SerializeField]
     protected List<State<T>> _states;
     [SerializeField] private State<T> _activeState;
-    public State<T> PreviousState { get; private set; }
 
     // Initialize the StateMachine with the first state in _states
     protected virtual void Awake()
@@ -24,7 +24,6 @@ public abstract class StateMachine<T> : MonoBehaviour where T : MonoBehaviour
     {
         if (_activeState != null) _activeState.Exit();
 
-        PreviousState = _activeState;
         _activeState = _states.Find(x => x.GetType() == newStateType);
         _activeState.Init(GetComponent<T>());
     }
