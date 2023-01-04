@@ -14,6 +14,8 @@ public class BearmanAnimationHandler : MonoBehaviour
         _transform = transform;
     }
 
+    public string GetCurrentAnimation() => _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+
     public void DamageAnimation() => _animator.SetTrigger("damaged");
 
     // Handled directly within the animation handler to avoid repetition in multiple states
@@ -24,6 +26,8 @@ public class BearmanAnimationHandler : MonoBehaviour
             _transform.localScale = new Vector3(Mathf.Sign(xInput), _transform.localScale.y, _transform.localScale.z);
         }
     }
+
+    public void FlexAnimation() => _animator.SetTrigger("flex");
 
     public void WalkingAnimation(bool isMoving) => _animator.SetBool("isMoving", isMoving);
 
