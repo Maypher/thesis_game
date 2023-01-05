@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: Bearman Aim
   m_EditorClassIdentifier: 
   _rotationSpeed: 40
-  _velocity: {x: 3.24, y: 0.71}
-  yLimit: 2
-  resolution: 3
-  linecastResolution: 3
+  _lineSegments: 60
+  _length: 1

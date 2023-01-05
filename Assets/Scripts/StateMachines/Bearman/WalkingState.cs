@@ -19,6 +19,11 @@ public class WalkingState : State<BearmanCtrl>
     private bool _crouch;
     private bool _aim;
 
+    [SerializeField] private float _maxSpeed = 5f;
+    [SerializeField] private float _runMultiplier = 2f; // When running multiply targetSpeed by this value
+    [SerializeField] private float _acceleration = 5f;
+    [Range(0, 1)] public float _lerpAmount = 0f; // Used to determine the rate of change from current speed to max speed
+
     public override void Init(BearmanCtrl parent)
     {
         base.Init(parent);
@@ -65,22 +70,22 @@ public class WalkingState : State<BearmanCtrl>
 
     public override void FixedUpdate()
     {
-        float targetSpeed = _xDirection * controller.maxSpeed;
+        float targetSpeed = _xDirection * _maxSpeed;
 
         // Set target speed to an interpolated value between the current speed and the target speed [a + (b – a) * t]
-        targetSpeed = Mathf.Lerp(_rb.velocity.x, targetSpeed, controller.lerpAmount);
+        targetSpeed = Mathf.Lerp(_rb.velocity.x, targetSpeed, _lerpAmount);
 
         // If shift is pressed increase the speed
         if (_running)
         {
-            targetSpeed *= controller.runMultiplier;
+            targetSpeed *= _runMultiplier;
         }
 
         // Get the difference between the target speed and the current speed
         float speedDiff = targetSpeed - _rb.velocity.x;
 
         // The actual force of movement is the speed difference multiplied by the acceleration constant
-        float movement = speedDiff * controller.acceleration;
+        float movement = speedDiff * _acceleration;
 
         _rb.AddForce(movement * Vector2.right, ForceMode2D.Force);
     }

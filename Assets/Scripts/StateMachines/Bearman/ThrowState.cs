@@ -18,7 +18,7 @@ public class ThrowState : State<BearmanCtrl>
         Rigidbody2D raccoonRb = raccoon.GetComponent<Rigidbody2D>();
 
         raccoonRb.mass = controller.raccoonMass;
-        raccoonRb.velocity = controller.launchPosition.transform.right * controller.throwForce;
+        raccoonRb.AddForce(controller.launchPosition.transform.right * controller.throwForce, ForceMode2D.Impulse);
     }
 
     public override void CaptureInput() {}

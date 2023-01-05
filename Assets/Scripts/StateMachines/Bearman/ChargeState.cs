@@ -8,6 +8,7 @@ public class ChargeState : State<BearmanCtrl>
     private BearmanAnimationHandler _animationHandler;
 
     private bool _charging;
+    [SerializeField] private float _chargeToHeavyAttack = 1;
 
     public override void Init(BearmanCtrl parent)
     {
@@ -37,7 +38,7 @@ public class ChargeState : State<BearmanCtrl>
     {
         if (!_charging)
         {
-            if (controller.chargeTime < controller.chargeToHeavyAttack) controller.SetState(typeof(PunchState));
+            if (controller.chargeTime < _chargeToHeavyAttack) controller.SetState(typeof(PunchState));
             else controller.SetState(typeof(ChargedPunchState));
         }
     }

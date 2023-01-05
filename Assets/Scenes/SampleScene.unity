@@ -620,7 +620,6 @@ GameObject:
   - component: {fileID: 512370384}
   - component: {fileID: 512370392}
   - component: {fileID: 512370390}
-  - component: {fileID: 512370391}
   - component: {fileID: 512370393}
   - component: {fileID: 512370394}
   m_Layer: 0
@@ -691,58 +690,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!212 &512370391
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 512370382}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 2.356, y: 2.828}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!70 &512370392
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -790,12 +737,9 @@ MonoBehaviour:
   runMultiplier: 2
   acceleration: 5
   lerpAmount: 0.71
-  timeToFlex: 10
-  idleTime: 0
   jumpForce: 10
   gravity: 1
   fallGravity: 2
-  chargeToHeavyAttack: 1
   chargeTime: 0
   damage: 10
   smallDamage: 20
@@ -806,9 +750,9 @@ MonoBehaviour:
   heavyChargeTime: 2.5
   punchRadius: 0.5
   punchLocation: {fileID: 172167489}
-  speed: 0
-  stepInterval: 0
-  throwForce: 5
+  speed: 5
+  stepInterval: 1
+  throwForce: 20
   raccoonMass: 2
   launchPosition: {fileID: 36515673}
 --- !u!114 &512370394

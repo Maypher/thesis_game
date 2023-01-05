@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b068f752d56c5345a2d22ca8d212883, type: 3}
   m_Name: Bearman Idle
   m_EditorClassIdentifier: 
-  _timeToFlex: 10
+  _timeToFlex: 2

@@ -17,6 +17,9 @@ public class JumpState : State<BearmanCtrl>
     private float _jumpTime;
     private bool _isAirborne;
 
+    [SerializeField] private float _jumpForce = 10f;
+    [SerializeField] private float _jumpGravity = 1f; // When going up apply less gravity than when falling
+
     public override void Init(BearmanCtrl parent)
     {
         base.Init(parent);
@@ -30,7 +33,7 @@ public class JumpState : State<BearmanCtrl>
         _animationHandler.JumpAnimation(true);
 
         // Apply jump force immediately after entering state
-        _rb.AddForce(controller.jumpForce * Vector2.up, ForceMode2D.Impulse);
+        _rb.AddForce(_jumpForce * Vector2.up, ForceMode2D.Impulse);
     }
 
     public override void CaptureInput() {}
@@ -42,7 +45,7 @@ public class JumpState : State<BearmanCtrl>
         _isAirborne = !_groundCheck.Check();
 
         if (_rb.velocity.y < 0) _rb.gravityScale = controller.fallGravity;
-        else _rb.gravityScale = controller.gravity;
+        else _rb.gravityScale = _jumpGravity;
     }
 
     public override void FixedUpdate() {}

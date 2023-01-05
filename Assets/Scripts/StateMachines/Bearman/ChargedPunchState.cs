@@ -7,8 +7,15 @@ public class ChargedPunchState : State<BearmanCtrl>, IAttack
 {
     private bool _attacking;
 
-    [Header("Components")]
     private BearmanAnimationHandler _animationHandler;
+
+    [SerializeField] private int _smallDamage = 20;
+    [SerializeField] private int _mediumDamage = 30;
+    [SerializeField] private int _heavyDamage = 50;
+
+    [SerializeField] private float _smallChargeTime;
+    [SerializeField] private float _mediumChargeTime = 2;
+    [SerializeField] private float _heavyChargeTime = 2.5f;
 
     public override void Init(BearmanCtrl parent)
     {
@@ -47,9 +54,9 @@ public class ChargedPunchState : State<BearmanCtrl>, IAttack
     {
         int hitDamage;
 
-        if (controller.chargeTime > controller.smallChargeTime && controller.chargeTime < controller.mediumChargeTime) hitDamage = controller.smallDamage;
-        else if (controller.chargeTime >= controller.mediumChargeTime && controller.chargeTime < controller.heavyChargeTime) hitDamage = controller.mediumDamage;
-        else hitDamage = controller.heavyDamage;
+        if (controller.chargeTime > _smallChargeTime && controller.chargeTime < _mediumChargeTime) hitDamage = _smallDamage;
+        else if (controller.chargeTime >= _mediumChargeTime && controller.chargeTime < _heavyChargeTime) hitDamage = _mediumDamage;
+        else hitDamage = _heavyDamage;
 
         Collider2D[] enemies = Physics2D.OverlapCircleAll(controller.punchLocation.position, controller.punchRadius);
 

@@ -13,11 +13,14 @@ public class IdleState : State<BearmanCtrl>
     private bool _crouch;
     private bool _aim;
 
+    [SerializeField] private float _timeToFlex = 10f; // How much time has to pass before playing flex animation
+    private float _idleTime; // To time flex animation
+
     public override void Init(BearmanCtrl parent)
     {
         base.Init(parent);
 
-        controller.idleTime = 0;
+        _idleTime = 0;
         _jump = false;
         _chargePunch = false;
         _xDirection = 0;
@@ -35,8 +38,15 @@ public class IdleState : State<BearmanCtrl>
 
     public override void Update()
     {
-        if (controller.idleTime > controller.timeToFlex) controller.idleTime = 0;
-        else controller.idleTime += Time.deltaTime;
+        if (controller.AnimationHandler.GetCurrentAnimation() != "BearmanFlex")
+        {
+            if (_idleTime > _timeToFlex)
+            {
+                controller.AnimationHandler.FlexAnimation();
+                _idleTime = 0;
+            }
+            else _idleTime += Time.deltaTime;
+        }
     }
 
     public override void FixedUpdate() {}
@@ -50,5 +60,5 @@ public class IdleState : State<BearmanCtrl>
         else if (_aim) controller.SetState(typeof(RaccoonAimState));
     }
 
-    public override void Exit() => controller.idleTime = 0;
+    public override void Exit() => _idleTime = 0;
 }

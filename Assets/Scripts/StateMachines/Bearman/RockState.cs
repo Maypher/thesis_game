@@ -13,6 +13,9 @@ public class RockState : State<BearmanCtrl>
     private float _stepTimer;
     private bool _throw;
 
+    [SerializeField] private float _speed;
+    [SerializeField] private float _stepInterval;
+
     public override void Init(BearmanCtrl parent)
     {
         base.Init(parent);
@@ -38,9 +41,9 @@ public class RockState : State<BearmanCtrl>
 
     public override void FixedUpdate()
     {
-        if (_stepTimer > controller.stepInterval)
+        if (_stepTimer > _stepInterval)
         {
-            _rb.AddForce(controller.speed * _xDirection * Vector2.right, ForceMode2D.Impulse);
+            _rb.AddForce(_speed * _xDirection * Vector2.right, ForceMode2D.Impulse);
             _stepTimer = 0;
         }
     }

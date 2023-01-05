@@ -15,7 +15,7 @@ public class RaccoonAimState : State<BearmanCtrl>
     
     // Initial trajectory position
     [SerializeField, Min(3)] private int _lineSegments = 60;
-    [SerializeField, Min(1)] private int _length = 5;
+    [SerializeField] private int _length = 5;
 
 
     private bool _aiming;
@@ -71,7 +71,7 @@ public class RaccoonAimState : State<BearmanCtrl>
     private void ShowTrajectoryLine(Vector3 startPos, Vector2 startVel)
     {
         // The more points the smoother the line
-        float timestep = (float) _length / (float) _lineSegments;
+        float timestep = (float) _length / _lineSegments;
 
         Vector3[] lineRedererPts = CalculateTrajectoryLine(startPos, startVel, timestep);
 
