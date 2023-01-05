@@ -16,6 +16,8 @@ public class BearmanAnimationHandler : MonoBehaviour
 
     public string GetCurrentAnimation() => _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
 
+    public void PlayAnimation(string id) => _animator.CrossFade(id, 0);
+
     public void DamageAnimation() => _animator.SetTrigger("damaged");
 
     // Handled directly within the animation handler to avoid repetition in multiple states
