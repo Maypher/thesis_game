@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-[CreateAssetMenu(menuName ="States/Character/Walk")]
+[CreateAssetMenu(menuName = "States/Character/Walk")]
 public class WalkingState : State<BearmanCtrl>
 {
     // Components
@@ -12,6 +12,8 @@ public class WalkingState : State<BearmanCtrl>
     // Variables
     private float _xDirection;
     private bool _running;
+    private float _movingTime;
+    private float _decelerationTime;
 
     // Used to trigger other states
     private bool _jump;
@@ -21,8 +23,9 @@ public class WalkingState : State<BearmanCtrl>
 
     [SerializeField] private float _maxSpeed = 5f;
     [SerializeField] private float _runMultiplier = 2f; // When running multiply targetSpeed by this value
-    [SerializeField] private float _acceleration = 5f;
-    [Range(0, 1)] public float _lerpAmount = 0f; // Used to determine the rate of change from current speed to max speed
+
+    [SerializeField] private AnimationCurve _acceleration;
+    [SerializeField] private AnimationCurve _deceleration;
 
     public override void Init(BearmanCtrl parent)
     {
@@ -37,8 +40,8 @@ public class WalkingState : State<BearmanCtrl>
         _chargePunch = false;
         _running = false;
         _xDirection = 0;
-
-        _animationHandler.WalkingAnimation(true);
+        _movingTime = 0;
+        _decelerationTime = 0;
     }
 
     public override void CaptureInput()
@@ -56,39 +59,56 @@ public class WalkingState : State<BearmanCtrl>
         if (_groundCheck.Check())
         {
             if (_jump) controller.SetState(typeof(JumpState));
-            else if (_rb.velocity.x == 0 && _xDirection == 0) controller.SetState(typeof(IdleState));
+            else if (_xDirection == 0 && _rb.velocity == Vector2.zero) controller.SetState(typeof(IdleState));
             else if (_crouch) controller.SetState(typeof(CrouchState));
             else if (_chargePunch) controller.SetState(typeof(ChargeState));
             else if (_aim) controller.SetState(typeof(RaccoonAimState));
         }
     }
-    
+
     public override void Update()
     {
         controller.AnimationHandler.CorrectRotation(_xDirection);
+        _animationHandler.WalkingAnimation(_xDirection != 0);
+
+
+        if (_xDirection != 0)
+        {
+            _movingTime += Time.deltaTime;
+            _decelerationTime = 0;
+        }
+        else
+        {
+            _decelerationTime += Time.deltaTime;
+            _movingTime = 0;
+        }
+
     }
 
     public override void FixedUpdate()
     {
-        float targetSpeed = _xDirection * _maxSpeed;
-
-        // Set target speed to an interpolated value between the current speed and the target speed [a + (b – a) * t]
-        targetSpeed = Mathf.Lerp(_rb.velocity.x, targetSpeed, _lerpAmount);
-
-        // If shift is pressed increase the speed
-        if (_running)
-        {
-            targetSpeed *= _runMultiplier;
-        }
-
-        // Get the difference between the target speed and the current speed
-        float speedDiff = targetSpeed - _rb.velocity.x;
-
-        // The actual force of movement is the speed difference multiplied by the acceleration constant
-        float movement = speedDiff * _acceleration;
-
-        _rb.AddForce(movement * Vector2.right, ForceMode2D.Force);
+        if (_xDirection != 0) Accelerate();
+        else Decelerate(); // If going back to idle state apply deceleration otherwise transition immediately
     }
 
-    public override void Exit() => _animationHandler.WalkingAnimation(false);
+    public override void Exit() 
+    {
+        _animationHandler.WalkingAnimation(false);
+    }
+
+    private void Accelerate()
+    {
+        float endTime = _acceleration[_acceleration.length - 1].time;
+        float currentSpeed = _acceleration.Evaluate(Mathf.InverseLerp(0, endTime, _movingTime)) * _maxSpeed * _xDirection;
+
+        if (_running) currentSpeed *= _runMultiplier;
+
+        _rb.velocity = Vector2.right * currentSpeed;
+    }
+
+    private void Decelerate()
+    {
+        float currentSpeed = _deceleration.Evaluate(_decelerationTime) * _maxSpeed * Mathf.Sign(_rb.velocity.x);
+        _rb.velocity = Vector2.right * currentSpeed;
+    }
 }
