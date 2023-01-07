@@ -54,7 +54,7 @@ public class IdleState : State<BearmanCtrl>
     public override void ChangeState()
     {
         if (_jump) controller.SetState(typeof(JumpState));
-        else if (_xDirection != 0) controller.SetState(typeof(WalkingState));
+        else if (_xDirection != 0) controller.SetState(typeof(WalkState));
         else if (_crouch) controller.SetState(typeof(CrouchState));
         else if (_chargePunch) controller.SetState(typeof(ChargeState));
         else if (_aim) controller.SetState(typeof(RaccoonAimState));
