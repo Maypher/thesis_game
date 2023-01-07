@@ -48,7 +48,10 @@ public class BearmanAnimationHandler : MonoBehaviour
 
     public void ChargedAttackAnimation() => _animator.SetTrigger("chargedAttack");
 
+    public void ShockwaveAttackAnimation() => _animator.SetTrigger("shockwave");
+
     public void AimRaccoonAnimation(bool isAiming) => _animator.SetBool("aiming", isAiming);
 
     public void ThrowRacoonAnimation() => _animator.SetTrigger("throwing");
+
 }

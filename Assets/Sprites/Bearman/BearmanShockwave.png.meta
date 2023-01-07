@@ -1,0 +1,346 @@
+fileFormatVersion: 2
+guid: c42802b25a02af2439246a3246e935e7
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 155
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BearmanHeavyPunch_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 542
+        width: 374
+        height: 436
+      alignment: 9
+      pivot: {x: 0.5086388, y: 0.48888305}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e5367a8f1b263946b131e87f3b3eda5
+      internalID: -1989829498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanHeavyPunch_1
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 531
+        width: 406
+        height: 527
+      alignment: 9
+      pivot: {x: 0.44098833, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cac3bfcaa34dff40bbb465c0648edaa
+      internalID: -1128974609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanHeavyPunch_3
+      rect:
+        serializedVersion: 2
+        x: 1069
+        y: 541
+        width: 279
+        height: 526
+      alignment: 9
+      pivot: {x: 0.53, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dccf2b81bc488c45a850d2aa3149b37
+      internalID: -255935638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanHeavyPunch_4
+      rect:
+        serializedVersion: 2
+        x: 1613
+        y: 547
+        width: 309
+        height: 540
+      alignment: 9
+      pivot: {x: 0.54018563, y: 0.396521}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ce151968b988544c9e0e0bffbe6bc2e
+      internalID: -1701489632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanHeavyPunch_6
+      rect:
+        serializedVersion: 2
+        x: 2097
+        y: 546
+        width: 282
+        height: 545
+      alignment: 9
+      pivot: {x: 0.62805957, y: 0.390609}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70adb34f38df114419cd1cfd28cb4abf
+      internalID: -1382563113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanHeavyPunch_8
+      rect:
+        serializedVersion: 2
+        x: 2547
+        y: 547
+        width: 450
+        height: 544
+      alignment: 9
+      pivot: {x: 0.5385384, y: 0.37}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 732428e0cf2264447ad1092a3e0deaf3
+      internalID: -707199841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanHeavyPunch_9
+      rect:
+        serializedVersion: 2
+        x: 3004
+        y: 544
+        width: 319
+        height: 504
+      alignment: 9
+      pivot: {x: 0.6719232, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f0bf9cdbc0a73142bcfcd7304022e39
+      internalID: 51470474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanHeavyPunch_10
+      rect:
+        serializedVersion: 2
+        x: 948
+        y: 7
+        width: 606
+        height: 449
+      alignment: 9
+      pivot: {x: 0.50530666, y: 0.46}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2556e8efc528d48458e1d53994539ade
+      internalID: -1833639434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanHeavyPunch_11
+      rect:
+        serializedVersion: 2
+        x: 1620
+        y: 0
+        width: 746
+        height: 268
+      alignment: 9
+      pivot: {x: 0.41, y: 0.78}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76763787a4b7d0e4a8d8ee1d337c0b8d
+      internalID: 1644298104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanHeavyPunch_12
+      rect:
+        serializedVersion: 2
+        x: 2574
+        y: 1
+        width: 497
+        height: 398
+      alignment: 9
+      pivot: {x: 0.5062455, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 257ce57cd1cacef48ac6a4ef05732d06
+      internalID: 1604183127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      BearmanHeavyPunch_12: 1604183127
+      BearmanHeavyPunch_10: -1833639434
+      BearmanHeavyPunch_4: -1701489632
+      BearmanHeavyPunch_5: -270069903
+      BearmanHeavyPunch_7: 402955218
+      BearmanHeavyPunch_2: 408992236
+      BearmanHeavyPunch_0: -1989829498
+      BearmanHeavyPunch_3: -255935638
+      BearmanHeavyPunch_1: -1128974609
+      BearmanHeavyPunch_9: 51470474
+      BearmanHeavyPunch_6: -1382563113
+      BearmanHeavyPunch_11: 1644298104
+      BearmanHeavyPunch_8: -707199841
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
