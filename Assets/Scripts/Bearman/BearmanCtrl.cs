@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 // Make the controller a state machine and pass itself as a reference 
 public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable, IAttack
@@ -31,11 +30,16 @@ public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable, IAttack
     public float raccoonMass = 2f;
     public Transform launchPosition;
 
+    [Header("Ground check")]
+    private GroundCheck _groundCheck;
+    [HideInInspector] public bool IsGrounded;
+
     protected override void Awake()
     {
         base.Awake();
         EventsHandler = new CharacterEvents.EventsHandler();
         AnimationHandler = GetComponent<BearmanAnimationHandler>();
+        _groundCheck = transform.Find("GroundCheck").GetComponent<GroundCheck>();
     }
 
     private void Start()
@@ -67,8 +71,9 @@ public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable, IAttack
     public void FinishAttack() => EventsHandler.InvokeFinishAttackEvent();
 
     public void ThrowRaccoon() => EventsHandler.InvokeThrowRaccoon();
-}
 
-// Movimiento normal de piedra/no girar (mas lento)
-// Moverse en el aire
-// 
+    private void Update()
+    {
+        IsGrounded = _groundCheck.Check();
+    }
+}
