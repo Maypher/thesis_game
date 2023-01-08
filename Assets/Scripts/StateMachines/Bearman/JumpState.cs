@@ -8,7 +8,6 @@ public class JumpState : State<BearmanCtrl>
 {
     // Components
     private Rigidbody2D _rb;
-    private GroundCheck _groundCheck;
     private BearmanAnimationHandler _animationHandler;
 
     // To allow time for the jump to happen
@@ -25,7 +24,6 @@ public class JumpState : State<BearmanCtrl>
         base.Init(parent);
 
         if (_rb == null) _rb = parent.GetComponent<Rigidbody2D>();
-        if (_groundCheck == null) _groundCheck = parent.GetComponentInChildren<GroundCheck>();
         if (_animationHandler == null) _animationHandler = controller.AnimationHandler;
 
         _jumpTime = 0;
@@ -42,7 +40,7 @@ public class JumpState : State<BearmanCtrl>
     {
         _jumpTime += Time.deltaTime;
 
-        _isAirborne = !_groundCheck.Check();
+        _isAirborne = !controller.IsGrounded;
 
         if (_rb.velocity.y < 0) _rb.gravityScale = controller.fallGravity;
         else _rb.gravityScale = _jumpGravity;

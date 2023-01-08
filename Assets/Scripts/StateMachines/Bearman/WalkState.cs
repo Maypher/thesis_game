@@ -6,7 +6,6 @@ public class WalkState : State<BearmanCtrl>
 {
     // Components
     private Rigidbody2D _rb;
-    private GroundCheck _groundCheck;
     private BearmanAnimationHandler _animationHandler;
 
     // Variables
@@ -33,7 +32,6 @@ public class WalkState : State<BearmanCtrl>
 
         // If the component has already been cached don't search for it again
         if (_rb == null) _rb = parent.GetComponent<Rigidbody2D>();
-        if (_groundCheck == null) _groundCheck = parent.GetComponentInChildren<GroundCheck>();
         if (_animationHandler == null) _animationHandler = controller.AnimationHandler;
 
         _jump = false;
@@ -56,7 +54,7 @@ public class WalkState : State<BearmanCtrl>
 
     public override void ChangeState()
     {
-        if (_groundCheck.Check())
+        if (controller.IsGrounded)
         {
             if (_jump) controller.SetState(typeof(JumpState));
             else if (_xDirection == 0 && _rb.velocity == Vector2.zero) controller.SetState(typeof(IdleState));
