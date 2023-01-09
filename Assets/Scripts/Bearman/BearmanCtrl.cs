@@ -6,7 +6,7 @@ using UnityEngine;
 public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable, IAttack
 {
     public CharacterEvents.EventsHandler EventsHandler;
-    public BearmanAnimationHandler AnimationHandler;
+    [HideInInspector] public BearmanAnimationHandler AnimationHandler;
 
     [Header("Health")]
     [SerializeField, Min(1)] private int maxHealth = 40;
@@ -72,8 +72,9 @@ public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable, IAttack
 
     public void ThrowRaccoon() => EventsHandler.InvokeThrowRaccoon();
 
-    private void Update()
+    override protected void Update()
     {
+        base.Update();
         IsGrounded = _groundCheck.Check();
     }
 }

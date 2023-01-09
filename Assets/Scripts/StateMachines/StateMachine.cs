@@ -34,7 +34,7 @@ public abstract class StateMachine<T> : MonoBehaviour where T : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         // CaptureInput() is ran first to update all variables that might be used in Update
         // Then run Update()
