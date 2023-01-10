@@ -22,6 +22,8 @@ public class WalkState : State<BearmanCtrl>
 
     [SerializeField] private float _maxSpeed = 5f;
     [SerializeField] private float _runMultiplier = 2f; // When running multiply targetSpeed by this value
+    [SerializeField] private float _timeToMaxSpeed = 1f;
+    [SerializeField] private float _timeToFullStop = 1f;
 
     [SerializeField] private AnimationCurve _acceleration;
     [SerializeField] private AnimationCurve _deceleration;
@@ -38,7 +40,7 @@ public class WalkState : State<BearmanCtrl>
         _chargePunch = false;
         _running = false;
         _xDirection = 0;
-        _movingTime = 0;
+        _movingTime = Mathf.Abs(_rb.velocity.x) / _maxSpeed;
         _decelerationTime = 0;
     }
 
@@ -56,42 +58,45 @@ public class WalkState : State<BearmanCtrl>
     {
         if (controller.IsGrounded)
         {
-            if (_jump) controller.SetState(typeof(JumpState));
+            if (_jump) 
+            {
+                controller.jumped = true;
+                controller.SetState(typeof(JumpState)); 
+            }
             else if (_xDirection == 0 && _rb.velocity == Vector2.zero) controller.SetState(typeof(IdleState));
             else if (_crouch) controller.SetState(typeof(CrouchState));
             else if (_chargePunch) controller.SetState(typeof(ChargeState));
             else if (_aim) controller.SetState(typeof(RaccoonAimState));
         }
+        else controller.SetState(typeof(JumpState));
     }
 
     public override void Update()
     {
         controller.AnimationHandler.CorrectRotation(_xDirection);
-        _animationHandler.WalkingAnimation(_xDirection != 0);
+        _animationHandler.IsMoving(_xDirection != 0);
 
 
         if (_xDirection != 0)
         {
-            _movingTime += Time.deltaTime;
-            _decelerationTime = 0;
+            _movingTime += Time.deltaTime / _timeToMaxSpeed;
+            _decelerationTime = Mathf.Max(0, 1 - _movingTime);
+            Accelerate();
         }
         else
         {
-            _decelerationTime += Time.deltaTime;
-            _movingTime = 0;
+            _decelerationTime += Time.deltaTime / _timeToFullStop;
+            _movingTime = _decelerationTime;
+            Decelerate();
         }
 
     }
 
-    public override void FixedUpdate()
-    {
-        if (_xDirection != 0) Accelerate();
-        else Decelerate(); // If going back to idle state apply deceleration otherwise transition immediately
-    }
+    public override void FixedUpdate() {}
 
     public override void Exit() 
     {
-        _animationHandler.WalkingAnimation(false);
+        _animationHandler.IsMoving(false);
     }
 
     private void Accelerate()
@@ -101,12 +106,12 @@ public class WalkState : State<BearmanCtrl>
 
         if (_running) currentSpeed *= _runMultiplier;
 
-        _rb.velocity = Vector2.right * currentSpeed;
+        _rb.velocity = new Vector2(currentSpeed, _rb.velocity.y);
     }
 
     private void Decelerate()
     {
         float currentSpeed = _deceleration.Evaluate(_decelerationTime) * _maxSpeed * Mathf.Sign(_rb.velocity.x);
-        _rb.velocity = Vector2.right * currentSpeed;
+        _rb.velocity = new Vector2(currentSpeed, _rb.velocity.y);
     }
 }
