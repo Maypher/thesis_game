@@ -13,6 +13,9 @@ public class WalkState : State<BearmanCtrl>
     private bool _running;
     private float _movingTime;
     private float _decelerationTime;
+    // Used to allow a change in direction without losing speed. If the player released left before pressing right
+    // the deceleration phase would kick in immediately
+    private float _noInputTime;
 
     // Used to trigger other states
     private bool _jump;
@@ -24,6 +27,7 @@ public class WalkState : State<BearmanCtrl>
     [SerializeField] private float _runMultiplier = 2f; // When running multiply targetSpeed by this value
     [SerializeField] private float _timeToMaxSpeed = 1f;
     [SerializeField] private float _timeToFullStop = 1f;
+    [SerializeField] private float _directionChangeThreshold = .2f; // Used alongside _noInputTime
 
     [SerializeField] private AnimationCurve _acceleration;
     [SerializeField] private AnimationCurve _deceleration;
@@ -42,6 +46,7 @@ public class WalkState : State<BearmanCtrl>
         _xDirection = 0;
         _movingTime = Mathf.Abs(_rb.velocity.x) / _maxSpeed;
         _decelerationTime = 0;
+        _noInputTime = 0;
     }
 
     public override void CaptureInput()
@@ -61,14 +66,14 @@ public class WalkState : State<BearmanCtrl>
             if (_jump) 
             {
                 controller.jumped = true;
-                controller.SetState(typeof(JumpState)); 
+                controller.SetState(typeof(AirborneState)); 
             }
             else if (_xDirection == 0 && _rb.velocity == Vector2.zero) controller.SetState(typeof(IdleState));
             else if (_crouch) controller.SetState(typeof(CrouchState));
             else if (_chargePunch) controller.SetState(typeof(ChargeState));
             else if (_aim) controller.SetState(typeof(RaccoonAimState));
         }
-        else controller.SetState(typeof(JumpState));
+        else controller.SetState(typeof(AirborneState));
     }
 
     public override void Update()
@@ -76,14 +81,17 @@ public class WalkState : State<BearmanCtrl>
         controller.AnimationHandler.CorrectRotation(_xDirection);
         _animationHandler.IsMoving(_xDirection != 0);
 
+        if (_xDirection == 0) _noInputTime += Time.deltaTime;
+        else _noInputTime = 0;
+
 
         if (_xDirection != 0)
         {
             _movingTime += Time.deltaTime / _timeToMaxSpeed;
-            _decelerationTime = Mathf.Max(0, 1 - _movingTime);
+            _decelerationTime = Mathf.Max(0, 1 - _movingTime); // Used to transition between _moving and slowing down in the animation curve
             Accelerate();
         }
-        else
+        else if (_noInputTime > _directionChangeThreshold)
         {
             _decelerationTime += Time.deltaTime / _timeToFullStop;
             _movingTime = _decelerationTime;

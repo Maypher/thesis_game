@@ -12,8 +12,8 @@ public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable, IAttack
     [SerializeField, Min(1)] private int maxHealth = 40;
     private int health;
 
-    [Header("Jump state")]
-    public float fallGravity = 2f; // When falling apply bigger gravity for faster fall
+    [Header("Airborne state")]
+    [HideInInspector] public bool jumped = false;
 
     [Header("Punch charge state")]
     [HideInInspector] public float chargeTime;
@@ -32,7 +32,10 @@ public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable, IAttack
 
     [Header("Ground check")]
     private GroundCheck _groundCheck;
-    [HideInInspector] public bool IsGrounded;
+    [HideInInspector] public bool IsGrounded
+    {
+        get { return _groundCheck.Check(); }
+    }
 
     protected override void Awake()
     {
@@ -42,10 +45,7 @@ public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable, IAttack
         _groundCheck = transform.Find("GroundCheck").GetComponent<GroundCheck>();
     }
 
-    private void Start()
-    {
-        health = maxHealth;
-    }
+    private void Start() => health = maxHealth;
 
     [HideInInspector] public bool TakeDamage(int damagePt)
     {
@@ -71,10 +71,4 @@ public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable, IAttack
     public void FinishAttack() => EventsHandler.InvokeFinishAttackEvent();
 
     public void ThrowRaccoon() => EventsHandler.InvokeThrowRaccoon();
-
-    override protected void Update()
-    {
-        base.Update();
-        IsGrounded = _groundCheck.Check();
-    }
 }

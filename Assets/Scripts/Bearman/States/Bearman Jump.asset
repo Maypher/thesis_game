@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d244695b9c8482428ef0ae3d55f8217, type: 3}
   m_Name: Bearman Jump
   m_EditorClassIdentifier: 
-  jumpForce: 7
-  gravity: 1
-  fallGravity: 2
+  _jumpForce: 6
+  _jumpGravity: 1
+  _fallGravity: 2
+  _maxFallSpeed: 30
+  _jumpHangThreshold: 0.2
+  _jumpHangGrav: 0.7
+  _jumpMaxHeightSpeed: 3
+  _maxMoveSpeed: 5
+  _lerpAmount: 0.01
+  _coyoteTime: 0.2
