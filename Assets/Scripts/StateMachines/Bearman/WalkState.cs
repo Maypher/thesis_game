@@ -22,6 +22,7 @@ public class WalkState : State<BearmanCtrl>
     private bool _chargePunch;
     private bool _crouch;
     private bool _aim;
+    private bool _shockwave;
 
     [SerializeField] private float _maxSpeed = 5f;
     [SerializeField] private float _runMultiplier = 2f; // When running multiply targetSpeed by this value
@@ -43,6 +44,8 @@ public class WalkState : State<BearmanCtrl>
         _jump = false;
         _chargePunch = false;
         _running = false;
+        _shockwave = false;
+
         _xDirection = 0;
         _movingTime = Mathf.Abs(_rb.velocity.x) / _maxSpeed;
         _decelerationTime = 0;
@@ -57,19 +60,21 @@ public class WalkState : State<BearmanCtrl>
         _chargePunch = Input.GetKeyDown(KeyCode.Mouse0);
         _crouch = Input.GetKeyDown(KeyCode.LeftControl);
         _aim = Input.GetKeyDown(KeyCode.Mouse1);
+        _shockwave = Input.GetKey(KeyCode.S) && Input.GetKeyDown(KeyCode.Mouse0);
     }
 
     public override void ChangeState()
     {
         if (controller.IsGrounded)
         {
-            if (_jump) 
+            if (_jump)
             {
                 controller.jumped = true;
-                controller.SetState(typeof(AirborneState)); 
+                controller.SetState(typeof(AirborneState));
             }
             else if (_xDirection == 0 && _rb.velocity == Vector2.zero) controller.SetState(typeof(IdleState));
             else if (_crouch) controller.SetState(typeof(CrouchState));
+            else if (_shockwave) controller.SetState(typeof(ShockwaveState));
             else if (_chargePunch) controller.SetState(typeof(ChargeState));
             else if (_aim) controller.SetState(typeof(RaccoonAimState));
         }

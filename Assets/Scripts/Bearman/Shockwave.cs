@@ -36,6 +36,7 @@ public class Shockwave : MonoBehaviour
         _direction = (int) Mathf.Sign(transform.localScale.x);
 
         SetToGroundColor();
+        AlignToGround();
         Destroy(gameObject, _lifetime); // Instead of checking every frame if the element should be destroyed just delay it
     }
 
@@ -52,7 +53,7 @@ public class Shockwave : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.gameObject.GetComponent<IDamageable>()?.TakeDamage(_damage);
+        if (!collision.gameObject.CompareTag("Player")) collision.gameObject.GetComponent<IDamageable>()?.TakeDamage(_damage);
     }
 
     private void AlignToGround()
