@@ -24,6 +24,8 @@ public class WalkState : State<BearmanCtrl>
     private bool _aim;
     private bool _shockwave;
 
+    private bool _shouldStopBeforeChange; // Used for transitions
+
     [SerializeField] private float _maxSpeed = 5f;
     [SerializeField] private float _runMultiplier = 2f; // When running multiply targetSpeed by this value
     [SerializeField] private float _timeToMaxSpeed = 1f;
@@ -50,6 +52,7 @@ public class WalkState : State<BearmanCtrl>
         _movingTime = Mathf.Abs(_rb.velocity.x) / _maxSpeed;
         _decelerationTime = 0;
         _noInputTime = 0;
+        _shouldStopBeforeChange = false;
     }
 
     public override void CaptureInput()
@@ -72,11 +75,21 @@ public class WalkState : State<BearmanCtrl>
                 controller.jumped = true;
                 controller.SetState(typeof(AirborneState));
             }
-            else if (_xDirection == 0 && _rb.velocity == Vector2.zero) controller.SetState(typeof(IdleState));
-            else if (_crouch) controller.SetState(typeof(CrouchState));
-            else if (_shockwave) controller.SetState(typeof(ShockwaveState));
-            else if (_chargePunch) controller.SetState(typeof(ChargeState));
-            else if (_aim) controller.SetState(typeof(RaccoonAimState));
+            // This states will wait for the character to fully stop before transitioning
+            else if (_rb.velocity == Vector2.zero)
+            {
+               if (_xDirection == 0) controller.SetState(typeof(IdleState));
+            }
+
+            else // This states will ignore velocity and stop the player in place
+            {
+                _shouldStopBeforeChange = true;
+
+                if (_crouch) controller.SetState(typeof(CrouchState));
+                if (_shockwave) controller.SetState(typeof(ShockwaveState));
+                else if (_chargePunch) controller.SetState(typeof(ChargeState));
+                else if (_aim) controller.SetState(typeof(RaccoonAimState));
+            }
         }
         else controller.SetState(typeof(AirborneState));
     }
@@ -110,6 +123,7 @@ public class WalkState : State<BearmanCtrl>
     public override void Exit() 
     {
         _animationHandler.IsMoving(false);
+        if (_shouldStopBeforeChange) _rb.velocity = Vector2.zero;
     }
 
     private void Accelerate()
