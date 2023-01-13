@@ -7,6 +7,11 @@ public class BearmanAnimationHandler : MonoBehaviour
     private Animator _animator;
     private Transform _transform;
 
+    public bool FacingRight 
+    {
+        get { return _transform.localScale.x == 1; }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +39,7 @@ public class BearmanAnimationHandler : MonoBehaviour
 
     public void FlexAnimation() => _animator.SetTrigger("flex");
 
-    public void WalkingAnimation(bool isMoving) => _animator.SetBool("isMoving", isMoving);
+    public void IsMoving(bool isMoving) => _animator.SetBool("isMoving", isMoving);
 
     public void JumpAnimation(bool isAirborne) => _animator.SetBool("isAirborne", isAirborne);
 

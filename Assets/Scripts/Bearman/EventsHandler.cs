@@ -15,5 +15,8 @@ namespace CharacterEvents
 
         public event Action ThrowRaccoon;
         public void InvokeThrowRaccoon() => ThrowRaccoon?.Invoke();
+
+        public event Action Shockwave;
+        public void InvokeShockwave() => Shockwave?.Invoke();
     }
 }

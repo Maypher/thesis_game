@@ -2,13 +2,22 @@ using UnityEngine;
 
 
 [CreateAssetMenu(menuName = "States/Character/Shockwave")]
-public class ShockwaveState : State<BearmanCtrl>
+public class ShockwaveState : State<BearmanCtrl>, IAttack
 {
+
+    [SerializeField] private GameObject _shockwavePrefab;
+    [SerializeField] private int _shockwaveDamage;
+
+    private bool _spawnedShockwave;
+
     public override void Init(BearmanCtrl parent)
     {
         base.Init(parent);
 
         controller.AnimationHandler.ShockwaveAttackAnimation();
+        controller.EventsHandler.Shockwave += Attack;
+
+        _spawnedShockwave = false;
     }
 
     public override void CaptureInput() {}
@@ -25,12 +34,22 @@ public class ShockwaveState : State<BearmanCtrl>
 
     public override void ChangeState()
     {
-        controller.SetState(typeof(IdleState));
+        if (_spawnedShockwave) controller.SetState(typeof(IdleState));
     }
 
-    public override void Exit()
+    public override void Exit() => controller.EventsHandler.Shockwave -= Attack;
+
+    public void Attack()
     {
-        //throw new System.NotImplementedException();
+        Transform shockwavePos = controller.transform.Find("ShockwavePos");
+        GameObject shockwave = Instantiate(_shockwavePrefab, shockwavePos.position, shockwavePos.rotation);
+        shockwave.GetComponent<Shockwave>().SetDamage(_shockwaveDamage);
+
+        if (!controller.AnimationHandler.FacingRight) shockwave.transform.localScale = new Vector3(-1, 1, 1);
+        _spawnedShockwave = true;
     }
 
+    public void FinishAttack()
+    {
+    }
 }

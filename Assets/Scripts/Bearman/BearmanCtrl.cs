@@ -71,4 +71,6 @@ public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable, IAttack
     public void FinishAttack() => EventsHandler.InvokeFinishAttackEvent();
 
     public void ThrowRaccoon() => EventsHandler.InvokeThrowRaccoon();
+
+    public void InstantiateShockwave() => EventsHandler.InvokeShockwave();
 }
