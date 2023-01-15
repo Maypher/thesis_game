@@ -83,7 +83,7 @@ public class WalkState : State<BearmanCtrl>
 
             else // This states will ignore velocity and stop the player in place
             {
-                _shouldStopBeforeChange = true;
+                _shouldStopBeforeChange = _crouch || _shockwave || _chargePunch || _aim;
 
                 if (_crouch) controller.SetState(typeof(CrouchState));
                 if (_shockwave) controller.SetState(typeof(ShockwaveState));
