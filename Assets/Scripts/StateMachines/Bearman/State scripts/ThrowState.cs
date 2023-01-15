@@ -27,7 +27,10 @@ public class ThrowState : State<BearmanCtrl>
 
     public override void FixedUpdate() {}
 
-    public override void ChangeState() {}
+    public override void ChangeState() 
+    {
+        controller.SetState(typeof(IdleState));
+    }
 
     public override void Exit() {}
 }

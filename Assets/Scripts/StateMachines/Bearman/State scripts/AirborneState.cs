@@ -123,7 +123,7 @@ public class AirborneState : State<BearmanCtrl>
         #region Movement
         if (_xDirection != 0)
         {
-            ApplyForce(_maxMoveSpeed * _xDirection);
+            MoveVertically(_maxMoveSpeed * _xDirection, _lerpAmount);
         }
         #endregion
     }
@@ -149,11 +149,10 @@ public class AirborneState : State<BearmanCtrl>
 
     private void ApplyForce(float force) 
     {
-        _rb.AddForce(Vector2.right * force * _lerpAmount, ForceMode2D.Impulse);
-        _rb.velocity = new Vector2(Mathf.Clamp(_rb.velocity.x, -_maxSpeedReached, _maxSpeedReached), _rb.velocity.y);
+        _rb.AddForce(_lerpAmount * force * Vector2.right, ForceMode2D.Impulse);
     }
 
-    private void Jump(float jumpForce) => _rb.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
+    private void Jump(float jumpForce) => _rb.velocity = new Vector2(_rb.velocity.x, jumpForce); //_rb.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
 
     private void SetGravity(float gravMultiplier) => _rb.gravityScale = gravMultiplier;
 }

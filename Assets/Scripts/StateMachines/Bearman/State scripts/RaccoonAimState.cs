@@ -26,16 +26,18 @@ public class RaccoonAimState : State<BearmanCtrl>
         base.Init(parent);
         if (_animationHandler == null) _animationHandler = controller.AnimationHandler;
         if (_trajectory == null) _trajectory = parent.GetComponentInChildren<LineRenderer>();
+        if (controller.launchPosition != null) controller.launchPosition = parent.transform.Find("RaccoonLaunchPos").transform;
         
         _trajectory.enabled = true;
         _trajectory.positionCount = 0;
 
-        controller.launchPosition = parent.transform.Find("RaccoonLaunchPos").transform;
         controller.launchPosition.transform.localEulerAngles = Vector3.zero;
 
         _aiming = true;
         _throwing = false;
 
+        // If this is set to true within the inspector then the parent element's position is not calculated properly
+        _trajectory.useWorldSpace = true;
         _animationHandler.AimRaccoonAnimation(true);
     }
 
@@ -65,6 +67,7 @@ public class RaccoonAimState : State<BearmanCtrl>
     { 
         _animationHandler.AimRaccoonAnimation(false);
         _trajectory.enabled = false;
+        _trajectory.useWorldSpace = false;
     }
 
     // Shamelessly copied from https://www.youtube.com/watch?v=U3hovyIWBLk
