@@ -21,7 +21,6 @@ public class RockState : State<BearmanCtrl>
     [SerializeField] private Vector2 _throwForce;
 
     [Header("Thrown")]
-    [SerializeField] private float _damage = 2;
     [SerializeField] private float _torque = -20;
 
     private GameObject _rock;
