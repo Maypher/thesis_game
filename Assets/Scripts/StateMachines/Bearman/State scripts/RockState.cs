@@ -31,6 +31,7 @@ public class RockState : State<BearmanCtrl>
     private bool _throw;
     private float _walkTime;
     private float _slowDownTime;
+    private bool _raisedRock;
 
     public override void Init(BearmanCtrl parent)
     {
@@ -44,6 +45,7 @@ public class RockState : State<BearmanCtrl>
         _walkTime = 0;
         _slowDownTime = 1; // Start at the end (no speed)
         _walkDirection = controller.AnimationHandler.FacingRight ? 1 : -1;
+        _raisedRock = false;
 
         _animationHandler.PickUpRockAnimation(true);
 
@@ -54,10 +56,13 @@ public class RockState : State<BearmanCtrl>
     {
         _xDirection = Input.GetAxisRaw("Horizontal");
         _throw = Input.GetKeyDown(KeyCode.Mouse0);
+        _raisedRock = Input.GetKey(KeyCode.W);
     }
 
     public override void Update()
     {
+        controller.AnimationHandler.RaiseRockAnimation(_raisedRock);
+
         // Only move the character in the direction it was facing when state was entered
         if (_xDirection == _walkDirection) Accelerate();
         else Decelerate();
@@ -97,11 +102,7 @@ public class RockState : State<BearmanCtrl>
 
     private void ThrowRock()
     {
-        Rock script = _rock.GetComponent<Rock>();
         _rock.transform.SetParent(null, true);
-
-        script.IgnoreCollisionWith(controller.GetComponent<Collider2D>());
-
-        script.AddForce(_throwForce * _walkDirection, _torque);
+        _rock.GetComponent<RockController>().IgnoreCollisionWith(controller.GetComponent<Collider2D>());
     }
 }

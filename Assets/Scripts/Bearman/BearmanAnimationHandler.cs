@@ -49,6 +49,8 @@ public class BearmanAnimationHandler : MonoBehaviour
 
     public void PickUpRockAnimation(bool holdingRock) => _animator.SetBool("holdingRock", holdingRock);
 
+    public void RaiseRockAnimation(bool raised) => _animator.SetBool("rockRaised", raised);
+
     public void AttackAnimation() => _animator.SetTrigger("attack");
 
     public void ChargedAttackAnimation() => _animator.SetTrigger("chargedAttack");
