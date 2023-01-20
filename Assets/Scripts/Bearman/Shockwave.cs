@@ -56,33 +56,21 @@ public class Shockwave : MonoBehaviour
         if (!collision.gameObject.CompareTag("Player")) collision.gameObject.GetComponent<IDamageable>()?.TakeDamage(_damage);
     }
 
+    // Thanks to Seth Funk https://www.youtube.com/watch?v=B2BCnIIV1WE for the code
     private void AlignToGround()
     {
-        // When shock wave is instantiated it gets spawned inside the ground. This is used to push it out
-        Collider2D insideGround = CheckIfInsideGround();
+        RaycastHit2D hit2D = Physics2D.Raycast(GetHitboxTopCenter(), -Vector2.up, 5f, _whatIsGround);
 
-        // Used for when outside ground and should be moved down
-        float distanceToGround = GetDistanceToGround();
-
-        if (insideGround != null)
-        {
-            float distanceToBorder = insideGround.bounds.max.y - _hitbox.bounds.min.y;
-            transform.position = new Vector3(transform.position.x, transform.position.y + distanceToBorder, transform.position.z);
-        }
-        else if (distanceToGround != 0)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y - distanceToGround, transform.position.z);
-        }
+        // Add _hitbox.bounds.extents.y to hit2D.point.y because setting transform.position places the center of the object at the location
+        // making the shockwave be halfway inside the ground. This adds an offset to align it base. 
+        if (hit2D) transform.position = new Vector3(transform.position.x, hit2D.point.y + _hitbox.bounds.extents.y, transform.position.z);
     }
 
     private Collider2D CheckIfInsideGround() => Physics2D.OverlapPoint(GetHitboxBottomCenter(), _whatIsGround);
 
-    private float GetDistanceToGround()
-    {
-        return Physics2D.Raycast(GetHitboxBottomCenter(), Vector2.down, 5, _whatIsGround).distance;
-    }
-
     private Vector2 GetHitboxBottomCenter() => new(_hitbox.bounds.center.x, _hitbox.bounds.min.y);
+
+    private Vector2 GetHitboxTopCenter() => new(_hitbox.bounds.center.x, _hitbox.bounds.max.y);
 
     private void SetXSpeed(float speed) => _rbd2.velocity = new Vector2(speed * _direction, _rbd2.velocity.y);
 
@@ -105,4 +93,10 @@ public class Shockwave : MonoBehaviour
     }
 
     public void SetDamage(int damage) => _damage = damage;
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.black;
+        Gizmos.DrawRay(GetHitboxTopCenter(), Vector2.down);
+    }
 }
