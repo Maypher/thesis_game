@@ -59,7 +59,7 @@ public class Shockwave : MonoBehaviour
     // Thanks to Seth Funk https://www.youtube.com/watch?v=B2BCnIIV1WE for the code
     private void AlignToGround()
     {
-        RaycastHit2D hit2D = Physics2D.Raycast(GetHitboxTopCenter(), -Vector2.up, 5f, _whatIsGround);
+        RaycastHit2D hit2D = Physics2D.Raycast(GetHitboxTopRight(), -Vector2.up, 5f, _whatIsGround);
 
         // Add _hitbox.bounds.extents.y to hit2D.point.y because setting transform.position places the center of the object at the location
         // making the shockwave be halfway inside the ground. This adds an offset to align it base. 
@@ -70,7 +70,7 @@ public class Shockwave : MonoBehaviour
 
     private Vector2 GetHitboxBottomCenter() => new(_hitbox.bounds.center.x, _hitbox.bounds.min.y);
 
-    private Vector2 GetHitboxTopCenter() => new(_hitbox.bounds.center.x, _hitbox.bounds.max.y);
+    private Vector2 GetHitboxTopRight() => new(_hitbox.bounds.max.x, _hitbox.bounds.max.y);
 
     private void SetXSpeed(float speed) => _rbd2.velocity = new Vector2(speed * _direction, _rbd2.velocity.y);
 
@@ -97,6 +97,6 @@ public class Shockwave : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.black;
-        Gizmos.DrawRay(GetHitboxTopCenter(), Vector2.down);
+        Gizmos.DrawRay(GetHitboxTopRight(), Vector2.down * 5);
     }
 }
