@@ -20,6 +20,7 @@ public class AirborneState : State<BearmanCtrl>
     private bool _coyoteJumped;
     private bool _releasedJump;
     private bool _appliedMaxHeightForce;
+    private float _jumpBufferTimer;
 
     private float _xDirection;
     private float _maxSpeedReached; // Used to keep the velocity of the previous state while not reaching ludicrous speeds
@@ -41,6 +42,7 @@ public class AirborneState : State<BearmanCtrl>
 
     [Header("Misc")]
     [SerializeField] private float _coyoteTime = .4f;
+    [SerializeField] private float _jumpBufferTime = .2f;
 
     public override void Init(BearmanCtrl parent)
     {
@@ -50,6 +52,7 @@ public class AirborneState : State<BearmanCtrl>
         if (_animationHandler == null) _animationHandler = controller.AnimationHandler;
 
         _coyoteTimer = 0;
+        _jumpBufferTimer = 0;
         _airTime = 0;
         _isAirborne = false;
         _coyoteJumped = false;
@@ -68,6 +71,9 @@ public class AirborneState : State<BearmanCtrl>
        _xDirection = Input.GetAxisRaw("Horizontal");
         _canCoyoteJump = _coyoteTimer <= _coyoteTime && !controller.jumped && !_coyoteJumped && Input.GetKeyDown(KeyCode.Space);
         if (!_releasedJump) _releasedJump = controller.jumped && Input.GetKeyUp(KeyCode.Space);
+
+        if (Input.GetKeyDown(KeyCode.Space)) _jumpBufferTimer = _jumpBufferTime;
+        else _jumpBufferTimer -= Time.deltaTime;
     }
 
     public override void Update()
@@ -75,6 +81,7 @@ public class AirborneState : State<BearmanCtrl>
         #region Variable Update
         _airTime += Time.deltaTime;
         _coyoteTimer += Time.deltaTime;
+        _jumpBufferTimer -= Time.deltaTime;
         _isAirborne = !controller.IsGrounded;
         #endregion
 
@@ -91,6 +98,16 @@ public class AirborneState : State<BearmanCtrl>
             _coyoteJumped = true;
             controller.jumped = true;
         }
+        #endregion
+
+        #region Jump Buffer
+
+        if (_jumpBufferTimer > 0 && !_isAirborne)
+        {
+            Jump(_jumpForce);
+            _jumpBufferTimer = 0;
+        }
+
         #endregion
 
         #region Gravity manipulation

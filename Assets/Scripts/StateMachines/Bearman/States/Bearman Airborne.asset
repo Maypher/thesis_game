@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d244695b9c8482428ef0ae3d55f8217, type: 3}
-  m_Name: Bearman Jump
+  m_Name: Bearman Airborne
   m_EditorClassIdentifier: 
   _jumpForce: 6
   _jumpGravity: 1
@@ -22,3 +22,4 @@ MonoBehaviour:
   _maxMoveSpeed: 5
   _lerpAmount: 0.01
   _coyoteTime: 0.2
+  _jumpBufferTime: 0.2
