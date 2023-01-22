@@ -10,10 +10,6 @@ public class HeldState : State<RockController>
     [Header("Health")]
     [SerializeField] private int _startHealth;
 
-    [Header("Throw")]
-    [SerializeField] private Vector2 _throwForce;
-    [SerializeField] private float _torque;
-
     public override void Init(RockController parent)
     {
         base.Init(parent);
@@ -34,12 +30,6 @@ public class HeldState : State<RockController>
 
     public override void Exit() {
         controller.CanBeDamaged = false;
-
-        if (_thrown) // If the rock was thrown instead of released due to damage 
-        {
-            controller.ThrowForce = _throwForce;
-            controller.Torque = _torque;
-        }
     }
 
     public override void FixedUpdate() {}

@@ -10,6 +10,18 @@ public class RockController : StateMachine<RockController>, IDamageable
 
     [HideInInspector] public bool CanBeDamaged;
 
+    protected override void Awake()
+    {
+        base.Awake();
+
+        // Since the reference to the Scriptable Object is the same for all prefabs then its necessary
+        // to clone them for each to have its own state and not mess with the other instances
+        for (int i = 0; i < _states.Count; i++)
+        {
+            _states[i] = Instantiate(_states[i]);
+        }
+    }
+
     /// <summary>
     /// Change the physics2D settings to make this object ignore collision with collider
     /// </summary>

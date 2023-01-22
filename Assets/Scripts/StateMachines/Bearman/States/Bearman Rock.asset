@@ -65,5 +65,4 @@ MonoBehaviour:
   _timeToFullStop: 1
   _rockPrefab: {fileID: 5985811449973228552, guid: d812a186d0838774cbae0149db296894, type: 3}
   _throwForce: {x: 20, y: 15}
-  _damage: 2
   _torque: -20

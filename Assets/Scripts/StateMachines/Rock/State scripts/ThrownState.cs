@@ -44,7 +44,7 @@ public class ThrownState : State<RockController>
         if (_rb.velocity == Vector2.zero)
         {
             // Disable all collision and physics simulation
-            _rb.simulated = false;
+            _rb.bodyType = RigidbodyType2D.Static;
             _collider.enabled = false;
 
             _idleTime += Time.deltaTime;

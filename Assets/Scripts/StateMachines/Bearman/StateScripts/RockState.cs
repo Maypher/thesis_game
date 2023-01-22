@@ -18,9 +18,9 @@ public class RockState : State<BearmanCtrl>
 
     [Header("Shield")]
     [SerializeField] private GameObject _rockPrefab;
-    [SerializeField] private Vector2 _throwForce;
 
     [Header("Thrown")]
+    [SerializeField] private Vector2 _throwForce;
     [SerializeField] private float _torque = -20;
 
     private GameObject _rock;
@@ -44,6 +44,7 @@ public class RockState : State<BearmanCtrl>
         _walkTime = 0;
         _slowDownTime = 1; // Start at the end (no speed)
         _walkDirection = controller.AnimationHandler.FacingRight ? 1 : -1;
+        Debug.Log(_walkDirection);
         _raisedRock = false;
 
         _animationHandler.PickUpRockAnimation(true);
@@ -65,8 +66,6 @@ public class RockState : State<BearmanCtrl>
         // Only move the character in the direction it was facing when state was entered
         if (_xDirection == _walkDirection) Accelerate();
         else Decelerate();
-
-        if (_throw) ThrowRock();
     }
 
     public override void FixedUpdate()
@@ -75,12 +74,19 @@ public class RockState : State<BearmanCtrl>
 
     public override void ChangeState()
     {
-        if (_throw) controller.SetState(typeof(IdleState));
+        if (_throw) 
+        {
+            controller.SetState(typeof(IdleState)); 
+        }
     }
 
     public override void Exit()
     {
         _animationHandler.PickUpRockAnimation(false);
+        controller.AnimationHandler.RaiseRockAnimation(false);
+
+        if (_throw) ThrowRock(new Vector2(_throwForce.x * _walkDirection, _throwForce.y), _torque);
+        else ThrowRock(Vector2.zero, 0);
     }
 
     private void Accelerate()
@@ -99,9 +105,13 @@ public class RockState : State<BearmanCtrl>
         _rb.velocity = new Vector2(_deceleration.Evaluate(_slowDownTime) * _maxSpeed * _walkDirection, _rb.velocity.y);
     }
 
-    private void ThrowRock()
+    private void ThrowRock(Vector2 throwForce, float torque)
     {
         _rock.transform.SetParent(null, true);
-        _rock.GetComponent<RockController>().IgnoreCollisionWith(controller.GetComponent<Collider2D>());
+
+        RockController script = _rock.GetComponent<RockController>();
+        script.IgnoreCollisionWith(controller.GetComponent<Collider2D>());
+        script.ThrowForce = throwForce;
+        script.Torque = torque;
     }
 }

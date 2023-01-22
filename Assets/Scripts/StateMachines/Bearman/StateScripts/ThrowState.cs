@@ -14,7 +14,7 @@ public class ThrowState : State<BearmanCtrl>
 
     private void Throw()
     {
-        GameObject raccoon = Instantiate(_raccoon, controller.launchPosition.position, controller.launchPosition.rotation);
+        GameObject raccoon = Instantiate(_raccoon, position: controller.launchPosition.position, Quaternion.identity);
         Rigidbody2D raccoonRb = raccoon.GetComponent<Rigidbody2D>();
 
         raccoonRb.mass = controller.raccoonMass;
