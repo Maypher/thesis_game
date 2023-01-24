@@ -26,7 +26,7 @@ public class RockState : State<BearmanCtrl>
     private GameObject _rock;
 
     private float _xDirection;
-    private int _walkDirection;
+    private float _walkDirection;
     private bool _throw;
     private float _walkTime;
     private float _slowDownTime;
@@ -43,7 +43,7 @@ public class RockState : State<BearmanCtrl>
         _throw = false;
         _walkTime = 0;
         _slowDownTime = 1; // Start at the end (no speed)
-        _walkDirection = controller.AnimationHandler.FacingRight ? 1 : -1;
+        _walkDirection = controller.AnimationHandler.FacingDirection;
         Debug.Log(_walkDirection);
         _raisedRock = false;
 

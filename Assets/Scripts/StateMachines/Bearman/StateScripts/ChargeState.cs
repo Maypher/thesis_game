@@ -15,7 +15,7 @@ public class ChargeState : State<BearmanCtrl>
         base.Init(parent);
         _animationHandler = controller.AnimationHandler;
 
-        controller.chargeTime = 0;
+        controller.ChargeTime = 0;
         _animationHandler.ChargeAnimation(true);
     }
 
@@ -26,7 +26,7 @@ public class ChargeState : State<BearmanCtrl>
 
     public override void Update()
     {
-        if (_charging) controller.chargeTime += Time.deltaTime;
+        if (_charging) controller.ChargeTime += Time.deltaTime;
     }
 
     public override void FixedUpdate()
@@ -38,7 +38,7 @@ public class ChargeState : State<BearmanCtrl>
     {
         if (!_charging)
         {
-            if (controller.chargeTime < _chargeToHeavyAttack) controller.SetState(typeof(PunchState));
+            if (controller.ChargeTime < _chargeToHeavyAttack) controller.SetState(typeof(PunchState));
             else controller.SetState(typeof(ChargedPunchState));
         }
     }

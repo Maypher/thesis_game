@@ -54,11 +54,11 @@ public class ChargedPunchState : State<BearmanCtrl>, IAttack
     {
         int hitDamage;
 
-        if (controller.chargeTime > _smallChargeTime && controller.chargeTime < _mediumChargeTime) hitDamage = _smallDamage;
-        else if (controller.chargeTime >= _mediumChargeTime && controller.chargeTime < _heavyChargeTime) hitDamage = _mediumDamage;
+        if (controller.ChargeTime > _smallChargeTime && controller.ChargeTime < _mediumChargeTime) hitDamage = _smallDamage;
+        else if (controller.ChargeTime >= _mediumChargeTime && controller.ChargeTime < _heavyChargeTime) hitDamage = _mediumDamage;
         else hitDamage = _heavyDamage;
 
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(controller.punchLocation.position, controller.punchRadius);
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(controller.PunchLocation.position, controller.PunchRadius);
 
         foreach (Collider2D enemy in enemies)
         {

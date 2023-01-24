@@ -72,7 +72,7 @@ public class WalkState : State<BearmanCtrl>
         {
             if (_jump)
             {
-                controller.jumped = true;
+                controller.Jumped = true;
                 controller.SetState(typeof(AirborneState));
             }
             // This states will wait for the character to fully stop before transitioning

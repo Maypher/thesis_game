@@ -58,7 +58,7 @@ public class IdleState : State<BearmanCtrl>
     {
         if (_jump)
         {
-            controller.jumped = true;
+            controller.Jumped = true;
             controller.SetState(typeof(AirborneState));
         }
         else if (!controller.IsGrounded) controller.SetState(typeof(AirborneState));

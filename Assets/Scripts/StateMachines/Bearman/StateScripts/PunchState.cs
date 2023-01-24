@@ -43,11 +43,11 @@ public class PunchState : State<BearmanCtrl>, IAttack
 
     public void Attack()
     {
-         Collider2D[] enemies = Physics2D.OverlapCircleAll(controller.punchLocation.position, controller.punchRadius);
+         Collider2D[] enemies = Physics2D.OverlapCircleAll(controller.PunchLocation.position, controller.PunchRadius);
 
         foreach (Collider2D enemy in enemies)
         {
-            enemy.GetComponent<IDamageable>()?.TakeDamage(controller.damage);
+            enemy.GetComponent<IDamageable>()?.TakeDamage(controller.Damage);
         }
     }
 

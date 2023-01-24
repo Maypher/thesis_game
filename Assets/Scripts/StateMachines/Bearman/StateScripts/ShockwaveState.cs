@@ -43,7 +43,7 @@ public class ShockwaveState : State<BearmanCtrl>, IAttack
     {
         Transform shockwavePos = controller.transform.Find("ShockwavePos");
         GameObject shockwave = Instantiate(_shockwavePrefab, shockwavePos.position, shockwavePos.rotation);
-        if (!controller.AnimationHandler.FacingRight) shockwave.transform.localScale = new Vector3(-1, 1, 1);
+        if (controller.AnimationHandler.FacingDirection == -1) shockwave.transform.localScale = new Vector3(-1, 1, 1);
         shockwave.GetComponent<Shockwave>().SetDamage(_shockwaveDamage);
 
         _spawnedShockwave = true;

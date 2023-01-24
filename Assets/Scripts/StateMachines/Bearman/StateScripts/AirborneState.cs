@@ -63,14 +63,14 @@ public class AirborneState : State<BearmanCtrl>
         _animationHandler.JumpAnimation(true);
 
         // Apply jump force immediately after entering state if the jump button was pressed in the previous state
-        if (controller.jumped) Jump(_jumpForce);
+        if (controller.Jumped) Jump(_jumpForce);
     }
 
     public override void CaptureInput()
     {
        _xDirection = Input.GetAxisRaw("Horizontal");
-        _canCoyoteJump = _coyoteTimer <= _coyoteTime && !controller.jumped && !_coyoteJumped && Input.GetKeyDown(KeyCode.Space);
-        if (!_releasedJump) _releasedJump = controller.jumped && Input.GetKeyUp(KeyCode.Space);
+        _canCoyoteJump = _coyoteTimer <= _coyoteTime && !controller.Jumped && !_coyoteJumped && Input.GetKeyDown(KeyCode.Space);
+        if (!_releasedJump) _releasedJump = controller.Jumped && Input.GetKeyUp(KeyCode.Space);
 
         if (Input.GetKeyDown(KeyCode.Space)) _jumpBufferTimer = _jumpBufferTime;
         else _jumpBufferTimer -= Time.deltaTime;
@@ -96,7 +96,7 @@ public class AirborneState : State<BearmanCtrl>
             _rb.velocity = new Vector2(_rb.velocity.x, 0);
             Jump(_jumpForce);
             _coyoteJumped = true;
-            controller.jumped = true;
+            controller.Jumped = true;
         }
         #endregion
 
@@ -116,7 +116,7 @@ public class AirborneState : State<BearmanCtrl>
         if (Mathf.Abs(_rb.velocity.y) <= _jumpHangThreshold && !_releasedJump) 
         {
             _rb.gravityScale = _jumpHangGrav;
-            if ((_xDirection == 1) == controller.AnimationHandler.FacingRight && !_appliedMaxHeightForce && Mathf.Abs(_rb.velocity.x) > 1)
+            if (_xDirection == controller.AnimationHandler.FacingDirection && !_appliedMaxHeightForce && Mathf.Abs(_rb.velocity.x) > 1)
             {
                 float targetSpeed = _rb.velocity.x + _jumpMaxHeightSpeed * _xDirection;
 

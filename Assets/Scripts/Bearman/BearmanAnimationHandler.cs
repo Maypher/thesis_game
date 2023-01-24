@@ -7,9 +7,9 @@ public class BearmanAnimationHandler : MonoBehaviour
     private Animator _animator;
     private Transform _transform;
 
-    public bool FacingRight 
+    public float FacingDirection 
     {
-        get { return _transform.localScale.x == 1; }
+        get { return transform.localScale.x; }
     }
 
     // Start is called before the first frame update
