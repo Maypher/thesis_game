@@ -14,11 +14,11 @@ public class ThrowState : State<BearmanCtrl>
 
     private void Throw()
     {
-        GameObject raccoon = Instantiate(_raccoon, position: controller.launchPosition.position, Quaternion.identity);
+        GameObject raccoon = Instantiate(_raccoon, position: controller.LaunchPosition.position, Quaternion.identity);
         Rigidbody2D raccoonRb = raccoon.GetComponent<Rigidbody2D>();
 
-        raccoonRb.mass = controller.raccoonMass;
-        raccoonRb.AddForce(controller.launchPosition.transform.right * controller.throwForce, ForceMode2D.Impulse);
+        raccoonRb.mass = controller.RaccoonMass;
+        raccoonRb.AddForce(controller.AnimationHandler.FacingDirection * controller.RaccoonThrowForce * controller.LaunchPosition.transform.right, ForceMode2D.Impulse);
     }
 
     public override void CaptureInput() {}

@@ -20,21 +20,23 @@ public class RaccoonAimState : State<BearmanCtrl>
 
     private bool _aiming;
     private bool _throwing;
+    private float _aimDirection;
 
     public override void Init(BearmanCtrl parent)
     {
         base.Init(parent);
         if (_animationHandler == null) _animationHandler = controller.AnimationHandler;
         if (_trajectory == null) _trajectory = parent.GetComponentInChildren<LineRenderer>();
-        if (controller.launchPosition != null) controller.launchPosition = parent.transform.Find("RaccoonLaunchPos").transform;
+        if (controller.LaunchPosition != null) controller.LaunchPosition = parent.transform.Find("RaccoonLaunchPos").transform;
         
         _trajectory.enabled = true;
         _trajectory.positionCount = 0;
 
-        controller.launchPosition.transform.localEulerAngles = Vector3.zero;
+        controller.LaunchPosition.transform.localEulerAngles = Vector3.zero;
 
         _aiming = true;
         _throwing = false;
+        _aimDirection = controller.AnimationHandler.FacingDirection;
 
         // If this is set to true within the inspector then the parent element's position is not calculated properly
         _trajectory.useWorldSpace = true;
@@ -48,8 +50,10 @@ public class RaccoonAimState : State<BearmanCtrl>
     }
     public override void Update() 
     {
-        controller.launchPosition.localEulerAngles = new Vector3(0, 0, Mathf.PingPong(Time.time * _rotationSpeed, 60));
-        ShowTrajectoryLine(controller.launchPosition.position, controller.launchPosition.right * controller.throwForce / controller.raccoonMass);
+        controller.LaunchPosition.localEulerAngles = new Vector3(0, 0, Mathf.PingPong(Time.time * _rotationSpeed, 60));
+        Debug.Log(controller.LaunchPosition.right);
+        ShowTrajectoryLine(controller.LaunchPosition.position, controller.LaunchPosition.right * controller.RaccoonThrowForce / controller.RaccoonMass * _aimDirection);
+        //SimulateArc();
     }
     
     public override void FixedUpdate() {}
