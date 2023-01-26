@@ -10,25 +10,25 @@ public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable, IAttack
 
     [Header("Health")]
     [SerializeField, Min(1)] private int maxHealth = 40;
-    private int health;
+    private int _health;
 
     [Header("Airborne state")]
-    [HideInInspector] public bool jumped = false;
+    [HideInInspector] public bool Jumped = false;
 
     [Header("Punch charge state")]
-    [HideInInspector] public float chargeTime;
+    [HideInInspector] public float ChargeTime;
 
     [Header("Punch state")]
-    public int damage = 10;
+    public int Damage = 10;
 
     [Header("Punch and heavy punch states")]
-    public float punchRadius = .5f;
-    public Transform punchLocation;
+    public float PunchRadius = .5f;
+    public Transform PunchLocation;
 
     [Header("Aim & throw raccoon state")]
-    public float throwForce = 5f;
-    public float raccoonMass = 2f;
-    public Transform launchPosition;
+    public float RaccoonThrowForce = 5f;
+    public float RaccoonMass = 2f;
+    public Transform LaunchPosition;
 
     [Header("Ground check")]
     private GroundCheck _groundCheck;
@@ -45,14 +45,14 @@ public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable, IAttack
         _groundCheck = transform.Find("GroundCheck").GetComponent<GroundCheck>();
     }
 
-    private void Start() => health = maxHealth;
+    private void Start() => _health = maxHealth;
 
     [HideInInspector] public bool TakeDamage(int damagePt)
     {
         SetState(typeof(DamageState));
 
-        health -= damagePt;
-        if (health <= 0) 
+        _health -= damagePt;
+        if (_health <= 0) 
         {
             Kill();
             return true;
@@ -69,8 +69,6 @@ public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable, IAttack
     public void Attack() => EventsHandler.InvokeAttackEvent();
 
     public void FinishAttack() => EventsHandler.InvokeFinishAttackEvent();
-
-    public void ThrowRaccoon() => EventsHandler.InvokeThrowRaccoon();
 
     public void InstantiateShockwave() => EventsHandler.InvokeShockwave();
 }

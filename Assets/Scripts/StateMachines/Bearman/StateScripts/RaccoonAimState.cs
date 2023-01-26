@@ -51,7 +51,6 @@ public class RaccoonAimState : State<BearmanCtrl>
     public override void Update() 
     {
         controller.LaunchPosition.localEulerAngles = new Vector3(0, 0, Mathf.PingPong(Time.time * _rotationSpeed, 60));
-        Debug.Log(controller.LaunchPosition.right);
         ShowTrajectoryLine(controller.LaunchPosition.position, controller.LaunchPosition.right * controller.RaccoonThrowForce / controller.RaccoonMass * _aimDirection);
         //SimulateArc();
     }
