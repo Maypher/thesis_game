@@ -24,6 +24,7 @@ public class WalkState : State<BearmanCtrl>
     private bool _crouch;
     private bool _aim;
     private bool _shockwave;
+    private bool _pickUpRock;
 
     private bool _shouldStopBeforeChange; // Used for transitions
 
@@ -48,6 +49,7 @@ public class WalkState : State<BearmanCtrl>
         _chargePunch = false;
         _running = false;
         _shockwave = false;
+        _pickUpRock = false;
 
         _xDirection = 0;
         _movingTime = Mathf.Abs(_rb.velocity.x) / _maxSpeed;
@@ -63,10 +65,11 @@ public class WalkState : State<BearmanCtrl>
         // Used for transitions
         _running = controller.UserInput.Player.Run.IsPressed();
         _jump = controller.UserInput.Player.Jump.WasPerformedThisFrame();
-        _chargePunch = controller.UserInput.Player.Punch.IsPressed();
+        _chargePunch = controller.UserInput.Player.Punch.WasPerformedThisFrame();
         _crouch = controller.UserInput.Player.Crouch.IsPressed();
         _aim = controller.UserInput.Player.RaccoonAim.IsPressed();
         _shockwave = controller.UserInput.Player.Shockwave.IsPressed();
+        _pickUpRock = controller.UserInput.Player.PickUpRock.IsPressed();
     }
 
 
@@ -117,6 +120,7 @@ public class WalkState : State<BearmanCtrl>
                 if (_crouch) controller.SetState(typeof(CrouchState));
                 if (_shockwave) controller.SetState(typeof(ShockwaveState));
                 else if (_chargePunch) controller.SetState(typeof(PunchState));
+                else if (_pickUpRock) controller.SetState(typeof(RockState));
                 else if (_aim) controller.SetState(typeof(RaccoonAimState));
             }
         }

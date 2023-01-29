@@ -44,7 +44,6 @@ public class RockState : State<BearmanCtrl>
         _walkTime = 0;
         _slowDownTime = 1; // Start at the end (no speed)
         _walkDirection = controller.AnimationHandler.FacingDirection;
-        Debug.Log(_walkDirection);
         _raisedRock = false;
 
         _animationHandler.PickUpRockAnimation(true);

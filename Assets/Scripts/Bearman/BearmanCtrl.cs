@@ -22,14 +22,6 @@ public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable, IAttack
     [Header("Punch charge state")]
     [HideInInspector] public float ChargeTime;
 
-    [Header("Punch state")]
-    public int Damage = 10;
-
-    [Header("Aim & throw raccoon state")]
-    public float RaccoonThrowForce = 5f;
-    public float RaccoonMass = 2f;
-    public Transform LaunchPosition;
-
     [Header("Ground check")]
     private GroundCheck _groundCheck;
     [HideInInspector] public bool IsGrounded

@@ -13,6 +13,7 @@ public class IdleState : State<BearmanCtrl>
     private bool _crouch;
     private bool _aim;
     private bool _shockwave;
+    private bool _pickUpRock;
 
     [SerializeField] private float _timeToFlex = 10f; // How much time has to pass before playing flex animation
     private float _idleTime; // To time flex animation
@@ -27,16 +28,18 @@ public class IdleState : State<BearmanCtrl>
         _moving = false;
         _crouch = false;
         _shockwave = false;
+        _pickUpRock = false;
     }
 
     public override void CaptureInput()
     {
         _moving = controller.UserInput.Player.Move.IsPressed();
         _jump = controller.UserInput.Player.Jump.IsPressed();
-        _chargePunch = controller.UserInput.Player.Punch.IsPressed();
+        _chargePunch = controller.UserInput.Player.Punch.WasPerformedThisFrame();
         _crouch = controller.UserInput.Player.Crouch.IsPressed();
         _aim = controller.UserInput.Player.RaccoonAim.IsPressed();
         _shockwave = controller.UserInput.Player.Shockwave.IsPressed();
+        _pickUpRock = controller.UserInput.Player.PickUpRock.IsPressed();
     }
 
     public override void Update()
@@ -66,6 +69,7 @@ public class IdleState : State<BearmanCtrl>
         else if (_crouch) controller.SetState(typeof(CrouchState));
         else if (_shockwave) controller.SetState(typeof(ShockwaveState));
         else if (_chargePunch) controller.SetState(typeof(PunchState));
+        else if (_pickUpRock) controller.SetState(typeof(RockState));
         else if (_aim) controller.SetState(typeof(RaccoonAimState));
     }
 

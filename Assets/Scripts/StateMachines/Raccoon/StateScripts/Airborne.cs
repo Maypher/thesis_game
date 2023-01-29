@@ -27,7 +27,6 @@ public class Airborne : State<RaccoonController>
 
     public override void ChangeState()
     {
-        Debug.Log(_groundCheck.Check());
         if (_groundCheck.Check()) controller.SetState(typeof(ReturnToOwnerState));
     }
 
