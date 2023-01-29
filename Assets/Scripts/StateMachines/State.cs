@@ -13,7 +13,7 @@ public abstract class State<T> : ScriptableObject where T : MonoBehaviour
     protected T controller;
 
     // Initialization method. Used to initialize variables and animations
-    // Virtual to allow extension yet be able to call the predifined code with base.Init()
+    // Virtual to allow extension yet be able to call the predefined code with base.Init()
     public virtual void Init(T parent) => controller = parent;
 
     // Used for getting user input

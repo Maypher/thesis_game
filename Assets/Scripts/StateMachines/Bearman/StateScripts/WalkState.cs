@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using UnityEngine.InputSystem;
 
 [CreateAssetMenu(menuName = "States/Character/Walk")]
 public class WalkState : State<BearmanCtrl>
@@ -57,13 +58,41 @@ public class WalkState : State<BearmanCtrl>
 
     public override void CaptureInput()
     {
-        _xDirection = Input.GetAxisRaw("Horizontal");
-        _running = Input.GetKey(KeyCode.LeftShift);
-        _jump = Input.GetKeyDown(KeyCode.Space);
-        _chargePunch = Input.GetKeyDown(KeyCode.Mouse0);
-        _crouch = Input.GetKeyDown(KeyCode.LeftControl);
-        _aim = Input.GetKeyDown(KeyCode.Mouse1);
-        _shockwave = Input.GetKey(KeyCode.S) && Input.GetKeyDown(KeyCode.Mouse0);
+        _xDirection = controller.UserInput.Player.Move.ReadValue<float>();
+        
+        // Used for transitions
+        _running = controller.UserInput.Player.Run.IsPressed();
+        _jump = controller.UserInput.Player.Jump.WasPerformedThisFrame();
+        _chargePunch = controller.UserInput.Player.Punch.IsPressed();
+        _crouch = controller.UserInput.Player.Crouch.IsPressed();
+        _aim = controller.UserInput.Player.RaccoonAim.IsPressed();
+        _shockwave = controller.UserInput.Player.Shockwave.IsPressed();
+    }
+
+
+    public override void Update()
+    {
+        controller.AnimationHandler.CorrectRotation(_xDirection);
+        _animationHandler.IsMoving(_xDirection != 0);
+
+        if (_xDirection == 0) _noInputTime += Time.deltaTime;
+        else _noInputTime = 0;
+
+
+
+        if (_xDirection != 0)
+        {
+            _movingTime += Time.deltaTime / _timeToMaxSpeed;
+            _decelerationTime = Mathf.Max(0, 1 - _movingTime); // Used to transition between _moving and slowing down in the animation curve
+            Accelerate();
+        }
+        else if (_noInputTime > _directionChangeThreshold)
+        {
+            _decelerationTime += Time.deltaTime / _timeToFullStop;
+            _movingTime = _decelerationTime;
+            Decelerate();
+        }
+
     }
 
     public override void ChangeState()
@@ -87,35 +116,11 @@ public class WalkState : State<BearmanCtrl>
 
                 if (_crouch) controller.SetState(typeof(CrouchState));
                 if (_shockwave) controller.SetState(typeof(ShockwaveState));
-                else if (_chargePunch) controller.SetState(typeof(ChargeState));
+                else if (_chargePunch) controller.SetState(typeof(PunchState));
                 else if (_aim) controller.SetState(typeof(RaccoonAimState));
             }
         }
         else controller.SetState(typeof(AirborneState));
-    }
-
-    public override void Update()
-    {
-        controller.AnimationHandler.CorrectRotation(_xDirection);
-        _animationHandler.IsMoving(_xDirection != 0);
-
-        if (_xDirection == 0) _noInputTime += Time.deltaTime;
-        else _noInputTime = 0;
-
-
-        if (_xDirection != 0)
-        {
-            _movingTime += Time.deltaTime / _timeToMaxSpeed;
-            _decelerationTime = Mathf.Max(0, 1 - _movingTime); // Used to transition between _moving and slowing down in the animation curve
-            Accelerate();
-        }
-        else if (_noInputTime > _directionChangeThreshold)
-        {
-            _decelerationTime += Time.deltaTime / _timeToFullStop;
-            _movingTime = _decelerationTime;
-            Decelerate();
-        }
-
     }
 
     public override void FixedUpdate() {}
@@ -128,6 +133,9 @@ public class WalkState : State<BearmanCtrl>
 
     private void Accelerate()
     {
+        _movingTime += Time.deltaTime;
+        _decelerationTime = Mathf.Max(0, 1 - _movingTime);
+
         float endTime = _acceleration[_acceleration.length - 1].time;
         float currentSpeed = _acceleration.Evaluate(Mathf.InverseLerp(0, endTime, _movingTime)) * _maxSpeed * _xDirection;
 
@@ -138,6 +146,9 @@ public class WalkState : State<BearmanCtrl>
 
     private void Decelerate()
     {
+        _decelerationTime += Time.deltaTime / _timeToFullStop;
+        _movingTime = _decelerationTime;
+
         float currentSpeed = _deceleration.Evaluate(_decelerationTime) * _maxSpeed * Mathf.Sign(_rb.velocity.x);
         _rb.velocity = new Vector2(currentSpeed, _rb.velocity.y);
     }

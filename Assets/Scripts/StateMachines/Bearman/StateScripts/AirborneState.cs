@@ -68,12 +68,13 @@ public class AirborneState : State<BearmanCtrl>
 
     public override void CaptureInput()
     {
-       _xDirection = Input.GetAxisRaw("Horizontal");
-        _canCoyoteJump = _coyoteTimer <= _coyoteTime && !controller.Jumped && !_coyoteJumped && Input.GetKeyDown(KeyCode.Space);
-        if (!_releasedJump) _releasedJump = controller.Jumped && Input.GetKeyUp(KeyCode.Space);
+       _xDirection = controller.UserInput.Player.Move.ReadValue<float>();
 
-        if (Input.GetKeyDown(KeyCode.Space)) _jumpBufferTimer = _jumpBufferTime;
-        else _jumpBufferTimer -= Time.deltaTime;
+       _canCoyoteJump = _coyoteTimer <= _coyoteTime && !controller.Jumped && !_coyoteJumped && controller.UserInput.Player.Jump.WasPerformedThisFrame();
+       if (!_releasedJump) _releasedJump = controller.Jumped && controller.UserInput.Player.Jump.WasReleasedThisFrame();
+
+       if (controller.UserInput.Player.Jump.WasPerformedThisFrame()) _jumpBufferTimer = _jumpBufferTime;
+       else _jumpBufferTimer -= Time.deltaTime;
     }
 
     public override void Update()
