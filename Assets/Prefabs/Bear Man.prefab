@@ -231,7 +231,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f5fe4fd2975528c43b7ae2af47c28dd7, type: 2}
   - {fileID: 11400000, guid: d9735af11c385244ea1dad24fb94b145, type: 2}
   - {fileID: 11400000, guid: 6f01fca110234f64aa087f59dacab1d3, type: 2}
-  - {fileID: 11400000, guid: 62bf1496236b3c84497075c80b638335, type: 2}
   - {fileID: 11400000, guid: fbe554371519bdd49a7758c7cc2aa515, type: 2}
   _activeState: {fileID: 0}
   AnimationHandler: {fileID: 0}

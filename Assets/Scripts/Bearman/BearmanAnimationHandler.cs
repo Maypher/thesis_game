@@ -51,11 +51,7 @@ public class BearmanAnimationHandler : MonoBehaviour
 
     public void RaiseRockAnimation(bool raised) => _animator.SetBool("rockRaised", raised);
 
-    public void AttackAnimation(bool reset = false) 
-    {
-        if (reset) _animator.ResetTrigger("attack");
-        else _animator.SetTrigger("attack"); 
-    }
+    public void AttackAnimation() => _animator.SetTrigger("attack");
 
     public void ChargedAttackAnimation() => _animator.SetTrigger("chargedAttack");
 

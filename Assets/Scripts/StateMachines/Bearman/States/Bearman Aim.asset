@@ -15,3 +15,6 @@ MonoBehaviour:
   _rotationSpeed: 40
   _lineSegments: 10
   _length: 1
+  _raccoon: {fileID: 5064769980267176126, guid: aa6b14efe6e25b04ab6a2c23cee25612, type: 3}
+  _raccoonMass: 2
+  _throwForce: 20
