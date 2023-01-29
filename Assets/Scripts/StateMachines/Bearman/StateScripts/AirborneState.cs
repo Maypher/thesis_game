@@ -157,7 +157,11 @@ public class AirborneState : State<BearmanCtrl>
         }
     }
 
-    public override void Exit() => _animationHandler.JumpAnimation(false);
+    public override void Exit() 
+    { 
+        _animationHandler.JumpAnimation(false);
+        controller.Jumped = false;
+    }
 
     // Interpolates between the current X velocity and the target velocity
     private void MoveVertically(float targetSpeed, float lerpAmount)

@@ -56,7 +56,7 @@ public class RaccoonAimState : State<BearmanCtrl>, IAttack
     public override void CaptureInput()
     {
         _aiming = controller.UserInput.Player.RaccoonAim.IsPressed();
-        _throwing = controller.UserInput.Player.RaccoonThrow.WasPerformedThisFrame();
+        _throwing = controller.UserInput.Player.Throw.WasPerformedThisFrame();
     }
    
     public override void Update() 

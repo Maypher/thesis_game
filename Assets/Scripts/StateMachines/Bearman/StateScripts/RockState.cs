@@ -53,8 +53,8 @@ public class RockState : State<BearmanCtrl>
 
     public override void CaptureInput()
     {
-        _xDirection = Input.GetAxisRaw("Horizontal");
-        _throw = Input.GetKeyDown(KeyCode.Mouse0);
+        _xDirection = controller.UserInput.Player.Move.ReadValue<float>();
+        _throw = controller.UserInput.Player.Throw.WasPerformedThisFrame();
         _raisedRock = Input.GetKey(KeyCode.W);
     }
 
@@ -73,10 +73,7 @@ public class RockState : State<BearmanCtrl>
 
     public override void ChangeState()
     {
-        if (_throw) 
-        {
-            controller.SetState(typeof(IdleState)); 
-        }
+        if (_throw) controller.SetState(typeof(IdleState)); 
     }
 
     public override void Exit()
@@ -112,5 +109,6 @@ public class RockState : State<BearmanCtrl>
         script.IgnoreCollisionWith(controller.GetComponent<Collider2D>());
         script.ThrowForce = throwForce;
         script.Torque = torque;
+        script.Thrown = true;
     }
 }

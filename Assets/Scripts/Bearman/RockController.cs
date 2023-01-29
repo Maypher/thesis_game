@@ -9,6 +9,7 @@ public class RockController : StateMachine<RockController>, IDamageable
     [HideInInspector] public float Torque = -20;
 
     [HideInInspector] public bool CanBeDamaged;
+    [HideInInspector] public bool Thrown;
 
     protected override void Awake()
     {
