@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4248d15ab2b9c545a7db1f8f8a207d8, type: 3}
   m_Name: Bearman Punch
   m_EditorClassIdentifier: 
-  _punchRadius: 0.5
-  _normalDamage: 10
+  _damage: 5
   _smallDamage: 20
   _mediumDamage: 30
   _heavyDamage: 50
-  _smallCharge: 1
-  _mediumCharge: 2
-  _heavyCharge: 2.5
+  _smallChargeTime: 1
+  _mediumChargeTime: 2
+  _heavyChargeTime: 2.5

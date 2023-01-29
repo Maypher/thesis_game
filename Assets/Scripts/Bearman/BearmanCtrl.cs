@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 // Make the controller a state machine and pass itself as a reference 
 public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable, IAttack
 {
     public CharacterEvents.EventsHandler EventsHandler;
     [HideInInspector] public BearmanAnimationHandler AnimationHandler;
+    
+    [Header("Input")]
+    [HideInInspector] public UserInput UserInput;
 
     [Header("Health")]
     [SerializeField, Min(1)] private int maxHealth = 40;
@@ -20,10 +24,6 @@ public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable, IAttack
 
     [Header("Punch state")]
     public int Damage = 10;
-
-    [Header("Punch and heavy punch states")]
-    public float PunchRadius = .5f;
-    public Transform PunchLocation;
 
     [Header("Aim & throw raccoon state")]
     public float RaccoonThrowForce = 5f;
@@ -43,6 +43,9 @@ public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable, IAttack
         EventsHandler = new CharacterEvents.EventsHandler();
         AnimationHandler = GetComponent<BearmanAnimationHandler>();
         _groundCheck = transform.Find("GroundCheck").GetComponent<GroundCheck>();
+
+        UserInput = new UserInput();
+        UserInput.Player.Enable();
     }
 
     private void Start() => _health = maxHealth;

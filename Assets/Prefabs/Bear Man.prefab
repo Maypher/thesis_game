@@ -230,8 +230,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b7a0fc1c7c0a93f449057c94ee7c090f, type: 2}
   - {fileID: 11400000, guid: f5fe4fd2975528c43b7ae2af47c28dd7, type: 2}
   - {fileID: 11400000, guid: d9735af11c385244ea1dad24fb94b145, type: 2}
-  - {fileID: 11400000, guid: 95ed380a021134c4b9ac4b4869c545fa, type: 2}
-  - {fileID: 11400000, guid: 7854e3f35090d0f4e94fafb94aa89a60, type: 2}
   - {fileID: 11400000, guid: 6f01fca110234f64aa087f59dacab1d3, type: 2}
   - {fileID: 11400000, guid: 62bf1496236b3c84497075c80b638335, type: 2}
   - {fileID: 11400000, guid: fbe554371519bdd49a7758c7cc2aa515, type: 2}
@@ -241,8 +239,6 @@ MonoBehaviour:
   Jumped: 0
   ChargeTime: 0
   Damage: 10
-  PunchRadius: 0.5
-  PunchLocation: {fileID: 4684614431902296334}
   RaccoonThrowForce: 20
   RaccoonMass: 2
   LaunchPosition: {fileID: 4684614432038999830}
@@ -403,6 +399,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4684614431902296334}
+  - component: {fileID: 1056658718}
   m_Layer: 0
   m_Name: PunchCheck
   m_TagString: Untagged
@@ -425,6 +422,22 @@ Transform:
   m_Father: {fileID: 4684614431714139805}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1056658718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4684614431902296335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0b601e498ccdb54ab5622689459b09a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _checkRadius: 0.5
+  _whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &4684614432038999831
 GameObject:
   m_ObjectHideFlags: 0
