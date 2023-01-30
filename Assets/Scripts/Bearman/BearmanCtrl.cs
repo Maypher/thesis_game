@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
 // Make the controller a state machine and pass itself as a reference 
-public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable, IAttack
+public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable
 {
-    public CharacterEvents.EventsHandler EventsHandler;
     [HideInInspector] public BearmanAnimationHandler AnimationHandler;
     
     [Header("Input")]
@@ -29,10 +29,13 @@ public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable, IAttack
         get { return _groundCheck.Check(); }
     }
 
+    [HideInInspector] public Action AnimationEvent;
+    [HideInInspector] public Action FinishAnimationEvent;
+
     protected override void Awake()
     {
         base.Awake();
-        EventsHandler = new CharacterEvents.EventsHandler();
+
         AnimationHandler = GetComponent<BearmanAnimationHandler>();
         _groundCheck = transform.Find("GroundCheck").GetComponent<GroundCheck>();
 
@@ -61,9 +64,7 @@ public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable, IAttack
         Destroy(this.gameObject);
     }
 
-    public void Attack() => EventsHandler.InvokeAttackEvent();
+    public void CallAnimationEvent() => AnimationEvent?.Invoke();
 
-    public void FinishAttack() => EventsHandler.InvokeFinishAttackEvent();
-
-    public void InstantiateShockwave() => EventsHandler.InvokeShockwave();
+    public void CallFinishAnimationEvent() => FinishAnimationEvent?.Invoke();
 }
