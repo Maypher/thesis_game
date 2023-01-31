@@ -42,12 +42,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 400
+  spritePixelsToUnits: 120
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -67,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -103,7 +103,238 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: BearmanRock_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 790
+        width: 676
+        height: 229
+      alignment: 9
+      pivot: {x: 0.36258626, y: 0.82635576}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a27c1f849f8f1a943aadcd2f5d7877ba
+      internalID: 1391342041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanRock_1
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 797
+        width: 759
+        height: 300
+      alignment: 9
+      pivot: {x: 0.3270524, y: 0.6010856}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f881fbaac76cf1245819e085d94376bd
+      internalID: -1570790237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanRock_3
+      rect:
+        serializedVersion: 2
+        x: 1619
+        y: 807
+        width: 633
+        height: 307
+      alignment: 9
+      pivot: {x: 0.37230673, y: 0.56108904}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f36310c45115cf45a29841533ec12c7
+      internalID: -1129451863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanRock_4
+      rect:
+        serializedVersion: 2
+        x: 2409
+        y: 804
+        width: 606
+        height: 267
+      alignment: 9
+      pivot: {x: 0.3170315, y: 0.6042878}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02ba86d428231a944b5d7529d6f3339c
+      internalID: -463692837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanRock_8
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 410
+        width: 514
+        height: 266
+      alignment: 9
+      pivot: {x: 0.489525, y: 0.61638784}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab1cc947641d54a4b94fa30d6048699b
+      internalID: 167439797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanRock_9
+      rect:
+        serializedVersion: 2
+        x: 778
+        y: 402
+        width: 484
+        height: 267
+      alignment: 9
+      pivot: {x: 0.49165747, y: 0.62603486}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6360cc116e9f734468e508456eb54428
+      internalID: 1240339456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanRock_10
+      rect:
+        serializedVersion: 2
+        x: 1446
+        y: 382
+        width: 446
+        height: 266
+      alignment: 9
+      pivot: {x: 0.45774862, y: 0.62144804}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4f5bd749265c434c83a69d8750754f7
+      internalID: -1767880693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanRock_11
+      rect:
+        serializedVersion: 2
+        x: 2057
+        y: 385
+        width: 505
+        height: 268
+      alignment: 9
+      pivot: {x: 0.5026672, y: 0.6104969}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07a1ba4dc98f46d44bc04c4324abd3fe
+      internalID: 1290924970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanRock_16
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 54
+        width: 434
+        height: 254
+      alignment: 9
+      pivot: {x: 0.56202984, y: 0.6324847}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c19fea45fda78343bb1a82a8893bb9c
+      internalID: -19842071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanRock_17
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 42
+        width: 582
+        height: 266
+      alignment: 9
+      pivot: {x: 0.51619023, y: 0.61638725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe83c5faa849f194487cdb2e9444238e
+      internalID: 375009300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanRock_18
+      rect:
+        serializedVersion: 2
+        x: 1810
+        y: 0
+        width: 205
+        height: 297
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7759ca705ceb4aa4bad3728140de0610
+      internalID: -375956675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -114,7 +345,26 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BearmanRock_2: -1538944155
+      BearmanRock_5: -559598383
+      BearmanRock_16: -19842071
+      BearmanRock_6: 912303684
+      BearmanRock_8: 167439797
+      BearmanRock_10: -1767880693
+      BearmanRock_13: 1020615420
+      BearmanRock_15: 1629145236
+      BearmanRock_12: -1682944505
+      BearmanRock_0: 1391342041
+      BearmanRock_9: 1240339456
+      BearmanRock_17: 375009300
+      BearmanRock_7: 245440682
+      BearmanRock_4: -463692837
+      BearmanRock_11: 1290924970
+      BearmanRock_14: 2029409108
+      BearmanRock_1: -1570790237
+      BearmanRock_3: -1129451863
+      BearmanRock_18: -375956675
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

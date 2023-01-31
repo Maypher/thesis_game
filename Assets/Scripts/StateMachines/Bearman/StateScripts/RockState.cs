@@ -30,7 +30,7 @@ public class RockState : State<BearmanCtrl>
     private bool _throw;
     private float _walkTime;
     private float _slowDownTime;
-    private bool _raisedRock;
+    private bool _holdingRock;
 
     public override void Init(BearmanCtrl parent)
     {
@@ -44,26 +44,25 @@ public class RockState : State<BearmanCtrl>
         _walkTime = 0;
         _slowDownTime = 1; // Start at the end (no speed)
         _walkDirection = controller.AnimationHandler.FacingDirection;
-        _raisedRock = false;
+        _holdingRock = false;
 
-        _animationHandler.PickUpRockAnimation(true);
+        controller.AnimationEvent += InstantiateRock;
 
-        _rock = Instantiate(_rockPrefab, _rockSpawnPos.position, _rockSpawnPos.rotation, _rockSpawnPos);
+        _animationHandler.PickUpRockAnimation();
     }
 
     public override void CaptureInput()
     {
         _xDirection = controller.UserInput.Player.Move.ReadValue<float>();
         _throw = controller.UserInput.Player.Throw.WasPerformedThisFrame();
-        _raisedRock = Input.GetKey(KeyCode.W);
     }
 
     public override void Update()
     {
-        controller.AnimationHandler.RaiseRockAnimation(_raisedRock);
+        _animationHandler.IsMoving(_rb.velocity.x != 0);
 
         // Only move the character in the direction it was facing when state was entered
-        if (_xDirection == _walkDirection) Accelerate();
+        if (_xDirection == _walkDirection && _holdingRock) Accelerate();
         else Decelerate();
     }
 
@@ -78,8 +77,9 @@ public class RockState : State<BearmanCtrl>
 
     public override void Exit()
     {
-        _animationHandler.PickUpRockAnimation(false);
-        controller.AnimationHandler.RaiseRockAnimation(false);
+        _animationHandler.HoldRockAnimation(false);
+
+        controller.AnimationEvent -= InstantiateRock;
 
         if (_throw) ThrowRock(new Vector2(_throwForce.x * _walkDirection, _throwForce.y), _torque);
         else ThrowRock(Vector2.zero, 0);
@@ -110,5 +110,12 @@ public class RockState : State<BearmanCtrl>
         script.ThrowForce = throwForce;
         script.Torque = torque;
         script.Thrown = true;
+    }
+
+    private void InstantiateRock()
+    {
+        _rock = Instantiate(_rockPrefab, _rockSpawnPos.position, _rockSpawnPos.rotation, _rockSpawnPos);
+        _animationHandler.HoldRockAnimation(true);
+        _holdingRock = true;
     }
 }

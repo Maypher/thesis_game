@@ -72,7 +72,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4684614430184394242}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.24, y: 0.53, z: 0}
+  m_LocalPosition: {x: 2.13, y: -0.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -120,11 +120,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4684614431714139805}
   - component: {fileID: 4684614431714139807}
-  - component: {fileID: 4684614431714139799}
   - component: {fileID: 4684614431714139801}
   - component: {fileID: 4684614431714139798}
   - component: {fileID: 4684614431714139797}
   - component: {fileID: 4684614431714139796}
+  - component: {fileID: 2019705933}
   m_Layer: 0
   m_Name: Bear Man
   m_TagString: Player
@@ -174,22 +174,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &4684614431714139799
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4684614431714139777}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.004345417, y: -0.01164031}
-  m_Size: {x: 0.65737057, y: 2.6933985}
-  m_Direction: 0
 --- !u!95 &4684614431714139801
 Animator:
   serializedVersion: 4
@@ -237,10 +221,6 @@ MonoBehaviour:
   maxHealth: 40
   Jumped: 0
   ChargeTime: 0
-  Damage: 10
-  RaccoonThrowForce: 20
-  RaccoonMass: 2
-  LaunchPosition: {fileID: 4684614432038999830}
 --- !u!114 &4684614431714139797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,12 +279,38 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.5967999, y: 3.3498392}
+  m_Size: {x: 2.4129033, y: 2.8129032}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &2019705933
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4684614431714139777}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.06297684, y: 0.017299771}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.71018314, y: 2.6796467}
+  m_EdgeRadius: 0
 --- !u!1 &4684614431803913727
 GameObject:
   m_ObjectHideFlags: 0
