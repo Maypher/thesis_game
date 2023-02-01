@@ -50,7 +50,7 @@ public class RaccoonAimState : State<BearmanCtrl>, IAttack
 
         // If this is set to true within the inspector then the parent element's position is not calculated properly
         _trajectory.useWorldSpace = true;
-        _animationHandler.AimRaccoonAnimation(true);
+        _animationHandler.SetParameter(BearmanAnimationHandler.Parameters.Aiming, true);
     }
 
     public override void CaptureInput()
@@ -82,7 +82,7 @@ public class RaccoonAimState : State<BearmanCtrl>, IAttack
 
     public override void Exit() 
     { 
-        _animationHandler.AimRaccoonAnimation(false);
+        _animationHandler.SetParameter(BearmanAnimationHandler.Parameters.Aiming, false);
         _trajectory.enabled = false;
         _trajectory.useWorldSpace = false;
     }

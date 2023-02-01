@@ -76,7 +76,7 @@ public class WalkState : State<BearmanCtrl>
     public override void Update()
     {
         controller.AnimationHandler.CorrectRotation(_xDirection);
-        _animationHandler.IsMoving(_xDirection != 0);
+        _animationHandler.SetParameter(BearmanAnimationHandler.Parameters.IsMoving, _xDirection != 0);
 
         if (_xDirection == 0) _noInputTime += Time.deltaTime;
         else _noInputTime = 0;
@@ -131,7 +131,7 @@ public class WalkState : State<BearmanCtrl>
 
     public override void Exit() 
     {
-        _animationHandler.IsMoving(false);
+        _animationHandler.SetParameter(BearmanAnimationHandler.Parameters.IsMoving, false);
         if (_shouldStopBeforeChange) _rb.velocity = Vector2.zero;
     }
 

@@ -37,10 +37,8 @@ public class PunchState : State<BearmanCtrl>, IAttack
         if (_animationHandler == null) _animationHandler = controller.AnimationHandler;
         if (_attackCheck == null) _attackCheck = controller.GetComponentInChildren<AttackCheck>();
 
-        controller.EventsHandler.AttackEvent += Attack;
-        controller.EventsHandler.ChargedAttackEvent += Attack;
-        controller.EventsHandler.FinishAttackEvent += FinishAttack;
-
+        controller.AnimationEvent += Attack;
+        controller.FinishAnimationEvent += FinishAttack;
 
         _attacking = false;
         _finishedAttack = false;
@@ -59,7 +57,7 @@ public class PunchState : State<BearmanCtrl>, IAttack
 
     public override void Update() 
     {
-        _animationHandler.ChargeAnimation(_charging);
+        _animationHandler.SetParameter(BearmanAnimationHandler.Parameters.IsCharging, _charging);
 
         // Since CaptureInput gets called every frame even when the attack is ongoing the animation triggers can be
         // Continuously set. By blocking the functionality if its already attacking this problem gets fixed
@@ -68,8 +66,8 @@ public class PunchState : State<BearmanCtrl>, IAttack
             if (_charging) _chargeTime += Time.deltaTime;
             else if (_triggerAttack)
             {
-                if (_chargeTime < _smallChargeTime) _animationHandler.AttackAnimation();
-                else _animationHandler.ChargedAttackAnimation();
+                if (_chargeTime < _smallChargeTime) _animationHandler.SetParameter(BearmanAnimationHandler.Parameters.Attack);
+                else _animationHandler.SetParameter(BearmanAnimationHandler.Parameters.ChargedAttack);
                 _attacking = true;
             }
         }
@@ -85,9 +83,8 @@ public class PunchState : State<BearmanCtrl>, IAttack
 
     public override void Exit()
     {
-        controller.EventsHandler.AttackEvent -= Attack;
-        controller.EventsHandler.ChargedAttackEvent -= Attack;
-        controller.EventsHandler.FinishAttackEvent -= FinishAttack;
+        controller.AnimationEvent -= Attack;
+        controller.FinishAnimationEvent -= FinishAttack;
     }
 
     public void Attack()

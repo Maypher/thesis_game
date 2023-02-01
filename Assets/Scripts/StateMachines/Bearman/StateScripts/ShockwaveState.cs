@@ -14,8 +14,8 @@ public class ShockwaveState : State<BearmanCtrl>, IAttack
     {
         base.Init(parent);
 
-        controller.AnimationHandler.ShockwaveAttackAnimation();
-        controller.EventsHandler.Shockwave += Attack;
+        controller.AnimationHandler.SetParameter(BearmanAnimationHandler.Parameters.Shockwave);
+        controller.AnimationEvent += Attack;
 
         _spawnedShockwave = false;
     }
@@ -37,7 +37,7 @@ public class ShockwaveState : State<BearmanCtrl>, IAttack
         if (_spawnedShockwave) controller.SetState(typeof(IdleState));
     }
 
-    public override void Exit() => controller.EventsHandler.Shockwave -= Attack;
+    public override void Exit() => controller.AnimationEvent -= Attack;
 
     public void Attack()
     {

@@ -48,7 +48,7 @@ public class RockState : State<BearmanCtrl>
 
         controller.AnimationEvent += InstantiateRock;
 
-        _animationHandler.PickUpRockAnimation();
+        _animationHandler.SetParameter(BearmanAnimationHandler.Parameters.PickUpRock);
     }
 
     public override void CaptureInput()
@@ -59,7 +59,7 @@ public class RockState : State<BearmanCtrl>
 
     public override void Update()
     {
-        _animationHandler.IsMoving(_rb.velocity.x != 0);
+        _animationHandler.SetParameter(BearmanAnimationHandler.Parameters.IsMoving, _rb.velocity.x != 0);
 
         // Only move the character in the direction it was facing when state was entered
         if (_xDirection == _walkDirection && _holdingRock) Accelerate();
@@ -77,7 +77,7 @@ public class RockState : State<BearmanCtrl>
 
     public override void Exit()
     {
-        _animationHandler.HoldRockAnimation(false);
+        _animationHandler.SetParameter(BearmanAnimationHandler.Parameters.HoldingRock, false);
 
         controller.AnimationEvent -= InstantiateRock;
 
@@ -115,7 +115,7 @@ public class RockState : State<BearmanCtrl>
     private void InstantiateRock()
     {
         _rock = Instantiate(_rockPrefab, _rockSpawnPos.position, _rockSpawnPos.rotation, _rockSpawnPos);
-        _animationHandler.HoldRockAnimation(true);
+        _animationHandler.SetParameter(BearmanAnimationHandler.Parameters.HoldingRock, true);
         _holdingRock = true;
     }
 }

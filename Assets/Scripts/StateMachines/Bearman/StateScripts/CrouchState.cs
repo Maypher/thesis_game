@@ -8,7 +8,7 @@ public class CrouchState : State<BearmanCtrl>
     private bool _isCrouching;
     private float _xDirection;
 
-    private CapsuleCollider2D _collider;
+    private Collider2D _collider;
     private BearmanAnimationHandler _animationHandler;
 
     public override void Init(BearmanCtrl parent)
@@ -19,7 +19,7 @@ public class CrouchState : State<BearmanCtrl>
 
         _isCrouching = true;
 
-        _animationHandler.CrouchAnimation(true);
+        _animationHandler.SetParameter(BearmanAnimationHandler.Parameters.IsCrouching, true);
     }
 
     public override void CaptureInput() 
@@ -39,8 +39,7 @@ public class CrouchState : State<BearmanCtrl>
     public override void FixedUpdate() {}
     public override void Exit()
     {
-        _collider.size = new Vector2(_collider.size.x, _collider.size.y * 2);
-        _animationHandler.CrouchAnimation(false);
+        _animationHandler.SetParameter(BearmanAnimationHandler.Parameters.IsCrouching, false);
     }
 
 }

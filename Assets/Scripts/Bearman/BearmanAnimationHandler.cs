@@ -1,11 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class BearmanAnimationHandler : MonoBehaviour
 {
     private Animator _animator;
     private Transform _transform;
+
+    public enum Parameters
+    {
+        Flex,
+        IsMoving,
+        IsCrouching,
+        IsAirborne,
+        HoldingRock,
+        PickUpRock,
+        TakeDamage,
+        IsCharging,
+        Attack,
+        ChargedAttack,
+        Aiming,
+        Shockwave
+    };
+
+    private Dictionary<Parameters, int> _parameterHash;
 
     public float FacingDirection 
     {
@@ -17,16 +36,25 @@ public class BearmanAnimationHandler : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _transform = transform;
+
+        if (_parameterHash == null) _parameterHash = new()
+        {
+            { Parameters.Flex, Animator.StringToHash("flex") },
+            { Parameters.IsMoving, Animator.StringToHash("isMoving") },
+            { Parameters.IsAirborne, Animator.StringToHash("isAirborne") },
+            { Parameters.IsCrouching, Animator.StringToHash("isCrouching") },
+            { Parameters.HoldingRock, Animator.StringToHash("holdingRock") },
+            { Parameters.PickUpRock, Animator.StringToHash("pickUpRock") },
+            { Parameters.TakeDamage, Animator.StringToHash("takeDamage") },
+            { Parameters.IsCharging, Animator.StringToHash("isCharging") },
+            { Parameters.Attack, Animator.StringToHash("attack") },
+            { Parameters.ChargedAttack, Animator.StringToHash("chargedAttack") },
+            { Parameters.Aiming, Animator.StringToHash("aiming") },
+            { Parameters.Shockwave, Animator.StringToHash("shockwave") }
+        };
     }
 
     public string GetCurrentAnimation() => _animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
-
-    public float GetCurrentAnimationNormalizedTime() => _animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
-
-    public void PlayAnimation(string id) => _animator.Play(id);
-
-
-    public void DamageAnimation() => _animator.SetTrigger("damaged");
 
     // Handled directly within the animation handler to avoid repetition in multiple states
     public void CorrectRotation(float xInput)
@@ -37,27 +65,9 @@ public class BearmanAnimationHandler : MonoBehaviour
         }
     }
 
-    public void FlexAnimation() => _animator.SetTrigger("flex");
+    public void SetParameter(Parameters animation) => _animator.SetTrigger(_parameterHash[animation]);
+    
+    public void SetParameter(Parameters animation, bool isTrue) => _animator.SetBool(_parameterHash[animation], isTrue);
 
-    public void IsMoving(bool isMoving) => _animator.SetBool("isMoving", isMoving);
-
-    public void JumpAnimation(bool isAirborne) => _animator.SetBool("isAirborne", isAirborne);
-
-    public void ChargeAnimation(bool isCharging) => _animator.SetBool("isCharging", isCharging);
-
-    public void CrouchAnimation(bool isCrouching) => _animator.SetBool("isCrouching", isCrouching);
-
-    public void PickUpRockAnimation(bool holdingRock) => _animator.SetBool("holdingRock", holdingRock);
-
-    public void RaiseRockAnimation(bool raised) => _animator.SetBool("rockRaised", raised);
-
-    public void AttackAnimation() => _animator.SetTrigger("attack");
-
-    internal void ChargedAttackAnimation() => _animator.SetTrigger("chargedAttack");
-
-    public void ShockwaveAttackAnimation() => _animator.SetTrigger("shockwave");
-
-    internal void AimRaccoonAnimation(bool isAiming) => _animator.SetBool("aiming", isAiming);
-
-    public void ThrowRacoonAnimation() => _animator.SetTrigger("throwing");
+    public void SetParameter(Parameters animation, float value) => _animator.SetFloat(_parameterHash[animation], value);
 }

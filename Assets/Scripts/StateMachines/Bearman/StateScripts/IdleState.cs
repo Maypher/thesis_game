@@ -48,7 +48,7 @@ public class IdleState : State<BearmanCtrl>
         {
             if (_idleTime > _timeToFlex)
             {
-                controller.AnimationHandler.FlexAnimation();
+                controller.AnimationHandler.SetParameter(BearmanAnimationHandler.Parameters.Flex);
                 _idleTime = 0;
             }
             else _idleTime += Time.deltaTime;

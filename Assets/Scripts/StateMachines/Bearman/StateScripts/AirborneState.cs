@@ -60,7 +60,7 @@ public class AirborneState : State<BearmanCtrl>
         _appliedMaxHeightForce = false;
         _maxSpeedReached = Mathf.Abs(_rb.velocity.x);
 
-        _animationHandler.JumpAnimation(true);
+        _animationHandler.SetParameter(BearmanAnimationHandler.Parameters.IsAirborne, true);
 
         // Apply jump force immediately after entering state if the jump button was pressed in the previous state
         if (controller.Jumped) Jump(_jumpForce);
@@ -87,7 +87,7 @@ public class AirborneState : State<BearmanCtrl>
         #endregion
 
         #region Animations
-        controller.AnimationHandler.IsMoving(_xDirection != 0);
+        controller.AnimationHandler.SetParameter(BearmanAnimationHandler.Parameters.IsMoving, _xDirection != 0);
         #endregion
 
         #region Coyote Time
@@ -159,7 +159,7 @@ public class AirborneState : State<BearmanCtrl>
 
     public override void Exit() 
     { 
-        _animationHandler.JumpAnimation(false);
+        _animationHandler.SetParameter(BearmanAnimationHandler.Parameters.IsAirborne, false);
         controller.Jumped = false;
     }
 
