@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08628a446da49de468a8c5d0210c7646, type: 3}
   m_Name: Bearman Shockwave
   m_EditorClassIdentifier: 
-  _shockwavePrefab: {fileID: 790185179388233992, guid: 77f3c54281c36b84eab7158ed48270e2, type: 3}
-  _shockwaveDamage: 100
+  _ShockwaveAttackPrefab: {fileID: 790185179388233992, guid: 77f3c54281c36b84eab7158ed48270e2, type: 3}
+  _ShockwaveAttackDamage: 10

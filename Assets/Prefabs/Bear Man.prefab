@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4684614430545368168}
   m_Layer: 0
-  m_Name: ShockwavePos
+  m_Name: ShockwaveSpawnPos
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -211,11 +211,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cc992deffcd286c4582b34ecd4c53573, type: 2}
   - {fileID: 11400000, guid: 6c359b0e140412f4fad853349872532e, type: 2}
   - {fileID: 11400000, guid: f18a4cec1c9b6cb4980e9ac335caff6a, type: 2}
-  - {fileID: 11400000, guid: b7a0fc1c7c0a93f449057c94ee7c090f, type: 2}
-  - {fileID: 11400000, guid: f5fe4fd2975528c43b7ae2af47c28dd7, type: 2}
   - {fileID: 11400000, guid: d9735af11c385244ea1dad24fb94b145, type: 2}
-  - {fileID: 11400000, guid: 6f01fca110234f64aa087f59dacab1d3, type: 2}
+  - {fileID: 11400000, guid: b7a0fc1c7c0a93f449057c94ee7c090f, type: 2}
   - {fileID: 11400000, guid: fbe554371519bdd49a7758c7cc2aa515, type: 2}
+  - {fileID: 11400000, guid: 6f01fca110234f64aa087f59dacab1d3, type: 2}
+  - {fileID: 11400000, guid: f5fe4fd2975528c43b7ae2af47c28dd7, type: 2}
   _activeState: {fileID: 0}
   AnimationHandler: {fileID: 0}
   maxHealth: 40

@@ -91,7 +91,7 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Shockwave"",
+                    ""name"": ""ShockwaveAttack"",
                     ""type"": ""Button"",
                     ""id"": ""b966513d-632f-4939-8761-153481ff134d"",
                     ""expectedControlType"": ""Button"",
@@ -205,7 +205,7 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Shockwave"",
+                    ""action"": ""ShockwaveAttack"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -216,7 +216,7 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Shockwave"",
+                    ""action"": ""ShockwaveAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -227,7 +227,7 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Shockwave"",
+                    ""action"": ""ShockwaveAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -306,7 +306,7 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
         m_Player_RaccoonAim = m_Player.FindAction("RaccoonAim", throwIfNotFound: true);
         m_Player_Throw = m_Player.FindAction("Throw", throwIfNotFound: true);
-        m_Player_Shockwave = m_Player.FindAction("Shockwave", throwIfNotFound: true);
+        m_Player_ShockwaveAttack = m_Player.FindAction("ShockwaveAttack", throwIfNotFound: true);
         m_Player_PickUpRock = m_Player.FindAction("PickUpRock", throwIfNotFound: true);
     }
 
@@ -374,7 +374,7 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Crouch;
     private readonly InputAction m_Player_RaccoonAim;
     private readonly InputAction m_Player_Throw;
-    private readonly InputAction m_Player_Shockwave;
+    private readonly InputAction m_Player_ShockwaveAttack;
     private readonly InputAction m_Player_PickUpRock;
     public struct PlayerActions
     {
@@ -387,7 +387,7 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
         public InputAction @Crouch => m_Wrapper.m_Player_Crouch;
         public InputAction @RaccoonAim => m_Wrapper.m_Player_RaccoonAim;
         public InputAction @Throw => m_Wrapper.m_Player_Throw;
-        public InputAction @Shockwave => m_Wrapper.m_Player_Shockwave;
+        public InputAction @ShockwaveAttack => m_Wrapper.m_Player_ShockwaveAttack;
         public InputAction @PickUpRock => m_Wrapper.m_Player_PickUpRock;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -419,9 +419,9 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
                 @Throw.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnThrow;
                 @Throw.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnThrow;
                 @Throw.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnThrow;
-                @Shockwave.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShockwave;
-                @Shockwave.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShockwave;
-                @Shockwave.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShockwave;
+                @ShockwaveAttack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShockwaveAttack;
+                @ShockwaveAttack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShockwaveAttack;
+                @ShockwaveAttack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShockwaveAttack;
                 @PickUpRock.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPickUpRock;
                 @PickUpRock.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPickUpRock;
                 @PickUpRock.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPickUpRock;
@@ -450,9 +450,9 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
                 @Throw.started += instance.OnThrow;
                 @Throw.performed += instance.OnThrow;
                 @Throw.canceled += instance.OnThrow;
-                @Shockwave.started += instance.OnShockwave;
-                @Shockwave.performed += instance.OnShockwave;
-                @Shockwave.canceled += instance.OnShockwave;
+                @ShockwaveAttack.started += instance.OnShockwaveAttack;
+                @ShockwaveAttack.performed += instance.OnShockwaveAttack;
+                @ShockwaveAttack.canceled += instance.OnShockwaveAttack;
                 @PickUpRock.started += instance.OnPickUpRock;
                 @PickUpRock.performed += instance.OnPickUpRock;
                 @PickUpRock.canceled += instance.OnPickUpRock;
@@ -478,7 +478,7 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
         void OnCrouch(InputAction.CallbackContext context);
         void OnRaccoonAim(InputAction.CallbackContext context);
         void OnThrow(InputAction.CallbackContext context);
-        void OnShockwave(InputAction.CallbackContext context);
+        void OnShockwaveAttack(InputAction.CallbackContext context);
         void OnPickUpRock(InputAction.CallbackContext context);
     }
 }
