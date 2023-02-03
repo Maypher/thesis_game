@@ -15,7 +15,7 @@ namespace Bearman.States
 
             if (_animationHandler == null) _animationHandler = controller.AnimationHandler;
 
-            _animationHandler.SetParameter(AnimationHandler.Parameters.TakeDamage);
+            _animationHandler.SetParameter(BearmanCtrl.ReciveDamage);
         }
 
         public override void CaptureInput() { }

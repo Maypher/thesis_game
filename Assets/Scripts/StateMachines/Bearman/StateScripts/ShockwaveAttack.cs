@@ -15,7 +15,7 @@ namespace Bearman.States
         {
             base.Init(parent);
 
-            controller.AnimationHandler.SetParameter(AnimationHandler.Parameters.Shockwave);
+            controller.AnimationHandler.SetParameter(BearmanCtrl.Shockwave);
             controller.AnimationEvent += Attack;
 
             _spawnedShockwaveAttack = false;

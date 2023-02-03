@@ -53,7 +53,7 @@ namespace Bearman.States
 
             // If this is set to true within the inspector then the parent element's position is not calculated properly
             _trajectory.useWorldSpace = true;
-            _animationHandler.SetParameter(AnimationHandler.Parameters.Aiming, true);
+            _animationHandler.SetParameter(BearmanCtrl.Aiming, true);
         }
 
         public override void CaptureInput()
@@ -85,7 +85,7 @@ namespace Bearman.States
 
         public override void Exit()
         {
-            _animationHandler.SetParameter(AnimationHandler.Parameters.Aiming, false);
+            _animationHandler.SetParameter(BearmanCtrl.Aiming, false);
             _trajectory.enabled = false;
             _trajectory.useWorldSpace = false;
         }

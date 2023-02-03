@@ -79,7 +79,7 @@ namespace Bearman.States
         public override void Update()
         {
             controller.AnimationHandler.CorrectRotation(_xDirection);
-            _animationHandler.SetParameter(AnimationHandler.Parameters.IsMoving, _xDirection != 0);
+            _animationHandler.SetParameter(BearmanCtrl.IsMoving, _xDirection != 0);
 
             if (_xDirection == 0) _noInputTime += Time.deltaTime;
             else _noInputTime = 0;
@@ -134,7 +134,7 @@ namespace Bearman.States
 
         public override void Exit()
         {
-            _animationHandler.SetParameter(AnimationHandler.Parameters.IsMoving, false);
+            _animationHandler.SetParameter(BearmanCtrl.IsMoving, false);
             if (_shouldStopBeforeChange) _rb.velocity = Vector2.zero;
         }
 

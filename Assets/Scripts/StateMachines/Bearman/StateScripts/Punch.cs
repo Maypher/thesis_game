@@ -59,7 +59,7 @@ namespace Bearman.States
 
         public override void Update()
         {
-            _animationHandler.SetParameter(AnimationHandler.Parameters.IsCharging, _charging);
+            _animationHandler.SetParameter(BearmanCtrl.IsCharging, _charging);
 
             // Since CaptureInput gets called every frame even when the attack is ongoing the animation triggers can be
             // Continuously set. By blocking the functionality if its already attacking this problem gets fixed
@@ -68,8 +68,8 @@ namespace Bearman.States
                 if (_charging) _chargeTime += Time.deltaTime;
                 else if (_triggerAttack)
                 {
-                    if (_chargeTime < _smallChargeTime) _animationHandler.SetParameter(AnimationHandler.Parameters.Attack);
-                    else _animationHandler.SetParameter(AnimationHandler.Parameters.ChargedAttack);
+                    if (_chargeTime < _smallChargeTime) _animationHandler.SetParameter(BearmanCtrl.Attack);
+                    else _animationHandler.SetParameter(BearmanCtrl.ChargedAttack);
                     _attacking = true;
                 }
             }

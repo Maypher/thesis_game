@@ -50,7 +50,7 @@ namespace Bearman.States
             {
                 if (_idleTime > _timeToFlex)
                 {
-                    controller.AnimationHandler.SetParameter(AnimationHandler.Parameters.Flex);
+                    controller.AnimationHandler.SetParameter(BearmanCtrl.Flex);
                     _idleTime = 0;
                 }
                 else _idleTime += Time.deltaTime;

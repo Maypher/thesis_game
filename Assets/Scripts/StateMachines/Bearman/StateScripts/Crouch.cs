@@ -21,7 +21,7 @@ namespace Bearman.States
 
             _isCrouching = true;
 
-            _animationHandler.SetParameter(AnimationHandler.Parameters.IsCrouching, true);
+            _animationHandler.SetParameter(BearmanCtrl.IsCrouching, true);
         }
 
         public override void CaptureInput()
@@ -41,7 +41,7 @@ namespace Bearman.States
         public override void FixedUpdate() { }
         public override void Exit()
         {
-            _animationHandler.SetParameter(AnimationHandler.Parameters.IsCrouching, false);
+            _animationHandler.SetParameter(BearmanCtrl.IsCrouching, false);
         }
 
     }

@@ -50,7 +50,7 @@ namespace Bearman.States
 
             controller.AnimationEvent += InstantiateRock;
 
-            _animationHandler.SetParameter(AnimationHandler.Parameters.PickUpRock);
+            _animationHandler.SetParameter(BearmanCtrl.PickUpRock);
         }
 
         public override void CaptureInput()
@@ -61,7 +61,7 @@ namespace Bearman.States
 
         public override void Update()
         {
-            _animationHandler.SetParameter(AnimationHandler.Parameters.IsMoving, _rb.velocity.x != 0);
+            _animationHandler.SetParameter(BearmanCtrl.IsMoving, _rb.velocity.x != 0);
 
             // Only move the character in the direction it was facing when state was entered
             if (_xDirection == _walkDirection && _holdingRock) Accelerate();
@@ -79,7 +79,7 @@ namespace Bearman.States
 
         public override void Exit()
         {
-            _animationHandler.SetParameter(AnimationHandler.Parameters.HoldingRock, false);
+            _animationHandler.SetParameter(BearmanCtrl.HoldingRock, false);
 
             controller.AnimationEvent -= InstantiateRock;
 
@@ -117,7 +117,7 @@ namespace Bearman.States
         private void InstantiateRock()
         {
             _rock = Instantiate(_rockPrefab, _rockSpawnPos.position, _rockSpawnPos.rotation, _rockSpawnPos);
-            _animationHandler.SetParameter(AnimationHandler.Parameters.HoldingRock, true);
+            _animationHandler.SetParameter(BearmanCtrl.HoldingRock, true);
             _holdingRock = true;
         }
     }

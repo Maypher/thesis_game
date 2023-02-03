@@ -9,6 +9,19 @@ namespace Bearman
     // Make the controller a state machine and pass itself as a reference 
     public class BearmanCtrl : StateMachine<BearmanCtrl>, IDamageable
     {
+        public const string Flex = "flex";
+        public const string IsMoving = "isMoving";
+        public const string IsCrouching = "isCrouching";
+        public const string IsAirborne = "isAirborne";
+        public const string HoldingRock = "holdingRock";
+        public const string PickUpRock = "pickUpRock";
+        public const string ReciveDamage = "takeDamage";
+        public const string IsCharging = "isCharging";
+        public const string Attack = "attack";
+        public const string ChargedAttack = "chargedAttack";
+        public const string Aiming = "aiming";
+        public const string Shockwave = "shockwave";
+
         [HideInInspector] public AnimationHandler AnimationHandler;
 
         [Header("Input")]
