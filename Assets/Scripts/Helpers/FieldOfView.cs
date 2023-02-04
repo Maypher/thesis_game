@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Kindly stolen from https://github.com/Comp3interactive/FieldOfView
 public class FieldOfView : MonoBehaviour
 {
     public float _radius;
