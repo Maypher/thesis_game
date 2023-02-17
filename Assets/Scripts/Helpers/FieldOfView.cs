@@ -5,17 +5,18 @@ using UnityEngine;
 // Kindly stolen from https://github.com/Comp3interactive/FieldOfView
 public class FieldOfView : MonoBehaviour
 {
-    public float _radius;
+    [SerializeField] private float _radius;
     [SerializeField] [Range(0, 360)] private float _angle;
-    [SerializeField] [Range(0, 360)] private float _angleOffset;
+    [SerializeField] [Range(0, 725)] private float _angleOffset;
 
+    [HideInInspector] public int FacingDirection = 1;
 
     [SerializeField] private GameObject _target;
 
     [SerializeField] private LayerMask _targetMask;
     [SerializeField] private LayerMask _obstructionMask;
 
-    public bool _canSeeTarget { get { return FieldOfViewCheck(); } }
+    public bool CanSeeTarget { get { return FieldOfViewCheck(); } }
 
     private bool FieldOfViewCheck()
     {
@@ -26,7 +27,7 @@ public class FieldOfView : MonoBehaviour
             Transform target = rangeCheck.transform;
             Vector2 directionToTarget = (target.position - transform.position).normalized;
 
-            if (Vector2.Angle(transform.right, directionToTarget) < _angle / 2)
+            if (Vector2.Angle(transform.right * FacingDirection, directionToTarget) < _angle * .5f)
             {
                 float distanceToTarget = Vector2.Distance(transform.position, target.position);
 
@@ -43,14 +44,14 @@ public class FieldOfView : MonoBehaviour
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(transform.position, _radius);
 
-        Vector3 viewAngle01 = DirectionFromAngle(transform.eulerAngles.y, (-_angle + _angleOffset) / 2);
-        Vector3 viewAngle02 = DirectionFromAngle(transform.eulerAngles.y, (_angle + _angleOffset) / 2);
+        Vector3 viewAngle01 = DirectionFromAngle(transform.eulerAngles.y, (-_angle + _angleOffset) * .5f);
+        Vector3 viewAngle02 = DirectionFromAngle(transform.eulerAngles.y, (_angle + _angleOffset) * .5f);
 
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(transform.position, transform.position + viewAngle01 * _radius);
         Gizmos.DrawLine(transform.position, transform.position + viewAngle02 * _radius);
 
-        if (_canSeeTarget)
+        if (CanSeeTarget)
         {
             Gizmos.color = Color.green;
             Gizmos.DrawLine(transform.position, _target.transform.position);
@@ -59,6 +60,12 @@ public class FieldOfView : MonoBehaviour
 
     private Vector2 DirectionFromAngle(float eulerY, float angleInDegrees)
     {
+        if (FacingDirection == -1)
+        {
+            // If the enemy is facing left, flip the angle horizontally
+            angleInDegrees += 180;
+        }
+
         angleInDegrees += eulerY;
 
         return new Vector2(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
