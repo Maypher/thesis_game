@@ -22,11 +22,11 @@ namespace Bearman.States
         private bool _canCoyoteJump;
         private bool _coyoteJumped;
         private bool _releasedJump;
-        private bool _appliedMaxHeightForce;
         private float _jumpBufferTimer;
 
         private float _xDirection;
         private float _maxSpeedReached; // Used to keep the velocity of the previous state while not reaching ludicrous speeds
+        private Vector2 _currentVelocity;
 
         [Header("Jump")]
         [SerializeField] private float _jumpForce = 10f;
@@ -37,11 +37,9 @@ namespace Bearman.States
         [Header("Peak of jump")]
         [SerializeField] [Min(0)] private float _jumpHangThreshold = .2f; // When _rb.velocity.y is inside this range reduce the gravity
         [SerializeField] private float _jumpHangGrav = .7f;
-        [SerializeField] private float _jumpMaxHeightSpeed = 5f; // When at the peak of the jump apply a small speed boost
 
         [Header("Air movement")]
-        [SerializeField] private float _maxMoveSpeed = 5f;
-        [SerializeField] [Range(0, 1)] private float _lerpAmount = 1;
+        [SerializeField] private float _moveSpeed = 4f;
 
         [Header("Misc")]
         [SerializeField] private float _coyoteTime = .4f;
@@ -60,7 +58,6 @@ namespace Bearman.States
             _isAirborne = false;
             _coyoteJumped = false;
             _releasedJump = false;
-            _appliedMaxHeightForce = false;
             _maxSpeedReached = Mathf.Abs(_rb.velocity.x);
 
             _animationHandler.SetParameter(BearmanCtrl.IsAirborne, true);
@@ -117,20 +114,7 @@ namespace Bearman.States
             #region Gravity manipulation
             // Gives a window where at the peak of the jump gravity is reduced
             // using !_releasedJump because it shouldn't apply the gravity reduction if the character didn't reach max height
-            if (Mathf.Abs(_rb.velocity.y) <= _jumpHangThreshold && !_releasedJump)
-            {
-                _rb.gravityScale = _jumpHangGrav;
-                if (_xDirection == controller.AnimationHandler.FacingDirection && !_appliedMaxHeightForce && Mathf.Abs(_rb.velocity.x) > 1)
-                {
-                    float targetSpeed = _rb.velocity.x + _jumpMaxHeightSpeed * _xDirection;
-
-                    if (Mathf.Abs(targetSpeed) > _maxSpeedReached) _maxSpeedReached = Mathf.Abs(targetSpeed);
-
-                    MoveVertically(targetSpeed, 1); // Apply a small speed boost at the peak of the jump
-                    _appliedMaxHeightForce = true;
-
-                }
-            }
+            if (Mathf.Abs(_rb.velocity.y) <= _jumpHangThreshold && !_releasedJump) _rb.gravityScale = _jumpHangGrav;
             // If falling down apply greater gravity for faster fall
             else if (_rb.velocity.y < 0 || _releasedJump)
             {
@@ -142,10 +126,7 @@ namespace Bearman.States
             #endregion
 
             #region Movement
-            if (_xDirection != 0)
-            {
-                MoveVertically(_maxMoveSpeed * _xDirection, _lerpAmount);
-            }
+            if (_xDirection != 0) MoveVertically(_moveSpeed * _xDirection);
             #endregion
         }
 
@@ -166,18 +147,18 @@ namespace Bearman.States
             controller.Jumped = false;
         }
 
-        // Interpolates between the current X velocity and the target velocity
-        private void MoveVertically(float targetSpeed, float lerpAmount)
+        private void MoveVertically(float targetSpeed)
         {
-            _rb.velocity = new Vector2(Mathf.Lerp(_rb.velocity.x, targetSpeed, lerpAmount), _rb.velocity.y);
+            _rb.AddForce(Vector2.right * targetSpeed, ForceMode2D.Force);
+            _rb.velocity = new Vector2(Mathf.Clamp(_rb.velocity.x, -_maxSpeedReached, _maxSpeedReached), _rb.velocity.y);
         }
 
-        private void ApplyForce(float force)
+        private void Jump(float jumpForce) 
         {
-            _rb.AddForce(_lerpAmount * force * Vector2.right, ForceMode2D.Impulse);
+            _currentVelocity = _rb.velocity;
+            _currentVelocity.y = jumpForce;
+            _rb.velocity = _currentVelocity;
         }
-
-        private void Jump(float jumpForce) => _rb.velocity = new Vector2(_rb.velocity.x, jumpForce); //_rb.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
 
         private void SetGravity(float gravMultiplier) => _rb.gravityScale = gravMultiplier;
     }

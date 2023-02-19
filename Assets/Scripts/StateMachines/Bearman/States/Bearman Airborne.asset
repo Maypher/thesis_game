@@ -18,8 +18,8 @@ MonoBehaviour:
   _maxFallSpeed: 30
   _jumpHangThreshold: 0.2
   _jumpHangGrav: 0.7
-  _jumpMaxHeightSpeed: 3
-  _maxMoveSpeed: 5
-  _lerpAmount: 0.005
+  _jumpMaxHeightSpeed: 1.5
+  _moveSpeed: 2
+  _maxSpeed: 5
   _coyoteTime: 0.2
   _jumpBufferTime: 0.2
