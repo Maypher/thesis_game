@@ -5,69 +5,56 @@ using UnityEngine;
 // Kindly stolen from https://github.com/Comp3interactive/FieldOfView
 public class FieldOfView : MonoBehaviour
 {
-    [SerializeField] private float _radius;
-    [SerializeField] [Range(0, 360)] private float _angle;
-    [SerializeField] [Range(0, 725)] private float _angleOffset;
+    [SerializeField] [Min(0)] private float _viewRadius;
+    [Range(0, 360)]
+    [SerializeField] private float _viewAngle;
+    [SerializeField] [Range(-180, 180)] private float _angleOffset;
+    public LayerMask _targetMask;
+    [SerializeField] private LayerMask _obstacleMask;
 
-    [HideInInspector] public int FacingDirection = 1;
+    [HideInInspector] public Vector2 Scale = new(1, 1);
+
+    public bool CanSeeTarget { get { return Check2(); } }
 
     [SerializeField] private GameObject _target;
 
-    [SerializeField] private LayerMask _targetMask;
-    [SerializeField] private LayerMask _obstructionMask;
-
-    public bool CanSeeTarget { get { return FieldOfViewCheck(); } }
-
-    private bool FieldOfViewCheck()
+    private bool Check2()
     {
-        Collider2D rangeCheck = Physics2D.OverlapCircle(transform.position, _radius, _targetMask);
-
-        if (rangeCheck)
+        // Check if the target is within the set radius
+        if (Vector2.Distance(transform.position, _target.transform.position) < _viewRadius)
         {
-            Transform target = rangeCheck.transform;
-            Vector2 directionToTarget = (target.position - transform.position).normalized;
+            Vector2 directionToTarget = (_target.transform.position - transform.position).normalized;
+            Vector2 viewDirection = new(Mathf.Cos(_angleOffset * Mathf.Deg2Rad) * Scale.x, Mathf.Sin(_angleOffset * Mathf.Deg2Rad) * Scale.y);
 
-            if (Vector2.Angle(transform.right * FacingDirection, directionToTarget) < _angle * .5f)
+            float angleToTarget = Vector2.Angle(directionToTarget, viewDirection);
+
+            if (angleToTarget < _viewAngle / 2f)
             {
-                float distanceToTarget = Vector2.Distance(transform.position, target.position);
-
-                if (!Physics2D.Raycast(transform.position, directionToTarget, distanceToTarget, _obstructionMask)) return true;
-                return false;
+                float distanceToPlayer = Vector2.Distance(transform.position, _target.transform.position);
+                // Return true if there are no obstructions between the object and the target
+                return !Physics2D.Raycast(transform.position, directionToTarget, distanceToPlayer, _obstacleMask);
             }
-            else return false;
         }
-        else return false;
+        return false;
     }
 
-    private void OnDrawGizmosSelected()
+    void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.white;
-        Gizmos.DrawWireSphere(transform.position, _radius);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, _viewRadius);
 
-        Vector3 viewAngle01 = DirectionFromAngle(transform.eulerAngles.y, (-_angle + _angleOffset) * .5f);
-        Vector3 viewAngle02 = DirectionFromAngle(transform.eulerAngles.y, (_angle + _angleOffset) * .5f);
-
+        Vector3 rightBoundary = Quaternion.AngleAxis(_viewAngle / 2f + _angleOffset, Vector3.forward) * transform.right * Scale;
         Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(transform.position, transform.position + viewAngle01 * _radius);
-        Gizmos.DrawLine(transform.position, transform.position + viewAngle02 * _radius);
+        Gizmos.DrawRay(transform.position, rightBoundary * _viewRadius);
+
+        Vector3 leftBoundary = Quaternion.AngleAxis(-_viewAngle / 2f + _angleOffset, Vector3.forward) * transform.right * Scale;
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawRay(transform.position, leftBoundary * _viewRadius);
 
         if (CanSeeTarget)
         {
             Gizmos.color = Color.green;
             Gizmos.DrawLine(transform.position, _target.transform.position);
         }
-    }
-
-    private Vector2 DirectionFromAngle(float eulerY, float angleInDegrees)
-    {
-        if (FacingDirection == -1)
-        {
-            // If the enemy is facing left, flip the angle horizontally
-            angleInDegrees += 180;
-        }
-
-        angleInDegrees += eulerY;
-
-        return new Vector2(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
 }
