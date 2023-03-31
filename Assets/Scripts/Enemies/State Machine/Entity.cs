@@ -20,6 +20,8 @@ public abstract class Entity : MonoBehaviour
     public Animator Anim { get; private set; }
     public GameObject GameObject { get; private set; }
 
+    public FieldOfView FOV { get; private set; }
+
     [SerializeField] private Transform wallCheck;
     [SerializeField] private Transform ledgeCheck;
     # endregion
@@ -30,6 +32,7 @@ public abstract class Entity : MonoBehaviour
         GameObject = transform.gameObject;
         Rb = GameObject.GetComponent<Rigidbody2D>();
         Anim = GameObject.GetComponent<Animator>();
+        FOV = GameObject.GetComponentInChildren<FieldOfView>();
 
         stateMachine = new FiniteStateMachine();
     }

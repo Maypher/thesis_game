@@ -14,11 +14,9 @@ public class FieldOfView : MonoBehaviour
 
     [HideInInspector] public Vector2 Scale = new(1, 1);
 
-    public bool CanSeeTarget { get { return Check2(); } }
-
     [SerializeField] private GameObject _target;
 
-    private bool Check2()
+    public bool Check()
     {
         // Check if the target is within the set radius
         if (Vector2.Distance(transform.position, _target.transform.position) < _viewRadius)
@@ -51,7 +49,7 @@ public class FieldOfView : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawRay(transform.position, leftBoundary * _viewRadius);
 
-        if (CanSeeTarget)
+        if (Check())
         {
             Gizmos.color = Color.green;
             Gizmos.DrawLine(transform.position, _target.transform.position);

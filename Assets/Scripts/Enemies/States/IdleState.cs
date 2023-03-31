@@ -13,6 +13,10 @@ public abstract class IdleState : State
     protected float idleTime;
     protected bool isIdleTimeOver;
 
+    protected bool canSeeTarget;
+
+
+
     public IdleState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_IdleState stateData) : base(entity, stateMachine, animBoolName)
     {
         this.stateData = stateData;
@@ -21,6 +25,8 @@ public abstract class IdleState : State
     public override void Enter()
     {
         base.Enter();
+
+        canSeeTarget = entity.FOV.Check();
 
         isIdleTimeOver = false;
         idleTime = SetRandomIdleTime();
@@ -43,6 +49,8 @@ public abstract class IdleState : State
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+
+        canSeeTarget = entity.FOV.Check();
     }
 
     public void SetFlipAfterIdle(bool flip) => flipAfterIdle = flip;

@@ -23,7 +23,8 @@ public class Wolf_IdleState : IdleState
     {
         base.LogicUpdate();
 
-        if (isIdleTimeOver) stateMachine.ChangeState(wolf.MoveState);
+        if (canSeeTarget) stateMachine.ChangeState(wolf.PlayerDetectedState);
+        else if (isIdleTimeOver) stateMachine.ChangeState(wolf.MoveState);
     }
 
     public override void PhysicsUpdate()

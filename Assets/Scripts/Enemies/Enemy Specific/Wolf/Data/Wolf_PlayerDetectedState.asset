@@ -9,15 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d244695b9c8482428ef0ae3d55f8217, type: 3}
-  m_Name: Bearman Airborne
+  m_Script: {fileID: 11500000, guid: 41ff5bddd9d705c4d9b70761c9088c7a, type: 3}
+  m_Name: Wolf_PlayerDetectedState
   m_EditorClassIdentifier: 
-  _jumpForce: 9.5
-  _jumpGravity: 1.5
-  _fallGravity: 2.5
-  _maxFallSpeed: 30
-  _jumpHangThreshold: 0.2
-  _jumpHangGrav: 0.7
-  _moveSpeed: 2
-  _coyoteTime: 0.5
-  _jumpBufferTime: 0.2
