@@ -6,6 +6,8 @@ public class Wolf_PlayerDetectedState : PlayerDetectedState
 {
     private Wolf wolf;
 
+    private bool chargeAtPlayer;
+
     public Wolf_PlayerDetectedState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_PlayerDetectedState stateData, Wolf wolf) : base(entity, stateMachine, animBoolName, stateData)
     {
         this.wolf = wolf;
@@ -14,7 +16,8 @@ public class Wolf_PlayerDetectedState : PlayerDetectedState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("player detected");
+
+        chargeAtPlayer = false;
     }
 
     public override void Exit()
@@ -25,6 +28,10 @@ public class Wolf_PlayerDetectedState : PlayerDetectedState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
+        chargeAtPlayer = Time.time >= startTime + stateData.actionTime;
+
+        if (chargeAtPlayer) stateMachine.ChangeState(wolf.ChargeState);
     }
 
     public override void PhysicsUpdate()

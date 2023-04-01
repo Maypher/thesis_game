@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class Wolf_IdleState : IdleState
 {
     private Wolf wolf;

@@ -27,7 +27,7 @@ public abstract class IdleState : State
         base.Enter();
 
         isIdleTimeOver = false;
-        idleTime = SetRandomIdleTime();
+        SetRandomIdleTime();
     }
 
     public override void Exit()
@@ -41,7 +41,7 @@ public abstract class IdleState : State
     {
         base.LogicUpdate();
 
-        if (Time.time >= startTime + idleTime) isIdleTimeOver = true;
+        isIdleTimeOver = Time.time >= startTime + idleTime;
     }
 
     public override void PhysicsUpdate()

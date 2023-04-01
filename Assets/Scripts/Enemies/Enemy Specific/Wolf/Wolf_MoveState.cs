@@ -6,8 +6,6 @@ public class Wolf_MoveState : MoveState
 {
     private Wolf wolf;
 
-    private bool canSeeTarget;
-
     public Wolf_MoveState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_MoveState stateData, Wolf wolf) : base(entity, stateMachine, animBoolName, stateData)
     {
         this.wolf = wolf;
@@ -17,7 +15,7 @@ public class Wolf_MoveState : MoveState
     {
         base.Enter();
 
-        canSeeTarget = entity.FOV.Check();
+        entity.SetVelocity(stateData.movementSpeed);
     }
 
     public override void Exit()
@@ -27,6 +25,8 @@ public class Wolf_MoveState : MoveState
 
     public override void LogicUpdate()
     {
+        base.LogicUpdate();
+
         if (canSeeTarget) stateMachine.ChangeState(wolf.PlayerDetectedState);
         else if (isDetectingWall || !isDetectingLedge) 
         {
@@ -38,6 +38,11 @@ public class Wolf_MoveState : MoveState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+    }
+
+    public override void DoChecks()
+    {
+        base.DoChecks();
 
         canSeeTarget = entity.FOV.Check();
     }

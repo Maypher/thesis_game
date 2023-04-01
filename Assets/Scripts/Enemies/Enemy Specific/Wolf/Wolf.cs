@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class Wolf : Entity
 {
+    [Header ("Data files")]
     [SerializeField] private D_IdleState idleStateData;
     [SerializeField] private D_MoveState moveStateData;
     [SerializeField] private D_PlayerDetectedState playerDetectedStateData;
+    [SerializeField] private D_ChargeState chargeStateData;
 
     public Wolf_IdleState IdleState { get; private set; }
     public Wolf_MoveState MoveState { get; private set; }
 
     public Wolf_PlayerDetectedState PlayerDetectedState { get; private set; }
+
+    public Wolf_ChargeState ChargeState { get; private set; }
 
 
     public override void Start()
@@ -21,7 +25,13 @@ public class Wolf : Entity
         MoveState = new Wolf_MoveState(this, stateMachine, "move", moveStateData, this);
         IdleState = new Wolf_IdleState(this, stateMachine, "idle", idleStateData, this);
         PlayerDetectedState = new Wolf_PlayerDetectedState(this, stateMachine, "playerDetected", playerDetectedStateData, this);
+        ChargeState = new Wolf_ChargeState(this, stateMachine, "charge", chargeStateData, this);
 
         stateMachine.Initialize(MoveState);
+    }
+
+    public override void Update()
+    {
+        base.Update();
     }
 }

@@ -10,6 +10,7 @@ public class ChargeState : State
 
     protected bool isDetectingLedge;
     protected bool isDetectingWall;
+    protected bool isChargeTimeOver;
 
     public ChargeState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_ChargeState stateData) : base(entity, stateMachine, animBoolName)
     {
@@ -21,6 +22,7 @@ public class ChargeState : State
         base.Enter();
 
         entity.SetVelocity(stateData.chargeSpeed);
+        isChargeTimeOver = false;
     }
 
     public override void Exit()
@@ -31,6 +33,8 @@ public class ChargeState : State
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
+        isChargeTimeOver = Time.time >= startTime + stateData.chargeSpeed;
     }
 
     public override void PhysicsUpdate()
