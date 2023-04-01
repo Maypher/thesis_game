@@ -16,8 +16,6 @@ public class PlayerDetectedState : State
     public override void Enter()
     {
         base.Enter();
-
-        seeingTarget = entity.FOV.Check();
     }
 
     public override void Exit()
@@ -34,6 +32,11 @@ public class PlayerDetectedState : State
     {
         base.PhysicsUpdate();
 
+        seeingTarget = entity.FOV.Check();
+    }
+
+    public override void DoChecks()
+    {
         seeingTarget = entity.FOV.Check();
     }
 }

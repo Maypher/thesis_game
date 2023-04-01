@@ -1027,7 +1027,7 @@ MonoBehaviour:
   ledgeCheck: {fileID: 30073916}
   idleStateData: {fileID: 11400000, guid: 62c7b4a45ee329241a08066f9a45d2ad, type: 2}
   moveStateData: {fileID: 11400000, guid: d3678369b224b404389f8480b110bde7, type: 2}
-  playerDetectedStateData: {fileID: 0}
+  playerDetectedStateData: {fileID: 11400000, guid: d129342b55de57342b17437a79f0d277, type: 2}
 --- !u!212 &1912357532
 SpriteRenderer:
   m_ObjectHideFlags: 0

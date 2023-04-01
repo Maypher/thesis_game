@@ -26,8 +26,6 @@ public abstract class IdleState : State
     {
         base.Enter();
 
-        canSeeTarget = entity.FOV.Check();
-
         isIdleTimeOver = false;
         idleTime = SetRandomIdleTime();
     }
@@ -49,7 +47,10 @@ public abstract class IdleState : State
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+    }
 
+    public override void DoChecks()
+    {
         canSeeTarget = entity.FOV.Check();
     }
 

@@ -14,6 +14,7 @@ public class Wolf_PlayerDetectedState : PlayerDetectedState
     public override void Enter()
     {
         base.Enter();
+        Debug.Log("player detected");
     }
 
     public override void Exit()

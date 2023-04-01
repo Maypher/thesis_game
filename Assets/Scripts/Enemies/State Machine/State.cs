@@ -25,6 +25,7 @@ public class State
     {
         startTime = Time.time;
         entity.Anim.SetBool(animBoolName, true);
+        DoChecks();
     }
 
     public virtual void Exit()
@@ -38,6 +39,12 @@ public class State
     }
 
     public virtual void PhysicsUpdate()
+    {
+        DoChecks();
+    }
+
+    // Used for collision, input detection, etc.
+    public virtual void DoChecks()
     {
 
     }

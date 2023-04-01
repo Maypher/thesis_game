@@ -1,5 +1,3 @@
-
-
 // New implementation from https://www.youtube.com/watch?v=GB1Ri_SRtZY&list=PLy78FINcVmjA0zDBhLuLNL1Jo6xNMMq-W&index=15
 public class FiniteStateMachine
 {

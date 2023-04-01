@@ -11,8 +11,6 @@ public class Wolf : Entity
     public Wolf_IdleState IdleState { get; private set; }
     public Wolf_MoveState MoveState { get; private set; }
 
-    public Wolf_PlayerDetectedState playerDetectedState { get; private set; }
-
     public Wolf_PlayerDetectedState PlayerDetectedState { get; private set; }
 
 
@@ -22,7 +20,7 @@ public class Wolf : Entity
 
         MoveState = new Wolf_MoveState(this, stateMachine, "move", moveStateData, this);
         IdleState = new Wolf_IdleState(this, stateMachine, "idle", idleStateData, this);
-        playerDetectedState = new Wolf_PlayerDetectedState(this, stateMachine, "playerDetected", playerDetectedStateData, this);
+        PlayerDetectedState = new Wolf_PlayerDetectedState(this, stateMachine, "playerDetected", playerDetectedStateData, this);
 
         stateMachine.Initialize(MoveState);
     }

@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Generic move state that can be inherited and customized by any other state
-public abstract class MoveState : State
+public class ChargeState : State
 {
-    protected D_MoveState stateData;
+    protected D_ChargeState stateData;
 
-    protected  bool isDetectingWall;
-    protected bool isDetectingLedge;
     protected bool canSeeTarget;
 
-    public MoveState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_MoveState stateData) : base(entity, stateMachine, animBoolName)
+    protected bool isDetectingLedge;
+    protected bool isDetectingWall;
+
+    public ChargeState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_ChargeState stateData) : base(entity, stateMachine, animBoolName)
     {
         this.stateData = stateData;
     }
@@ -20,7 +20,7 @@ public abstract class MoveState : State
     {
         base.Enter();
 
-        entity.SetVelocity(stateData.movementSpeed);
+        entity.SetVelocity(stateData.chargeSpeed);
     }
 
     public override void Exit()
@@ -40,8 +40,8 @@ public abstract class MoveState : State
 
     public override void DoChecks()
     {
+        canSeeTarget = entity.FOV.Check();
         isDetectingLedge = entity.CheckLedge();
         isDetectingWall = entity.CheckWall();
-        canSeeTarget = entity.FOV.Check();
     }
 }
