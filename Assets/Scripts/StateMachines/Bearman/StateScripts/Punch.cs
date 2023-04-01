@@ -98,7 +98,7 @@ namespace Bearman.States
             else if (_chargeTime < _heavyChargeTime) hitDamage = _mediumDamage;
             else hitDamage = _heavyDamage;
 
-            Collider2D[] enemies = _attackCheck.Check();
+            Collider2D[] enemies = _attackCheck.GetEnemies();
 
             foreach (Collider2D enemy in enemies)
             {

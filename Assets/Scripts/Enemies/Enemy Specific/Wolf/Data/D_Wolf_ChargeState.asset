@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c515fdd7df4ba7848b800cd96f316cc3, type: 3}
   m_Name: D_Wolf_ChargeState
   m_EditorClassIdentifier: 
-  chargeSpeed: 5
+  chargeSpeed: 7

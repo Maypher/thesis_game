@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDetectedState : State
+public abstract class PlayerDetectedState : State
 {
     protected D_PlayerDetectedState stateData;
 
-    protected bool seeingTarget;
+    protected bool seeingTarget, targetWithinAttackRange;
 
     public PlayerDetectedState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_PlayerDetectedState stateData) : base(entity, stateMachine, animBoolName)
     {
@@ -38,5 +38,6 @@ public class PlayerDetectedState : State
     public override void DoChecks()
     {
         seeingTarget = entity.FOV.Check();
+        targetWithinAttackRange = entity.attackCheck.Check();
     }
 }

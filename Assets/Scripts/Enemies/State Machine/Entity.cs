@@ -18,9 +18,12 @@ public abstract class Entity : MonoBehaviour
     #region Components
     public Rigidbody2D Rb { get; private set; }
     public Animator Anim { get; private set; }
-    public GameObject GameObject { get; private set; }
+    public GameObject GoAttachedTo { get; private set; }
 
     public FieldOfView FOV { get; private set; }
+
+    public AttackCheck attackCheck { get; private set; }
+
 
     [SerializeField] private Transform wallCheck;
     [SerializeField] private Transform ledgeCheck;
@@ -29,10 +32,11 @@ public abstract class Entity : MonoBehaviour
     // Works as regular start. Runs when initializing object
     public virtual void Start()
     {
-        GameObject = transform.gameObject;
-        Rb = GameObject.GetComponent<Rigidbody2D>();
-        Anim = GameObject.GetComponent<Animator>();
-        FOV = GameObject.GetComponentInChildren<FieldOfView>();
+        GoAttachedTo = transform.gameObject;
+        Rb = GoAttachedTo.GetComponent<Rigidbody2D>();
+        Anim = GoAttachedTo.GetComponent<Animator>();
+        FOV = GoAttachedTo.GetComponentInChildren<FieldOfView>();
+        attackCheck = GoAttachedTo.transform.Find("AttackRange").GetComponent<AttackCheck>();
 
         stateMachine = new FiniteStateMachine();
     }
@@ -56,7 +60,7 @@ public abstract class Entity : MonoBehaviour
 
     public virtual bool CheckWall()
     {
-        return Physics2D.Raycast(wallCheck.position, GameObject.transform.right, entityData.wallCheckDistance, entityData.whatIsGround);
+        return Physics2D.Raycast(wallCheck.position, GoAttachedTo.transform.right, entityData.wallCheckDistance, entityData.whatIsGround);
     }
 
     public virtual bool CheckLedge()
@@ -67,7 +71,7 @@ public abstract class Entity : MonoBehaviour
     public virtual void Flip()
     {
         FacingDirection *= -1;
-        GameObject.transform.Rotate(0, 180, 0);
+        GoAttachedTo.transform.Rotate(0, 180, 0);
     }
 
     private void OnDrawGizmos()

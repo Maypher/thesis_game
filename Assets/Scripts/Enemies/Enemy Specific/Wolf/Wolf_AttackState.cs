@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wolf_ChargeState : ChargeState
+public class Wolf_AttackState : AttackState
 {
     private Wolf wolf;
 
-    public Wolf_ChargeState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_ChargeState stateData, Wolf wolf) : base(entity, stateMachine, animBoolName, stateData)
+    public Wolf_AttackState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_AttackState stateData, Wolf wolf) : base(entity, stateMachine, animBoolName, stateData)
     {
         this.wolf = wolf;
     }
@@ -29,12 +29,6 @@ public class Wolf_ChargeState : ChargeState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-
-        if (!canSeeTarget) stateMachine.ChangeState(wolf.MoveState);
-        else if (isChargeTimeOver)
-        {
-            if (canSeeTarget) stateMachine.ChangeState(wolf.PlayerDetectedState);
-        }
     }
 
     public override void PhysicsUpdate()
