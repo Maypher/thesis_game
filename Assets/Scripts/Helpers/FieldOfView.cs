@@ -21,8 +21,10 @@ public class FieldOfView : MonoBehaviour
         // Check if the target is within the set radius
         if (Vector2.Distance(transform.position, _target.transform.position) < _viewRadius)
         {
+            float radToCheck = (_angleOffset + transform.parent.transform.eulerAngles.y) * Mathf.Deg2Rad;
+
             Vector2 directionToTarget = (_target.transform.position - transform.position).normalized;
-            Vector2 viewDirection = new(Mathf.Cos(_angleOffset * Mathf.Deg2Rad) * Scale.x, Mathf.Sin(_angleOffset * Mathf.Deg2Rad) * Scale.y);
+            Vector2 viewDirection = new(Mathf.Cos(radToCheck) * Scale.x, Mathf.Sin(radToCheck) * Scale.y);
 
             float angleToTarget = Vector2.Angle(directionToTarget, viewDirection);
 
