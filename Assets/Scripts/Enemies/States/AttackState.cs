@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackState : State
+public abstract class AttackState : State
 {
-    protected D_AttackState stateData;
+    protected Transform attackPosition;
 
-    public AttackState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_AttackState stateData) : base(entity, stateMachine, animBoolName)
+    protected bool isAttackFinished;
+
+    public AttackState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition) : base(entity, stateMachine, animBoolName)
     {
-        this.stateData = stateData;
+        this.attackPosition = attackPosition;
     }
 
     public override void DoChecks()
@@ -19,6 +21,9 @@ public class AttackState : State
     public override void Enter()
     {
         base.Enter();
+
+        entity.currentAttack = this;
+        isAttackFinished = false;
     }
 
     public override void Exit()
@@ -35,4 +40,8 @@ public class AttackState : State
     {
         base.PhysicsUpdate();
     }
+
+    public virtual void TriggerAttack() { }
+
+    public virtual void FinishAttack() => isAttackFinished = true;
 }

@@ -17,7 +17,7 @@ public class Wolf_PlayerDetectedState : PlayerDetectedState
     {
         base.Enter();
 
-        entity.SetVelocity(0);
+        entity.SetVelocityX(0);
         chargeAtPlayer = false;
     }
 
@@ -33,7 +33,7 @@ public class Wolf_PlayerDetectedState : PlayerDetectedState
         chargeAtPlayer = Time.time >= startTime + stateData.actionTime;
 
         if (!seeingTarget) stateMachine.ChangeState(wolf.MoveState);
-        else if (targetWithinAttackRange && seeingTarget) stateMachine.ChangeState(wolf.AttackState);
+        //else if (targetWithinAttackRange && seeingTarget) stateMachine.ChangeState(wolf.AttackState);
         else if (chargeAtPlayer) stateMachine.ChangeState(wolf.ChargeState);
     }
 

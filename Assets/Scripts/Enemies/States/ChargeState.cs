@@ -21,7 +21,7 @@ public class ChargeState : State
     {
         base.Enter();
 
-        entity.SetVelocity(stateData.chargeSpeed);
+        entity.SetVelocityX(stateData.chargeSpeed);
         isChargeTimeOver = false;
     }
 
