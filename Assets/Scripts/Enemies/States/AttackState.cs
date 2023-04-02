@@ -7,6 +7,8 @@ public abstract class AttackState : State
     protected Transform attackPosition;
 
     protected bool isAttackFinished;
+    protected bool enemyInFOV;
+    protected bool enemyInAttackRange;
 
     public AttackState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition) : base(entity, stateMachine, animBoolName)
     {
@@ -16,6 +18,9 @@ public abstract class AttackState : State
     public override void DoChecks()
     {
         base.DoChecks();
+
+        enemyInFOV = entity.FOV.Check();
+        enemyInAttackRange = entity.attackCheck.Check();
     }
 
     public override void Enter()

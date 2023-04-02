@@ -30,10 +30,10 @@ public class Wolf_ChargeState : ChargeState
     {
         base.LogicUpdate();
 
-        if (!canSeeTarget) stateMachine.ChangeState(wolf.MoveState);
+        if (canSeeTarget && targetInAttackRange) stateMachine.ChangeState(wolf.MeleeAttackState);
         else if (isChargeTimeOver)
         {
-            if (canSeeTarget) stateMachine.ChangeState(wolf.PlayerDetectedState);
+            if (!canSeeTarget) stateMachine.ChangeState(wolf.MoveState);
         }
     }
 

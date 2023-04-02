@@ -7,6 +7,7 @@ public class ChargeState : State
     protected D_ChargeState stateData;
 
     protected bool canSeeTarget;
+    protected bool targetInAttackRange;
 
     protected bool isDetectingLedge;
     protected bool isDetectingWall;
@@ -47,5 +48,6 @@ public class ChargeState : State
         canSeeTarget = entity.FOV.Check();
         isDetectingLedge = entity.CheckLedge();
         isDetectingWall = entity.CheckWall();
+        targetInAttackRange = entity.attackCheck.Check();
     }
 }

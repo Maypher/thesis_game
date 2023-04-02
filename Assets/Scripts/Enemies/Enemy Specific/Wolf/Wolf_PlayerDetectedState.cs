@@ -33,12 +33,17 @@ public class Wolf_PlayerDetectedState : PlayerDetectedState
         chargeAtPlayer = Time.time >= startTime + stateData.actionTime;
 
         if (!seeingTarget) stateMachine.ChangeState(wolf.MoveState);
-        //else if (targetWithinAttackRange && seeingTarget) stateMachine.ChangeState(wolf.AttackState);
+        else if (targetWithinAttackRange && seeingTarget) stateMachine.ChangeState(wolf.MeleeAttackState);
         else if (chargeAtPlayer) stateMachine.ChangeState(wolf.ChargeState);
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+    }
+
+    public override void DoChecks()
+    {
+        base.DoChecks();
     }
 }

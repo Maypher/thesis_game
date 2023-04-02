@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 // Base class for all enemy/NPC characters
 public abstract class Entity : MonoBehaviour
@@ -23,6 +24,9 @@ public abstract class Entity : MonoBehaviour
     public FieldOfView FOV { get; private set; }
 
     public AttackCheck attackCheck { get; private set; }
+
+    // Used to trigger attacks from within animations. Must be set in each individual 
+    public AttackState currentAttack;
 
 
     [SerializeField] private Transform wallCheck;
@@ -52,10 +56,21 @@ public abstract class Entity : MonoBehaviour
     }
 
     // Set entity velocity based on facing direction and given velocity
-    public virtual void SetVelocity(float velocity)
+    public virtual void SetVelocityX(float velocity)
     {
         velocityWorkspace.Set(FacingDirection * velocity, Rb.velocity.y);
         Rb.velocity = velocityWorkspace;
+    }
+
+    public virtual void SetVelocityY(float velocity)
+    {
+        velocityWorkspace.Set(Rb.velocity.x, velocity);
+        Rb.velocity = velocityWorkspace;
+    }
+
+    public virtual void SetVelocity(Vector2 velocity)
+    {
+        Rb.velocity = velocity;
     }
 
     public virtual bool CheckWall()
@@ -73,6 +88,12 @@ public abstract class Entity : MonoBehaviour
         FacingDirection *= -1;
         GoAttachedTo.transform.Rotate(0, 180, 0);
     }
+
+    public void TriggerAttack()
+    {
+
+    }
+
 
     private void OnDrawGizmos()
     {

@@ -39,5 +39,7 @@ public abstract class PlayerDetectedState : State
     {
         seeingTarget = entity.FOV.Check();
         targetWithinAttackRange = entity.attackCheck.Check();
+
+        base.DoChecks();
     }
 }

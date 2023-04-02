@@ -810,7 +810,7 @@ MonoBehaviour:
   _checkRadius: 0.5
   _whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
 --- !u!58 &1210725226
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -871,10 +871,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b601e498ccdb54ab5622689459b09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _checkRadius: 2.8
+  _checkRadius: 3.99
   _whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
 --- !u!1 &1617087271
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,7 +1095,8 @@ MonoBehaviour:
   moveStateData: {fileID: 11400000, guid: 14edc40f6ea9bda43a9bc8233ae63fa5, type: 2}
   playerDetectedStateData: {fileID: 11400000, guid: d129342b55de57342b17437a79f0d277, type: 2}
   chargeStateData: {fileID: 11400000, guid: 6ebe326b5d06c76459d2e0ffca1d719f, type: 2}
-  attackStateData: {fileID: 0}
+  meleeAttackStateData: {fileID: 11400000, guid: 9920b0234498c7e41af21a5030394165, type: 2}
+  meleeAttackPosition: {fileID: 1210725224}
 --- !u!212 &1912357532
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1227,10 +1228,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4684614430069980873, guid: 39335430827c1eb41a45d49432387669, type: 3}
-      propertyPath: _checkType
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4684614431714139777, guid: 39335430827c1eb41a45d49432387669, type: 3}
       propertyPath: m_Name
       value: Bear Man

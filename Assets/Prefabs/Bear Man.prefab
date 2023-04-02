@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4684614430069980874}
   - component: {fileID: 4684614430069980873}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60519333a0dea80479fbce18dc36acb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _checkType: 1
   _checkRadius: 0.3
+  _dimensions: {x: 0.3, y: 0.3}
   _whatIsGround:
     serializedVersion: 2
     m_Bits: 64
@@ -57,7 +59,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4684614430184394241}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RockSpawnPos
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -88,7 +90,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4684614430545368168}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ShockwaveSpawnPos
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -125,7 +127,7 @@ GameObject:
   - component: {fileID: 4684614431714139797}
   - component: {fileID: 4684614431714139796}
   - component: {fileID: 2019705933}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bear Man
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -321,7 +323,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4684614431803913725}
   - component: {fileID: 4684614431803913726}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sprite
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -405,7 +407,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4684614431902296334}
   - component: {fileID: 1056658718}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PunchCheck
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -453,7 +455,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4684614432038999830}
   - component: {fileID: 4684614432038999829}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RaccoonLaunchPos
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
