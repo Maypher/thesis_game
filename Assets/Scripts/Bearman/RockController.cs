@@ -33,11 +33,11 @@ namespace Rock
 
         public void SetHealth(int health) => _health = health;
 
-        public bool TakeDamage(int damagePt)
+        public bool TakeDamage(AttackDetails attackDetails)
         {
             if (CanBeDamaged)
             {
-                _health -= damagePt;
+                _health -= (int) attackDetails.damage;
                 if (_health <= 0)
                 {
                     Kill();

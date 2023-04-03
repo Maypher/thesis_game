@@ -22,7 +22,7 @@ public class MeleeAttackState : AttackState
 
         entity.attackCheck.enemyEnteredAttackArea += TriggerAttack;
 
-        entity.SetVelocity(stateData.moveForce);
+        entity.SetVelocity(stateData.velocity, stateData.angle, entity.FacingDirection);
     }
 
     public override void Exit()

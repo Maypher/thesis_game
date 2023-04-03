@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 30073916}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LedgeCheck
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -430,7 +430,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 721289164}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WallCheck
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -563,6 +563,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &858332426
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 858332427}
+  - component: {fileID: 858332428}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &858332427
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858332426}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.7865932, y: -0.4285822, z: -0.050427705}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1912357530}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &858332428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858332426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60519333a0dea80479fbce18dc36acb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _checkType: 0
+  _checkRadius: 0.3
+  _dimensions: {x: 0.3, y: 0.3}
+  _whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1043317084
 GameObject:
   m_ObjectHideFlags: 3
@@ -773,7 +823,7 @@ GameObject:
   - component: {fileID: 1210725224}
   - component: {fileID: 1210725225}
   - component: {fileID: 1210725226}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackCheck
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -837,7 +887,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1299354037}
   - component: {fileID: 1299354038}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackRange
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
@@ -990,7 +1040,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1695934771}
   - component: {fileID: 1695934772}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FOV
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -1049,7 +1099,7 @@ GameObject:
   - component: {fileID: 1912357533}
   - component: {fileID: 1912357535}
   - component: {fileID: 1912357531}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wolf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1073,6 +1123,7 @@ Transform:
   - {fileID: 1210725224}
   - {fileID: 1695934771}
   - {fileID: 1299354037}
+  - {fileID: 858332427}
   m_Father: {fileID: 668188597}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1096,6 +1147,7 @@ MonoBehaviour:
   playerDetectedStateData: {fileID: 11400000, guid: d129342b55de57342b17437a79f0d277, type: 2}
   chargeStateData: {fileID: 11400000, guid: 6ebe326b5d06c76459d2e0ffca1d719f, type: 2}
   meleeAttackStateData: {fileID: 11400000, guid: 9920b0234498c7e41af21a5030394165, type: 2}
+  stunStateData: {fileID: 11400000, guid: 5e488b27c04d39d49a829241b19a4a95, type: 2}
   meleeAttackPosition: {fileID: 1210725224}
 --- !u!212 &1912357532
 SpriteRenderer:

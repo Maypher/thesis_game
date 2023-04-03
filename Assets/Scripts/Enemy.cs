@@ -30,9 +30,9 @@ public class Enemy : MonoBehaviour, IDamageable, IAttack
         }
     }
 
-    public bool TakeDamage(int damage) 
+    public bool TakeDamage(AttackDetails attackDetails) 
     {
-        health -= damage;
+        health -= (int) attackDetails.damage;
         
         if (health <= 0)
         {

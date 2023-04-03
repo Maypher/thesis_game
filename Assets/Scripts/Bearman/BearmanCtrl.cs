@@ -62,11 +62,11 @@ namespace Bearman
         private void Start() => _health = maxHealth;
 
         [HideInInspector]
-        public bool TakeDamage(int damagePt)
+        public bool TakeDamage(AttackDetails attackDetails)
         {
             SetState(typeof(States.Damage));
 
-            _health -= damagePt;
+            _health -= (int) attackDetails.damage;
             if (_health <= 0)
             {
                 Kill();

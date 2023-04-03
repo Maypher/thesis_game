@@ -30,8 +30,8 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         IDamageable opponent = other.gameObject.GetComponent<IDamageable>();
-        bool? killedOponent = opponent?.TakeDamage(_damage);
+       // bool? killedOponent = opponent?.TakeDamage(_damage);
 
-        if ((bool)killedOponent) OnKill();
+        //if ((bool)killedOponent) OnKill();
     }
 }

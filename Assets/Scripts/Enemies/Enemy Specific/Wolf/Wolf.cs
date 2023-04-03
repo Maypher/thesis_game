@@ -10,6 +10,7 @@ public class Wolf : Entity
     [SerializeField] private D_PlayerDetectedState playerDetectedStateData;
     [SerializeField] private D_ChargeState chargeStateData;
     [SerializeField] private D_MeleeAttackState meleeAttackStateData;
+    [SerializeField] private D_StunState stunStateData;
 
 
     public Wolf_IdleState IdleState { get; private set; }
@@ -20,6 +21,8 @@ public class Wolf : Entity
     public Wolf_ChargeState ChargeState { get; private set; }
 
     public Wolf_MeleeAttackState MeleeAttackState { get; private set; }
+
+    public Wolf_StunState StunState { get; private set; }
 
     [Header("Components")]
     [SerializeField] private Transform meleeAttackPosition;
@@ -33,6 +36,7 @@ public class Wolf : Entity
         PlayerDetectedState = new Wolf_PlayerDetectedState(this, stateMachine, "playerDetected", playerDetectedStateData, this);
         ChargeState = new Wolf_ChargeState(this, stateMachine, "charge", chargeStateData, this);
         MeleeAttackState = new Wolf_MeleeAttackState(this, stateMachine, "attack", meleeAttackPosition, meleeAttackStateData, this);
+        StunState = new Wolf_StunState(this, stateMachine, "stun", stunStateData, this);
 
         stateMachine.Initialize(MoveState);
     }
@@ -40,5 +44,12 @@ public class Wolf : Entity
     public override void Update()
     {
         base.Update();
+    }
+
+    public override void TakeDamage(AttackDetails attackDetails)
+    {
+        base.TakeDamage(attackDetails);
+
+        if (isStunned && stateMachine.CurrentState != StunState) stateMachine.ChangeState(StunState);
     }
 }

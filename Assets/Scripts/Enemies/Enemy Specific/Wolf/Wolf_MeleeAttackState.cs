@@ -19,8 +19,6 @@ public class Wolf_MeleeAttackState : MeleeAttackState
     public override void Enter()
     {
         base.Enter();
-
-        wolf.SetVelocity(stateData.moveForce);
     }
 
     public override void Exit()

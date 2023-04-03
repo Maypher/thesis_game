@@ -55,7 +55,7 @@ namespace Shockwave
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (!collision.gameObject.CompareTag("Player")) collision.gameObject.GetComponent<IDamageable>()?.TakeDamage(_damage);
+            // if (!collision.gameObject.CompareTag("Player")) collision.gameObject.GetComponent<IDamageable>()?.TakeDamage(_damage);
         }
 
         // Thanks to Seth Funk https://www.youtube.com/watch?v=B2BCnIIV1WE for the code

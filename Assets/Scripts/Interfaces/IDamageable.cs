@@ -1,10 +1,11 @@
 interface IDamageable
 {
     /// <summary>
-    ///     Take damage. Use to reduce health. Returns bool that indicates if the hit killed the entity
+    /// Function for entity to take damage
     /// </summary>
-    /// <param name="damagePt"> How much damage will be taken</param>
-    public bool TakeDamage(int damagePt);
+    /// <param name="attackDetails"></param>
+    /// <returns>A bool that indicates if this was a killing hit</returns>
+    public bool TakeDamage(AttackDetails attackDetails);
 
     /// <summary>
     /// Function ran to destroy the object

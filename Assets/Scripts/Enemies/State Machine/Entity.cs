@@ -11,6 +11,15 @@ public abstract class Entity : MonoBehaviour
     // Instead of using new Vector2() every time it's needed we just set it here
     private Vector2 velocityWorkspace;
 
+
+    private float currentHealth;
+    private float currentStunResistance;
+    private float lastDamageTime;
+
+    protected bool isStunned;
+
+    public int lastDamageDirection { get; private set; }
+
     // Let every entity have its own state machine with its own states
     public FiniteStateMachine stateMachine;
 
@@ -25,8 +34,11 @@ public abstract class Entity : MonoBehaviour
 
     public AttackCheck attackCheck { get; private set; }
 
+    public GroundCheck groundCheck { get; private set; }
+
     // Used to trigger attacks from within animations. Must be set in each individual 
     public AttackState currentAttack;
+
 
 
     [SerializeField] private Transform wallCheck;
@@ -43,11 +55,19 @@ public abstract class Entity : MonoBehaviour
         attackCheck = GoAttachedTo.transform.Find("AttackRange").GetComponent<AttackCheck>();
 
         stateMachine = new FiniteStateMachine();
+
+        currentHealth = entityData.maxHealth;
+        currentStunResistance = entityData.stunResistance;
     }
 
     public virtual void Update()
     {
         stateMachine.CurrentState.LogicUpdate();
+
+        if (Time.time >= lastDamageTime + entityData.stunRecoveryTime) 
+        {
+            ResetStunResistance();
+        }
     }
 
     public virtual void FixedUpdate()
@@ -68,9 +88,12 @@ public abstract class Entity : MonoBehaviour
         Rb.velocity = velocityWorkspace;
     }
 
-    public virtual void SetVelocity(Vector2 velocity)
+    public virtual void SetVelocity(float velocity, Vector2 angle, int direction)
     {
-        Rb.velocity = velocity;
+        angle.Normalize();
+        velocityWorkspace.Set(angle.x * velocity * direction, angle.y * velocity);
+
+        Rb.velocity = velocityWorkspace;
     }
 
     public virtual bool CheckWall()
@@ -101,5 +124,33 @@ public abstract class Entity : MonoBehaviour
 
         Gizmos.DrawLine(wallCheck.position, wallCheck.position + entityData.wallCheckDistance * FacingDirection * Vector3.right);
         Gizmos.DrawLine(ledgeCheck.position, ledgeCheck.position + entityData.ledgeCheckDistance * Vector3.down);
+    }
+
+    public virtual void DamageHop(float velocity) => SetVelocityY(velocity);
+
+    public virtual void ResetStunResistance() 
+    {
+        isStunned = false;
+        currentStunResistance = entityData.stunResistance;
+    }
+
+    public virtual void TakeDamage(AttackDetails attackDetails)
+    {
+        lastDamageTime = Time.time;
+        currentStunResistance -= attackDetails.stunDamageAmount;
+
+        isStunned = currentStunResistance <= 0;
+
+        currentHealth -= attackDetails.damage;
+
+        // Used for knocking back in the right direction when getting hit
+        lastDamageDirection = attackDetails.attackPostion.x > transform.position.x ? -1 : 1;
+
+        DamageHop(entityData.damageHopSpeed);
+    }
+
+    public virtual void Kill()
+    {
+        throw new NotImplementedException();
     }
 }

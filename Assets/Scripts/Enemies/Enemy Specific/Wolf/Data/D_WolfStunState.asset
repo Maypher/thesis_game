@@ -9,13 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90cc6762ceb24d5479175e448b805ac1, type: 3}
-  m_Name: Wolf_BaseData
+  m_Script: {fileID: 11500000, guid: eee60d6198bfa0649b199a60dcbb097f, type: 3}
+  m_Name: D_WolfStunState
   m_EditorClassIdentifier: 
-  maxHealth: 5
-  damageHopSpeed: 3
-  wallCheckDistance: 0.5
-  ledgeCheckDistance: 0.77
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 64
+  stunTime: 3
+  stunKnockbackTime: 0.2
+  stunKnockbackAngle: {x: 0.4, y: 0.5}
+  stunKnockbackSpeed: 2

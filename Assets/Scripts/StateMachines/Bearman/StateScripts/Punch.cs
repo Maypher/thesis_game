@@ -93,16 +93,21 @@ namespace Bearman.States
         {
             int hitDamage;
 
+            AttackDetails x = new();
+            x.attackPostion = controller.transform.position;
+
             if (_chargeTime < _smallChargeTime) hitDamage = _damage;
             else if (_chargeTime < _mediumChargeTime) hitDamage = _smallDamage;
             else if (_chargeTime < _heavyChargeTime) hitDamage = _mediumDamage;
             else hitDamage = _heavyDamage;
 
+            x.damage = hitDamage;
+
             Collider2D[] enemies = _attackCheck.GetEnemies();
 
             foreach (Collider2D enemy in enemies)
             {
-                enemy.GetComponent<IDamageable>()?.TakeDamage(hitDamage);
+                enemy.GetComponent<Entity>()?.TakeDamage(x);
             }
         }
 
