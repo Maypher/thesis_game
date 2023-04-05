@@ -9,8 +9,6 @@ namespace StateMachine
         // To keep track of which state machine this state belongs to
         protected StateMachine<T> stateMachine;
 
-        protected StateData stateData;
-
         // To keep track of which entity this state belongs to
         protected T entity;
 
@@ -20,12 +18,11 @@ namespace StateMachine
         // Used to set animation states directly from the states
         protected string animBoolName;
 
-        public State(T entity, StateMachine<T> stateMachine, string animBoolName, StateData stateData)
+        public State(T entity, StateMachine<T> stateMachine, string animBoolName)
         {
             this.entity = entity;
             this.stateMachine = stateMachine;
             this.animBoolName = animBoolName;
-            this.stateData = stateData;
         }
 
         public virtual void Enter()

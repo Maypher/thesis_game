@@ -4,8 +4,10 @@ using UnityEngine;
 
 namespace Enemies.Wolf
 {
-    public class Wolf : StateMachine.EntityGeneric<Wolf>
+    public class Wolf : StateMachine.Entity
     {
+        public StateMachine.StateMachine<Wolf> StateMachine { get; private set; } = new StateMachine.StateMachine<Wolf>();
+
         #region State Data
         [SerializeField] private Enemies.States.Generics.Data.D_Move moveData;
         #endregion
@@ -14,14 +16,14 @@ namespace Enemies.Wolf
 
         public override void Awake()
         {
-            MoveState = new(this, stateMachine, "move", moveData);
+            MoveState = new(this, StateMachine, "move", moveData);
         }
 
         public override void Start()
         {
             base.Start();
 
-            stateMachine.Initialize(MoveState);
+            StateMachine.Initialize(MoveState);
         }
 
         public override void FixedUpdate()

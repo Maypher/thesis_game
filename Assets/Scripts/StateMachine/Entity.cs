@@ -6,16 +6,10 @@ using System;
 // Base class for all scripts that use a State Machine
 namespace StateMachine
 {
-    public abstract class Entity : MonoBehaviour
-    {
-
-    }
-
-    public class EntityGeneric<T> : Entity where T : Entity
+    public class Entity : MonoBehaviour
     {
         #region Required classes
         // Let every entity have its own state machine with its own states
-        public StateMachine<T> stateMachine;
         #endregion
 
         #region Helper variables
@@ -36,7 +30,6 @@ namespace StateMachine
 
         public virtual void Start()
         {
-            stateMachine = new StateMachine<T>();
 
             Rb = GetComponent<Rigidbody2D>();
             Anim = GetComponent<Animator>();
@@ -44,12 +37,10 @@ namespace StateMachine
 
         public virtual void Update()
         {
-            stateMachine.CurrentState.LogicUpdate();
         }
 
         public virtual void FixedUpdate()
         {
-            stateMachine.CurrentState.PhysicsUpdate();
         }
 
         // Set entity velocity based on facing direction and given velocity

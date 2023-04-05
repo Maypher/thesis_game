@@ -7,13 +7,18 @@ namespace Enemies.States.Generics
 {
     public class Move<T> : State<T> where T : Entity
     {
-        public Move(T entity, StateMachine<T> stateMachine, string animBoolName, StateData stateData) : base(entity, stateMachine, animBoolName, stateData)
+        private readonly Data.D_Move stateData;
+
+        public Move(T entity, StateMachine<T> stateMachine, string animBoolName, Data.D_Move stateData) : base(entity, stateMachine, animBoolName)
         {
+            this.stateData = stateData;
         }
 
         public override void Enter()
         {
             base.Enter();
+
+            entity.SetVelocityX(stateData.moveSpeed);
         }
 
         public override void Exit()
