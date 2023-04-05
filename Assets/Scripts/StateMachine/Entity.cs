@@ -8,19 +8,24 @@ namespace StateMachine
 {
     public class Entity : MonoBehaviour
     {
-        #region Required classes
-        // Let every entity have its own state machine with its own states
-        #endregion
-
         #region Helper variables
         public int FacingDirection { get; private set; } = 1;
         // Instead of using new Vector2() every time it's needed we just set it here
         protected Vector2 velocityWorkspace;
+
+        [Header("Check variables")]
+        [SerializeField] private float wallCheckDistance;
+        [SerializeField] private float ledgeCheckDistance;
+        [SerializeField] private LayerMask whatIsGround;
         #endregion
 
         #region Components
         public Rigidbody2D Rb { get; private set; }
-        public Animator Anim { get; private set; } 
+        public Animator Anim { get; private set; }
+
+        [Header("Check transforms")]
+        [SerializeField] private Transform wallCheck;
+        [SerializeField] private Transform ledgeCheck;
         #endregion
 
         public virtual void Awake()
@@ -64,15 +69,15 @@ namespace StateMachine
             Rb.velocity = velocityWorkspace;
         }
 
- /*       public virtual bool CheckWall()
+        public virtual bool CheckWall()
         {
-            return Physics2D.Raycast(wallCheck.position, transform.right, entityData.wallCheckDistance, entityData.whatIsGround);
+            return Physics2D.Raycast(wallCheck.position, transform.right, wallCheckDistance, whatIsGround);
         }
 
         public virtual bool CheckLedge()
         {
-            return Physics2D.Raycast(ledgeCheck.position, Vector2.down, entityData.ledgeCheckDistance, entityData.whatIsGround);
-        }*/
+            return Physics2D.Raycast(ledgeCheck.position, Vector2.down, ledgeCheckDistance, whatIsGround);
+        }
 
         public virtual void Flip()
         {
@@ -86,12 +91,12 @@ namespace StateMachine
         }
 
 
-        private void OnDrawGizmos()
+        private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.black;
 
-            // Gizmos.DrawLine(wallCheck.position, wallCheck.position + entityData.wallCheckDistance * FacingDirection * Vector3.right);
-            // Gizmos.DrawLine(ledgeCheck.position, ledgeCheck.position + entityData.ledgeCheckDistance * Vector3.down);
+            Gizmos.DrawLine(wallCheck.position, wallCheck.position + wallCheckDistance * FacingDirection * Vector3.right);
+            Gizmos.DrawLine(ledgeCheck.position, ledgeCheck.position + ledgeCheckDistance * Vector3.down);
         }
 
         public virtual void DamageHop(float velocity) => SetVelocityY(velocity);

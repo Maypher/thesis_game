@@ -5,20 +5,19 @@ using UnityEngine;
 
 namespace Enemies.States.Generics
 {
-    public class Move<T> : State<T> where T : Entity
+    public class Idle<T> : State<T> where T: Entity
     {
-        protected readonly Data.D_Move stateData;
+        protected  Data.D_Idle stateData;
 
-        public Move(T entity, StateMachine<T> stateMachine, string animBoolName, Data.D_Move stateData) : base(entity, stateMachine, animBoolName)
+        public Idle(T entity, StateMachine<T> stateMachine, string animBoolName, Data.D_Idle stateData) : base(entity, stateMachine, animBoolName)
         {
             this.stateData = stateData;
         }
 
         public override void Enter()
         {
+            entity.SetVelocityX(0);
             base.Enter();
-
-            entity.SetVelocityX(stateData.moveSpeed);
         }
 
         public override void Exit()

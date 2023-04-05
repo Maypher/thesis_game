@@ -7,13 +7,19 @@ namespace Enemies.Wolf.States
 {
     public class Move : Enemies.States.Generics.Move<Wolf>
     {
-        public Move(Wolf entity, StateMachine<Wolf> stateMachine, string animBoolName, Enemies.States.Generics.Data.D_Move stateData) : base(entity, stateMachine, animBoolName, stateData)
+        private readonly Wolf wolf;
+        private float walkTime;
+
+        public Move(Wolf entity, StateMachine<Wolf> stateMachine, string animBoolName, Enemies.States.Generics.Data.D_Move stateData, Wolf wolf) : base(entity, stateMachine, animBoolName, stateData)
         {
+            this.wolf = wolf;
         }
 
         public override void Enter()
         {
             base.Enter();
+
+            walkTime = Random.Range(stateData.minWalkTime, stateData.maxWalkTime);
         }
 
         public override void Exit()
@@ -24,6 +30,16 @@ namespace Enemies.Wolf.States
         public override void LogicUpdate()
         {
             base.LogicUpdate();
+
+            if (Time.time >= startTime + walkTime)
+            {
+                stateMachine.ChangeState(wolf.IdleState);
+            }
+            else if (entity.CheckWall() || !entity.CheckLedge())
+            {
+                entity.Flip();
+                entity.SetVelocityX(stateData.moveSpeed);
+            }
         }
 
         public override void PhysicsUpdate()

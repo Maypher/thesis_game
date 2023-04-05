@@ -26,7 +26,7 @@ public class AttackCheck : MonoBehaviour
         if (collision.gameObject.layer == _whatIsEnemy) enemyEnteredAttackArea?.Invoke();
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, _checkRadius);
     }

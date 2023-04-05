@@ -1114,7 +1114,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1912357529}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.74, y: 1.72, z: 0.28920233}
+  m_LocalPosition: {x: 36.8, y: 0.05, z: 0.28920233}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1258,7 +1258,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb43333cb82bca445bac1f4c403ac4cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wallCheckDistance: 1
+  ledgeCheckDistance: 0.5
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
+  wallCheck: {fileID: 721289164}
+  ledgeCheck: {fileID: 30073916}
   moveData: {fileID: 11400000, guid: ce9cd3a80c6dde440ace06c9459372a6, type: 2}
+  IdleData: {fileID: 11400000, guid: c2de0545d11842340b8bf302877034c2, type: 2}
 --- !u!1 &1934092534 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4684614431714139777, guid: 39335430827c1eb41a45d49432387669, type: 3}
