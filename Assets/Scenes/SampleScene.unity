@@ -1284,7 +1284,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba778e438c7a8764bbb3d6d74cc1094f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 0}
+  wallCheckDistance: 0
+  ledgeCheckDistance: 0
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  wallCheck: {fileID: 4684614432007354449}
+  ledgeCheck: {fileID: 4684614432007354448}
+  stateData: {fileID: 11400000, guid: d882e42f2aa2556469296fd9caee6754, type: 2}
 --- !u!1001 &4684614432007354447
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1298,7 +1305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4684614431714139777, guid: 39335430827c1eb41a45d49432387669, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4684614431714139805, guid: 39335430827c1eb41a45d49432387669, type: 3}
       propertyPath: m_RootOrder
@@ -1346,3 +1353,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39335430827c1eb41a45d49432387669, type: 3}
+--- !u!4 &4684614432007354448 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4684614431902296334, guid: 39335430827c1eb41a45d49432387669, type: 3}
+  m_PrefabInstance: {fileID: 4684614432007354447}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4684614432007354449 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4684614430069980874, guid: 39335430827c1eb41a45d49432387669, type: 3}
+  m_PrefabInstance: {fileID: 4684614432007354447}
+  m_PrefabAsset: {fileID: 0}

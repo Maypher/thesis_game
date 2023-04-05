@@ -2,54 +2,59 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+namespace Player 
 {
-    public PlayerStateMachine StateMachine { get; private set; }
-
-    public Animator Anim { get; private set; }
-    public Rigidbody2D Rb { get; private set; }
-
-    private Vector2 workspace;
-
-
-    [SerializeField] private PlayerData playerData;
-
-    public PlayerIdle playerIdleState { get; private set; }
-
-    public PlayerMove playerMoveState { get; private set; }
-
-    public Vector2 CurrentVelocity { get; private set; }
-
-    private void Awake()
+    public class Player : StateMachine.Entity
     {
-        StateMachine = new PlayerStateMachine();
-        Rb = GetComponent<Rigidbody2D>();
 
-        playerIdleState = new PlayerIdle(this, StateMachine, playerData, "idle");
-        playerIdleState = new PlayerIdle(this, StateMachine, playerData, "move");
-    }
+        public StateMachine.StateMachine<Player> StateMachine { get; private set; } = new();
+        public UserInput UserInput { get; private set; }
 
-    private void Start()
-    {
-        StateMachine.Initialize(playerIdleState);
-    }
+        #region States data
+        [Header("PlayerData")]
+        [SerializeField] private  Substates.Data.D_Walk stateData;
+        #endregion
 
-    private void Update()
-    {
-        StateMachine.currentState.LogicUpdate();
+        #region States
+        protected Substates.Grounded.Walk walkState;
+        #endregion
 
-        CurrentVelocity = Rb.velocity;
-    }
+        #region components
+        public GroundCheck GroundCheck { get; private set; }
+        public AttackCheck AttackCheck { get; private set; }
+        #endregion
 
-    private void FixedUpdate()
-    {
-        StateMachine.currentState.PhysicsUpdate();
-    }
+        public override void Awake()
+        {
+            base.Awake();
 
-    public void SetVelocityX(float velocity)
-    {
-        workspace.Set(velocity, CurrentVelocity.y);
-        Rb.velocity = workspace;
-        CurrentVelocity = workspace;
+            walkState = new(this, StateMachine, "walk", stateData);
+        }
+
+        public override void Start()
+        {
+            base.Start();
+
+
+            GroundCheck = GetComponentInChildren<GroundCheck>();
+            AttackCheck = GetComponentInChildren<AttackCheck>();
+
+            UserInput = new();
+            UserInput.Player.Enable();
+
+            StateMachine.Initialize(walkState);
+        }
+
+        public override void Update()
+        {
+            base.Update();
+            StateMachine.CurrentState.LogicUpdate();
+        }
+
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+            StateMachine.CurrentState.PhysicsUpdate();
+        }
     }
 }
