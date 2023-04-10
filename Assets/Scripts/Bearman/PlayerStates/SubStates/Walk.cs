@@ -16,7 +16,7 @@ namespace Player.Substates.Grounded
         private bool decelerating;
         private float decelerationTime;
 
-        public Walk(Player entity, StateMachine<Player> stateMachine, string animBoolName, Data.D_Walk stateData) : base(entity, stateMachine, animBoolName)
+        public Walk(Player entity, StateMachine<Player> stateMachine, Data.D_Walk stateData) : base(entity, stateMachine)
         {
             this.stateData = stateData;
         }

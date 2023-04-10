@@ -10,7 +10,7 @@ namespace Enemies.Wolf.States
         private readonly Wolf wolf;
         private float walkTime;
 
-        public Move(Wolf entity, StateMachine<Wolf> stateMachine, string animBoolName, Enemies.States.Generics.Data.D_Move stateData, Wolf wolf) : base(entity, stateMachine, animBoolName, stateData)
+        public Move(Wolf entity, StateMachine<Wolf> stateMachine, Enemies.States.Generics.Data.D_Move stateData, Wolf wolf) : base(entity, stateMachine, stateData)
         {
             this.wolf = wolf;
         }

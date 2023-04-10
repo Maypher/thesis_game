@@ -9,7 +9,7 @@ namespace Enemies.States.Generics
     {
         protected readonly Data.D_Move stateData;
 
-        public Move(T entity, StateMachine<T> stateMachine, string animBoolName, Data.D_Move stateData) : base(entity, stateMachine, animBoolName)
+        public Move(T entity, StateMachine<T> stateMachine, Data.D_Move stateData) : base(entity, stateMachine)
         {
             this.stateData = stateData;
         }

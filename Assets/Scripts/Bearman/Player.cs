@@ -30,8 +30,8 @@ namespace Player
         {
             base.Awake();
 
-            WalkState = new(this, StateMachine, "walk", walkData);
-            IdleState = new(this, StateMachine, "walk", idleData);
+            WalkState = new(this, StateMachine, walkData);
+            IdleState = new(this, StateMachine, idleData);
         }
 
         public override void Start()

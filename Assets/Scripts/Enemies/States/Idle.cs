@@ -9,7 +9,7 @@ namespace Enemies.States.Generics
     {
         protected  Data.D_Idle stateData;
 
-        public Idle(T entity, StateMachine<T> stateMachine, string animBoolName, Data.D_Idle stateData) : base(entity, stateMachine, animBoolName)
+        public Idle(T entity, StateMachine<T> stateMachine, Data.D_Idle stateData) : base(entity, stateMachine)
         {
             this.stateData = stateData;
         }

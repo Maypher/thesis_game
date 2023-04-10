@@ -19,8 +19,8 @@ namespace Enemies.Wolf
 
         public override void Awake()
         {
-            MoveState = new(this, StateMachine, "move", moveData, this);
-            IdleState = new(this, StateMachine, "idle", IdleData, this);
+            MoveState = new(this, StateMachine, moveData, this);
+            IdleState = new(this, StateMachine, IdleData, this);
         }
 
         public override void Start()

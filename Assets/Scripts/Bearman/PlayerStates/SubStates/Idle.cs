@@ -14,7 +14,7 @@ namespace Player.Substates.Grounded
         // Some state transitions might want to stop the player, others might want to keep momentum when changing to this state
         public bool fullyStopOnEnter = true;
 
-        public Idle(Player entity, StateMachine<Player> stateMachine, string animBoolName, Data.D_Idle stateData) : base(entity, stateMachine, animBoolName)
+        public Idle(Player entity, StateMachine<Player> stateMachine, Data.D_Idle stateData) : base(entity, stateMachine)
         {
             this.stateData = stateData;
         }

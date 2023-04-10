@@ -9,7 +9,7 @@ namespace Player.Superstates
     {
         protected Player player;
 
-        public Ground(Player entity, StateMachine<Player> stateMachine, string animBoolName) : base(entity, stateMachine, animBoolName)
+        public Ground(Player entity, StateMachine<Player> stateMachine) : base(entity, stateMachine)
         {
             this.player = entity;
         }

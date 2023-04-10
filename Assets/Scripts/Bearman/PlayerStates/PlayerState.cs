@@ -7,7 +7,7 @@ namespace Player
 {
     public abstract class PlayerState : State<Player>
     {
-        public PlayerState(Player entity, StateMachine<Player> stateMachine, string animBoolName) : base(entity, stateMachine, animBoolName)
+        public PlayerState(Player entity, StateMachine<Player> stateMachine) : base(entity, stateMachine)
         {
         }
 

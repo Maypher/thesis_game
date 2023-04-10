@@ -11,7 +11,7 @@ namespace Enemies.Wolf.States
 
         private float idleTime;
 
-        public Idle(Wolf entity, StateMachine<Wolf> stateMachine, string animBoolName, Enemies.States.Generics.Data.D_Idle stateData, Wolf wolf) : base(entity, stateMachine, animBoolName, stateData)
+        public Idle(Wolf entity, StateMachine<Wolf> stateMachine, Enemies.States.Generics.Data.D_Idle stateData, Wolf wolf) : base(entity, stateMachine, stateData)
         {
             this.wolf = wolf;
         }

@@ -90,6 +90,47 @@ namespace StateMachine
 
         }
 
+        /// <summary>
+        /// Activates an animation trigger
+        /// </summary>
+        /// <param name="parameter">The name of the animation parameter</param>
+        public void SetAnimationParameter(string parameter)
+        {
+            Anim.SetTrigger(parameter);
+        }
+
+        /// <summary>
+        /// Sets an animation bool
+        /// </summary>
+        /// <param name="parameter">The name of the animation parameter</param>
+        /// <param name="value">What to set parameter to</param>
+        public void SetAnimationParameter(string parameter, bool value)
+        {
+            Anim.SetBool(parameter, value);
+        }
+
+
+        /// <summary>
+        /// Sets an animation float
+        /// </summary>
+        /// <param name="parameter">The name of the animation parameter</param>
+        /// <param name="value">The value of parameter</param>
+        public void SetAnimationParameter(string parameter, float value)
+        {
+            Anim.SetFloat(parameter, value);
+        }
+
+        /// <summary>
+        /// Sets an animation integer
+        /// </summary>
+        /// <param name="parameter">The name of the animation parameter</param>
+        /// <param name="value">The value of parameter</param>
+        public void SetAnimationParameter(string parameter, int value)
+        {
+            Anim.SetInteger(parameter, value);
+        }
+
+
 
         private void OnDrawGizmosSelected()
         {

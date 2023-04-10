@@ -15,25 +15,20 @@ namespace StateMachine
         // The time at which this state was activated
         protected float startTime;
 
-        // Used to set animation states directly from the states
-        protected string animBoolName;
 
-        public State(T entity, StateMachine<T> stateMachine, string animBoolName)
+        public State(T entity, StateMachine<T> stateMachine)
         {
             this.entity = entity;
             this.stateMachine = stateMachine;
-            this.animBoolName = animBoolName;
         }
 
         public virtual void Enter()
         {
             startTime = Time.time;
-            // entity.Anim.SetBool(animBoolName, true);
         }
 
         public virtual void Exit()
         {
-            // entity.Anim.SetBool(animBoolName, false);
         }
 
         public virtual void LogicUpdate()
