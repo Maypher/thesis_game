@@ -28,7 +28,8 @@ namespace Player.Substates.Grounded
             walkTime = 0;
             decelerating = false;
             decelerationTime = 0;
-            
+
+            player.SetAnimationParameter("isMoving", true);
             player.UserInput.Player.Move.performed += Move_performed;
         }
 
@@ -36,6 +37,8 @@ namespace Player.Substates.Grounded
         public override void Exit()
         {
             base.Exit();
+
+            player.SetAnimationParameter("isMoving", false);
             player.UserInput.Player.Move.performed -= Move_performed;
         }
 

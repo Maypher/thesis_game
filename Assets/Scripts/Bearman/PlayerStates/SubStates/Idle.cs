@@ -45,7 +45,7 @@ namespace Player.Substates.Grounded
 
             if (Time.time >= startTime + stateData.timeToFlex)
             {
-                // TODO: Play flex animation
+                player.SetAnimationParameter("Flex");
             }
         }
 
