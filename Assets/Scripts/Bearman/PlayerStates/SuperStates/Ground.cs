@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Player.Superstates
 {
-    public abstract class Ground : State<Player>
+    public abstract class Ground : PlayerState
     {
         protected Player player;
 

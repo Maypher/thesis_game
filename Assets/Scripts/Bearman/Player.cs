@@ -12,11 +12,13 @@ namespace Player
 
         #region States data
         [Header("PlayerData")]
-        [SerializeField] private  Substates.Data.D_Walk stateData;
+        [SerializeField] private  Substates.Data.D_Walk walkData;
+        [SerializeField] private  Substates.Data.D_Idle idleData;
         #endregion
 
         #region States
-        protected Substates.Grounded.Walk walkState;
+        public Substates.Grounded.Walk WalkState { get; private set; }
+        public Substates.Grounded.Idle IdleState { get; private set; }
         #endregion
 
         #region components
@@ -28,7 +30,8 @@ namespace Player
         {
             base.Awake();
 
-            walkState = new(this, StateMachine, "walk", stateData);
+            WalkState = new(this, StateMachine, "walk", walkData);
+            IdleState = new(this, StateMachine, "walk", idleData);
         }
 
         public override void Start()
@@ -42,13 +45,15 @@ namespace Player
             UserInput = new();
             UserInput.Player.Enable();
 
-            StateMachine.Initialize(walkState);
+            StateMachine.Initialize(IdleState);
         }
 
         public override void Update()
         {
             base.Update();
+            (StateMachine.CurrentState as PlayerState).Input();
             StateMachine.CurrentState.LogicUpdate();
+            StateMachine.CurrentState.CheckStateChange();
         }
 
         public override void FixedUpdate()

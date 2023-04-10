@@ -1291,7 +1291,8 @@ MonoBehaviour:
     m_Bits: 0
   wallCheck: {fileID: 4684614432007354449}
   ledgeCheck: {fileID: 4684614432007354448}
-  stateData: {fileID: 11400000, guid: d882e42f2aa2556469296fd9caee6754, type: 2}
+  walkData: {fileID: 11400000, guid: d882e42f2aa2556469296fd9caee6754, type: 2}
+  idleData: {fileID: 11400000, guid: 473f94a8f4891ad4e9a9a41a4a615ffe, type: 2}
 --- !u!1001 &4684614432007354447
 PrefabInstance:
   m_ObjectHideFlags: 0

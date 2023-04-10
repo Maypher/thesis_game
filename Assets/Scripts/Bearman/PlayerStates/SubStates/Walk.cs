@@ -39,11 +39,15 @@ namespace Player.Substates.Grounded
             player.UserInput.Player.Move.performed -= Move_performed;
         }
 
+        public override void Input()
+        {
+            base.Input();
+            inputDirection = player.UserInput.Player.Move.ReadValue<float>();
+        }
+
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-
-            inputDirection = player.UserInput.Player.Move.ReadValue<float>();
 
             if (inputDirection != 0)
             {
@@ -89,6 +93,14 @@ namespace Player.Substates.Grounded
         private void Move_performed(InputAction.CallbackContext ctx)
         {
              usingKeyboard = ctx.action.activeControl.device.name == "Keyboard";
+        }
+
+        public override void CheckStateChange()
+        {
+            base.CheckStateChange();
+
+            // Change to idle if there's no input and the player has stopped moving
+            if (entity.Rb.velocity.x == 0 && inputDirection == 0) stateMachine.ChangeState(player.IdleState);
         }
     }
 }
