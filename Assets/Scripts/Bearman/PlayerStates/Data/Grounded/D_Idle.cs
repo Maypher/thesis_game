@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Player.Substates.Data
 {
-    [CreateAssetMenu(menuName = "Player/State Data/Idle")]
+    [CreateAssetMenu(menuName = "Player/State Data/Grounded/Idle")]
     public class D_Idle : StateMachine.StateData
     {
         public float timeToFlex = 10f;

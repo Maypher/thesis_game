@@ -24,6 +24,7 @@ namespace Player.Substates.Grounded
             base.Enter();
             if (fullyStopOnEnter) entity.SetVelocityX(0);
 
+            player.CanJump = true;
             isMoving = false;
         }
 

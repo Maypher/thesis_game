@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Player.Substates.Data
 {
 
-    [CreateAssetMenu(menuName = "Player/State Data/Walk")]
+    [CreateAssetMenu(menuName = "Player/State Data/Grounded/Walk")]
     public class D_Walk : StateMachine.StateData
     {
         [Header("Acceleration")]

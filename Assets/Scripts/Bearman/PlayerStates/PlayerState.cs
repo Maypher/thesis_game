@@ -7,8 +7,11 @@ namespace Player
 {
     public abstract class PlayerState : State<Player>
     {
+        protected Player player;
+
         public PlayerState(Player entity, StateMachine<Player> stateMachine) : base(entity, stateMachine)
         {
+            this.player = entity;
         }
 
         /// <summary>

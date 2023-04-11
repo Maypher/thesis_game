@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 4684614431714139797}
   - component: {fileID: 4684614431714139796}
   - component: {fileID: 2019705933}
+  - component: {fileID: 1934092541}
   m_Layer: 3
   m_Name: Bear Man
   m_TagString: Player
@@ -285,6 +286,30 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.71018314, y: 2.6796467}
   m_EdgeRadius: 0
+--- !u!114 &1934092541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4684614431714139777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba778e438c7a8764bbb3d6d74cc1094f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallCheckDistance: 0
+  ledgeCheckDistance: 0
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  wallCheck: {fileID: 4684614430069980874}
+  ledgeCheck: {fileID: 4684614431902296334}
+  walkData: {fileID: 11400000, guid: d882e42f2aa2556469296fd9caee6754, type: 2}
+  idleData: {fileID: 11400000, guid: 473f94a8f4891ad4e9a9a41a4a615ffe, type: 2}
+  jumpData: {fileID: 11400000, guid: 1d0325c5a7a4e1b4c8ecccd248c59e7b, type: 2}
+  airMoveData: {fileID: 11400000, guid: d201c8c70adcb2b47b463a31e684975a, type: 2}
+  CanJump: 0
 --- !u!1 &4684614431803913727
 GameObject:
   m_ObjectHideFlags: 0

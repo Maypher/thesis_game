@@ -12,18 +12,28 @@ namespace Player
 
         #region States data
         [Header("PlayerData")]
-        [SerializeField] private  Substates.Data.D_Walk walkData;
-        [SerializeField] private  Substates.Data.D_Idle idleData;
+        [SerializeField] private Substates.Data.D_Walk walkData;
+        [SerializeField] private Substates.Data.D_Idle idleData;
+        [SerializeField] private Substates.Data.D_Jump jumpData;
+        [SerializeField] private Substates.Data.D_AirMove airMoveData;
         #endregion
 
         #region States
         public Substates.Grounded.Walk WalkState { get; private set; }
         public Substates.Grounded.Idle IdleState { get; private set; }
+        public Substates.Airborne.Jump JumpState { get; private set; }
+        public Substates.Airborne.AirMove AirMoveState { get; private set; }
         #endregion
 
         #region components
         public GroundCheck GroundCheck { get; private set; }
         public AttackCheck AttackCheck { get; private set; }
+        #endregion
+
+        #region control variables
+        [HideInInspector] public bool CanJump = true;
+        [HideInInspector] public bool CanLand = true;
+        [HideInInspector] public float TimeInAir = 0f;
         #endregion
 
         public override void Awake()
@@ -32,6 +42,8 @@ namespace Player
 
             WalkState = new(this, StateMachine, walkData);
             IdleState = new(this, StateMachine, idleData);
+            JumpState = new(this, StateMachine, jumpData);
+            AirMoveState = new(this, StateMachine, airMoveData);
         }
 
         public override void Start()

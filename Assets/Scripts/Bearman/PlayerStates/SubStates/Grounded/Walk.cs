@@ -25,10 +25,13 @@ namespace Player.Substates.Grounded
         {
             base.Enter();
 
-            walkTime = 0;
+            if (Mathf.Abs(player.Rb.velocity.x) > stateData.maxSpeed) walkTime = 1;
+            else walkTime = 0;
+
             decelerating = false;
             decelerationTime = 0;
 
+            player.CanJump = true;
             player.SetAnimationParameter("isMoving", true);
             player.UserInput.Player.Move.performed += Move_performed;
         }
@@ -60,7 +63,7 @@ namespace Player.Substates.Grounded
             else if (!decelerating)
             {
                 decelerationTime = (1 - walkTime) * stateData.timeToFullStop;
-                walkTime = 0;
+                walkTime =  Mathf.Min(0, walkTime - Time.deltaTime);
                 decelerating = true;
             }
             else if (decelerating) decelerationTime = Mathf.Clamp(decelerationTime + Time.deltaTime, 0, stateData.timeToFullStop);

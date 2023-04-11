@@ -48,10 +48,15 @@ namespace StateMachine
         {
         }
 
-        // Set entity velocity based on facing direction and given velocity
-        public virtual void SetVelocityX(float velocity)
+        /// <summary>
+        /// Set entity velocity based on facing direction and given velocity
+        /// </summary>
+        /// <param name="velocity">The velocity to set the rigidbody to</param>
+        /// <param name="direction">By default the function will use the facing direction but this parameter will overwrite that</param>
+        public virtual void SetVelocityX(float velocity, bool ignoreDirection = false)
         {
-            velocityWorkspace.Set(FacingDirection * velocity, Rb.velocity.y);
+            if (ignoreDirection) velocityWorkspace.Set(velocity, Rb.velocity.y);
+            else velocityWorkspace.Set(FacingDirection * velocity, Rb.velocity.y);
             Rb.velocity = velocityWorkspace;
         }
 

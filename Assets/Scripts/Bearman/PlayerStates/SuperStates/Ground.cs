@@ -7,11 +7,9 @@ namespace Player.Superstates
 {
     public abstract class Ground : PlayerState
     {
-        protected Player player;
 
         public Ground(Player entity, StateMachine<Player> stateMachine) : base(entity, stateMachine)
         {
-            this.player = entity;
         }
 
         public override void Enter()
@@ -31,7 +29,15 @@ namespace Player.Superstates
 
         public override void PhysicsUpdate()
         {
-            // TODO: All transitions to airborne states
         }
+
+        public override void CheckStateChange()
+        {
+            base.CheckStateChange();
+
+            if (player.UserInput.Player.Jump.WasPressedThisFrame() && player.CanJump) stateMachine.ChangeState(player.JumpState);
+        }
+
+        private void Jump() => stateMachine.ChangeState(player.JumpState);
     }
 }
