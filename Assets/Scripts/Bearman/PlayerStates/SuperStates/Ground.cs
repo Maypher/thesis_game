@@ -36,6 +36,7 @@ namespace Player.Superstates
             base.CheckStateChange();
 
             if (player.UserInput.Player.Jump.WasPressedThisFrame() && player.CanJump) stateMachine.ChangeState(player.JumpState);
+            else if (!player.GroundCheck.Check()) stateMachine.ChangeState(player.AirMoveState);
         }
 
         private void Jump() => stateMachine.ChangeState(player.JumpState);
