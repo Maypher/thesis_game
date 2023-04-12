@@ -107,6 +107,15 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""4247d535-3b4a-4a30-8773-bd5bead9f513"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -274,6 +283,17 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
                     ""action"": ""Throw"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ec1c2eaf-55e4-4101-90dc-348ca067c2aa"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -308,6 +328,7 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
         m_Player_Throw = m_Player.FindAction("Throw", throwIfNotFound: true);
         m_Player_ShockwaveAttack = m_Player.FindAction("ShockwaveAttack", throwIfNotFound: true);
         m_Player_PickUpRock = m_Player.FindAction("PickUpRock", throwIfNotFound: true);
+        m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -376,6 +397,7 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Throw;
     private readonly InputAction m_Player_ShockwaveAttack;
     private readonly InputAction m_Player_PickUpRock;
+    private readonly InputAction m_Player_Dash;
     public struct PlayerActions
     {
         private @UserInput m_Wrapper;
@@ -389,6 +411,7 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
         public InputAction @Throw => m_Wrapper.m_Player_Throw;
         public InputAction @ShockwaveAttack => m_Wrapper.m_Player_ShockwaveAttack;
         public InputAction @PickUpRock => m_Wrapper.m_Player_PickUpRock;
+        public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -425,6 +448,9 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
                 @PickUpRock.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPickUpRock;
                 @PickUpRock.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPickUpRock;
                 @PickUpRock.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPickUpRock;
+                @Dash.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
+                @Dash.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
+                @Dash.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -456,6 +482,9 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
                 @PickUpRock.started += instance.OnPickUpRock;
                 @PickUpRock.performed += instance.OnPickUpRock;
                 @PickUpRock.canceled += instance.OnPickUpRock;
+                @Dash.started += instance.OnDash;
+                @Dash.performed += instance.OnDash;
+                @Dash.canceled += instance.OnDash;
             }
         }
     }
@@ -480,5 +509,6 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
         void OnThrow(InputAction.CallbackContext context);
         void OnShockwaveAttack(InputAction.CallbackContext context);
         void OnPickUpRock(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
     }
 }

@@ -9,5 +9,6 @@ namespace Player.Substates.Data
     {
         public float maxSpeed = 5f;
         public float fallingGravity = 1f;
+        [Tooltip("Time after a dash the player can jump")] public float doubleJumpGap = .4f;
     }
 }

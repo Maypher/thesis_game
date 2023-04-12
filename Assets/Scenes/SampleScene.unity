@@ -1279,6 +1279,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1934092541, guid: 39335430827c1eb41a45d49432387669, type: 3}
+      propertyPath: DashData
+      value: 
+      objectReference: {fileID: 11400000, guid: f48af6fe8dc04e649a9f33af9bb5ee8b, type: 2}
     - target: {fileID: 4684614431714139777, guid: 39335430827c1eb41a45d49432387669, type: 3}
       propertyPath: m_Name
       value: Bear Man

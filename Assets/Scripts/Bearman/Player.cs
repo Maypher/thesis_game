@@ -16,6 +16,7 @@ namespace Player
         [SerializeField] private Substates.Data.D_Idle idleData;
         [SerializeField] private Substates.Data.D_Jump jumpData;
         [SerializeField] private Substates.Data.D_AirMove airMoveData;
+        [SerializeField] private Substates.Data.D_Dash DashData;
         #endregion
 
         #region States
@@ -23,6 +24,7 @@ namespace Player
         public Substates.Grounded.Idle IdleState { get; private set; }
         public Substates.Airborne.Jump JumpState { get; private set; }
         public Substates.Airborne.AirMove AirMoveState { get; private set; }
+        public Substates.Airborne.Dash DashState { get; private set; }
         #endregion
 
         #region components
@@ -44,6 +46,7 @@ namespace Player
             IdleState = new(this, StateMachine, idleData);
             JumpState = new(this, StateMachine, jumpData);
             AirMoveState = new(this, StateMachine, airMoveData);
+            DashState = new(this, StateMachine, DashData);
         }
 
         public override void Start()

@@ -9,6 +9,12 @@ namespace Player.Substates.Airborne {
         private readonly Data.D_AirMove stateData;
 
         private float inputDirection;
+        private bool wantToDash;
+
+        // Used for being able to jump out of a dash
+        public bool canDoubleJump;
+        private bool alreadyDoubleJumped;
+        private bool wantsToDoubleJump;
 
         public AirMove(Player entity, StateMachine<Player> stateMachine, Data.D_AirMove stateData) : base(entity, stateMachine)
         {
@@ -23,13 +29,18 @@ namespace Player.Substates.Airborne {
         public override void Exit()
         {
             base.Exit();
+
+            alreadyDoubleJumped = false;
+            canDoubleJump = false;
         }
 
         public override void Input()
         {
             base.Input();
 
+            wantToDash = player.UserInput.Player.Dash.WasPerformedThisFrame();
             inputDirection = player.UserInput.Player.Move.ReadValue<float>();
+            wantsToDoubleJump = player.UserInput.Player.Jump.WasPressedThisFrame();
         }
 
         public override void LogicUpdate()
@@ -57,6 +68,14 @@ namespace Player.Substates.Airborne {
         public override void CheckStateChange()
         {
             base.CheckStateChange();
+
+            if (wantToDash) stateMachine.ChangeState(player.DashState);
+            else if (wantsToDoubleJump && canDoubleJump && !alreadyDoubleJumped && Time.time <= startTime + stateData.doubleJumpGap)
+            {
+                alreadyDoubleJumped = true;
+                canDoubleJump = false;
+                stateMachine.ChangeState(player.JumpState);
+            }
         }
     }
 }
