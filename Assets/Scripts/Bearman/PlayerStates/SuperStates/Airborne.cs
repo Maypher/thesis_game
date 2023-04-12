@@ -7,6 +7,9 @@ namespace Player.Superstates
 {
     public abstract class Airborne : PlayerState
     {
+        private bool wantsToJump;
+        private float jumpBufferTimer;
+
         public Airborne(Player entity, StateMachine<Player> stateMachine) : base(entity, stateMachine)
         {
         }
@@ -15,6 +18,9 @@ namespace Player.Superstates
         public override void Enter()
         {
             base.Enter();
+
+            wantsToJump = false;
+            jumpBufferTimer = player.jumpBufferTime;
         }
 
         public override void Exit()
@@ -25,6 +31,8 @@ namespace Player.Superstates
         public override void Input()
         {
             base.Input();
+
+            if (!wantsToJump) wantsToJump = player.UserInput.Player.Jump.WasPerformedThisFrame();
         }
 
         public override void LogicUpdate()
@@ -32,6 +40,8 @@ namespace Player.Superstates
             base.LogicUpdate();
 
             player.TimeInAir += Time.deltaTime;
+
+            if (wantsToJump) jumpBufferTimer -= Time.deltaTime;
         }
 
         public override void PhysicsUpdate()
@@ -47,12 +57,15 @@ namespace Player.Superstates
             // A small time is given so the player can be airborne before checking
             if (player.GroundCheck.Check() && player.CanLand && player.TimeInAir > 0.2) 
             {
+                player.AirMoveState.alreadyDashed = false;
                 player.TimeInAir = 0;
+
                 player.SetAnimationParameter("isAirborne", false);
 
-                if (player.UserInput.Player.Move.ReadValue<float>() == 0)
+                if (wantsToJump && jumpBufferTimer > 0) stateMachine.ChangeState(player.JumpState);
+                else if (player.UserInput.Player.Move.ReadValue<float>() == 0)
                 {
-                    stateMachine.ChangeState(player.IdleState); 
+                    stateMachine.ChangeState(player.IdleState);
                 }
                 else stateMachine.ChangeState(player.WalkState);
             }

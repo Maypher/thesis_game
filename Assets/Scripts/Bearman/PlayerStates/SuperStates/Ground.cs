@@ -7,7 +7,8 @@ namespace Player.Superstates
 {
     public abstract class Ground : PlayerState
     {
-
+        private bool wantsToJump;
+        
         public Ground(Player entity, StateMachine<Player> stateMachine) : base(entity, stateMachine)
         {
         }
@@ -15,6 +16,8 @@ namespace Player.Superstates
         public override void Enter()
         {
             base.Enter();
+
+            wantsToJump = false;
         }
 
         public override void Exit()
@@ -35,10 +38,22 @@ namespace Player.Superstates
         {
             base.CheckStateChange();
 
-            if (player.UserInput.Player.Jump.WasPressedThisFrame() && player.CanJump) stateMachine.ChangeState(player.JumpState);
-            else if (!player.GroundCheck.Check()) stateMachine.ChangeState(player.AirMoveState);
+            if (wantsToJump && player.CanJump)
+            {
+                stateMachine.ChangeState(player.JumpState);
+            }
+            else if (!player.GroundCheck.Check())
+            {
+                player.AirMoveState.canCoyoteJump = true;
+                stateMachine.ChangeState(player.AirMoveState);
+            }
         }
 
-        private void Jump() => stateMachine.ChangeState(player.JumpState);
+        public override void Input()
+        {
+            base.Input();
+
+            wantsToJump = player.UserInput.Player.Jump.WasPerformedThisFrame();
+        }
     }
 }

@@ -19,6 +19,11 @@ namespace Player
         [SerializeField] private Substates.Data.D_Dash DashData;
         #endregion
 
+        #region Global variables
+        [Header("Player variables")]
+        public float jumpBufferTime = .4f;
+        #endregion
+
         #region States
         public Substates.Grounded.Walk WalkState { get; private set; }
         public Substates.Grounded.Idle IdleState { get; private set; }

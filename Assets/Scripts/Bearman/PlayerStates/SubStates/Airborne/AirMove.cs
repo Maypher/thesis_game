@@ -10,11 +10,14 @@ namespace Player.Substates.Airborne {
 
         private float inputDirection;
         private bool wantToDash;
+        public bool alreadyDashed;
 
         // Used for being able to jump out of a dash
         public bool canDoubleJump;
         private bool alreadyDoubleJumped;
-        private bool wantsToDoubleJump;
+        private bool wantsToJumpMidAir;
+
+        public bool canCoyoteJump;
 
         public AirMove(Player entity, StateMachine<Player> stateMachine, Data.D_AirMove stateData) : base(entity, stateMachine)
         {
@@ -33,6 +36,7 @@ namespace Player.Substates.Airborne {
 
             alreadyDoubleJumped = false;
             canDoubleJump = false;
+            canCoyoteJump = false;
 
             player.SetAnimationParameter("isAirborne", false);
         }
@@ -43,7 +47,7 @@ namespace Player.Substates.Airborne {
 
             wantToDash = player.UserInput.Player.Dash.WasPerformedThisFrame();
             inputDirection = player.UserInput.Player.Move.ReadValue<float>();
-            wantsToDoubleJump = player.UserInput.Player.Jump.WasPressedThisFrame();
+            wantsToJumpMidAir = player.UserInput.Player.Jump.WasPressedThisFrame();
         }
 
         public override void LogicUpdate()
@@ -72,13 +76,18 @@ namespace Player.Substates.Airborne {
         {
             base.CheckStateChange();
 
-            if (wantToDash) stateMachine.ChangeState(player.DashState);
-            else if (wantsToDoubleJump && canDoubleJump && !alreadyDoubleJumped && Time.time <= startTime + stateData.doubleJumpGap)
+            if (wantToDash && !alreadyDashed) 
+            {
+                alreadyDashed = true;
+                stateMachine.ChangeState(player.DashState); 
+            }
+            else if (wantsToJumpMidAir && canDoubleJump && !alreadyDoubleJumped && Time.time <= startTime + stateData.doubleJumpGap)
             {
                 alreadyDoubleJumped = true;
                 canDoubleJump = false;
                 stateMachine.ChangeState(player.JumpState);
             }
+            else if (wantsToJumpMidAir && canCoyoteJump && Time.time <= startTime + stateData.coyoteTime) stateMachine.ChangeState(player.JumpState);
         }
     }
 }
