@@ -1287,6 +1287,10 @@ PrefabInstance:
       propertyPath: jumpBufferTime
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 1934092541, guid: 39335430827c1eb41a45d49432387669, type: 3}
+      propertyPath: groundpoundData
+      value: 
+      objectReference: {fileID: 11400000, guid: 80c6f385220b67746a4428ebcf38390a, type: 2}
     - target: {fileID: 2019705933, guid: 39335430827c1eb41a45d49432387669, type: 3}
       propertyPath: m_Material
       value: 

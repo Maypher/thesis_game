@@ -9,6 +9,8 @@ namespace Player.Substates.Airborne {
         private readonly Data.D_AirMove stateData;
 
         private float inputDirection;
+        private bool airAttack;
+
         private bool wantToDash;
         public bool alreadyDashed;
 
@@ -28,6 +30,8 @@ namespace Player.Substates.Airborne {
         {
             base.Enter();
             player.SetAnimationParameter("isAirborne", true);
+
+            airAttack = false;
         }
 
         public override void Exit()
@@ -48,6 +52,8 @@ namespace Player.Substates.Airborne {
             wantToDash = player.UserInput.Player.Dash.WasPerformedThisFrame();
             inputDirection = player.UserInput.Player.Move.ReadValue<float>();
             wantsToJumpMidAir = player.UserInput.Player.Jump.WasPressedThisFrame();
+
+            airAttack = player.UserInput.Player.ShockwaveAttack.triggered;
         }
 
         public override void LogicUpdate()
@@ -76,10 +82,10 @@ namespace Player.Substates.Airborne {
         {
             base.CheckStateChange();
 
-            if (wantToDash && !alreadyDashed) 
+            if (wantToDash && !alreadyDashed)
             {
                 alreadyDashed = true;
-                stateMachine.ChangeState(player.DashState); 
+                stateMachine.ChangeState(player.DashState);
             }
             else if (wantsToJumpMidAir && canDoubleJump && !alreadyDoubleJumped && Time.time <= startTime + stateData.doubleJumpGap)
             {
@@ -88,6 +94,7 @@ namespace Player.Substates.Airborne {
                 stateMachine.ChangeState(player.JumpState);
             }
             else if (wantsToJumpMidAir && canCoyoteJump && Time.time <= startTime + stateData.coyoteTime) stateMachine.ChangeState(player.JumpState);
+            else if (airAttack) stateMachine.ChangeState(player.GroundpoundState);
         }
     }
 }

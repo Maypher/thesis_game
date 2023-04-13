@@ -186,39 +186,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Button With One Modifier",
-                    "id": "7fd01733-b2de-44ea-a860-b4e890858432",
-                    "path": "ButtonWithOneModifier",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ShockwaveAttack",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "Modifier",
-                    "id": "7d31390d-9600-4da8-9b03-adba0843bd68",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "ShockwaveAttack",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Button",
-                    "id": "a77ac274-7d24-41be-9854-2cecb5d8d839",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "ShockwaveAttack",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "One Modifier",
                     "id": "884771e3-8e6e-4fa5-a7d1-37e406a419b7",
                     "path": "OneModifier",
@@ -270,6 +237,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2f1fdb51-f7d8-4e92-9524-695151526575",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "ShockwaveAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

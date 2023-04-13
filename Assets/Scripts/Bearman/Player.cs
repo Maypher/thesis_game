@@ -17,6 +17,7 @@ namespace Player
         [SerializeField] private Substates.Data.D_Jump jumpData;
         [SerializeField] private Substates.Data.D_AirMove airMoveData;
         [SerializeField] private Substates.Data.D_Dash DashData;
+        [SerializeField] private Substates.Data.D_GroundPound groundpoundData;
         #endregion
 
         #region Global variables
@@ -30,6 +31,7 @@ namespace Player
         public Substates.Airborne.Jump JumpState { get; private set; }
         public Substates.Airborne.AirMove AirMoveState { get; private set; }
         public Substates.Airborne.Dash DashState { get; private set; }
+        public Substates.Airborne.GroundPound GroundpoundState { get; private set; }
         #endregion
 
         #region components
@@ -52,6 +54,7 @@ namespace Player
             JumpState = new(this, StateMachine, jumpData);
             AirMoveState = new(this, StateMachine, airMoveData);
             DashState = new(this, StateMachine, DashData);
+            GroundpoundState = new(this, StateMachine, groundpoundData);
         }
 
         public override void Start()
