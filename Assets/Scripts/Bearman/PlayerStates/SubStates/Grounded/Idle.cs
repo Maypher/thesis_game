@@ -11,9 +11,6 @@ namespace Player.Substates.Grounded
 
         private bool isMoving;
 
-        // Some state transitions might want to stop the player, others might want to keep momentum when changing to this state
-        public bool fullyStopOnEnter = true;
-
         public Idle(Player entity, StateMachine<Player> stateMachine, Data.D_Idle stateData) : base(entity, stateMachine)
         {
             this.stateData = stateData;
@@ -22,7 +19,7 @@ namespace Player.Substates.Grounded
         public override void Enter()
         {
             base.Enter();
-            if (fullyStopOnEnter) entity.SetVelocityX(0);
+            entity.SetVelocityX(0);
 
             player.CanJump = true;
             isMoving = false;

@@ -106,11 +106,7 @@ namespace Player.Substates.Grounded
             base.CheckStateChange();
 
             // Change to idle if there's no input and the player has stopped moving
-            if (entity.Rb.velocity.x == 0 && inputDirection == 0) 
-            {
-                player.IdleState.fullyStopOnEnter = false;
-                stateMachine.ChangeState(player.IdleState); 
-            }
+            if (entity.Rb.velocity.x == 0 && inputDirection == 0) stateMachine.ChangeState(player.IdleState);
         }
     }
 }

@@ -74,7 +74,6 @@ namespace Player.Substates.Airborne
             yield return new WaitForSeconds(stateData.dashTime);
            
             player.Rb.gravityScale = ogGrav;
-
             dashing = false;
         }
     }
