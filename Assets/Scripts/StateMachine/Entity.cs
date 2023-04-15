@@ -13,6 +13,9 @@ namespace StateMachine
         // Instead of using new Vector2() every time it's needed we just set it here
         protected Vector2 velocityWorkspace;
 
+        public Action AnimationEvent;
+        public Action FinishAnimation;
+
         [Header("Check variables")]
         [SerializeField] private float wallCheckDistance;
         [SerializeField] private float ledgeCheckDistance;
@@ -136,6 +139,8 @@ namespace StateMachine
         }
 
 
+        public void CallAnimationEvent() => AnimationEvent?.Invoke();
+        public void CallFinishAnimation() => FinishAnimation?.Invoke();
 
         private void OnDrawGizmosSelected()
         {
