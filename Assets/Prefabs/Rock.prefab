@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5985811449973228558}
   - component: {fileID: 5985811449973228553}
   - component: {fileID: 9107763853071131255}
-  - component: {fileID: 8861687564523727749}
   - component: {fileID: 1232653480104475599}
   m_Layer: 0
   m_Name: Rock
@@ -96,7 +95,7 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5985811449973228552}
   m_BodyType: 0
-  m_Simulated: 0
+  m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 5
@@ -108,26 +107,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8861687564523727749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5985811449973228552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b40e4405861c764b8c599092cbf4094, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _states:
-  - {fileID: 11400000, guid: 518152d2be6e83f43b000e1d309505aa, type: 2}
-  - {fileID: 11400000, guid: a92e5fa2a8d0b714ca4dec61aa11e223, type: 2}
-  _activeState: {fileID: 0}
-  ThrowForce: {x: 0, y: 0}
-  Torque: -20
-  CanBeDamaged: 0
-  Thrown: 0
 --- !u!70 &1232653480104475599
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -138,7 +117,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.030620873, y: 0.056990504}

@@ -10,6 +10,7 @@ namespace Player.Substates.Grounded
         private readonly Data.D_Idle stateData;
 
         private bool isMoving;
+        private bool pickUpRock;
 
         public Idle(Player entity, StateMachine<Player> stateMachine, Data.D_Idle stateData) : base(entity, stateMachine)
         {
@@ -23,6 +24,7 @@ namespace Player.Substates.Grounded
 
             player.CanJump = true;
             isMoving = false;
+            pickUpRock = false;
         }
 
         public override void Input()
@@ -30,6 +32,7 @@ namespace Player.Substates.Grounded
             base.Input();
 
             isMoving = player.UserInput.Player.Move.ReadValue<float>() != 0;
+            pickUpRock = player.UserInput.Player.PickUpRock.triggered;
         }
 
         public override void Exit()
@@ -56,6 +59,7 @@ namespace Player.Substates.Grounded
             base.CheckStateChange();
 
             if (isMoving) stateMachine.ChangeState(player.WalkState);
+            else if (pickUpRock) stateMachine.ChangeState(player.PickUpRockState);
         }
     }
 }

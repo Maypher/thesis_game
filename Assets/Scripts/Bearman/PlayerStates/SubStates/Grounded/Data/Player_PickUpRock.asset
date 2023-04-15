@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d7dec5df0d98664b9148b1d7724b4e7, type: 3}
-  m_Name: Player_groundpound
+  m_Script: {fileID: 11500000, guid: a04a23a841b57db449bc60cc407ea722, type: 3}
+  m_Name: Player_PickUpRock
   m_EditorClassIdentifier: 
-  jumpForce: {x: 5, y: 3}
-  jumpTime: 0.1
-  fallForce: 10
-  airHangTime: 0.1
+  rockSpawnLocation: {fileID: 0}
+  rockPrefab: {fileID: 5985811449973228552, guid: d812a186d0838774cbae0149db296894, type: 3}

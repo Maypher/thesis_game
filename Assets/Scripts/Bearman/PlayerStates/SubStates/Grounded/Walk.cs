@@ -11,10 +11,12 @@ namespace Player.Substates.Grounded
         private Data.D_Walk stateData;
         
         private bool usingKeyboard;
-        private float inputDirection;
         private float walkTime;
         private bool decelerating;
         private float decelerationTime;
+
+        private float inputDirection;
+        private bool pickUpRock;
 
         public Walk(Player entity, StateMachine<Player> stateMachine, Data.D_Walk stateData) : base(entity, stateMachine)
         {
@@ -31,6 +33,7 @@ namespace Player.Substates.Grounded
             decelerating = false;
             decelerationTime = 0;
 
+            pickUpRock = false;
             player.CanJump = true;
             player.SetAnimationParameter("isMoving", true);
             player.UserInput.Player.Move.performed += Move_performed;
@@ -49,6 +52,8 @@ namespace Player.Substates.Grounded
         {
             base.Input();
             inputDirection = player.UserInput.Player.Move.ReadValue<float>();
+
+            pickUpRock = player.UserInput.Player.PickUpRock.triggered;
         }
 
         public override void LogicUpdate()
@@ -107,6 +112,7 @@ namespace Player.Substates.Grounded
 
             // Change to idle if there's no input and the player has stopped moving
             if (entity.Rb.velocity.x == 0 && inputDirection == 0) stateMachine.ChangeState(player.IdleState);
+            else if (pickUpRock) stateMachine.ChangeState(player.PickUpRockState);
         }
     }
 }

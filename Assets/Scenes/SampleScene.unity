@@ -1284,9 +1284,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: f48af6fe8dc04e649a9f33af9bb5ee8b, type: 2}
     - target: {fileID: 1934092541, guid: 39335430827c1eb41a45d49432387669, type: 3}
+      propertyPath: HoldRockData
+      value: 
+      objectReference: {fileID: 11400000, guid: 2c217cac3d42cbe46a12c4a85169a5f2, type: 2}
+    - target: {fileID: 1934092541, guid: 39335430827c1eb41a45d49432387669, type: 3}
+      propertyPath: ThrowRockData
+      value: 
+      objectReference: {fileID: 11400000, guid: 113313ef88ba50f4f87c412a14d42690, type: 2}
+    - target: {fileID: 1934092541, guid: 39335430827c1eb41a45d49432387669, type: 3}
       propertyPath: jumpBufferTime
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 1934092541, guid: 39335430827c1eb41a45d49432387669, type: 3}
+      propertyPath: pickUpRockData
+      value: 
+      objectReference: {fileID: 11400000, guid: b39f7eeeb12b45b4a9dd8dd6b8a090f2, type: 2}
     - target: {fileID: 1934092541, guid: 39335430827c1eb41a45d49432387669, type: 3}
       propertyPath: groundpoundData
       value: 
@@ -1295,6 +1307,14 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 60234ca8677ad514e990ad4bbdb44c71, type: 2}
+    - target: {fileID: 4684614430184394241, guid: 39335430827c1eb41a45d49432387669, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684614430184394241, guid: 39335430827c1eb41a45d49432387669, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.077
+      objectReference: {fileID: 0}
     - target: {fileID: 4684614431714139777, guid: 39335430827c1eb41a45d49432387669, type: 3}
       propertyPath: m_Name
       value: Bear Man

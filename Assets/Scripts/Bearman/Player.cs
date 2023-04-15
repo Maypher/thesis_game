@@ -11,13 +11,18 @@ namespace Player
         public UserInput UserInput { get; private set; }
 
         #region States data
-        [Header("PlayerData")]
+        [Header("Player Grounded Data")]
         [SerializeField] private Substates.Data.D_Walk walkData;
         [SerializeField] private Substates.Data.D_Idle idleData;
+        [SerializeField] private Substates.Data.D_PickUpRock pickUpRockData;
+        [SerializeField] private Substates.Data.D_HoldRock HoldRockData;
+        [SerializeField] private Substates.Data.D_ThrowRock ThrowRockData;
+        [SerializeField] private Substates.Data.D_GroundPound groundpoundData;
+
+        [Header("Player Airborne Data")]
         [SerializeField] private Substates.Data.D_Jump jumpData;
         [SerializeField] private Substates.Data.D_AirMove airMoveData;
         [SerializeField] private Substates.Data.D_Dash DashData;
-        [SerializeField] private Substates.Data.D_GroundPound groundpoundData;
         #endregion
 
         #region Global variables
@@ -28,6 +33,9 @@ namespace Player
         #region States
         public Substates.Grounded.Walk WalkState { get; private set; }
         public Substates.Grounded.Idle IdleState { get; private set; }
+        public Substates.Grounded.PickUpRock PickUpRockState { get; private set; }
+        public Substates.Grounded.HoldRock HoldRockState { get; private set; }
+        public Substates.Grounded.ThrowRock ThrowRockState { get; private set; }
         public Substates.Airborne.Jump JumpState { get; private set; }
         public Substates.Airborne.AirMove AirMoveState { get; private set; }
         public Substates.Airborne.Dash DashState { get; private set; }
@@ -43,6 +51,7 @@ namespace Player
         [HideInInspector] public bool CanJump = true;
         [HideInInspector] public bool CanLand = true;
         [HideInInspector] public float TimeInAir = 0f;
+        [HideInInspector] public GameObject Rock;
         #endregion
 
         public override void Awake()
@@ -51,10 +60,14 @@ namespace Player
 
             WalkState = new(this, StateMachine, walkData);
             IdleState = new(this, StateMachine, idleData);
+            PickUpRockState = new(this, StateMachine, pickUpRockData);
+            HoldRockState = new(this, StateMachine, HoldRockData);
+            GroundpoundState = new(this, StateMachine, groundpoundData);
+
             JumpState = new(this, StateMachine, jumpData);
             AirMoveState = new(this, StateMachine, airMoveData);
             DashState = new(this, StateMachine, DashData);
-            GroundpoundState = new(this, StateMachine, groundpoundData);
+            ThrowRockState = new(this, StateMachine, ThrowRockData);
         }
 
         public override void Start()

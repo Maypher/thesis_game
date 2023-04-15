@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d7dec5df0d98664b9148b1d7724b4e7, type: 3}
-  m_Name: Player_groundpound
+  m_Script: {fileID: 11500000, guid: 006a3812bc1ed594681a1beb23bedb60, type: 3}
+  m_Name: Player_HoldRock
   m_EditorClassIdentifier: 
-  jumpForce: {x: 5, y: 3}
-  jumpTime: 0.1
-  fallForce: 10
-  airHangTime: 0.1
+  moveSpeed: 2
+  moveInterval: 1
