@@ -25,6 +25,7 @@ namespace Player.Substates.Grounded
         {
             base.Enter();
 
+            player.CanJump = false;
             player.SetVelocityX(0);
 
             animationFinished = false;

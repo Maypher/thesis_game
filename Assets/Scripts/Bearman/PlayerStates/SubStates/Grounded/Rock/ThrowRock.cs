@@ -31,6 +31,7 @@ namespace Player.Substates.Grounded
         {
             base.Exit();
             player.SetAnimationParameter("holdingRock", false);
+            player.CanJump = true;
         }
 
         public override void CheckStateChange()
