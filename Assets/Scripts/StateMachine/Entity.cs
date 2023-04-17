@@ -69,10 +69,12 @@ namespace StateMachine
             Rb.velocity = velocityWorkspace;
         }
 
-        public virtual void SetVelocity(float velocity, Vector2 angle, int direction)
+        public virtual void SetVelocity(float velocity, Vector2 angle, float direction)
         {
             angle.Normalize();
             velocityWorkspace.Set(angle.x * velocity * direction, angle.y * velocity);
+
+            Debug.Log(velocityWorkspace);
 
             Rb.velocity = velocityWorkspace;
         }

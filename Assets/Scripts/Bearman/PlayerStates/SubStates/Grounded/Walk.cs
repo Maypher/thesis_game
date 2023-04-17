@@ -17,6 +17,7 @@ namespace Player.Substates.Grounded
 
         private float inputDirection;
         private bool pickUpRock;
+        private bool aimRaccoon;
 
         public Walk(Player entity, StateMachine<Player> stateMachine, Data.D_Walk stateData) : base(entity, stateMachine)
         {
@@ -54,6 +55,7 @@ namespace Player.Substates.Grounded
             inputDirection = player.UserInput.Player.Move.ReadValue<float>();
 
             pickUpRock = player.UserInput.Player.PickUpRock.triggered;
+            aimRaccoon = player.UserInput.Player.RaccoonAim.triggered;
         }
 
         public override void LogicUpdate()
@@ -113,6 +115,7 @@ namespace Player.Substates.Grounded
             // Change to idle if there's no input and the player has stopped moving
             if (entity.Rb.velocity.x == 0 && inputDirection == 0) stateMachine.ChangeState(player.IdleState);
             else if (pickUpRock) stateMachine.ChangeState(player.PickUpRockState);
+            else if (aimRaccoon) stateMachine.ChangeState(player.GrabRacoonState);
         }
     }
 }

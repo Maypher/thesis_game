@@ -1,0 +1,502 @@
+fileFormatVersion: 2
+guid: b406c22a384b38f4fa91781d8bb048d8
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 140
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: RaccoonAim_0
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 1426
+        width: 367
+        height: 394
+      alignment: 9
+      pivot: {x: 0.61, y: 0.48}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c7f8e3ca6590104a9a1cd575ab13731
+      internalID: -763908153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaccoonAim_1
+      rect:
+        serializedVersion: 2
+        x: 1308
+        y: 1922
+        width: 116
+        height: 116
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 049f82594d8fcec4a9ef257f5c97e652
+      internalID: 280126531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaccoonAim_2
+      rect:
+        serializedVersion: 2
+        x: 1489
+        y: 1922
+        width: 113
+        height: 138
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d752f8018a91b4249a4e99c8f158e6c4
+      internalID: 1318036123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaccoonAim_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1418
+        width: 283
+        height: 395
+      alignment: 9
+      pivot: {x: 0.5, y: 0.48}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed3334ec1f5ebf24d888a6ef66088888
+      internalID: 2103770600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaccoonAim_6
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 1426
+        width: 357
+        height: 401
+      alignment: 9
+      pivot: {x: 0.595, y: 0.47}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdbd838c4f61ecb469666a521fadb1ee
+      internalID: 584963156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaccoonAim_7
+      rect:
+        serializedVersion: 2
+        x: 1139
+        y: 1426
+        width: 355
+        height: 431
+      alignment: 9
+      pivot: {x: 0.6, y: 0.44}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e691378fb4854747a5a32f4035d7d43
+      internalID: -1712019641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaccoonAim_8
+      rect:
+        serializedVersion: 2
+        x: 1580
+        y: 1753
+        width: 138
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37f20d5188cb9c84f9b3902a11847dc4
+      internalID: 1993903821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaccoonAim_9
+      rect:
+        serializedVersion: 2
+        x: 1744
+        y: 1760
+        width: 155
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29b5bdcc28c8b3741a00b561f58487cf
+      internalID: -2067907958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaccoonAim_11
+      rect:
+        serializedVersion: 2
+        x: 1905
+        y: 1756
+        width: 155
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3b172183e333fe4b99b159cebe63e13
+      internalID: 2121803435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaccoonAim_12
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 931
+        width: 274
+        height: 433
+      alignment: 9
+      pivot: {x: 0.48, y: 0.44}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73b2306591a32f94490ea58a9665da47
+      internalID: 233533903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaccoonAim_14
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 897
+        width: 366
+        height: 434
+      alignment: 9
+      pivot: {x: 0.61, y: 0.44}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 661bc0ccb492c1f4fb7b98e4eee35cfe
+      internalID: 144192872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaccoonAim_15
+      rect:
+        serializedVersion: 2
+        x: 822
+        y: 924
+        width: 567
+        height: 399
+      alignment: 9
+      pivot: {x: 0.5, y: 0.48}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdbb05e23d4e66542bccaae3c825603a
+      internalID: 2102895809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaccoonAim_17
+      rect:
+        serializedVersion: 2
+        x: 1414
+        y: 947
+        width: 577
+        height: 363
+      alignment: 9
+      pivot: {x: 0.46630013, y: 0.52}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 497cc7474d05aaa44b7cccc5dbacbaad
+      internalID: 164235241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaccoonAim_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 443
+        width: 606
+        height: 387
+      alignment: 9
+      pivot: {x: 0.49751735, y: 0.49}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63bae1373aa6c884fbb12322364415e7
+      internalID: 1512983533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaccoonAim_19
+      rect:
+        serializedVersion: 2
+        x: 758
+        y: 446
+        width: 554
+        height: 373
+      alignment: 9
+      pivot: {x: 0.26584148, y: 0.5099376}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c93c3386c06134c48b70b6482835a809
+      internalID: -1273168006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaccoonAim_20
+      rect:
+        serializedVersion: 2
+        x: 1502
+        y: 433
+        width: 558
+        height: 374
+      alignment: 9
+      pivot: {x: 0.26751992, y: 0.51486534}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9b32a41499313c4f9a6f4273545fe1e
+      internalID: -887836083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaccoonAim_21
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 0
+        width: 384
+        height: 386
+      alignment: 9
+      pivot: {x: 0.45942673, y: 0.5033613}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea1165f1e4e44bf44adb82b49d120f7e
+      internalID: 1611162805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      RaccoonAim_6: 584963156
+      RaccoonAim_15: 2102895809
+      RaccoonAim_19: -1273168006
+      RaccoonAim_17: 164235241
+      RaccoonAim_18: 1512983533
+      RaccoonAim_13: 1231995321
+      RaccoonAim_5: 2103770600
+      RaccoonAim_3: 101887036
+      RaccoonAim_14: 144192872
+      RaccoonAim_12: 233533903
+      RaccoonAim_21: 1611162805
+      RaccoonAim_8: 1993903821
+      RaccoonAim_7: -1712019641
+      RaccoonAim_1: 280126531
+      RaccoonAim_11: 2121803435
+      RaccoonAim_20: -887836083
+      RaccoonAim_16: -61171507
+      RaccoonAim_9: -2067907958
+      RaccoonAim_10: 786814023
+      RaccoonAim_0: -763908153
+      RaccoonAim_4: 1554355300
+      RaccoonAim_2: 1318036123
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

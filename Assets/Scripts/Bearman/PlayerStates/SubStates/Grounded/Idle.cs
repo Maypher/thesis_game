@@ -11,6 +11,7 @@ namespace Player.Substates.Grounded
 
         private bool isMoving;
         private bool pickUpRock;
+        private bool aimRaccoon;
 
         public Idle(Player entity, StateMachine<Player> stateMachine, Data.D_Idle stateData) : base(entity, stateMachine)
         {
@@ -33,6 +34,7 @@ namespace Player.Substates.Grounded
 
             isMoving = player.UserInput.Player.Move.ReadValue<float>() != 0;
             pickUpRock = player.UserInput.Player.PickUpRock.triggered;
+            aimRaccoon = player.UserInput.Player.RaccoonAim.triggered;
         }
 
         public override void Exit()
@@ -60,6 +62,7 @@ namespace Player.Substates.Grounded
 
             if (isMoving) stateMachine.ChangeState(player.WalkState);
             else if (pickUpRock) stateMachine.ChangeState(player.PickUpRockState);
+            else if (aimRaccoon) stateMachine.ChangeState(player.GrabRacoonState);
         }
     }
 }

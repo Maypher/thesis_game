@@ -18,6 +18,8 @@ namespace Player
         [SerializeField] private Substates.Data.D_HoldRock HoldRockData;
         [SerializeField] private Substates.Data.D_ThrowRock ThrowRockData;
         [SerializeField] private Substates.Data.D_GroundPound groundpoundData;
+        [SerializeField] private Substates.Data.D_AimRaccoon aimRacoonData;
+        [SerializeField] private Substates.Data.D_ThrowRaccoon throwRacoonData;
 
         [Header("Player Airborne Data")]
         [SerializeField] private Substates.Data.D_Jump jumpData;
@@ -36,6 +38,9 @@ namespace Player
         public Substates.Grounded.PickUpRock PickUpRockState { get; private set; }
         public Substates.Grounded.HoldRock HoldRockState { get; private set; }
         public Substates.Grounded.ThrowRock ThrowRockState { get; private set; }
+        public Substates.Grounded.GrabRaccoon GrabRacoonState { get; private set; }
+        public Substates.Grounded.AimRaccoon AimRaccoonState { get; private set; }
+        public Substates.Grounded.ThrowRaccoon ThrowRaccoonState { get; private set; }
         public Substates.Airborne.Jump JumpState { get; private set; }
         public Substates.Airborne.AirMove AirMoveState { get; private set; }
         public Substates.Airborne.Dash DashState { get; private set; }
@@ -51,7 +56,11 @@ namespace Player
         [HideInInspector] public bool CanJump = true;
         [HideInInspector] public bool CanLand = true;
         [HideInInspector] public float TimeInAir = 0f;
+        #endregion
+
+        #region external references
         [HideInInspector] public GameObject Rock;
+        [HideInInspector] public Raccoon.Raccoon Raccoon;
         #endregion
 
         public override void Awake()
@@ -62,12 +71,15 @@ namespace Player
             IdleState = new(this, StateMachine, idleData);
             PickUpRockState = new(this, StateMachine, pickUpRockData);
             HoldRockState = new(this, StateMachine, HoldRockData);
-            GroundpoundState = new(this, StateMachine, groundpoundData);
+            ThrowRockState = new(this, StateMachine, ThrowRockData);
+            GrabRacoonState = new(this, StateMachine);
+            AimRaccoonState = new(this, StateMachine, aimRacoonData);
+            ThrowRaccoonState = new(this, StateMachine, throwRacoonData);
 
             JumpState = new(this, StateMachine, jumpData);
             AirMoveState = new(this, StateMachine, airMoveData);
             DashState = new(this, StateMachine, DashData);
-            ThrowRockState = new(this, StateMachine, ThrowRockData);
+            GroundpoundState = new(this, StateMachine, groundpoundData);
         }
 
         public override void Start()
