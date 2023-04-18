@@ -15,20 +15,11 @@ namespace StateMachine
 
         public Action AnimationEvent;
         public Action FinishAnimation;
-
-        [Header("Check variables")]
-        [SerializeField] private float wallCheckDistance;
-        [SerializeField] private float ledgeCheckDistance;
-        [SerializeField] private LayerMask whatIsGround;
         #endregion
 
         #region Components
         public Rigidbody2D Rb { get; private set; }
         public Animator Anim { get; private set; }
-
-        [Header("Check transforms")]
-        [SerializeField] private Transform wallCheck;
-        [SerializeField] private Transform ledgeCheck;
         #endregion
 
         public virtual void Awake()
@@ -77,16 +68,6 @@ namespace StateMachine
             Debug.Log(velocityWorkspace);
 
             Rb.velocity = velocityWorkspace;
-        }
-
-        public virtual bool CheckWall()
-        {
-            return Physics2D.Raycast(wallCheck.position, transform.right, wallCheckDistance, whatIsGround);
-        }
-
-        public virtual bool CheckLedge()
-        {
-            return Physics2D.Raycast(ledgeCheck.position, Vector2.down, ledgeCheckDistance, whatIsGround);
         }
 
         public virtual void Flip()
