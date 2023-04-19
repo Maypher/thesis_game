@@ -13,7 +13,7 @@ namespace Player.Substates.Grounded
         private bool pickUpRock;
         private bool aimRaccoon;
         private bool callBackRaccoon;
-
+        private bool dash;
         public Idle(Player entity, StateMachine<Player> stateMachine, Data.D_Idle stateData) : base(entity, stateMachine)
         {
             this.stateData = stateData;
@@ -38,6 +38,7 @@ namespace Player.Substates.Grounded
             pickUpRock = player.UserInput.Player.PickUpRock.triggered;
             aimRaccoon = player.UserInput.Player.RaccoonAim.triggered;
             callBackRaccoon = player.UserInput.Player.CallBackRaccoon.triggered;
+            dash = player.UserInput.Player.Dash.triggered;
         }
 
         public override void Exit()
@@ -67,6 +68,7 @@ namespace Player.Substates.Grounded
             else if (pickUpRock) stateMachine.ChangeState(player.PickUpRockState);
             else if (aimRaccoon) stateMachine.ChangeState(player.GrabRacoonState);
             else if (callBackRaccoon) stateMachine.ChangeState(player.CallBackRaccoonState);
+            else if (dash) stateMachine.ChangeState(player.DashState);
         }
     }
 }

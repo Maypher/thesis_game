@@ -28,6 +28,7 @@ namespace Player.Substates.Airborne
             else 
             {
                 lastActive = Time.time;
+                player.SetAnimationParameter("dashing", true);
                 player.StartCoroutine(DoDash()); 
             }
         }
@@ -38,6 +39,7 @@ namespace Player.Substates.Airborne
 
             player.CanLand = true;
             player.AirMoveState.canDoubleJump = true;
+            player.SetAnimationParameter("dashing", false);
         }
 
         public override void Input()

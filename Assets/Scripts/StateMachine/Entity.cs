@@ -65,8 +65,6 @@ namespace StateMachine
             angle.Normalize();
             velocityWorkspace.Set(angle.x * velocity * direction, angle.y * velocity);
 
-            Debug.Log(velocityWorkspace);
-
             Rb.velocity = velocityWorkspace;
         }
 
