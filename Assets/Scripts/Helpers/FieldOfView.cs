@@ -14,23 +14,23 @@ public class FieldOfView : MonoBehaviour
 
     [HideInInspector] public Vector2 Scale = new(1, 1);
 
-    [SerializeField] private GameObject _target;
+    public GameObject Target;
 
     public bool Check()
     {
         // Check if the target is within the set radius
-        if (Vector2.Distance(transform.position, _target.transform.position) < _viewRadius)
+        if (Vector2.Distance(transform.position, Target.transform.position) < _viewRadius)
         {
             float radToCheck = (_angleOffset + transform.parent.transform.eulerAngles.y) * Mathf.Deg2Rad;
 
-            Vector2 directionToTarget = (_target.transform.position - transform.position).normalized;
+            Vector2 directionToTarget = (Target.transform.position - transform.position).normalized;
             Vector2 viewDirection = new(Mathf.Cos(radToCheck) * Scale.x, Mathf.Sin(radToCheck) * Scale.y);
 
             float angleToTarget = Vector2.Angle(directionToTarget, viewDirection);
 
             if (angleToTarget < _viewAngle / 2f)
             {
-                float distanceToPlayer = Vector2.Distance(transform.position, _target.transform.position);
+                float distanceToPlayer = Vector2.Distance(transform.position, Target.transform.position);
                 // Return true if there are no obstructions between the object and the target
                 return !Physics2D.Raycast(transform.position, directionToTarget, distanceToPlayer, _obstacleMask);
             }
@@ -54,7 +54,7 @@ public class FieldOfView : MonoBehaviour
         if (Check())
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawLine(transform.position, _target.transform.position);
+            Gizmos.DrawLine(transform.position, Target.transform.position);
         }
     }
 }
