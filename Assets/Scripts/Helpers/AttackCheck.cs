@@ -23,7 +23,7 @@ public class AttackCheck : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == _whatIsEnemy) enemyEnteredAttackArea?.Invoke();
+        if ((_whatIsEnemy.value & (1 << collision.gameObject.layer)) > 0) enemyEnteredAttackArea?.Invoke();
     }
 
     private void OnDrawGizmosSelected()
