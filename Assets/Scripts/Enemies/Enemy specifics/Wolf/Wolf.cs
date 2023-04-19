@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Enemies.Wolf
 {
-    public class Wolf : StateMachine.Entity
+    public class Wolf : EnemyEntity
     {
         public StateMachine.StateMachine<Wolf> StateMachine { get; private set; } = new StateMachine.StateMachine<Wolf>();
 

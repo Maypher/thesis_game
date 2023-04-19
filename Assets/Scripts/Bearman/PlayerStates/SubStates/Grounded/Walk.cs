@@ -18,6 +18,7 @@ namespace Player.Substates.Grounded
         private float inputDirection;
         private bool pickUpRock;
         private bool aimRaccoon;
+        private bool callBackRaccoon;
 
         public Walk(Player entity, StateMachine<Player> stateMachine, Data.D_Walk stateData) : base(entity, stateMachine)
         {
@@ -33,6 +34,7 @@ namespace Player.Substates.Grounded
 
             decelerating = false;
             decelerationTime = 0;
+            callBackRaccoon = false;
 
             pickUpRock = false;
             player.CanJump = true;
@@ -56,6 +58,7 @@ namespace Player.Substates.Grounded
 
             pickUpRock = player.UserInput.Player.PickUpRock.triggered;
             aimRaccoon = player.UserInput.Player.RaccoonAim.triggered;
+            callBackRaccoon = player.UserInput.Player.CallBackRaccoon.triggered;
         }
 
         public override void LogicUpdate()
@@ -116,6 +119,7 @@ namespace Player.Substates.Grounded
             if (entity.Rb.velocity.x == 0 && inputDirection == 0) stateMachine.ChangeState(player.IdleState);
             else if (pickUpRock) stateMachine.ChangeState(player.PickUpRockState);
             else if (aimRaccoon) stateMachine.ChangeState(player.GrabRacoonState);
+            else if (callBackRaccoon) stateMachine.ChangeState(player.CallBackRaccoonState);
         }
     }
 }

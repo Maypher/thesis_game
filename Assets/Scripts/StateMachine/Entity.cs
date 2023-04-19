@@ -125,14 +125,6 @@ namespace StateMachine
         public void CallAnimationEvent() => AnimationEvent?.Invoke();
         public void CallFinishAnimation() => FinishAnimation?.Invoke();
 
-        private void OnDrawGizmosSelected()
-        {
-            Gizmos.color = Color.black;
-
-            Gizmos.DrawLine(wallCheck.position, wallCheck.position + wallCheckDistance * FacingDirection * Vector3.right);
-            Gizmos.DrawLine(ledgeCheck.position, ledgeCheck.position + ledgeCheckDistance * Vector3.down);
-        }
-
         public virtual void DamageHop(float velocity) => SetVelocityY(velocity);
 
         /*public virtual void TakeDamage(AttackDetails attackDetails)

@@ -11,7 +11,7 @@ namespace Player.Substates.Grounded
 
         private bool finishedAnimation;
 
-        private Transform launchPos;
+        private readonly Transform launchPos;
 
         public ThrowRaccoon(Player entity, StateMachine<Player> stateMachine, Data.D_ThrowRaccoon stateData) : base(entity, stateMachine)
         {
@@ -35,6 +35,9 @@ namespace Player.Substates.Grounded
         public override void Exit()
         {
             base.Exit();
+
+            player.AnimationEvent -= SpawnRaccoon;
+            player.FinishAnimation -= FinishAnimation;
         }
 
         public override void Input()
@@ -60,10 +63,6 @@ namespace Player.Substates.Grounded
 
         private void FinishAnimation() => finishedAnimation = true;
 
-        private void SpawnRaccoon() 
-        {
-            player.Raccoon = (Raccoon.Raccoon) GameObject.Instantiate(stateData.raccoon, launchPos.position, launchPos.rotation);
-
-        }
+        private void SpawnRaccoon() => player.Raccoon = (Raccoon.Raccoon)GameObject.Instantiate(stateData.raccoon, launchPos.position, player.transform.rotation);
     }
 }

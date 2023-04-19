@@ -69,6 +69,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "CallBackRaccoon",
+                    "type": "Button",
+                    "id": "72379db1-3d74-4656-a3a5-148357c7b329",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "ShockwaveAttack",
                     "type": "Button",
                     "id": "b966513d-632f-4939-8761-153481ff134d",
@@ -248,6 +257,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "ShockwaveAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d1f8a5cb-eb75-4f26-b7e3-912e282c55ef",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "CallBackRaccoon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

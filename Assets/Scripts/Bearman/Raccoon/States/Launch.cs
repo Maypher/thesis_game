@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Player.Raccoon.States
 {
-    public class Launch : RaccoonState
+    public class Launch : RaccoonState, IAttack
     {
         private Data.D_Launch stateData;
 
@@ -20,6 +20,8 @@ namespace Player.Raccoon.States
         {
             base.Enter();
 
+            raccoon.AttackCheck.enemyEnteredAttackArea += Attack;
+
             ogGrav = raccoon.Rb.gravityScale;
             raccoon.Rb.gravityScale = 0;
 
@@ -30,6 +32,7 @@ namespace Player.Raccoon.States
         {
             base.Exit();
 
+            raccoon.AttackCheck.enemyEnteredAttackArea -= Attack;
             raccoon.Rb.gravityScale = ogGrav;
         }
 
@@ -46,6 +49,16 @@ namespace Player.Raccoon.States
         public override void CheckStateChange()
         {
             base.CheckStateChange();
+        }
+
+        public void Attack()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void FinishAttack()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

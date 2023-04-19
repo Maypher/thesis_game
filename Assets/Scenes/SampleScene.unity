@@ -1302,13 +1302,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb43333cb82bca445bac1f4c403ac4cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallCheckDistance: 1
-  ledgeCheckDistance: 0.5
+  wallCheckDistance: 0.54
+  ledgeCheckDistance: 0.59
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
   wallCheck: {fileID: 721289164}
   ledgeCheck: {fileID: 30073916}
+  attackCheck: {fileID: 1210725225}
   moveData: {fileID: 11400000, guid: ce9cd3a80c6dde440ace06c9459372a6, type: 2}
   IdleData: {fileID: 11400000, guid: c2de0545d11842340b8bf302877034c2, type: 2}
 --- !u!1 &1934092534 stripped

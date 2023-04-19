@@ -12,6 +12,7 @@ namespace Player.Substates.Grounded
         private bool isMoving;
         private bool pickUpRock;
         private bool aimRaccoon;
+        private bool callBackRaccoon;
 
         public Idle(Player entity, StateMachine<Player> stateMachine, Data.D_Idle stateData) : base(entity, stateMachine)
         {
@@ -26,6 +27,7 @@ namespace Player.Substates.Grounded
             player.CanJump = true;
             isMoving = false;
             pickUpRock = false;
+            callBackRaccoon = false;
         }
 
         public override void Input()
@@ -35,6 +37,7 @@ namespace Player.Substates.Grounded
             isMoving = player.UserInput.Player.Move.ReadValue<float>() != 0;
             pickUpRock = player.UserInput.Player.PickUpRock.triggered;
             aimRaccoon = player.UserInput.Player.RaccoonAim.triggered;
+            callBackRaccoon = player.UserInput.Player.CallBackRaccoon.triggered;
         }
 
         public override void Exit()
@@ -63,6 +66,7 @@ namespace Player.Substates.Grounded
             if (isMoving) stateMachine.ChangeState(player.WalkState);
             else if (pickUpRock) stateMachine.ChangeState(player.PickUpRockState);
             else if (aimRaccoon) stateMachine.ChangeState(player.GrabRacoonState);
+            else if (callBackRaccoon) stateMachine.ChangeState(player.CallBackRaccoonState);
         }
     }
 }
