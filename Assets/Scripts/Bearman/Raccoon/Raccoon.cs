@@ -48,7 +48,6 @@ namespace Player.Raccoon
             base.Start();
 
             PlayerCheck = transform.Find("PlayerCheck").GetComponent<AttackCheck>();
-            FOV.Target = GameManager.Player.gameObject;
 
             StateMachine.Initialize(LaunchState);
         }
