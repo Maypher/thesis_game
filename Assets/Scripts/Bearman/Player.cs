@@ -49,7 +49,6 @@ namespace Player
         #endregion
 
         #region components
-        public GroundCheck GroundCheck { get; private set; }
         public AttackCheck AttackCheck { get; private set; }
         #endregion
 
@@ -88,8 +87,6 @@ namespace Player
         {
             base.Start();
 
-
-            GroundCheck = GetComponentInChildren<GroundCheck>();
             AttackCheck = GetComponentInChildren<AttackCheck>();
 
             UserInput = new();

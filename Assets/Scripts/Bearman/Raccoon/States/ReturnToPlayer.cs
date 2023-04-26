@@ -35,7 +35,7 @@ namespace Player.Raccoon.States
         {
             base.LogicUpdate();
 
-            directionToPlayer = GetDirectionToPlayer();
+            directionToPlayer = raccoon.DirectionToTarget(GameManager.Player.gameObject);
 
             if (directionToPlayer != raccoon.FacingDirection) raccoon.Flip();
 

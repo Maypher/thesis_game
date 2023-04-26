@@ -1,3 +1,4 @@
+using Player.Raccoon;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,38 +7,29 @@ namespace Enemies
 {
     public abstract class EnemyEntity : StateMachine.Entity
     {
+        [field: SerializeField] [field: Header("Check transforms")] public Transform WallCheck { get; private set; }
+        [field: SerializeField] public Transform LedgeCheck { get; private set; }
+
         [Header("Check variables")]
-        [SerializeField] private float wallCheckDistance;
-        [SerializeField] private float ledgeCheckDistance;
         [SerializeField] private LayerMask whatIsGround;
+        [field: SerializeField] public float WallCheckDistance { get; private set; }
+        [field: SerializeField] public float LedgeCheckDistance { get; private set; }
 
-        [Header("Check transforms")]
-        [SerializeField] private Transform wallCheck;
-        [SerializeField] private Transform ledgeCheck;
-
-        [Header("Components")]
-        [SerializeField] private AttackCheck attackCheck;
-        [SerializeField] private FieldOfView fov;
+        [field: SerializeField] [field: Header("Components", order = 1)] public AttackCheck AttackCheck { get; private set; }
+        [field: SerializeField] public FieldOfView FOV { get; private set; }
         
-        public AttackCheck AttackCheck { get { return attackCheck; } }
-        public FieldOfView FOV { get { return fov; } }
+        public virtual bool CheckWall() => Physics2D.Raycast(WallCheck.position, transform.right, WallCheckDistance, whatIsGround);
 
-        public virtual bool CheckWall()
-        {
-            return Physics2D.Raycast(wallCheck.position, transform.right, wallCheckDistance, whatIsGround);
-        }
+        public virtual bool CheckLedge() => Physics2D.Raycast(LedgeCheck.position, Vector2.down, LedgeCheckDistance, whatIsGround);
 
-        public virtual bool CheckLedge()
-        {
-            return Physics2D.Raycast(ledgeCheck.position, Vector2.down, ledgeCheckDistance, whatIsGround);
-        }
+        public int DirectionToTarget(GameObject target) => (int) Mathf.Sign((target.transform.localPosition - transform.position).x);
 
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.black;
 
-            Gizmos.DrawLine(wallCheck.position, wallCheck.position + wallCheckDistance * FacingDirection * Vector3.right);
-            Gizmos.DrawLine(ledgeCheck.position, ledgeCheck.position + ledgeCheckDistance * Vector3.down);
+            Gizmos.DrawLine(WallCheck.position, WallCheck.position + WallCheckDistance * FacingDirection * Vector3.right);
+            Gizmos.DrawLine(LedgeCheck.position, LedgeCheck.position + LedgeCheckDistance * Vector3.down);
         }
     }
 }
