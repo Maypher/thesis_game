@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Player 
 {
-    public class Player : StateMachine.Entity
+    public class Player : StateMachine.Entity, IDamageable
     {
 
         public StateMachine.StateMachine<Player> StateMachine { get; private set; } = new();
@@ -30,6 +31,8 @@ namespace Player
         #region Global variables
         [Header("Player variables")]
         public float jumpBufferTime = .4f;
+        [Min(0)] [SerializeField] private int maxHealth;
+        public int Health { get; private set; }
         #endregion
 
         #region States
@@ -46,6 +49,7 @@ namespace Player
         public Substates.Airborne.AirMove AirMoveState { get; private set; }
         public Substates.Airborne.Dash DashState { get; private set; }
         public Substates.Airborne.GroundPound GroundpoundState { get; private set; }
+        public Substates.Airborne.Damage DamageState { get; private set; }
         #endregion
 
         #region components
@@ -56,6 +60,8 @@ namespace Player
         [HideInInspector] public bool CanJump = true;
         [HideInInspector] public bool CanLand = true;
         [HideInInspector] public float TimeInAir = 0f;
+        [HideInInspector] public bool CanBeDamaged = true;
+        public Action PlayerDeath;
         #endregion
 
         #region external references
@@ -87,8 +93,10 @@ namespace Player
         {
             base.Start();
 
+            Health = maxHealth;
             AttackCheck = GetComponentInChildren<AttackCheck>();
 
+            
             UserInput = new();
             UserInput.Player.Enable();
 
@@ -107,6 +115,26 @@ namespace Player
         {
             base.FixedUpdate();
             StateMachine.CurrentState.PhysicsUpdate();
+        }
+
+        public void TakeDamage(AttackDetails attackDetails)
+        {
+            if (!CanBeDamaged) return;
+
+            Health -= attackDetails.damage;
+
+            SetVelocityX(attackDetails.knockbackForce.x);
+            SetVelocityY(attackDetails.knockbackForce.y);
+
+            StateMachine.ChangeState(DamageState);
+
+            if (Health <= 0) Kill();
+        }
+
+        public void Kill()
+        {
+            PlayerDeath?.Invoke();
+            Debug.Log("killed");
         }
     }
 }

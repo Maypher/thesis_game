@@ -4,8 +4,7 @@ interface IDamageable
     /// Function for entity to take damage
     /// </summary>
     /// <param name="attackDetails"></param>
-    /// <returns>A bool that indicates if this was a killing hit</returns>
-    public bool TakeDamage(AttackDetails attackDetails);
+    public void TakeDamage(AttackDetails attackDetails);
 
     /// <summary>
     /// Function ran to destroy the object

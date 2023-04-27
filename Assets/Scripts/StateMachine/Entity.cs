@@ -123,27 +123,5 @@ namespace StateMachine
 
         public void CallAnimationEvent() => AnimationEvent?.Invoke();
         public void CallFinishAnimation() => FinishAnimation?.Invoke();
-
-        public virtual void DamageHop(float velocity) => SetVelocityY(velocity);
-
-        /*public virtual void TakeDamage(AttackDetails attackDetails)
-        {
-            lastDamageTime = Time.time;
-            currentStunResistance -= attackDetails.stunDamageAmount;
-
-            isStunned = currentStunResistance <= 0;
-
-            currentHealth -= attackDetails.damage;
-
-            // Used for knocking back in the right direction when getting hit
-            lastDamageDirection = attackDetails.attackPostion.x > transform.position.x ? -1 : 1;
-
-            DamageHop(entityData.damageHopSpeed);
-        }
-
-        public virtual void Kill()
-        {
-            throw new NotImplementedException();
-        }*/
     }
 }

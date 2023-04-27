@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Enemies
 {
-    public abstract class EnemyEntity : StateMachine.Entity
+    public abstract class EnemyEntity : StateMachine.Entity, IAttack, IDamageable
     {
         [field: SerializeField] [field: Header("Check transforms")] public Transform WallCheck { get; private set; }
         [field: SerializeField] public Transform LedgeCheck { get; private set; }
@@ -17,7 +17,7 @@ namespace Enemies
 
         [field: SerializeField] [field: Header("Components", order = 1)] public AttackCheck AttackCheck { get; private set; }
         [field: SerializeField] public FieldOfView FOV { get; private set; }
-        
+
         public virtual bool CheckWall() => Physics2D.Raycast(WallCheck.position, transform.right, WallCheckDistance, whatIsGround);
 
         public virtual bool CheckLedge() => Physics2D.Raycast(LedgeCheck.position, Vector2.down, LedgeCheckDistance, whatIsGround);
@@ -30,6 +30,26 @@ namespace Enemies
 
             Gizmos.DrawLine(WallCheck.position, WallCheck.position + WallCheckDistance * FacingDirection * Vector3.right);
             Gizmos.DrawLine(LedgeCheck.position, LedgeCheck.position + LedgeCheckDistance * Vector3.down);
+        }
+
+        public virtual void Attack()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public virtual void FinishAttack()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public virtual void TakeDamage(AttackDetails attackDetails)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public virtual void Kill()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
