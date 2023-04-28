@@ -17,6 +17,7 @@ namespace Enemies.Wolf
         [SerializeField] private States.Data.D_Tired tiredData;
         [SerializeField] private States.Data.D_Assault assaultData;
         [SerializeField] private States.Data.D_LookForTarget lookForTargetData;
+        [SerializeField] private States.Data.D_Attack attackData;
         #endregion
 
         public States.Move MoveState { get; private set; }
@@ -26,8 +27,11 @@ namespace Enemies.Wolf
         public States.Tired TiredState { get; private set; }
         public States.Assault AssaultState { get; private set; }
         public States.LookForTarget LookForTargetState { get; private set; }
+        public States.Attack AttackState { get; private set; }
 
         [field: SerializeField] [field: Header("Wolf Components")] public AttackCheck AttackRange { get; private set; }
+
+        public bool CanAttack = true;
 
         public override void Awake()
         {
@@ -38,6 +42,7 @@ namespace Enemies.Wolf
             TiredState = new(this, StateMachine, tiredData);
             AssaultState = new(this, StateMachine, assaultData);
             LookForTargetState = new(this, StateMachine, lookForTargetData);
+            AttackState = new(this, StateMachine, attackData);
         }
 
         public override void Start()

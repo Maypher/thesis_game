@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Enemies.Wolf.States
 {
-    public class Assault : WolfState, IAttack
+    public class Assault : WolfState
     {
         private readonly Data.D_Assault stateData;
 
@@ -18,7 +18,6 @@ namespace Enemies.Wolf.States
         {
             base.Enter();
 
-            wolf.AttackCheck.enemyEnteredAttackArea += Attack;
 
             wolf.SetVelocity(stateData.jumpForce.x, stateData.jumpForce, wolf.FacingDirection);
         }
@@ -26,7 +25,6 @@ namespace Enemies.Wolf.States
         public override void Exit()
         {
             base.Exit();
-            wolf.AttackCheck.enemyEnteredAttackArea -= Attack;
         }
 
         public override void LogicUpdate()
@@ -42,16 +40,6 @@ namespace Enemies.Wolf.States
         public override void CheckStateChange()
         {
             base.CheckStateChange();
-        }
-
-        public void Attack()
-        {
-            Debug.Log("Attacked");
-        }
-
-        public void FinishAttack()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

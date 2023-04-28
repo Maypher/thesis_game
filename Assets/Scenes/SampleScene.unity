@@ -1249,6 +1249,10 @@ PrefabInstance:
       value: -0.63
       objectReference: {fileID: 0}
     - target: {fileID: 1828668046842578903, guid: 41c8bae57db5d0b4fb7175194fd9e12c, type: 3}
+      propertyPath: attackData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3eea10776f980c94e97bb934a343ea5b, type: 2}
+    - target: {fileID: 1828668046842578903, guid: 41c8bae57db5d0b4fb7175194fd9e12c, type: 3}
       propertyPath: attackRange
       value: 
       objectReference: {fileID: 341179592}
@@ -1279,7 +1283,7 @@ PrefabInstance:
     - target: {fileID: 1828668046842578903, guid: 41c8bae57db5d0b4fb7175194fd9e12c, type: 3}
       propertyPath: <AttackRange>k__BackingField
       value: 
-      objectReference: {fileID: 392914038}
+      objectReference: {fileID: 341179592}
     - target: {fileID: 1828668046842578903, guid: 41c8bae57db5d0b4fb7175194fd9e12c, type: 3}
       propertyPath: <WallCheckDistance>k__BackingField
       value: 1.5
@@ -1366,6 +1370,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1934092541, guid: 39335430827c1eb41a45d49432387669, type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4684614431714139777, guid: 39335430827c1eb41a45d49432387669, type: 3}
       propertyPath: m_Name
       value: Bear Man

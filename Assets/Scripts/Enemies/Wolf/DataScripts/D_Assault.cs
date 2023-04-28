@@ -8,6 +8,5 @@ namespace Enemies.Wolf.States.Data
     public class D_Assault : StateMachine.StateData
     {
         public Vector2 jumpForce;
-        public int damage = 2;
     }
 }

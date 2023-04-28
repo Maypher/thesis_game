@@ -12,5 +12,12 @@ namespace Enemies.Wolf
         {
             this.wolf = entity;
         }
+
+        public override void CheckStateChange()
+        {
+            base.CheckStateChange();
+
+            if (wolf.CanAttack && wolf.AttackCheck.Check()) stateMachine.ChangeState(wolf.AttackState);
+        }
     }
 }

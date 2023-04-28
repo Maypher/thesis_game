@@ -16,14 +16,35 @@ namespace Player.Substates.Airborne
             base.Enter();
 
             player.CanBeDamaged = false;
-            player.SetAnimationParameter("damage");
+            player.SetAnimationParameter("takeDamage", true);
+        }
+
+        public override void Input()
+        {
+            base.Input();
         }
 
         public override void Exit()
         {
             base.Exit();
 
+            player.SetAnimationParameter("takeDamage", false);
             player.CanBeDamaged = true;
+        }
+
+        public override void LogicUpdate()
+        {
+            base.LogicUpdate();
+        }
+
+        public override void PhysicsUpdate()
+        {
+            base.PhysicsUpdate();
+        }
+
+        public override void CheckStateChange()
+        {
+            base.CheckStateChange();
         }
     }
 }

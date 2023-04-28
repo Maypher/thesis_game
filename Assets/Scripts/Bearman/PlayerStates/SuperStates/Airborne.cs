@@ -63,10 +63,7 @@ namespace Player.Superstates
                 player.SetAnimationParameter("isAirborne", false);
 
                 if (wantsToJump && jumpBufferTimer > 0) stateMachine.ChangeState(player.JumpState);
-                else if (player.UserInput.Player.Move.ReadValue<float>() == 0)
-                {
-                    stateMachine.ChangeState(player.IdleState);
-                }
+                else if (player.UserInput.Player.Move.ReadValue<float>() == 0)stateMachine.ChangeState(player.IdleState);
                 else stateMachine.ChangeState(player.WalkState);
             }
         }

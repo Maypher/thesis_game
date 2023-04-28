@@ -87,6 +87,7 @@ namespace Player
             AirMoveState = new(this, StateMachine, airMoveData);
             DashState = new(this, StateMachine, DashData);
             GroundpoundState = new(this, StateMachine, groundpoundData);
+            DamageState = new(this, StateMachine);
         }
 
         public override void Start()
@@ -123,8 +124,7 @@ namespace Player
 
             Health -= attackDetails.damage;
 
-            SetVelocityX(attackDetails.knockbackForce.x);
-            SetVelocityY(attackDetails.knockbackForce.y);
+            SetVelocity(attackDetails.knockbackForce.magnitude, attackDetails.knockbackForce, Mathf.Sign(attackDetails.attackPostion.x - transform.position.x));
 
             StateMachine.ChangeState(DamageState);
 
