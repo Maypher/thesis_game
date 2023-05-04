@@ -246,13 +246,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba778e438c7a8764bbb3d6d74cc1094f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallCheckDistance: 0
-  ledgeCheckDistance: 0
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 0
-  wallCheck: {fileID: 4684614430069980874}
-  ledgeCheck: {fileID: 4684614431902296334}
   walkData: {fileID: 11400000, guid: d882e42f2aa2556469296fd9caee6754, type: 2}
   idleData: {fileID: 11400000, guid: 473f94a8f4891ad4e9a9a41a4a615ffe, type: 2}
   pickUpRockData: {fileID: 11400000, guid: b39f7eeeb12b45b4a9dd8dd6b8a090f2, type: 2}
@@ -263,11 +256,14 @@ MonoBehaviour:
   throwRacoonData: {fileID: 11400000, guid: db3c13097cbfd9d47b1ab5741d9d1c74, type: 2}
   jumpData: {fileID: 11400000, guid: 1d0325c5a7a4e1b4c8ecccd248c59e7b, type: 2}
   airMoveData: {fileID: 11400000, guid: d201c8c70adcb2b47b463a31e684975a, type: 2}
-  DashData: {fileID: 11400000, guid: f48af6fe8dc04e649a9f33af9bb5ee8b, type: 2}
+  dashData: {fileID: 11400000, guid: f48af6fe8dc04e649a9f33af9bb5ee8b, type: 2}
+  damageData: {fileID: 11400000, guid: 76170643f4c435b49953630a51381950, type: 2}
   jumpBufferTime: 0.1
+  maxHealth: 10
   CanJump: 0
   CanLand: 1
   TimeInAir: 0
+  CanBeDamaged: 1
   Rock: {fileID: 0}
   Raccoon: {fileID: 0}
 --- !u!212 &1934092540

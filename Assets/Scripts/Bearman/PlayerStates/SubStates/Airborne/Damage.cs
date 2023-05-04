@@ -54,6 +54,9 @@ namespace Player.Substates.Airborne
         private IEnumerator InvinsibilityFrames()
         {
             float timeBetweenFlashes = stateData.invincibilityTime / (stateData.flashTimes * 2);
+            
+            // Set the layer of the player to a different layer so it doesn't get detected by enemies
+            player.gameObject.layer = 8;
 
             Physics2D.IgnoreLayerCollision(player.gameObject.layer, stateData.enemyLayer, true);
 
@@ -67,6 +70,8 @@ namespace Player.Substates.Airborne
 
             Physics2D.IgnoreLayerCollision(player.gameObject.layer, stateData.enemyLayer, false);
             player.CanBeDamaged = true;
+            // Set the player back to its base layer
+            player.gameObject.layer = 3;
         }
     }
 }
