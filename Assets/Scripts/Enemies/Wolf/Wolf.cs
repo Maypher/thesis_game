@@ -31,7 +31,10 @@ namespace Enemies.Wolf
 
         [field: SerializeField] [field: Header("Wolf Components")] public AttackCheck AttackRange { get; private set; }
 
-        public bool CanAttack = true;
+        [Header("On collision damage data")]
+        [SerializeField] [Tooltip("Attack details for when the player enters in contact with the enemy")] private AttackDetails onCollisionDetails;
+
+        [HideInInspector] public bool CanAttack = true;
 
         public override void Awake()
         {
@@ -65,6 +68,13 @@ namespace Enemies.Wolf
             base.FixedUpdate();
 
             StateMachine.CurrentState.PhysicsUpdate();
+        }
+
+        private void OnCollisionStay2D(Collision2D collision)
+        {
+            onCollisionDetails.attackPostion = transform.position;
+
+            if (collision.gameObject.CompareTag("Player")) collision.gameObject.GetComponent<IDamageable>()?.TakeDamage(onCollisionDetails);
         }
     }
 }

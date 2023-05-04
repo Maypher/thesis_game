@@ -19,7 +19,8 @@ namespace Enemies.Wolf.States
             base.Enter();
 
 
-            wolf.SetVelocity(stateData.jumpForce.x, stateData.jumpForce, wolf.FacingDirection);
+            wolf.SetVelocityX(stateData.jumpForce.x);
+            wolf.SetVelocityY(stateData.jumpForce.y);
         }
 
         public override void Exit()

@@ -1265,6 +1265,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1030840341}
     - target: {fileID: 1828668046842578903, guid: 41c8bae57db5d0b4fb7175194fd9e12c, type: 3}
+      propertyPath: onCollisionDetails.damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828668046842578903, guid: 41c8bae57db5d0b4fb7175194fd9e12c, type: 3}
       propertyPath: <JumpCheck>k__BackingField
       value: 
       objectReference: {fileID: 0}
@@ -1285,12 +1289,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 341179592}
     - target: {fileID: 1828668046842578903, guid: 41c8bae57db5d0b4fb7175194fd9e12c, type: 3}
+      propertyPath: onCollisionDetails.knockbackForce
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828668046842578903, guid: 41c8bae57db5d0b4fb7175194fd9e12c, type: 3}
       propertyPath: <WallCheckDistance>k__BackingField
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1828668046842578903, guid: 41c8bae57db5d0b4fb7175194fd9e12c, type: 3}
       propertyPath: <LedgeCheckDistance>k__BackingField
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828668046842578903, guid: 41c8bae57db5d0b4fb7175194fd9e12c, type: 3}
+      propertyPath: onCollisionDetails.knockbackAngle.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828668046842578903, guid: 41c8bae57db5d0b4fb7175194fd9e12c, type: 3}
+      propertyPath: onCollisionDetails.knockbackAngle.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828668046842578903, guid: 41c8bae57db5d0b4fb7175194fd9e12c, type: 3}
+      propertyPath: onCollisionDetails.knockbackForce.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828668046842578903, guid: 41c8bae57db5d0b4fb7175194fd9e12c, type: 3}
+      propertyPath: onCollisionDetails.knockbackForce.y
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1828668046842578920, guid: 41c8bae57db5d0b4fb7175194fd9e12c, type: 3}
       propertyPath: m_Controller
@@ -1371,8 +1395,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1934092541, guid: 39335430827c1eb41a45d49432387669, type: 3}
+      propertyPath: dashData
+      value: 
+      objectReference: {fileID: 11400000, guid: f48af6fe8dc04e649a9f33af9bb5ee8b, type: 2}
+    - target: {fileID: 1934092541, guid: 39335430827c1eb41a45d49432387669, type: 3}
       propertyPath: maxHealth
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934092541, guid: 39335430827c1eb41a45d49432387669, type: 3}
+      propertyPath: damageData
+      value: 
+      objectReference: {fileID: 11400000, guid: 76170643f4c435b49953630a51381950, type: 2}
+    - target: {fileID: 1934092541, guid: 39335430827c1eb41a45d49432387669, type: 3}
+      propertyPath: enemyLayer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934092541, guid: 39335430827c1eb41a45d49432387669, type: 3}
+      propertyPath: whatIsEnemy.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 4684614431714139777, guid: 39335430827c1eb41a45d49432387669, type: 3}
       propertyPath: m_Name

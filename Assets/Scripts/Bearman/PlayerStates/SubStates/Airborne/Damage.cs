@@ -7,8 +7,11 @@ namespace Player.Substates.Airborne
 {
     public class Damage : Superstates.Airborne
     {
-        public Damage(Player entity, StateMachine<Player> stateMachine) : base(entity, stateMachine)
+        private readonly Data.D_Damage stateData;
+
+        public Damage(Player entity, StateMachine<Player> stateMachine, Data.D_Damage stateData) : base(entity, stateMachine)
         {
+            this.stateData = stateData;
         }
 
         public override void Enter()
@@ -17,6 +20,8 @@ namespace Player.Substates.Airborne
 
             player.CanBeDamaged = false;
             player.SetAnimationParameter("takeDamage", true);
+            
+            player.StartCoroutine(InvinsibilityFrames());
         }
 
         public override void Input()
@@ -29,7 +34,6 @@ namespace Player.Substates.Airborne
             base.Exit();
 
             player.SetAnimationParameter("takeDamage", false);
-            player.CanBeDamaged = true;
         }
 
         public override void LogicUpdate()
@@ -45,6 +49,24 @@ namespace Player.Substates.Airborne
         public override void CheckStateChange()
         {
             base.CheckStateChange();
+        }
+
+        private IEnumerator InvinsibilityFrames()
+        {
+            float timeBetweenFlashes = stateData.invincibilityTime / (stateData.flashTimes * 2);
+
+            Physics2D.IgnoreLayerCollision(player.gameObject.layer, stateData.enemyLayer, true);
+
+            for (int i = 0; i < stateData.flashTimes; i++)
+            {
+                player.spriteRenderer.color = new Color(1, 0, 0, .5f);
+                yield return new WaitForSeconds(timeBetweenFlashes);
+                player.spriteRenderer.color = Color.white;
+                yield return new WaitForSeconds(timeBetweenFlashes);
+            }
+
+            Physics2D.IgnoreLayerCollision(player.gameObject.layer, stateData.enemyLayer, false);
+            player.CanBeDamaged = true;
         }
     }
 }

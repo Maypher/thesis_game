@@ -9,5 +9,6 @@ public struct AttackDetails
     public int damage;
 
     [HideInInspector] public Vector2 attackPostion;
-    public Vector2 knockbackForce;
+    public float knockbackForce;
+    public Vector2 knockbackAngle;
 }

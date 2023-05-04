@@ -25,7 +25,8 @@ namespace Player
         [Header("Player Airborne Data")]
         [SerializeField] private Substates.Data.D_Jump jumpData;
         [SerializeField] private Substates.Data.D_AirMove airMoveData;
-        [SerializeField] private Substates.Data.D_Dash DashData;
+        [SerializeField] private Substates.Data.D_Dash dashData;
+        [SerializeField] private Substates.Data.D_Damage damageData;
         #endregion
 
         #region Global variables
@@ -67,6 +68,7 @@ namespace Player
         #region external references
         [HideInInspector] public GameObject Rock;
         [HideInInspector] public Raccoon.Raccoon Raccoon;
+        public SpriteRenderer spriteRenderer { get; private set; }
         #endregion
 
         public override void Awake()
@@ -85,9 +87,9 @@ namespace Player
 
             JumpState = new(this, StateMachine, jumpData);
             AirMoveState = new(this, StateMachine, airMoveData);
-            DashState = new(this, StateMachine, DashData);
+            DashState = new(this, StateMachine, dashData);
             GroundpoundState = new(this, StateMachine, groundpoundData);
-            DamageState = new(this, StateMachine);
+            DamageState = new(this, StateMachine, damageData);
         }
 
         public override void Start()
@@ -100,6 +102,8 @@ namespace Player
             
             UserInput = new();
             UserInput.Player.Enable();
+
+            spriteRenderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
 
             StateMachine.Initialize(IdleState);
         }
@@ -124,7 +128,7 @@ namespace Player
 
             Health -= attackDetails.damage;
 
-            SetVelocity(attackDetails.knockbackForce.magnitude, attackDetails.knockbackForce, Mathf.Sign(attackDetails.attackPostion.x - transform.position.x));
+            SetVelocity(attackDetails.knockbackForce, attackDetails.knockbackAngle, Mathf.Sign(transform.position.x - attackDetails.attackPostion.x));
 
             StateMachine.ChangeState(DamageState);
 

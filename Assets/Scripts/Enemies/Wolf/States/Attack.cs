@@ -32,6 +32,8 @@ namespace Enemies.Wolf.States
         {
             Collider2D[] enemies = wolf.AttackCheck.GetEnemies();
 
+            stateData.details.attackPostion = wolf.AttackCheck.transform.position;
+
             foreach (Collider2D enemy in enemies)
             {
                 enemy.GetComponent<IDamageable>().TakeDamage(stateData.details);

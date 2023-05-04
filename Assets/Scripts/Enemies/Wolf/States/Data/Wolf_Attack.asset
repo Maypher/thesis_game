@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   details:
     damage: 5
-    attackPostion: {x: 0, y: 0}
-    knockbackForce: {x: 3, y: 5}
+    attackPostion: {x: -16.29759, y: -2.30677}
+    knockbackForce: 6
+    knockbackAngle: {x: 0.8, y: 0.6}
