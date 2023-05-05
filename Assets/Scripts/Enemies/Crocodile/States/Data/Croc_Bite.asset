@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b337c55e2bee2540b8b76dcb950e39a, type: 3}
+  m_Name: Croc_Bite
+  m_EditorClassIdentifier: 
+  shakeDuration: 1
+  shakeIntensity: 0.06
+  timeAfterBite: 2
+  attackDetails:
+    damage: 2
+    attackPostion: {x: -1.4200001, y: -2.41}
+    knockbackForce: 5
+    knockbackAngle: {x: 0.8, y: 0.4}
