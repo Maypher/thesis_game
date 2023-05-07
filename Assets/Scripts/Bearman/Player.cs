@@ -68,7 +68,8 @@ namespace Player
         #region external references
         [HideInInspector] public GameObject Rock;
         [HideInInspector] public Raccoon.Raccoon Raccoon;
-        public SpriteRenderer spriteRenderer { get; private set; }
+        public SpriteRenderer SpriteRenderer { get; private set; }
+        public Transform ShockwaveSpawnPos { get; private set; }
         #endregion
 
         public override void Awake()
@@ -103,7 +104,8 @@ namespace Player
             UserInput = new();
             UserInput.Player.Enable();
 
-            spriteRenderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
+            SpriteRenderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
+            ShockwaveSpawnPos = transform.Find("ShockwaveSpawnPos");
 
             StateMachine.Initialize(IdleState);
         }

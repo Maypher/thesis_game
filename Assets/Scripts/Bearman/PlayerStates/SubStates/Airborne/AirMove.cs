@@ -29,7 +29,6 @@ namespace Player.Substates.Airborne {
         public override void Enter()
         {
             base.Enter();
-            player.SetAnimationParameter("isAirborne", true);
 
             airAttack = false;
         }
@@ -41,8 +40,6 @@ namespace Player.Substates.Airborne {
             alreadyDoubleJumped = false;
             canDoubleJump = false;
             canCoyoteJump = false;
-
-            player.SetAnimationParameter("isAirborne", false);
         }
 
         public override void Input()

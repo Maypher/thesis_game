@@ -16,3 +16,4 @@ MonoBehaviour:
   jumpTime: 0.1
   fallForce: 10
   airHangTime: 0.1
+  shockwave: {fileID: 790185179388233992, guid: 77f3c54281c36b84eab7158ed48270e2, type: 3}

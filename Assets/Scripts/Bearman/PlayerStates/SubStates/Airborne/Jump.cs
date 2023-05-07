@@ -18,7 +18,7 @@ namespace Player.Substates.Airborne
         {
             base.Enter();
 
-            player.SetAnimationParameter("isAirborne", true);
+            player.SetAnimationParameter("jump");
 
             player.SetVelocityY(stateData.jumpForce);
             player.Rb.gravityScale = stateData.jumpGravity;

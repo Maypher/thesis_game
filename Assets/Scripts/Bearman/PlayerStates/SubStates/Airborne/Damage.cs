@@ -62,9 +62,9 @@ namespace Player.Substates.Airborne
 
             for (int i = 0; i < stateData.flashTimes; i++)
             {
-                player.spriteRenderer.color = new Color(1, 0, 0, .5f);
+                player.SpriteRenderer.color = new Color(1, 0, 0, .5f);
                 yield return new WaitForSeconds(timeBetweenFlashes);
-                player.spriteRenderer.color = Color.white;
+                player.SpriteRenderer.color = Color.white;
                 yield return new WaitForSeconds(timeBetweenFlashes);
             }
 

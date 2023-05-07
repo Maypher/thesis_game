@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c42802b25a02af2439246a3246e935e7
+guid: 107c190206a4c0349b347a5e3db8a176
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 155
+  spritePixelsToUnits: 175
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -67,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -105,211 +105,190 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BearmanHeavyPunch_0
+      name: BearmanShockwaveRemake_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 542
-        width: 374
-        height: 436
-      alignment: 9
-      pivot: {x: 0.5086388, y: 0.48888305}
+        x: 619
+        y: 558
+        width: 472
+        height: 522
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e5367a8f1b263946b131e87f3b3eda5
-      internalID: -1989829498
+      spriteID: b102be61f93abe24aacde0372611801c
+      internalID: -360104320
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BearmanHeavyPunch_1
+      name: BearmanShockwaveRemake_2
       rect:
         serializedVersion: 2
-        x: 492
-        y: 531
-        width: 406
-        height: 527
+        x: 1298
+        y: 514
+        width: 470
+        height: 571
       alignment: 9
-      pivot: {x: 0.44098833, y: 0.4}
+      pivot: {x: 0.49483174, y: 0.44895077}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1cac3bfcaa34dff40bbb465c0648edaa
-      internalID: -1128974609
+      spriteID: e2cfb1f14d052d947a0b56b53d54bf8f
+      internalID: 1991121738
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BearmanHeavyPunch_3
+      name: BearmanShockwaveRemake_3
       rect:
         serializedVersion: 2
-        x: 1069
-        y: 541
-        width: 279
-        height: 526
-      alignment: 9
-      pivot: {x: 0.53, y: 0.4}
+        x: 2005
+        y: 486
+        width: 498
+        height: 605
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8dccf2b81bc488c45a850d2aa3149b37
-      internalID: -255935638
+      spriteID: 6b746f9fccd54f54d997dc0b09e4ca6a
+      internalID: 343545339
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BearmanHeavyPunch_4
+      name: BearmanShockwaveRemake_4
       rect:
         serializedVersion: 2
-        x: 1613
-        y: 547
-        width: 309
-        height: 540
-      alignment: 9
-      pivot: {x: 0.54018563, y: 0.396521}
+        x: 2769
+        y: 491
+        width: 500
+        height: 583
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ce151968b988544c9e0e0bffbe6bc2e
-      internalID: -1701489632
+      spriteID: bce2193283a3f0c4e8e567280695ff15
+      internalID: 83990561
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BearmanHeavyPunch_6
+      name: BearmanShockwaveRemake_5
       rect:
         serializedVersion: 2
-        x: 2097
-        y: 546
-        width: 282
-        height: 545
+        x: 190
+        y: 3
+        width: 443
+        height: 546
       alignment: 9
-      pivot: {x: 0.62805957, y: 0.390609}
+      pivot: {x: 0.5, y: 0.45551106}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 70adb34f38df114419cd1cfd28cb4abf
-      internalID: -1382563113
+      spriteID: a2987d1df7f983342bdab9574d430841
+      internalID: -506229925
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BearmanHeavyPunch_8
+      name: BearmanShockwaveRemake_7
       rect:
         serializedVersion: 2
-        x: 2547
-        y: 547
-        width: 450
-        height: 544
-      alignment: 9
-      pivot: {x: 0.53853786, y: 0.3825467}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 732428e0cf2264447ad1092a3e0deaf3
-      internalID: -707199841
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BearmanHeavyPunch_9
-      rect:
-        serializedVersion: 2
-        x: 3004
-        y: 544
+        x: 643
+        y: 3
         width: 319
-        height: 504
+        height: 506
       alignment: 9
-      pivot: {x: 0.61790615, y: 0.41519964}
+      pivot: {x: 0.553303, y: 0.49999997}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f0bf9cdbc0a73142bcfcd7304022e39
-      internalID: 51470474
+      spriteID: 1a26efb4b232a7f4d86802674675c9ed
+      internalID: 1638382467
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BearmanHeavyPunch_10
+      name: BearmanShockwaveRemake_8
       rect:
         serializedVersion: 2
-        x: 948
-        y: 7
-        width: 606
-        height: 449
-      alignment: 9
-      pivot: {x: 0.505307, y: 0.48}
+        x: 1237
+        y: 9
+        width: 604
+        height: 447
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2556e8efc528d48458e1d53994539ade
-      internalID: -1833639434
+      spriteID: a356a9ee107190146a76cf9b650ee90c
+      internalID: 1068514667
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BearmanHeavyPunch_11
+      name: BearmanShockwaveRemake_9
       rect:
         serializedVersion: 2
-        x: 1620
+        x: 1907
         y: 0
-        width: 746
+        width: 751
         height: 268
       alignment: 9
-      pivot: {x: 0.41, y: 0.78}
+      pivot: {x: 0.41, y: 0.8420721}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76763787a4b7d0e4a8d8ee1d337c0b8d
-      internalID: 1644298104
+      spriteID: 4faf07ef6214f724fb1c5064dcb5e08b
+      internalID: -609525012
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BearmanHeavyPunch_12
+      name: BearmanShockwaveRemake_10
       rect:
         serializedVersion: 2
-        x: 2574
+        x: 2863
         y: 1
-        width: 497
+        width: 460
         height: 398
       alignment: 9
-      pivot: {x: 0.5062455, y: 0.55}
+      pivot: {x: 0.46328816, y: 0.56061584}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 257ce57cd1cacef48ac6a4ef05732d06
-      internalID: 1604183127
+      spriteID: 8b30a10cd2e41b643a7b2cce7ffa291c
+      internalID: 371059293
       vertices: []
       indices: 
       edges: []
@@ -325,19 +304,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BearmanHeavyPunch_12: 1604183127
-      BearmanHeavyPunch_10: -1833639434
-      BearmanHeavyPunch_4: -1701489632
-      BearmanHeavyPunch_5: -270069903
-      BearmanHeavyPunch_7: 402955218
-      BearmanHeavyPunch_2: 408992236
-      BearmanHeavyPunch_0: -1989829498
-      BearmanHeavyPunch_3: -255935638
-      BearmanHeavyPunch_1: -1128974609
-      BearmanHeavyPunch_9: 51470474
-      BearmanHeavyPunch_6: -1382563113
-      BearmanHeavyPunch_11: 1644298104
-      BearmanHeavyPunch_8: -707199841
+      BearmanShockwaveRemake_1: -2134652530
+      BearmanShockwaveRemake_4: 83990561
+      BearmanShockwaveRemake_8: 1068514667
+      BearmanShockwaveRemake_6: -999644640
+      BearmanShockwaveRemake_0: -360104320
+      BearmanShockwaveRemake_5: -506229925
+      BearmanShockwaveRemake_10: 371059293
+      BearmanShockwaveRemake_3: 343545339
+      BearmanShockwaveRemake_2: 1991121738
+      BearmanShockwaveRemake_7: 1638382467
+      BearmanShockwaveRemake_9: -609525012
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
