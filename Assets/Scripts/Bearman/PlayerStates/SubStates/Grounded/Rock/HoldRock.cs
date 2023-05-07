@@ -46,9 +46,9 @@ namespace Player.Substates.Grounded
             base.Input();
 
             // Only move in the direction the player was facing when the rock was picked up
-            wantsToMove = player.UserInput.Player.Move.ReadValue<float>() == player.FacingDirection;
+            wantsToMove = GameManager.UserInput.Player.Move.ReadValue<float>() == player.FacingDirection;
 
-            throwRock = player.UserInput.Player.Throw.triggered;
+            throwRock = GameManager.UserInput.Player.Throw.triggered;
         }
 
         public override void LogicUpdate()

@@ -9,7 +9,6 @@ namespace Player
     {
 
         public StateMachine.StateMachine<Player> StateMachine { get; private set; } = new();
-        public UserInput UserInput { get; private set; }
 
         #region States data
         [Header("Player Grounded Data")]
@@ -99,10 +98,6 @@ namespace Player
 
             Health = maxHealth;
             AttackCheck = GetComponentInChildren<AttackCheck>();
-
-            
-            UserInput = new();
-            UserInput.Player.Enable();
 
             SpriteRenderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
             ShockwaveSpawnPos = transform.Find("ShockwaveSpawnPos");

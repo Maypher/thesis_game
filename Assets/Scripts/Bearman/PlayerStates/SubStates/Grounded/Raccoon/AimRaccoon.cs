@@ -55,8 +55,8 @@ namespace Player.Substates.Grounded
         {
             base.Input();
 
-            aiming = player.UserInput.Player.RaccoonAim.IsPressed();
-            throwRaccoon = player.UserInput.Player.Throw.triggered;
+            aiming = GameManager.UserInput.Player.RaccoonAim.IsPressed();
+            throwRaccoon = GameManager.UserInput.Player.Throw.triggered;
         }
 
         public override void LogicUpdate()

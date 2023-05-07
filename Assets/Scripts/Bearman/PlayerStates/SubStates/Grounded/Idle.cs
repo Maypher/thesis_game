@@ -34,11 +34,11 @@ namespace Player.Substates.Grounded
         {
             base.Input();
 
-            isMoving = player.UserInput.Player.Move.ReadValue<float>() != 0;
-            pickUpRock = player.UserInput.Player.PickUpRock.triggered;
-            aimRaccoon = player.UserInput.Player.RaccoonAim.triggered;
-            callBackRaccoon = player.UserInput.Player.CallBackRaccoon.triggered;
-            dash = player.UserInput.Player.Dash.triggered;
+            isMoving = GameManager.UserInput.Player.Move.ReadValue<float>() != 0;
+            pickUpRock = GameManager.UserInput.Player.PickUpRock.triggered;
+            aimRaccoon = GameManager.UserInput.Player.RaccoonAim.triggered;
+            callBackRaccoon = GameManager.UserInput.Player.CallBackRaccoon.triggered;
+            dash = GameManager.UserInput.Player.Dash.triggered;
         }
 
         public override void Exit()

@@ -40,7 +40,7 @@ namespace Player.Substates.Grounded
             pickUpRock = false;
             player.CanJump = true;
             player.SetAnimationParameter("isMoving", true);
-            player.UserInput.Player.Move.performed += Move_performed;
+            GameManager.UserInput.Player.Move.performed += Move_performed;
         }
 
 
@@ -49,18 +49,18 @@ namespace Player.Substates.Grounded
             base.Exit();
 
             player.SetAnimationParameter("isMoving", false);
-            player.UserInput.Player.Move.performed -= Move_performed;
+            GameManager.UserInput.Player.Move.performed -= Move_performed;
         }
 
         public override void Input()
         {
             base.Input();
-            inputDirection = player.UserInput.Player.Move.ReadValue<float>();
+            inputDirection = GameManager.UserInput.Player.Move.ReadValue<float>();
 
-            pickUpRock = player.UserInput.Player.PickUpRock.triggered;
-            aimRaccoon = player.UserInput.Player.RaccoonAim.triggered;
-            callBackRaccoon = player.UserInput.Player.CallBackRaccoon.triggered;
-            dash = player.UserInput.Player.Dash.triggered;
+            pickUpRock = GameManager.UserInput.Player.PickUpRock.triggered;
+            aimRaccoon = GameManager.UserInput.Player.RaccoonAim.triggered;
+            callBackRaccoon = GameManager.UserInput.Player.CallBackRaccoon.triggered;
+            dash = GameManager.UserInput.Player.Dash.triggered;
         }
 
         public override void LogicUpdate()

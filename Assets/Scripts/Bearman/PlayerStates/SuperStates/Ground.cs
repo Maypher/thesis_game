@@ -53,7 +53,7 @@ namespace Player.Superstates
         {
             base.Input();
 
-            wantsToJump = player.UserInput.Player.Jump.WasPerformedThisFrame();
+            wantsToJump = GameManager.UserInput.Player.Jump.WasPerformedThisFrame();
         }
     }
 }

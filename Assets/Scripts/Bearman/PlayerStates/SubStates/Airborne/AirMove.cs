@@ -46,11 +46,11 @@ namespace Player.Substates.Airborne {
         {
             base.Input();
 
-            wantToDash = player.UserInput.Player.Dash.WasPerformedThisFrame();
-            inputDirection = player.UserInput.Player.Move.ReadValue<float>();
-            wantsToJumpMidAir = player.UserInput.Player.Jump.WasPressedThisFrame();
+            wantToDash = GameManager.UserInput.Player.Dash.WasPerformedThisFrame();
+            inputDirection = GameManager.UserInput.Player.Move.ReadValue<float>();
+            wantsToJumpMidAir = GameManager.UserInput.Player.Jump.WasPressedThisFrame();
 
-            airAttack = player.UserInput.Player.ShockwaveAttack.triggered;
+            airAttack = GameManager.UserInput.Player.ShockwaveAttack.triggered;
         }
 
         public override void LogicUpdate()
@@ -58,7 +58,7 @@ namespace Player.Substates.Airborne {
             base.LogicUpdate();
 
 
-            if (player.UserInput.Player.Jump.WasReleasedThisFrame() || player.Rb.velocity.y < 0) player.Rb.gravityScale = stateData.fallingGravity;
+            if (GameManager.UserInput.Player.Jump.WasReleasedThisFrame() || player.Rb.velocity.y < 0) player.Rb.gravityScale = stateData.fallingGravity;
 
             if (inputDirection != 0)
             {

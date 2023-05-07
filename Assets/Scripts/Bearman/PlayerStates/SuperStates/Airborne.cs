@@ -38,7 +38,7 @@ namespace Player.Superstates
         {
             base.Input();
 
-            if (!wantsToJump) wantsToJump = player.UserInput.Player.Jump.WasPerformedThisFrame();
+            if (!wantsToJump) wantsToJump = GameManager.UserInput.Player.Jump.WasPerformedThisFrame();
         }
 
         public override void LogicUpdate()
@@ -65,7 +65,7 @@ namespace Player.Superstates
             {
 
                 if (wantsToJump && jumpBufferTimer > 0) stateMachine.ChangeState(player.JumpState);
-                else if (player.UserInput.Player.Move.ReadValue<float>() == 0) stateMachine.ChangeState(player.IdleState);
+                else if (GameManager.UserInput.Player.Move.ReadValue<float>() == 0) stateMachine.ChangeState(player.IdleState);
                 else stateMachine.ChangeState(player.WalkState);
             }
         }
