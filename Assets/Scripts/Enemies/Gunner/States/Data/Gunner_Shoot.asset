@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 50
   gunRecoilAngleRange: 20
-  minShootInterval: 0.2
-  maxShootInterval: 0.4
+  minShootInterval: 1
+  maxShootInterval: 1
+  bulletTrail: {fileID: 3994490297619365259, guid: 3f86dae9e2e4f7d4c8add2b3d2677e6c, type: 3}
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 72

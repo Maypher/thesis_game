@@ -59,8 +59,10 @@ namespace Enemies.Gunner.States
 
         public void Attack()
         {
-            RaycastHit2D enemy = Physics2D.Raycast(gunner.Gun.transform.position, gunner.Gun.transform.right, stateData.whatIsEnemy);
+            GameObject.Instantiate(stateData.bulletTrail, gunner.Gun.transform.position, gunner.Gun.transform.rotation);
 
+            RaycastHit2D enemy = Physics2D.Raycast(gunner.Gun.transform.position, gunner.Gun.transform.right, 20, stateData.whatIsEnemy);
+            Debug.Log(enemy.collider);
 
             stateData.attackDetails.attackPostion = gunner.Gun.transform.position;
             enemy.collider?.GetComponent<IDamageable>()?.TakeDamage(stateData.attackDetails);
