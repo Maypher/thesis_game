@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 72a28f301b7fdee4c9f58bab6e5874f3
+guid: ca98e435b4400a34b8fb3bef5741dc41
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 120
+  spritePixelsToUnits: 160
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,223 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BearmanRock_0
+      name: BearmanShockwaveOld_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 790
-        width: 676
-        height: 229
-      alignment: 9
-      pivot: {x: 0.14376102, y: 0.8358493}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a27c1f849f8f1a943aadcd2f5d7877ba
-      internalID: 1391342041
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BearmanRock_1
-      rect:
-        serializedVersion: 2
-        x: 745
-        y: 797
-        width: 759
-        height: 300
-      alignment: 9
-      pivot: {x: 0.3019044, y: 0.64085}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f881fbaac76cf1245819e085d94376bd
-      internalID: -1570790237
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BearmanRock_3
-      rect:
-        serializedVersion: 2
-        x: 1619
-        y: 807
-        width: 633
-        height: 307
-      alignment: 9
-      pivot: {x: 0.37230635, y: 0.5921752}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3f36310c45115cf45a29841533ec12c7
-      internalID: -1129451863
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BearmanRock_4
-      rect:
-        serializedVersion: 2
-        x: 2409
-        y: 804
-        width: 606
-        height: 267
-      alignment: 9
-      pivot: {x: 0.3170315, y: 0.6042878}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 02ba86d428231a944b5d7529d6f3339c
-      internalID: -463692837
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BearmanRock_8
-      rect:
-        serializedVersion: 2
-        x: 27
-        y: 410
-        width: 514
-        height: 266
-      alignment: 9
-      pivot: {x: 0.489525, y: 0.61638784}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ab1cc947641d54a4b94fa30d6048699b
-      internalID: 167439797
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BearmanRock_9
-      rect:
-        serializedVersion: 2
-        x: 778
-        y: 402
-        width: 484
-        height: 267
-      alignment: 9
-      pivot: {x: 0.49165747, y: 0.62603486}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6360cc116e9f734468e508456eb54428
-      internalID: 1240339456
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BearmanRock_10
-      rect:
-        serializedVersion: 2
-        x: 1446
-        y: 382
-        width: 446
-        height: 266
-      alignment: 9
-      pivot: {x: 0.45774862, y: 0.62144804}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d4f5bd749265c434c83a69d8750754f7
-      internalID: -1767880693
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BearmanRock_11
-      rect:
-        serializedVersion: 2
-        x: 2057
-        y: 385
-        width: 505
-        height: 268
-      alignment: 9
-      pivot: {x: 0.5026672, y: 0.6104969}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 07a1ba4dc98f46d44bc04c4324abd3fe
-      internalID: 1290924970
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BearmanRock_16
-      rect:
-        serializedVersion: 2
-        x: 419
-        y: 54
-        width: 434
-        height: 254
-      alignment: 9
-      pivot: {x: 0.56202984, y: 0.6324847}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7c19fea45fda78343bb1a82a8893bb9c
-      internalID: -19842071
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BearmanRock_17
-      rect:
-        serializedVersion: 2
-        x: 1001
-        y: 42
-        width: 582
-        height: 266
-      alignment: 9
-      pivot: {x: 0.51619023, y: 0.61638725}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fe83c5faa849f194487cdb2e9444238e
-      internalID: 375009300
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BearmanRock_18
-      rect:
-        serializedVersion: 2
-        x: 1810
-        y: 0
-        width: 205
-        height: 297
+        y: 542
+        width: 374
+        height: 436
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -329,8 +119,197 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7759ca705ceb4aa4bad3728140de0610
-      internalID: -375956675
+      spriteID: f8cc368abd519cb4892e201f96c6dda2
+      internalID: -835554487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanShockwaveOld_1
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 531
+        width: 417
+        height: 527
+      alignment: 9
+      pivot: {x: 0.4247899, y: 0.4175994}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb6a76fcedc0d114e97100e1ee6780cd
+      internalID: -27396283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanShockwaveOld_3
+      rect:
+        serializedVersion: 2
+        x: 1069
+        y: 543
+        width: 279
+        height: 526
+      alignment: 9
+      pivot: {x: 0.53458834, y: 0.41285643}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca673103d758e494586f133f91403503
+      internalID: 948565041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanShockwaveOld_4
+      rect:
+        serializedVersion: 2
+        x: 1613
+        y: 546
+        width: 315
+        height: 540
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 764c35860a5dae840b78cc1dd27c513d
+      internalID: 1766185742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanShockwaveOld_6
+      rect:
+        serializedVersion: 2
+        x: 2097
+        y: 543
+        width: 282
+        height: 545
+      alignment: 9
+      pivot: {x: 0.48289025, y: 0.4247476}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cb9d72b7a5e19b46a530a1c135981b8
+      internalID: -1138544440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanShockwaveOld_8
+      rect:
+        serializedVersion: 2
+        x: 2545
+        y: 545
+        width: 450
+        height: 544
+      alignment: 9
+      pivot: {x: 0.4718403, y: 0.41970712}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 053ffbfbab84f694c9e98bc0517221af
+      internalID: 761093939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanShockwaveOld_9
+      rect:
+        serializedVersion: 2
+        x: 3004
+        y: 544
+        width: 319
+        height: 504
+      alignment: 9
+      pivot: {x: 0.53034, y: 0.4490905}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33edb7d20db240d40b0a9e3b64b7ee91
+      internalID: 2141589481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanShockwaveOld_10
+      rect:
+        serializedVersion: 2
+        x: 948
+        y: 7
+        width: 606
+        height: 449
+      alignment: 9
+      pivot: {x: 0.11508068, y: 0.5123921}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bf230c5827f81548bef8bfdbb3e04c5
+      internalID: 1542418645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanShockwaveOld_11
+      rect:
+        serializedVersion: 2
+        x: 1620
+        y: 0
+        width: 746
+        height: 268
+      alignment: 9
+      pivot: {x: 0.4548942, y: 0.5236642}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c12f0a03791b5d4c9511ef536f87a59
+      internalID: -617580783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearmanShockwaveOld_12
+      rect:
+        serializedVersion: 2
+        x: 2574
+        y: 1
+        width: 497
+        height: 398
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a39a5e961a1677e4a956a620e5f39b4d
+      internalID: -304903017
       vertices: []
       indices: 
       edges: []
@@ -346,25 +325,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BearmanRock_2: -1538944155
-      BearmanRock_5: -559598383
-      BearmanRock_16: -19842071
-      BearmanRock_6: 912303684
-      BearmanRock_8: 167439797
-      BearmanRock_10: -1767880693
-      BearmanRock_13: 1020615420
-      BearmanRock_15: 1629145236
-      BearmanRock_12: -1682944505
-      BearmanRock_0: 1391342041
-      BearmanRock_9: 1240339456
-      BearmanRock_17: 375009300
-      BearmanRock_7: 245440682
-      BearmanRock_4: -463692837
-      BearmanRock_11: 1290924970
-      BearmanRock_14: 2029409108
-      BearmanRock_1: -1570790237
-      BearmanRock_3: -1129451863
-      BearmanRock_18: -375956675
+      BearmanShockwaveOld_2: 2110015061
+      BearmanShockwaveOld_11: -617580783
+      BearmanShockwaveOld_1: -27396283
+      BearmanShockwaveOld_5: -1166807882
+      BearmanShockwaveOld_8: 761093939
+      BearmanShockwaveOld_6: -1138544440
+      BearmanShockwaveOld_10: 1542418645
+      BearmanShockwaveOld_7: -1648775523
+      BearmanShockwaveOld_0: -835554487
+      BearmanShockwaveOld_4: 1766185742
+      BearmanShockwaveOld_12: -304903017
+      BearmanShockwaveOld_3: 948565041
+      BearmanShockwaveOld_9: 2141589481
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
