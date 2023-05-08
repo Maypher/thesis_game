@@ -36,7 +36,7 @@ namespace Enemies.Wolf.States
 
             foreach (Collider2D enemy in enemies)
             {
-                enemy.GetComponent<IDamageable>().TakeDamage(stateData.details);
+                enemy.GetComponent<IDamageable>()?.TakeDamage(stateData.details);
             }
         }
 

@@ -44,12 +44,11 @@ namespace Enemies
 
         public virtual void TakeDamage(AttackDetails attackDetails)
         {
-            throw new System.NotImplementedException();
         }
 
         public virtual void Kill()
         {
-            throw new System.NotImplementedException();
+            Destroy(gameObject);
         }
     }
 }

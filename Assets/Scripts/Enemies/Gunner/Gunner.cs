@@ -5,8 +5,12 @@ using UnityEngine;
 
 namespace Enemies.Gunner
 {
-    public class Gunner : StateMachine.Entity
+    public class Gunner : StateMachine.Entity,IDamageable
     {
+        [Header("Gunner data")]
+        [Min(0)] [SerializeField] private int maxHealth;
+        public int Health { get; private set; }
+
         public StateMachine.StateMachine<Gunner> StateMachine { get; private set; } = new();
         public FieldOfView FOV { get; private set; }
 
@@ -34,6 +38,8 @@ namespace Enemies.Gunner
         {
             base.Start();
 
+            Health = maxHealth;
+
             FOV = GetComponentInChildren<FieldOfView>();
             Gun = transform.Find("Gun");
 
@@ -51,6 +57,18 @@ namespace Enemies.Gunner
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+        }
+
+        public void TakeDamage(AttackDetails attackDetails)
+        {
+            Health -= attackDetails.damage;
+
+            if (Health <= 0) Kill();
+        }
+
+        public void Kill()
+        {
+            Destroy(gameObject);
         }
     }
 }

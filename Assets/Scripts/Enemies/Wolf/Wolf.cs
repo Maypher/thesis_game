@@ -8,6 +8,10 @@ namespace Enemies.Wolf
     {
         public StateMachine.StateMachine<Wolf> StateMachine { get; private set; } = new StateMachine.StateMachine<Wolf>();
 
+        [Header("Wolf data")]
+        [SerializeField] private int maxHealth;
+        public int Health { get; private set; }
+
         #region State Data
         [Header("State Data")]
         [SerializeField] private States.Data.D_Move moveData;
@@ -70,11 +74,22 @@ namespace Enemies.Wolf
             StateMachine.CurrentState.PhysicsUpdate();
         }
 
-        private void OnCollisionStay2D(Collision2D collision)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
             onCollisionDetails.attackPostion = transform.position;
 
             if (collision.gameObject.CompareTag("Player")) collision.gameObject.GetComponent<IDamageable>()?.TakeDamage(onCollisionDetails);
+        }
+
+        public override void TakeDamage(AttackDetails attackDetails)
+        {
+            base.TakeDamage(attackDetails);
+
+            Health -= attackDetails.damage;
+
+            SetVelocity(attackDetails.knockbackForce, attackDetails.knockbackAngle, Mathf.Sign(transform.position.x - attackDetails.attackPostion.x));
+
+            if (Health <= 0) Kill();
         }
     }
 }
