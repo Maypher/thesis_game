@@ -8,7 +8,20 @@ namespace Player
     public class Player : StateMachine.Entity, IDamageable
     {
 
+
+        #region Global variables
         public StateMachine.StateMachine<Player> StateMachine { get; private set; } = new();
+       
+        [Header("Player variables")]
+        public float jumpBufferTime = .4f;
+        [field: SerializeField, Min(0)] public int MaxHealth { get; private set; }
+        public int Health { get; private set; }
+        #endregion
+
+        #region Events
+        public Action DamageTaken;
+        public Action PlayerDeath;
+        #endregion
 
         #region States data
         [Header("Player Grounded Data")]
@@ -26,13 +39,6 @@ namespace Player
         [SerializeField] private Substates.Data.D_AirMove airMoveData;
         [SerializeField] private Substates.Data.D_Dash dashData;
         [SerializeField] private Substates.Data.D_Damage damageData;
-        #endregion
-
-        #region Global variables
-        [Header("Player variables")]
-        public float jumpBufferTime = .4f;
-        [Min(0)] [SerializeField] private int maxHealth;
-        public int Health { get; private set; }
         #endregion
 
         #region States
@@ -61,7 +67,6 @@ namespace Player
         [HideInInspector] public bool CanLand = true;
         [HideInInspector] public float TimeInAir = 0f;
         [HideInInspector] public bool CanBeDamaged = true;
-        public Action PlayerDeath;
         #endregion
 
         #region external references
@@ -74,6 +79,9 @@ namespace Player
         public override void Awake()
         {
             base.Awake();
+
+            // Instantiated in awake because it needs to be ready for when the UI fetches it
+            Health = MaxHealth;
 
             WalkState = new(this, StateMachine, walkData);
             IdleState = new(this, StateMachine, idleData);
@@ -96,7 +104,6 @@ namespace Player
         {
             base.Start();
 
-            Health = maxHealth;
             AttackCheck = GetComponentInChildren<AttackCheck>();
 
             SpriteRenderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
@@ -128,6 +135,8 @@ namespace Player
             SetVelocity(attackDetails.knockbackForce, attackDetails.knockbackAngle, Mathf.Sign(transform.position.x - attackDetails.attackPostion.x));
 
             StateMachine.ChangeState(DamageState);
+
+            DamageTaken?.Invoke();
 
             if (Health <= 0) Kill();
         }
