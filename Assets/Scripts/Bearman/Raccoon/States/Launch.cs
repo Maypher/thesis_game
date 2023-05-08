@@ -7,7 +7,7 @@ namespace Player.Raccoon.States
 {
     public class Launch : RaccoonState, IAttack
     {
-        private Data.D_Launch stateData;
+        private readonly Data.D_Launch stateData;
 
         private float ogGrav;
 
@@ -53,7 +53,15 @@ namespace Player.Raccoon.States
 
         public void Attack()
         {
-            throw new System.NotImplementedException();
+            Collider2D[] enemies = raccoon.AttackCheck.GetEnemies();
+
+            AttackDetails attackDetails = stateData.attackDetails;
+
+            foreach (Collider2D enemy in enemies)
+            {
+                attackDetails.attackPostion = raccoon.AttackCheck.transform.position;
+                enemy.GetComponent<IDamageable>()?.TakeDamage(attackDetails);
+            }
         }
 
         public void FinishAttack()

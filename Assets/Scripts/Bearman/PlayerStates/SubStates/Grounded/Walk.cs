@@ -20,6 +20,7 @@ namespace Player.Substates.Grounded
         private bool aimRaccoon;
         private bool callBackRaccoon;
         private bool dash;
+        private bool punch;
 
         public Walk(Player entity, StateMachine<Player> stateMachine, Data.D_Walk stateData) : base(entity, stateMachine)
         {
@@ -36,8 +37,9 @@ namespace Player.Substates.Grounded
             decelerating = false;
             decelerationTime = 0;
             callBackRaccoon = false;
-
             pickUpRock = false;
+            punch = false;
+            
             player.CanJump = true;
             player.SetAnimationParameter("isMoving", true);
             GameManager.UserInput.Player.Move.performed += Move_performed;
@@ -61,6 +63,7 @@ namespace Player.Substates.Grounded
             aimRaccoon = GameManager.UserInput.Player.RaccoonAim.triggered;
             callBackRaccoon = GameManager.UserInput.Player.CallBackRaccoon.triggered;
             dash = GameManager.UserInput.Player.Dash.triggered;
+            punch = GameManager.UserInput.Player.Punch.triggered;
         }
 
         public override void LogicUpdate()
@@ -123,6 +126,7 @@ namespace Player.Substates.Grounded
             else if (aimRaccoon) stateMachine.ChangeState(player.GrabRacoonState);
             else if (callBackRaccoon) stateMachine.ChangeState(player.CallBackRaccoonState);
             else if (dash) stateMachine.ChangeState(player.DashState);
+            else if (punch) stateMachine.ChangeState(player.PunchState);
         }
     }
 }

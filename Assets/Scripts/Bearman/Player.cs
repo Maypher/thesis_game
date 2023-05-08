@@ -33,6 +33,7 @@ namespace Player
         [SerializeField] private Substates.Data.D_GroundPound groundpoundData;
         [SerializeField] private Substates.Data.D_AimRaccoon aimRacoonData;
         [SerializeField] private Substates.Data.D_ThrowRaccoon throwRacoonData;
+        [SerializeField] private Substates.Data.D_Punch punchData;
 
         [Header("Player Airborne Data")]
         [SerializeField] private Substates.Data.D_Jump jumpData;
@@ -51,6 +52,7 @@ namespace Player
         public Substates.Grounded.AimRaccoon AimRaccoonState { get; private set; }
         public Substates.Grounded.ThrowRaccoon ThrowRaccoonState { get; private set; }
         public Substates.Grounded.CallBackRaccoon CallBackRaccoonState { get; private set; }
+        public Substates.Grounded.Punch PunchState { get; private set; }
         public Substates.Airborne.Jump JumpState { get; private set; }
         public Substates.Airborne.AirMove AirMoveState { get; private set; }
         public Substates.Airborne.Dash DashState { get; private set; }
@@ -60,6 +62,7 @@ namespace Player
 
         #region components
         public AttackCheck AttackCheck { get; private set; }
+        public AttackCheck DashAttackCheck { get; private set; }
         #endregion
 
         #region control variables
@@ -94,6 +97,7 @@ namespace Player
             AimRaccoonState = new(this, StateMachine, aimRacoonData);
             ThrowRaccoonState = new(this, StateMachine, throwRacoonData);
             CallBackRaccoonState = new(this, StateMachine);
+            PunchState = new(this, StateMachine, punchData);
 
             JumpState = new(this, StateMachine, jumpData);
             AirMoveState = new(this, StateMachine, airMoveData);
@@ -106,7 +110,8 @@ namespace Player
         {
             base.Start();
 
-            AttackCheck = GetComponentInChildren<AttackCheck>();
+            AttackCheck = transform.Find("PunchCheck").GetComponent<AttackCheck>();
+            DashAttackCheck = transform.Find("DashAttackCheck").GetComponent<AttackCheck>();
 
             SpriteRenderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
             ShockwaveSpawnPos = transform.Find("ShockwaveSpawnPos");

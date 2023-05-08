@@ -8,5 +8,6 @@ namespace Player.Raccoon.States.Data
     public class D_Launch : StateMachine.StateData
     {
         public float launchForce = 30f;
+        public AttackDetails attackDetails;
     }
 }

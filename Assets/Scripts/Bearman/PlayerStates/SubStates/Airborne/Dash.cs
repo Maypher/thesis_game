@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Player.Substates.Airborne
 {
-    public class Dash : Superstates.Airborne
+    public class Dash : Superstates.Airborne, IAttack
     {
         private readonly Data.D_Dash stateData;
 
@@ -23,13 +23,16 @@ namespace Player.Substates.Airborne
             base.Enter();
 
             player.CanLand = false;
+            player.CanBeDamaged = false;
+
+            player.DashAttackCheck.enemyEnteredAttackArea += Attack;
 
             if (Time.time <= lastActive + stateData.cooldownTime) dashing = false;
             else 
             {
                 lastActive = Time.time;
                 player.SetAnimationParameter("dashing", true);
-                player.StartCoroutine(DoDash()); 
+                player.StartCoroutine(DoDash());
             }
         }
 
@@ -38,8 +41,12 @@ namespace Player.Substates.Airborne
             base.Exit();
 
             player.CanLand = true;
+            player.CanBeDamaged = true;
+            
             player.AirMoveState.canDoubleJump = true;
             player.SetAnimationParameter("dashing", false);
+
+            player.DashAttackCheck.enemyEnteredAttackArea -= Attack;
         }
 
         public override void Input()
@@ -77,6 +84,24 @@ namespace Player.Substates.Airborne
            
             player.Rb.gravityScale = ogGrav;
             dashing = false;
+        }
+
+        public void Attack()
+        {
+            Collider2D[] enemies = player.DashAttackCheck.GetEnemies();
+
+            AttackDetails attackDetails = stateData.attackDetails;
+
+            foreach (Collider2D enemy in enemies)
+            {
+                attackDetails.attackPostion = player.DashAttackCheck.transform.position;
+                enemy.GetComponent<IDamageable>()?.TakeDamage(attackDetails);
+            }
+        }
+
+        public void FinishAttack()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -2273,22 +2273,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1934092540, guid: 39335430827c1eb41a45d49432387669, type: 3}
-      propertyPath: m_Size.x
-      value: 2.6971428
-      objectReference: {fileID: 0}
-    - target: {fileID: 1934092540, guid: 39335430827c1eb41a45d49432387669, type: 3}
-      propertyPath: m_Size.y
-      value: 2.9828572
-      objectReference: {fileID: 0}
-    - target: {fileID: 1934092540, guid: 39335430827c1eb41a45d49432387669, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1934092541, guid: 39335430827c1eb41a45d49432387669, type: 3}
-      propertyPath: <MaxHealth>k__BackingField
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4684614431714139777, guid: 39335430827c1eb41a45d49432387669, type: 3}
       propertyPath: m_Name
       value: Bear Man
@@ -2337,20 +2321,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4684614431803913726, guid: 39335430827c1eb41a45d49432387669, type: 3}
-      propertyPath: m_Size.x
-      value: 5.633333
-      objectReference: {fileID: 0}
-    - target: {fileID: 4684614431803913726, guid: 39335430827c1eb41a45d49432387669, type: 3}
-      propertyPath: m_Size.y
-      value: 1.9083333
-      objectReference: {fileID: 0}
-    - target: {fileID: 4684614431803913726, guid: 39335430827c1eb41a45d49432387669, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1934092540, guid: 39335430827c1eb41a45d49432387669, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39335430827c1eb41a45d49432387669, type: 3}
 --- !u!1001 &8506999667806071261
 PrefabInstance:

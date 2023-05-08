@@ -14,6 +14,7 @@ namespace Player.Substates.Grounded
         private bool aimRaccoon;
         private bool callBackRaccoon;
         private bool dash;
+        private bool punch;
         public Idle(Player entity, StateMachine<Player> stateMachine, Data.D_Idle stateData) : base(entity, stateMachine)
         {
             this.stateData = stateData;
@@ -28,6 +29,7 @@ namespace Player.Substates.Grounded
             isMoving = false;
             pickUpRock = false;
             callBackRaccoon = false;
+            punch = false;
         }
 
         public override void Input()
@@ -39,6 +41,7 @@ namespace Player.Substates.Grounded
             aimRaccoon = GameManager.UserInput.Player.RaccoonAim.triggered;
             callBackRaccoon = GameManager.UserInput.Player.CallBackRaccoon.triggered;
             dash = GameManager.UserInput.Player.Dash.triggered;
+            punch = GameManager.UserInput.Player.Punch.triggered;
         }
 
         public override void Exit()
@@ -69,6 +72,7 @@ namespace Player.Substates.Grounded
             else if (aimRaccoon) stateMachine.ChangeState(player.GrabRacoonState);
             else if (callBackRaccoon) stateMachine.ChangeState(player.CallBackRaccoonState);
             else if (dash) stateMachine.ChangeState(player.DashState);
+            else if (punch) stateMachine.ChangeState(player.PunchState);
         }
     }
 }
