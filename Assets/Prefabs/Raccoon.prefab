@@ -217,15 +217,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0e1d44a162ea354f94a4b8156614788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallCheckDistance: 0.57
-  ledgeCheckDistance: 0.15
+  <WallCheck>k__BackingField: {fileID: 1775471482784026654}
+  <LedgeCheck>k__BackingField: {fileID: 5450165522955701861}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  wallCheck: {fileID: 5309571845851885900}
-  ledgeCheck: {fileID: 5450165522955701861}
-  attackCheck: {fileID: 3287500568741422177}
-  fov: {fileID: 7075941892729400147}
+  <WallCheckDistance>k__BackingField: 0.44
+  <LedgeCheckDistance>k__BackingField: 0.36
+  <AttackCheck>k__BackingField: {fileID: 3287500568741422177}
+  <FOV>k__BackingField: {fileID: 7075941892729400147}
   launchData: {fileID: 11400000, guid: cfcbad84b23aa6d46a895e3a2f08d4af, type: 2}
   returnToPlayerData: {fileID: 11400000, guid: 071499ee0deae0640b988c909198bca2, type: 2}
   jumpToPlayerData: {fileID: 11400000, guid: f85c8f9adac1643459281d4b792b47c2, type: 2}
@@ -283,7 +283,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   Scale: {x: 1, y: 1}
-  Target: {fileID: 0}
 --- !u!1 &3978141138490678322
 GameObject:
   m_ObjectHideFlags: 0

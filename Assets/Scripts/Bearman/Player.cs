@@ -71,7 +71,9 @@ namespace Player
 
         #region external references
         [HideInInspector] public GameObject Rock;
-        [HideInInspector] public Raccoon.Raccoon Raccoon;
+        [HideInInspector] public Raccoon.Raccoon Raccoon { get { return raccoon; } set { raccoon = value; DamageTaken?.Invoke(); } }
+        [HideInInspector] private Raccoon.Raccoon raccoon;
+
         public SpriteRenderer SpriteRenderer { get; private set; }
         public Transform ShockwaveSpawnPos { get; private set; }
         #endregion

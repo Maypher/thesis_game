@@ -2287,7 +2287,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1934092541, guid: 39335430827c1eb41a45d49432387669, type: 3}
       propertyPath: <MaxHealth>k__BackingField
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4684614431714139777, guid: 39335430827c1eb41a45d49432387669, type: 3}
       propertyPath: m_Name
