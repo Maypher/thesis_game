@@ -9,8 +9,8 @@ namespace Player.Substates.Grounded
     {
         private readonly Data.D_AimRaccoon stateData;
 
-        private GameObject launchPos;
-        private SpriteRenderer arrow;
+        private readonly GameObject launchPos;
+        private readonly SpriteRenderer scope;
 
         private bool aiming;
         private bool throwRaccoon;
@@ -21,7 +21,7 @@ namespace Player.Substates.Grounded
         {
             this.stateData = stateData;
             launchPos = player.transform.Find("RaccoonLaunchPos").gameObject;
-            arrow = launchPos.GetComponent<SpriteRenderer>();
+            scope = launchPos.GetComponentInChildren<SpriteRenderer>();
         }
 
 
@@ -29,7 +29,7 @@ namespace Player.Substates.Grounded
         {
             base.Enter();
 
-            arrow.flipX = player.FacingDirection == -1;
+            launchPos.transform.localScale = new(player.FacingDirection == -1 ? -1: 1, 1);
 
             launchPos.transform.eulerAngles = Vector3.zero;
             launchPos.SetActive(true);

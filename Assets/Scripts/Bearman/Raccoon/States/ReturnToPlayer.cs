@@ -20,8 +20,6 @@ namespace Player.Raccoon.States
         {
             base.Enter();
 
-            raccoon.transform.eulerAngles = Vector3.zero;
-
             directionToPlayer = GetDirectionToPlayer();
             MoveOutsideCameraView();
         }

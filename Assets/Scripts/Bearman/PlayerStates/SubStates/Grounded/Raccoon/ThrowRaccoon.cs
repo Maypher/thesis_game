@@ -63,6 +63,10 @@ namespace Player.Substates.Grounded
 
         private void FinishAnimation() => finishedAnimation = true;
 
-        private void SpawnRaccoon() => player.Raccoon = (Raccoon.Raccoon)GameObject.Instantiate(stateData.raccoon, launchPos.position, player.transform.rotation);
+        private void SpawnRaccoon() 
+        {
+            player.Raccoon = (Raccoon.Raccoon)GameObject.Instantiate(stateData.raccoon, launchPos.position, launchPos.transform.rotation);
+            if (player.FacingDirection == -1) player.Raccoon.Flip();
+        }
     }
 }
