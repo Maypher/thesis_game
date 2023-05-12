@@ -9,6 +9,8 @@ namespace Enemies.Wolf.States
     {
         private readonly Data.D_Assault stateData;
 
+        private bool attack;
+
         public Assault(Wolf entity, StateMachine<Wolf> stateMachine, Data.D_Assault stateData) : base(entity, stateMachine)
         {
             this.stateData = stateData;
@@ -18,14 +20,18 @@ namespace Enemies.Wolf.States
         {
             base.Enter();
 
+            attack = false;
 
-            wolf.SetVelocityX(stateData.jumpForce.x);
-            wolf.SetVelocityY(stateData.jumpForce.y);
+            wolf.AttackCheck.enemyEnteredAttackArea += ChangeToAttack;
+
+            wolf.SetVelocity(stateData.jumpForce, stateData.jumpAngle, wolf.FacingDirection);
         }
 
         public override void Exit()
         {
             base.Exit();
+
+            wolf.AttackCheck.enemyEnteredAttackArea -= ChangeToAttack;
         }
 
         public override void LogicUpdate()
@@ -41,6 +47,11 @@ namespace Enemies.Wolf.States
         public override void CheckStateChange()
         {
             base.CheckStateChange();
+
+            if (attack) stateMachine.ChangeState(wolf.AttackState);
+            else if (wolf.GroundCheck.Check() && Time.time >= startTime + 0.2f) stateMachine.ChangeState(wolf.LookForTargetState);
         }
+
+        private void ChangeToAttack() => attack = true;
     }
 }

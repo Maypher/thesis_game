@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf7502bc4a0571b41ab1f954b28fa946, type: 3}
   m_Name: Wolf_Assault
   m_EditorClassIdentifier: 
-  jumpForce: {x: 10, y: 5}
+  jumpForce: 8
+  jumpAngle: {x: 1, y: 0.6}
