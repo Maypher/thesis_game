@@ -12,5 +12,7 @@ namespace Player.Substates.Data
         public float fallForce = 10f;
         public float airHangTime = .3f;
         public GameObject shockwave;
+
+        public AttackDetails attackDetails;
     }
 }

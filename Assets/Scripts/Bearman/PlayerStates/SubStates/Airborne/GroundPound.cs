@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Player.Substates.Airborne
 {
-    public class GroundPound : Superstates.Airborne
+    public class GroundPound : Superstates.Airborne, IAttack
     {
         private readonly Data.D_GroundPound stateData;
 
@@ -39,6 +39,7 @@ namespace Player.Substates.Airborne
             player.Rb.gravityScale = 0;
             player.CanLand = false;
             landed = false;
+
         }
 
         public override void Exit()
@@ -46,6 +47,9 @@ namespace Player.Substates.Airborne
             base.Exit();
 
             player.FinishAnimation -= EnableLanding;
+            player.GroundPoundCheck.enemyEnteredAttackArea -= Attack;
+
+            player.CanBeDamaged = true;
         }
 
         public override void Input()
@@ -67,7 +71,6 @@ namespace Player.Substates.Airborne
 
         private void AirHang()
         {
-            Debug.Log("AirHang");
             player.SetVelocity(0, Vector2.zero, 0);
 
             player.AnimationEvent -= AirHang;
@@ -80,15 +83,28 @@ namespace Player.Substates.Airborne
             player.Rb.gravityScale = ogGravity;
 
             player.AnimationEvent -= FallDown;
-            player.AnimationEvent += SpawnShockwave;
-        }
-
-        private void SpawnShockwave()
-        {
-            GameObject.Instantiate(stateData.shockwave, player.ShockwaveSpawnPos.position, Quaternion.identity);
-            player.AnimationEvent -= SpawnShockwave;
+            player.CanBeDamaged = false;
+            player.GroundPoundCheck.enemyEnteredAttackArea += Attack;
         }
 
         private void EnableLanding() => player.CanLand = true;
+
+        public void Attack()
+        {
+            Collider2D[] enemies = player.AttackCheck.GetEnemies();
+
+            AttackDetails attackDetails = stateData.attackDetails;
+
+            foreach (Collider2D enemy in enemies)
+            {
+                attackDetails.attackPostion = player.AttackCheck.transform.position;
+                enemy.GetComponent<IDamageable>()?.TakeDamage(attackDetails);
+            }
+        }
+
+        public void FinishAttack()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
