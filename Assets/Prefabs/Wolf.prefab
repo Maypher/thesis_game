@@ -372,23 +372,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb43333cb82bca445bac1f4c403ac4cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <WallCheck>k__BackingField: {fileID: 0}
-  <LedgeCheck>k__BackingField: {fileID: 0}
+  <WallCheck>k__BackingField: {fileID: 1828668046221867707}
+  <LedgeCheck>k__BackingField: {fileID: 1828668045499720011}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  <WallCheckDistance>k__BackingField: 0
-  <LedgeCheckDistance>k__BackingField: 0
-  <AttackCheck>k__BackingField: {fileID: 0}
-  <FOV>k__BackingField: {fileID: 0}
+  <WallCheckDistance>k__BackingField: 1
+  <LedgeCheckDistance>k__BackingField: 1
+  <AttackCheck>k__BackingField: {fileID: 1828668046739158558}
+  <FOV>k__BackingField: {fileID: 1828668047188126787}
+  maxHealth: 5
   moveData: {fileID: 11400000, guid: 5268649043f54324f84514dc74ff0f4b, type: 2}
   idleData: {fileID: 11400000, guid: 62e2224630cc75740a222d87f7d1fd40, type: 2}
   chaseData: {fileID: 11400000, guid: a68cc8c73776bee4e8a7a1dba217e6e5, type: 2}
   targetDetectedData: {fileID: 11400000, guid: 57a0fbb4f6d401f4da8216ce96e0d3d7, type: 2}
   tiredData: {fileID: 11400000, guid: cc93301407260f341942ef274f27c7ce, type: 2}
   assaultData: {fileID: 11400000, guid: bf57e430bf957ce48acadb67b17089ac, type: 2}
-  lookForTargetData: {fileID: 0}
-  <AttackRange>k__BackingField: {fileID: 0}
+  lookForTargetData: {fileID: 11400000, guid: 3e364d76d78a6884599087b25aceb5ec, type: 2}
+  attackData: {fileID: 11400000, guid: 3eea10776f980c94e97bb934a343ea5b, type: 2}
+  <AttackRange>k__BackingField: {fileID: 1828668046783681729}
+  onCollisionDetails:
+    damage: 1
+    attackPostion: {x: 0, y: 0}
+    knockbackForce: 6
+    knockbackAngle: {x: 0.7, y: 0.8}
+  CanAttack: 1
 --- !u!70 &1200578031768964306
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
