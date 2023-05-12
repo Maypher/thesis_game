@@ -30,10 +30,10 @@ namespace StateMachine
 
         public virtual void Start()
         {
-
             Rb = GetComponent<Rigidbody2D>();
             Anim = GetComponent<Animator>();
             GroundCheck = GetComponentInChildren<GroundCheck>();
+
         }
 
         public virtual void Update()
