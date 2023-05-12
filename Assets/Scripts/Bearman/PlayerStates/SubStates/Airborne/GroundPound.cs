@@ -48,6 +48,7 @@ namespace Player.Substates.Airborne
 
             player.FinishAnimation -= EnableLanding;
             player.GroundPoundCheck.enemyEnteredAttackArea -= Attack;
+            player.Rb.gravityScale = ogGravity;
 
             player.CanBeDamaged = true;
         }
