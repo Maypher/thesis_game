@@ -63,6 +63,7 @@ namespace Player
         #region components
         public AttackCheck AttackCheck { get; private set; }
         public AttackCheck DashAttackCheck { get; private set; }
+        public AttackCheck GroundPoundCheck { get; private set; }
         #endregion
 
         #region control variables
@@ -78,7 +79,6 @@ namespace Player
         [HideInInspector] private Raccoon.Raccoon raccoon;
 
         public SpriteRenderer SpriteRenderer { get; private set; }
-        public Transform ShockwaveSpawnPos { get; private set; }
         #endregion
 
         public override void Awake()
@@ -112,9 +112,9 @@ namespace Player
 
             AttackCheck = transform.Find("PunchCheck").GetComponent<AttackCheck>();
             DashAttackCheck = transform.Find("DashAttackCheck").GetComponent<AttackCheck>();
+            GroundPoundCheck = transform.Find("GroundpoundArea").GetComponent<AttackCheck>();
 
             SpriteRenderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
-            ShockwaveSpawnPos = transform.Find("ShockwaveSpawnPos");
 
             StateMachine.Initialize(IdleState);
         }
