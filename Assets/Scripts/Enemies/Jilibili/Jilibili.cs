@@ -11,6 +11,9 @@ namespace Enemies.Jilibili {
         [Header("Attack details")]
         [SerializeField] private AttackDetails attackDetails;
 
+        [SerializeField] private int maxHealth = 4;
+        private int health;
+
         public Action enteredBush;
         public Vector2 StartPos { get; private set; }
 
@@ -73,6 +76,8 @@ namespace Enemies.Jilibili {
             Bush = transform.parent.transform.Find("bush").gameObject;
             DetectionZone = Bush.transform.Find("detectionZone").GetComponent<AttackCheck>();
 
+            health = maxHealth;
+
             StateMachine.Initialize(InsideBushState);
         }
 
@@ -97,6 +102,24 @@ namespace Enemies.Jilibili {
         private void OnTriggerStay2D (Collider2D collision)
         {
             if (collision.gameObject == Bush) enteredBush?.Invoke();
+        }
+
+        public override void TakeDamage(AttackDetails attackDetails)
+        {
+            base.TakeDamage(attackDetails);
+
+            health -= attackDetails.damage;
+
+            SetVelocity(attackDetails.knockbackForce, attackDetails.knockbackAngle, Mathf.Sign(attackDetails.attackPostion.x - transform.position.x));
+
+            if (health <= 0) Kill();
+        }
+
+        public override void Kill()
+        {
+            base.Kill();
+
+            Destroy(gameObject);
         }
     }
 }

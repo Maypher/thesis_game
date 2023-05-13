@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf713fac95f48b146bfe1db75611fde9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 3
   idleData: {fileID: 11400000, guid: a28675fe06b3abe4d98179f7fc819a6d, type: 2}
   shootData: {fileID: 11400000, guid: 5da87741b7f66b2468e67f4e4fcc6f6d, type: 2}
 --- !u!1 &807549677440410887
