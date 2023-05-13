@@ -53,6 +53,7 @@ namespace Player
         public Substates.Grounded.ThrowRaccoon ThrowRaccoonState { get; private set; }
         public Substates.Grounded.CallBackRaccoon CallBackRaccoonState { get; private set; }
         public Substates.Grounded.Punch PunchState { get; private set; }
+        public Substates.Grounded.Crouch CrouchState { get; private set; }
         public Substates.Airborne.Jump JumpState { get; private set; }
         public Substates.Airborne.AirMove AirMoveState { get; private set; }
         public Substates.Airborne.Dash DashState { get; private set; }
@@ -98,6 +99,7 @@ namespace Player
             ThrowRaccoonState = new(this, StateMachine, throwRacoonData);
             CallBackRaccoonState = new(this, StateMachine);
             PunchState = new(this, StateMachine, punchData);
+            CrouchState = new(this, StateMachine);
 
             JumpState = new(this, StateMachine, jumpData);
             AirMoveState = new(this, StateMachine, airMoveData);

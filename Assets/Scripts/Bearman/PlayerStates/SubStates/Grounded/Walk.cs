@@ -16,7 +16,7 @@ namespace Player.Substates.Grounded
         private float decelerationTime;
 
         private float inputDirection;
-        private bool pickUpRock;
+        private bool isCrouching;
         private bool aimRaccoon;
         private bool callBackRaccoon;
         private bool dash;
@@ -37,7 +37,7 @@ namespace Player.Substates.Grounded
             decelerating = false;
             decelerationTime = 0;
             callBackRaccoon = false;
-            pickUpRock = false;
+            isCrouching = false;
             punch = false;
             
             player.CanJump = true;
@@ -59,7 +59,7 @@ namespace Player.Substates.Grounded
             base.Input();
             inputDirection = GameManager.UserInput.Player.Move.ReadValue<float>();
 
-            pickUpRock = GameManager.UserInput.Player.PickUpRock.triggered;
+            isCrouching = GameManager.UserInput.Player.Crouch.triggered;
             aimRaccoon = GameManager.UserInput.Player.RaccoonAim.triggered;
             callBackRaccoon = GameManager.UserInput.Player.CallBackRaccoon.triggered;
             dash = GameManager.UserInput.Player.Dash.triggered;
@@ -122,7 +122,7 @@ namespace Player.Substates.Grounded
 
             // Change to idle if there's no input and the player has stopped moving
             if (entity.Rb.velocity.x == 0 && inputDirection == 0) stateMachine.ChangeState(player.IdleState);
-            else if (pickUpRock) stateMachine.ChangeState(player.PickUpRockState);
+            else if (isCrouching) stateMachine.ChangeState(player.CrouchState);
             else if (aimRaccoon) stateMachine.ChangeState(player.GrabRacoonState);
             else if (callBackRaccoon) stateMachine.ChangeState(player.CallBackRaccoonState);
             else if (dash) stateMachine.ChangeState(player.DashState);

@@ -10,7 +10,7 @@ namespace Player.Substates.Grounded
         private readonly Data.D_Idle stateData;
 
         private bool isMoving;
-        private bool pickUpRock;
+        private bool isCrouching;
         private bool aimRaccoon;
         private bool callBackRaccoon;
         private bool dash;
@@ -27,7 +27,7 @@ namespace Player.Substates.Grounded
 
             player.CanJump = true;
             isMoving = false;
-            pickUpRock = false;
+            isCrouching = false;
             callBackRaccoon = false;
             punch = false;
         }
@@ -37,7 +37,7 @@ namespace Player.Substates.Grounded
             base.Input();
 
             isMoving = GameManager.UserInput.Player.Move.ReadValue<float>() != 0;
-            pickUpRock = GameManager.UserInput.Player.PickUpRock.triggered;
+            isCrouching = GameManager.UserInput.Player.Crouch.triggered;
             aimRaccoon = GameManager.UserInput.Player.RaccoonAim.triggered;
             callBackRaccoon = GameManager.UserInput.Player.CallBackRaccoon.triggered;
             dash = GameManager.UserInput.Player.Dash.triggered;
@@ -68,7 +68,7 @@ namespace Player.Substates.Grounded
             base.CheckStateChange();
 
             if (isMoving) stateMachine.ChangeState(player.WalkState);
-            else if (pickUpRock) stateMachine.ChangeState(player.PickUpRockState);
+            else if (isCrouching) stateMachine.ChangeState(player.CrouchState);
             else if (aimRaccoon) stateMachine.ChangeState(player.GrabRacoonState);
             else if (callBackRaccoon) stateMachine.ChangeState(player.CallBackRaccoonState);
             else if (dash) stateMachine.ChangeState(player.DashState);
