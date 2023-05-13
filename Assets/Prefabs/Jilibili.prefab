@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7475698526495558358}
   - component: {fileID: 5101140683362832648}
   - component: {fileID: 7430907070693332868}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: detectionZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +407,7 @@ GameObject:
   - component: {fileID: 2780637720690155013}
   - component: {fileID: 2780637720690155012}
   - component: {fileID: 2780637720690155010}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: bush
   m_TagString: Untagged
   m_Icon: {fileID: 0}

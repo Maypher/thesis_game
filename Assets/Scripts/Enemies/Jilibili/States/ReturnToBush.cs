@@ -22,8 +22,6 @@ namespace Enemies.Jilibili.States
 
             jilibili.enteredBush += Hide;
 
-            Debug.Log("Return to bush");
-
             finishedHiding = false;
         }
 
@@ -47,8 +45,8 @@ namespace Enemies.Jilibili.States
 
             int directionToBush = (int) Mathf.Sign(jilibili.Bush.transform.position.x - jilibili.transform.position.x);
 
-            jilibili.SetVelocityX(stateData.moveSpeed * directionToBush);
             if (directionToBush != jilibili.FacingDirection) jilibili.Flip();
+            jilibili.SetVelocityX(stateData.moveSpeed);
         }
 
         public override void PhysicsUpdate()

@@ -10,6 +10,7 @@ namespace Enemies.Jilibili.States
         private readonly Data.D_InsideBush stateData;
 
         private bool hiding;
+        private float jumpTime;
 
         public InsideBush(Jilibili entity, StateMachine<Jilibili> stateMachine, Data.D_InsideBush stateData) : base(entity, stateMachine)
         {
@@ -22,10 +23,12 @@ namespace Enemies.Jilibili.States
 
             jilibili.SetVelocity(0, Vector2.zero, 0);
 
-            jilibili.transform.position = jilibili.StartPos.position;
+            jilibili.transform.position = jilibili.StartPos;
 
             SetObjectStatus(false);
+            
             hiding = true;
+            jumpTime = 0;
 
             jilibili.DetectionZone.enemyEnteredAttackArea += JumpOut;
         }
@@ -35,7 +38,7 @@ namespace Enemies.Jilibili.States
             base.CheckStateChange();
 
             // startTime + 0.7 temporary fix until animation is done
-            if (!hiding && jilibili.GroundCheck.Check() && Time.time > startTime + 0.7) { stateMachine.ChangeState(jilibili.IdleState); Debug.Log("From inside to idle"); }
+            if (!hiding && jilibili.GroundCheck.Check() && Time.time > jumpTime + 0.4) stateMachine.ChangeState(jilibili.IdleState);
         }
 
         public override void Exit()
@@ -57,8 +60,9 @@ namespace Enemies.Jilibili.States
 
             //TODO: play jump animation
 
-            jilibili.SetVelocity(stateData.jumpForce, stateData.jumpAngle, direction);
+            jilibili.SetVelocity(stateData.jumpForce, stateData.jumpAngle, -jilibili.FacingDirection);
 
+            jumpTime = Time.time;
             hiding = false;
         }
 

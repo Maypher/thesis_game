@@ -775,6 +775,10 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2780637719692515539, guid: 14c3edbb33dccdb4da72960779579a32, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.16
+      objectReference: {fileID: 0}
     - target: {fileID: 2780637720504506690, guid: 14c3edbb33dccdb4da72960779579a32, type: 3}
       propertyPath: _viewRadius
       value: 11

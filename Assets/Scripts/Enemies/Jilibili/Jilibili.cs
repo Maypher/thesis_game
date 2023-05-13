@@ -12,7 +12,7 @@ namespace Enemies.Jilibili {
         [SerializeField] private AttackDetails attackDetails;
 
         public Action enteredBush;
-        public Transform StartPos { get; private set; }
+        public Vector2 StartPos { get; private set; }
 
         #region Components
         /// <summary>
@@ -65,7 +65,7 @@ namespace Enemies.Jilibili {
         {
             base.Start();
 
-            StartPos = transform;
+            StartPos = transform.position;
 
             AwarenessZone = transform.Find("JumpAwayArea").GetComponent<AttackCheck>();
             SpriteRenderer = GetComponent<SpriteRenderer>();
