@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5985811449973228553}
   - component: {fileID: 9107763853071131255}
   - component: {fileID: 1232653480104475599}
+  - component: {fileID: -2009487379206054332}
   m_Layer: 3
   m_Name: Rock
   m_TagString: Untagged
@@ -123,3 +124,16 @@ CapsuleCollider2D:
   m_Offset: {x: -0.030620873, y: 0.056990504}
   m_Size: {x: 1.4421982, y: 2.4055793}
   m_Direction: 0
+--- !u!114 &-2009487379206054332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5985811449973228552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85eeec92143ab634a82ad43902938ca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 1
