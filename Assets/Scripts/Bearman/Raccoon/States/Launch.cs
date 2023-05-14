@@ -25,7 +25,7 @@ namespace Player.Raccoon.States
             ogGrav = raccoon.Rb.gravityScale;
             raccoon.Rb.gravityScale = 0;
 
-            raccoon.Rb.AddForce(stateData.launchForce * raccoon.transform.right, ForceMode2D.Impulse);
+            raccoon.SetVelocity(stateData.launchForce, raccoon.transform.right, 1);
         }
 
         public override void Exit()

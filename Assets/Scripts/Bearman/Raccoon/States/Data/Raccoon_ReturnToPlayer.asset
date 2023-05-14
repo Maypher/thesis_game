@@ -12,7 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf01750c356a9114fb21dbbbae6ccd7e, type: 3}
   m_Name: Raccoon_ReturnToPlayer
   m_EditorClassIdentifier: 
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 64
-  moveSpeed: 5
+  maxDistanceDelta: 0.2
+  screenSpawnInset: 2

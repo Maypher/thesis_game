@@ -121,12 +121,12 @@ namespace Player.Substates.Grounded
             base.CheckStateChange();
 
             // Change to idle if there's no input and the player has stopped moving
-            if (entity.Rb.velocity.x == 0 && inputDirection == 0) stateMachine.ChangeState(player.IdleState);
-            else if (isCrouching) stateMachine.ChangeState(player.CrouchState);
-            else if (aimRaccoon) stateMachine.ChangeState(player.GrabRacoonState);
+            if (isCrouching) stateMachine.ChangeState(player.CrouchState);
             else if (callBackRaccoon) stateMachine.ChangeState(player.CallBackRaccoonState);
+            else if (aimRaccoon && !player.Raccoon) stateMachine.ChangeState(player.GrabRacoonState);
             else if (dash) stateMachine.ChangeState(player.DashState);
             else if (punch) stateMachine.ChangeState(player.PunchState);
+            else if (entity.Rb.velocity.x == 0 && inputDirection == 0) stateMachine.ChangeState(player.IdleState);
         }
     }
 }

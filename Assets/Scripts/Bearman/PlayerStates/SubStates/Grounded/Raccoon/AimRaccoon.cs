@@ -63,7 +63,7 @@ namespace Player.Substates.Grounded
         {
             base.LogicUpdate();
 
-            rotationTimer += Time.fixedDeltaTime;
+            rotationTimer += Time.deltaTime;
 
             launchPos.transform.eulerAngles = new Vector3(0, 0, Mathf.PingPong(rotationTimer * stateData.rotationSpeed, stateData.rotationAngle) - stateData.rotationOffset);
         }

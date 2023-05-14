@@ -69,7 +69,7 @@ namespace Player.Substates.Grounded
 
             if (isMoving) stateMachine.ChangeState(player.WalkState);
             else if (isCrouching) stateMachine.ChangeState(player.CrouchState);
-            else if (aimRaccoon) stateMachine.ChangeState(player.GrabRacoonState);
+            else if (aimRaccoon && !player.Raccoon) stateMachine.ChangeState(player.GrabRacoonState);
             else if (callBackRaccoon) stateMachine.ChangeState(player.CallBackRaccoonState);
             else if (dash) stateMachine.ChangeState(player.DashState);
             else if (punch) stateMachine.ChangeState(player.PunchState);

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Player_AimRacoon
   m_EditorClassIdentifier: 
   rotationAngle: 120
-  rotationSpeed: 30
+  rotationSpeed: 180
   rotationOffset: 45

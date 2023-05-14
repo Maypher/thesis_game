@@ -60,11 +60,21 @@ namespace Player.Raccoon
             StateMachine.CurrentState.CheckStateChange();
         }
 
+        public override void FixedUpdate()
+        {
+            StateMachine.CurrentState.PhysicsUpdate();
+        }
+
         private void OnBecameInvisible()
         {
             // Only disable the raccoon if it goes out of view while being launched because there are cases where
             // the raccoon might go out of view because of the player's movement
             if (StateMachine.CurrentState == LaunchState) gameObject.SetActive(false);
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (StateMachine.CurrentState == ReturnToPlayerState && other.CompareTag("Player")) Destroy(gameObject);
         }
     }
 }

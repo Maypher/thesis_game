@@ -25,6 +25,8 @@ namespace Player.Substates.Grounded
             else player.SetAnimationParameter("grabRaccoon");
             player.CanJump = false;
 
+            player.SetVelocityX(0);
+
             finishedAnimation = false;
 
             // Since this same state is used for putting back the raccoon, the animation is played backwards

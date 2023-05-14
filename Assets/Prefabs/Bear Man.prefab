@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4671279166602193280}
   - component: {fileID: 7050560878035691409}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: scope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -494,7 +494,7 @@ GameObject:
   - component: {fileID: 1473167605828827937}
   - component: {fileID: 802513386912916783}
   - component: {fileID: 8163157767528437194}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GroundpoundArea
   m_TagString: Untagged
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}

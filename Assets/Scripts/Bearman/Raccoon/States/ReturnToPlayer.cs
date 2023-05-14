@@ -1,7 +1,9 @@
 using StateMachine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 namespace Player.Raccoon.States
 {
@@ -9,7 +11,7 @@ namespace Player.Raccoon.States
     {
         private readonly Data.D_ReturnToPlayer stateData;
 
-        private float directionToPlayer;
+        private Collider2D playerCollider = GameManager.Player.GetComponent<Collider2D>();
 
         public ReturnToPlayer(Raccoon entity, StateMachine<Raccoon> stateMachine, Data.D_ReturnToPlayer stateData) : base(entity, stateMachine)
         {
@@ -20,8 +22,10 @@ namespace Player.Raccoon.States
         {
             base.Enter();
 
-            directionToPlayer = GetDirectionToPlayer();
-            MoveOutsideCameraView();
+            float directionToPlayer = (int) Mathf.Sign((GameManager.Player.transform.localPosition - raccoon.transform.position).x);
+            MoveOutsideCameraView(directionToPlayer);
+
+            raccoon.SetVelocity(0, Vector2.zero, 0);
         }
 
         public override void Exit()
@@ -32,39 +36,27 @@ namespace Player.Raccoon.States
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-
-            directionToPlayer = raccoon.DirectionToTarget(GameManager.Player.gameObject);
-
-            if (directionToPlayer != raccoon.FacingDirection) raccoon.Flip();
-
-            raccoon.SetVelocityX(stateData.moveSpeed);
         }
 
         public override void CheckStateChange()
         {
             base.CheckStateChange();
-
-            if (raccoon.FOV.Check()) stateMachine.ChangeState(raccoon.JumpToPlayerState);
         }
 
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
+
+            raccoon.transform.position = Vector3.MoveTowards(raccoon.transform.position, new Vector2(playerCollider.bounds.center.x, playerCollider.bounds.max.y), stateData.maxDistanceDelta);
         }
 
-        private int GetDirectionToPlayer() => (int) Mathf.Sign((GameManager.Player.transform.localPosition - raccoon.transform.position).x);
-
         // Used after being enabled to place the raccoon outside the camera view and place it on the ground
-        private void MoveOutsideCameraView()
+        private void MoveOutsideCameraView(float directionToPlayer)
         {
-            float spawnX = Camera.main.ViewportToWorldPoint(directionToPlayer == -1 ? Vector3.right : Vector3.zero).x - 7 * directionToPlayer;
+            float spawnX = Camera.main.ViewportToWorldPoint(directionToPlayer == -1 ? Vector3.right : Vector3.zero).x + stateData.screenSpawnInset * directionToPlayer;
+            float spawnY = Camera.main.ViewportToWorldPoint(Vector3.one).y;
 
-            // Spawn outside camera view and up to check where ground is
-            raccoon.transform.position = new Vector2(spawnX, 10);
-
-            RaycastHit2D groundPos = Physics2D.Raycast(raccoon.transform.position, Vector2.down, stateData.whatIsGround);
-
-            if (groundPos) raccoon.transform.position = groundPos.point + new Vector2(0, .1f); // Offset to avoid intersecting with ground
+            raccoon.transform.position = new Vector2(spawnX, spawnY);
         }
     }
 }
