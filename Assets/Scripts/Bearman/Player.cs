@@ -115,8 +115,9 @@ namespace Player
             AttackCheck = transform.Find("PunchCheck").GetComponent<AttackCheck>();
             DashAttackCheck = transform.Find("DashAttackCheck").GetComponent<AttackCheck>();
             GroundPoundCheck = transform.Find("GroundpoundArea").GetComponent<AttackCheck>();
-
             SpriteRenderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
+
+            GameManager.UserInput.Player.Enable();
 
             StateMachine.Initialize(IdleState);
         }

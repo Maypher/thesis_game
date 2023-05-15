@@ -48,10 +48,13 @@ namespace Enemies.Gunner
 
         public override void Update()
         {
+            if (PauseMenu.IsPaused) return;
+
+            base.Update();
+
             StateMachine.CurrentState.LogicUpdate();
             StateMachine.CurrentState.CheckStateChange();
 
-            base.Update();
         }
 
         public override void FixedUpdate()

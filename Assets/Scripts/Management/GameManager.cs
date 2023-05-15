@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Player = FindObjectOfType<Player.Player>();
+        UserInput = new();
 
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
@@ -20,7 +21,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        UserInput = new();
-        UserInput.Player.Enable();
+    }
+
+    public void SeCursorState(bool visible, CursorLockMode lockState)
+    {
+        Cursor.visible = visible;
+        Cursor.lockState = lockState;
     }
 }

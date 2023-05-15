@@ -60,10 +60,11 @@ namespace Enemies.Crocodile.States
 
             while (timeElapsed < stateData.shakeDuration)
             {
+                while (PauseMenu.IsPaused) yield return null;
+
                 float x = Random.Range(-1f, 1f) * stateData.shakeIntensity;
                 float y = Random.Range(-1f, 1f) * stateData.shakeIntensity;
                 crocodile.Sprite.position = new Vector2(startPosition.x + x, startPosition.y + y);
-
                 timeElapsed += Time.deltaTime;
                 yield return null;
             }
