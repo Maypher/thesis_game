@@ -31,7 +31,7 @@ namespace Enemies.Gunner.Misc
         private void OnTriggerEnter2D(Collider2D collision)
         {
             // If colliding with player(3 and 8) or ground(6)
-            if (collision.gameObject.layer == 3 || collision.gameObject.layer == 6 || collision.gameObject.layer == 8)
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Player") || collision.gameObject.layer == LayerMask.NameToLayer("Ground") || collision.gameObject.layer == LayerMask.NameToLayer("InvinsibleToEnemies"))
             {
                 moving = false;
                 // Spawn gushot particles

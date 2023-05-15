@@ -51,7 +51,7 @@ namespace Player
         private void OnCollisionEnter2D(Collision2D collision)
         {
             // 7 = enemy layer
-            if (collision.gameObject.layer == 7) 
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Enemies")) 
             {
                 AttackDetails ad = attackDetails;
                 ad.attackPostion = collision.GetContact(0).point;
