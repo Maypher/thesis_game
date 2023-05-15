@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4407339311014726267}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.53, y: 0.9, z: 0}
+  m_LocalPosition: {x: 2.53, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4684614430069980874}
   - component: {fileID: 4684614430069980873}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4684614430184394241}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: RockSpawnPos
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 4684614431714139797}
   - component: {fileID: 2019705933}
   - component: {fileID: 1934092541}
+  - component: {fileID: 521948085}
   m_Layer: 3
   m_Name: Bear Man
   m_TagString: Player
@@ -319,6 +320,17 @@ MonoBehaviour:
   TimeInAir: 0
   CanBeDamaged: 1
   Rock: {fileID: 0}
+--- !u!210 &521948085
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4684614431714139777}
+  m_Enabled: 1
+  m_SortingLayerID: 947238479
+  m_SortingLayer: 3
+  m_SortingOrder: 0
 --- !u!1 &4684614431803913727
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,7 +341,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4684614431803913725}
   - component: {fileID: 4684614431803913726}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Sprite
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -413,7 +425,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4684614431902296334}
   - component: {fileID: 1056658718}
-  m_Layer: 3
+  - component: {fileID: 10627824}
+  m_Layer: 0
   m_Name: PunchCheck
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -451,6 +464,22 @@ MonoBehaviour:
   _whatIsEnemy:
     serializedVersion: 2
     m_Bits: 128
+--- !u!58 &10627824
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4684614431902296335}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &4684614432038999831
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,7 +489,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4684614432038999830}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: RaccoonLaunchPos
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -569,7 +598,7 @@ GameObject:
   - component: {fileID: 6929244589360561136}
   - component: {fileID: 7239856502204509477}
   - component: {fileID: 3344607552154662347}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: DashAttackCheck
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}

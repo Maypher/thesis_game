@@ -10,10 +10,10 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - Ground
   - Water
   - UI
-  - Ground
+  - Player
   - Enemies
   - InvinsibleToEnemies
   - 
@@ -45,4 +45,10 @@ TagManager:
     locked: 0
   - name: Particles
     uniqueID: 2356721249
+    locked: 0
+  - name: Ground
+    uniqueID: 267281639
+    locked: 0
+  - name: Player
+    uniqueID: 947238479
     locked: 0
