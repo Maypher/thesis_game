@@ -12,6 +12,8 @@ namespace Enemies.Crocodile.States
         private Vector2 startPosition;
         private bool finishBite;
 
+        private bool killedPlayer;
+
         private float biteTime;
 
         public Bite(Crocodile entity, StateMachine<Crocodile> stateMachine, Data.D_Bite stateData) : base(entity, stateMachine)
@@ -20,26 +22,35 @@ namespace Enemies.Crocodile.States
 
             startPosition = crocodile.transform.position;
         }
-   
+
         public override void Enter()
         {
             base.Enter();
 
             biteTime = 0;
             finishBite = false;
+            killedPlayer = false;
+
+
+            crocodile.FinishAnimation += FinishBite;
+            GameManager.Player.PlayerDeath += KillPlayer;
+            
             crocodile.StartCoroutine(ShakeCoroutine());
         }
 
         public override void Exit()
         {
             base.Exit();
+
+            GameManager.Player.PlayerDeath -= KillPlayer;
+            crocodile.FinishAnimation -= FinishBite;
         }
 
         public override void CheckStateChange()
         {
             base.CheckStateChange();
 
-            if (finishBite && Time.time >= biteTime + stateData.timeAfterBite) stateMachine.ChangeState(crocodile.HideState);
+            if (finishBite && Time.time >= biteTime + stateData.timeAfterBite && !killedPlayer) stateMachine.ChangeState(crocodile.HideState);
         }
 
 
@@ -70,9 +81,10 @@ namespace Enemies.Crocodile.States
             }
 
             crocodile.Sprite.transform.position = startPosition;
+            crocodile.SetAnimationParameter("bite");
             Attack();
         }
-    
+
         public void Attack()
         {
             Collider2D[] enemies = crocodile.AttackCheck.GetEnemies();
@@ -90,6 +102,20 @@ namespace Enemies.Crocodile.States
         public void FinishAttack()
         {
             throw new System.NotImplementedException();
+        }
+
+        private void KillPlayer() => killedPlayer = true;
+
+        private void FinishBite() 
+        {
+            finishBite = true;
+
+            if (killedPlayer) crocodile.SetAnimationParameter("goodBite");
+            else
+            {
+                crocodile.SetAnimationParameter("failBite");
+                crocodile.SetAnimationParameter("underwater", true);
+            }
         }
     }
 }

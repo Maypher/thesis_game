@@ -35,6 +35,8 @@ namespace Enemies.Crocodile
         // Start is called before the first frame update
         public override void Start()
         {
+            base.Start();
+
             AttackCheck = GetComponentInChildren<AttackCheck>();
             StartPosition = transform.position;
             Sprite = transform.Find("Sprite");

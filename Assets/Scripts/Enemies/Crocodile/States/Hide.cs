@@ -31,6 +31,8 @@ namespace Enemies.Crocodile.States
 
             crocodile.StartCoroutine(Lower());
 
+            crocodile.SetAnimationParameter("underwater", true);
+
         }
 
         public override void Exit()
@@ -72,6 +74,7 @@ namespace Enemies.Crocodile.States
             }
 
             yield return new WaitForSeconds(stateData.timeUnderwater);
+            crocodile.SetAnimationParameter("underwater", false);
             crocodile.StartCoroutine(Rise());
         }
 
