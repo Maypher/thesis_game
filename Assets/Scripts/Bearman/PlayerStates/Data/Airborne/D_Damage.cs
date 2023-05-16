@@ -9,6 +9,5 @@ namespace Player.Substates.Data
     {
         public float invincibilityTime = 1;
         public int flashTimes = 3;
-        [Range(0, 31)] public int enemyLayer;
     }
 }

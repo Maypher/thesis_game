@@ -103,7 +103,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2780637719692515540}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.98, z: 0}
+  m_LocalPosition: {x: 0, y: 1.16, z: 0}
   m_LocalScale: {x: 0.517405, y: 0.517405, z: 0.517405}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -241,6 +241,7 @@ MonoBehaviour:
     attackPostion: {x: 0, y: 0}
     knockbackForce: 5
     knockbackAngle: {x: 0.8, y: 0.6}
+  maxHealth: 4
   insideBushData: {fileID: 11400000, guid: b44b230d658f1fc499a36985a0cdfe2a, type: 2}
   idleData: {fileID: 11400000, guid: d7c16cce5ee38f54badfb25d74a6e4bc, type: 2}
   attackData: {fileID: 11400000, guid: c47e31803b09acf49b135d48733b9ea7, type: 2}

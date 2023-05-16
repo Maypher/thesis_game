@@ -70,7 +70,6 @@ namespace Player
         #region control variables
         [HideInInspector] public bool CanJump = true;
         [HideInInspector] public bool CanLand = true;
-        [HideInInspector] public float TimeInAir = 0f;
         [HideInInspector] public bool CanBeDamaged = true;
         #endregion
 

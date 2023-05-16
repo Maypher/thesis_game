@@ -34,6 +34,7 @@ namespace Player.Substates.Airborne
             base.Exit();
 
             player.SetAnimationParameter("takeDamage", false);
+            player.CanBeDamaged = true;
         }
 
         public override void LogicUpdate()
@@ -58,8 +59,6 @@ namespace Player.Substates.Airborne
             // Set the layer of the player to a different layer so it doesn't get detected by enemies
             player.gameObject.layer = LayerMask.NameToLayer("InvinsibleToEnemies");
 
-            Physics2D.IgnoreLayerCollision(player.gameObject.layer, stateData.enemyLayer, true);
-
             for (int i = 0; i < stateData.flashTimes; i++)
             {
                 player.SpriteRenderer.color = new Color(1, 0, 0, .5f);
@@ -68,7 +67,6 @@ namespace Player.Substates.Airborne
                 yield return new WaitForSeconds(timeBetweenFlashes);
             }
 
-            Physics2D.IgnoreLayerCollision(player.gameObject.layer, stateData.enemyLayer, false);
             player.CanBeDamaged = true;
             // Set the player back to its base layer
             player.gameObject.layer = LayerMask.NameToLayer("Player");

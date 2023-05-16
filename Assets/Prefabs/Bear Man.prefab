@@ -133,7 +133,7 @@ MonoBehaviour:
   _dimensions: {x: 0.3, y: 0.3}
   _whatIsGround:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 8
 --- !u!1 &4684614430184394242
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 2019705933}
   - component: {fileID: 1934092541}
   - component: {fileID: 521948085}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Bear Man
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -317,7 +317,6 @@ MonoBehaviour:
   damageData: {fileID: 11400000, guid: 76170643f4c435b49953630a51381950, type: 2}
   CanJump: 0
   CanLand: 1
-  TimeInAir: 0
   CanBeDamaged: 1
   Rock: {fileID: 0}
 --- !u!210 &521948085
@@ -523,7 +522,7 @@ GameObject:
   - component: {fileID: 1473167605828827937}
   - component: {fileID: 802513386912916783}
   - component: {fileID: 8163157767528437194}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: GroundpoundArea
   m_TagString: Untagged
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}

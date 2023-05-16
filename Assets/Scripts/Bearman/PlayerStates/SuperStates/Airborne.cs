@@ -10,6 +10,8 @@ namespace Player.Superstates
         private bool wantsToJump;
         private float jumpBufferTimer;
 
+        private static float timeInAir;
+
         public Airborne(Player entity, StateMachine<Player> stateMachine) : base(entity, stateMachine)
         {
         }
@@ -19,6 +21,7 @@ namespace Player.Superstates
         {
             base.Enter();
 
+            timeInAir = 0;
             wantsToJump = false;
             jumpBufferTimer = player.jumpBufferTime;
             player.SetAnimationParameter("isAirborne", true);
@@ -29,7 +32,6 @@ namespace Player.Superstates
             base.Exit();
 
             player.AirMoveState.alreadyDashed = false;
-            player.TimeInAir = 0;
 
             player.SetAnimationParameter("isAirborne", false);
         }
@@ -45,7 +47,7 @@ namespace Player.Superstates
         {
             base.LogicUpdate();
 
-            player.TimeInAir += Time.deltaTime;
+            timeInAir += Time.deltaTime;
 
             if (wantsToJump) jumpBufferTimer -= Time.deltaTime;
         }
@@ -61,9 +63,8 @@ namespace Player.Superstates
 
             // Since the frame the player is in the air this check is triggered then it would transition immediately back to grounded
             // A small time is given so the player can be airborne before checking
-            if (player.GroundCheck.Check() && player.CanLand && player.TimeInAir > 0.2) 
+            if (player.GroundCheck.Check() && player.CanLand && timeInAir > 0.2) 
             {
-
                 if (wantsToJump && jumpBufferTimer > 0) stateMachine.ChangeState(player.JumpState);
                 else if (GameManager.UserInput.Player.Move.ReadValue<float>() == 0) stateMachine.ChangeState(player.IdleState);
                 else stateMachine.ChangeState(player.WalkState);
