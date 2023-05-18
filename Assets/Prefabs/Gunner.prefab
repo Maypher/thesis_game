@@ -284,10 +284,10 @@ MonoBehaviour:
   _angleOffset: 0
   _targetMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 64
   _obstacleMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 8
   Scale: {x: 1, y: 1}
 --- !u!1 &807549678172225992
 GameObject:

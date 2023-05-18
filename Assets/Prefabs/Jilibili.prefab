@@ -74,7 +74,7 @@ MonoBehaviour:
   _checkRadius: 7.05
   _whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 64
 --- !u!1 &2780637719692515540
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,10 +359,10 @@ MonoBehaviour:
   _angleOffset: 0
   _targetMask:
     serializedVersion: 2
-    m_Bits: 264
+    m_Bits: 320
   _obstacleMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 8
   Scale: {x: 1, y: 1}
 --- !u!1 &2780637720655103045
 GameObject:
@@ -573,7 +573,7 @@ MonoBehaviour:
   _checkRadius: 0.5
   _whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 64
 --- !u!1 &2780637721545189249
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,7 +638,7 @@ MonoBehaviour:
   _checkRadius: 0.5
   _whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 64
 --- !u!1 &5835278476600969927
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,4 +688,4 @@ MonoBehaviour:
   _dimensions: {x: 0.3, y: 0.3}
   _whatIsGround:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 8

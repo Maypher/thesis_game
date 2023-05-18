@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 namespace Player 
 {
@@ -65,6 +66,8 @@ namespace Player
         public AttackCheck AttackCheck { get; private set; }
         public AttackCheck DashAttackCheck { get; private set; }
         public AttackCheck GroundPoundCheck { get; private set; }
+
+        public CinemachineImpulseSource CameraImpulseSource { get; private set; }
         #endregion
 
         #region control variables
@@ -79,6 +82,14 @@ namespace Player
         [HideInInspector] private Raccoon.Raccoon raccoon;
 
         public SpriteRenderer SpriteRenderer { get; private set; }
+        #endregion
+
+
+        #region Particles
+        [Header("Particles")]
+        [SerializeField] private ParticleSystem groundpoundParticles;
+
+        public ParticleSystem GroundPoundParticles { get { return groundpoundParticles; } }
         #endregion
 
         public override void Awake()
@@ -115,6 +126,7 @@ namespace Player
             DashAttackCheck = transform.Find("DashAttackCheck").GetComponent<AttackCheck>();
             GroundPoundCheck = transform.Find("GroundpoundArea").GetComponent<AttackCheck>();
             SpriteRenderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
+            CameraImpulseSource = GetComponent<CinemachineImpulseSource>();
 
             GameManager.UserInput.Player.Enable();
 

@@ -21,7 +21,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 72
   attackDetails:
-    damage: 4
-    attackPostion: {x: -5.421, y: 1.932}
+    damage: 1
+    attackPostion: {x: -6.1671643, y: 1.9435111}
     knockbackForce: 2
     knockbackAngle: {x: 1, y: 1}

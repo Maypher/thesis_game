@@ -11,7 +11,7 @@ namespace Player.Substates.Data
         public float jumpTime = .3f;
         public float fallForce = 10f;
         public float airHangTime = .3f;
-        public GameObject shockwave;
+        public ScreenShakeProfile screenShakeProfile;
 
         public AttackDetails attackDetails;
     }

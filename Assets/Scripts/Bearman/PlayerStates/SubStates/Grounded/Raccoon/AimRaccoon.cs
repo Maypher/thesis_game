@@ -10,6 +10,7 @@ namespace Player.Substates.Grounded
         private readonly Data.D_AimRaccoon stateData;
 
         private readonly GameObject launchPos;
+        private readonly Transform rotationPos;
         private readonly SpriteRenderer scope;
 
         private bool aiming;
@@ -21,6 +22,7 @@ namespace Player.Substates.Grounded
         {
             this.stateData = stateData;
             launchPos = player.transform.Find("RaccoonLaunchPos").gameObject;
+            rotationPos = player.transform.Find("RaccoonRotationPos");
             scope = launchPos.GetComponentInChildren<SpriteRenderer>();
         }
 

@@ -62,7 +62,13 @@ namespace Player.Substates.Airborne
         {
             base.LogicUpdate();
 
-            if (player.GroundCheck.Check() && !landed) { player.SetAnimationParameter("groundPound"); landed = true; }
+            if (player.GroundCheck.Check() && !landed) 
+            {
+                player.SetAnimationParameter("groundPound");
+                player.GroundPoundParticles.Play();
+                landed = true;
+                CameraShakeManager.instance.CameraShakeFromProfile(stateData.screenShakeProfile, player.CameraImpulseSource);
+            }
         }
 
         public override void PhysicsUpdate()

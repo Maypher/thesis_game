@@ -12,11 +12,13 @@ namespace Player.Substates.Grounded
         private bool finishedAnimation;
 
         private readonly Transform launchPos;
+        private readonly Transform rotationPos;
 
         public ThrowRaccoon(Player entity, StateMachine<Player> stateMachine, Data.D_ThrowRaccoon stateData) : base(entity, stateMachine)
         {
             this.stateData = stateData;
             launchPos = player.transform.Find("RaccoonLaunchPos");
+            rotationPos = player.transform.Find("RaccoonRotationPos");
         }
 
         //TODO: Play animation, spawn raccoon, apply force to it (animation already has finish animation event)

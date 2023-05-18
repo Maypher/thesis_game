@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1617724186881759803}
   - component: {fileID: 2270502061530015656}
   - component: {fileID: 3287500568741422177}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: AttackCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 1001516535648942639}
   - component: {fileID: 1990397731260441781}
   - component: {fileID: 4880251223772007022}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Raccoon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1921421940531817763}
   - component: {fileID: 7075941892729400147}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FOV
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -292,7 +292,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5309571845851885900}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: WallCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,7 +323,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5450165522955701861}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: LedgeCheck
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -354,7 +354,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1775471482784026654}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: WallCheck
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -440,4 +440,4 @@ MonoBehaviour:
   _checkRadius: 0.66
   _whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 64

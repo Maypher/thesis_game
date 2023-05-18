@@ -44,7 +44,7 @@ GameObject:
   m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -75,12 +75,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60519333a0dea80479fbce18dc36acb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _checkType: 0
+  _checkType: 1
   _checkRadius: 0.3
   _dimensions: {x: 0.3, y: 0.3}
   _whatIsGround:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 8
 --- !u!1 &1828668046221867708
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,7 +160,7 @@ MonoBehaviour:
   _checkRadius: 0.5
   _whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 64
 --- !u!58 &1828668046739158557
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -224,7 +224,7 @@ MonoBehaviour:
   _checkRadius: 3.99
   _whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 64
 --- !u!1 &1828668046842578926
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,7 +376,7 @@ MonoBehaviour:
   <LedgeCheck>k__BackingField: {fileID: 1828668045499720011}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 8
   <WallCheckDistance>k__BackingField: 1
   <LedgeCheckDistance>k__BackingField: 1
   <AttackCheck>k__BackingField: {fileID: 1828668046739158558}
@@ -462,8 +462,8 @@ MonoBehaviour:
   _angleOffset: 0
   _targetMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 64
   _obstacleMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 8
   Scale: {x: 1, y: 1}
