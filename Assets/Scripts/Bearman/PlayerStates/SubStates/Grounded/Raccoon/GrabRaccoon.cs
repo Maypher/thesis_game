@@ -11,7 +11,7 @@ namespace Player.Substates.Grounded
 
         // When the player decides to cancel the throw this is used to rewind the animation instead of
         // creating a completely new state
-        public bool putRaccoonBack = false;
+        public bool putRaccoonBack;
 
         public GrabRaccoon(Player entity, StateMachine<Player> stateMachine) : base(entity, stateMachine)
         {

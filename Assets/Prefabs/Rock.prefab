@@ -81,7 +81,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 7.88, y: 12.1}
+  m_Size: {x: 1.7083334, y: 2.475}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -136,4 +136,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85eeec92143ab634a82ad43902938ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToFade: 4
   fadeTime: 1
+  attackDetails:
+    damage: 0
+    attackPostion: {x: 0, y: 0}
+    knockbackForce: 0
+    knockbackAngle: {x: 0, y: 0}

@@ -82,8 +82,18 @@ namespace Player
         [HideInInspector] private Raccoon.Raccoon raccoon;
 
         public SpriteRenderer SpriteRenderer { get; private set; }
+        public SpriteRenderer Head { get; private set; }
         #endregion
 
+
+        #region Heads
+        [Header("Head with hat")]
+        [SerializeField] private Sprite frontHat;
+        [SerializeField] private Sprite profileHat;
+        [Header("Hatless head")]
+        [SerializeField] private Sprite frontHatless;
+        [SerializeField] private Sprite profileHatless;
+        #endregion
 
         #region Particles
         [Header("Particles")]
@@ -126,6 +136,7 @@ namespace Player
             DashAttackCheck = transform.Find("DashAttackCheck").GetComponent<AttackCheck>();
             GroundPoundCheck = transform.Find("GroundpoundArea").GetComponent<AttackCheck>();
             SpriteRenderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
+            Head = transform.Find("Head").GetComponent<SpriteRenderer>();
             CameraImpulseSource = GetComponent<CinemachineImpulseSource>();
 
             GameManager.UserInput.Player.Enable();
@@ -145,6 +156,21 @@ namespace Player
         {
             base.FixedUpdate();
             StateMachine.CurrentState.PhysicsUpdate();
+        }
+
+        public void SetHead(HeadDirection headDirection)
+        {
+            switch (headDirection)
+            {
+                case HeadDirection.Front:
+                    if (Raccoon) Head.sprite = frontHatless;
+                    else Head.sprite = frontHat;
+                    break;
+                case HeadDirection.Profile:
+                    if (Raccoon) Head.sprite = profileHatless;
+                    else Head.sprite = profileHat;
+                    break;
+            }
         }
 
         public void TakeDamage(AttackDetails attackDetails)
@@ -167,5 +193,12 @@ namespace Player
             PlayerDeath?.Invoke();
             Debug.Log("killed");
         }
+    }
+    
+    
+    public enum HeadDirection
+    {
+        Front,
+        Profile
     }
 }

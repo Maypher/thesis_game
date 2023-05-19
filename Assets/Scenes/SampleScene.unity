@@ -2993,6 +2993,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6670097213370128867, guid: 39335430827c1eb41a45d49432387669, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.302
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670097213370128867, guid: 39335430827c1eb41a45d49432387669, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.4705333
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670097213370128867, guid: 39335430827c1eb41a45d49432387669, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670097213370128867, guid: 39335430827c1eb41a45d49432387669, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670097213370128867, guid: 39335430827c1eb41a45d49432387669, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8088207643574986400, guid: 39335430827c1eb41a45d49432387669, type: 3}
       propertyPath: looping
       value: 0
