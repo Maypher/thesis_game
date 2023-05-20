@@ -15,14 +15,11 @@ namespace Player.Substates.Grounded
         {
             base.Enter();
 
-            if (player.Raccoon == null) 
-            { 
-                stateMachine.ChangeState(player.IdleState);
-                return;
+            if (player.Raccoon && player.Raccoon.StateMachine.CurrentState != player.Raccoon.ReturnToPlayerState) 
+            {
+                player.Raccoon.gameObject.SetActive(true);
+                player.Raccoon.StateMachine.ChangeState(player.Raccoon.ReturnToPlayerState);
             }
-
-            player.Raccoon.gameObject.SetActive(true);
-            player.Raccoon.StateMachine.ChangeState(player.Raccoon.ReturnToPlayerState);
         }
 
         public override void CheckStateChange()

@@ -13,4 +13,11 @@ MonoBehaviour:
   m_Name: Raccoon_ReturnToPlayer
   m_EditorClassIdentifier: 
   maxDistanceDelta: 0.2
-  screenSpawnInset: 2
+  screenSpawnInset: {x: 2, y: 0}
+  treeBranch: {fileID: 2668365330772939259, guid: 0d8dfa600b49d954d9ab4f7f38e6c762, type: 3}
+  treeScreenSpawnInset: {x: 6, y: 0}
+  maxTreeMovement: {x: 0, y: -2}
+  goDownEasing: 0
+  goDownduration: 5
+  goUpEasing: 2
+  goUpDuration: 1

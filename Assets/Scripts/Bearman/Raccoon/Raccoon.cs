@@ -13,6 +13,7 @@ namespace Player.Raccoon
 
         #region Components
         public AttackCheck PlayerCheck { get; private set; }
+        public SpriteRenderer Sprite { get; private set; }
         #endregion
 
         #region State Data
@@ -48,6 +49,7 @@ namespace Player.Raccoon
             base.Start();
 
             PlayerCheck = transform.Find("PlayerCheck").GetComponent<AttackCheck>();
+            Sprite = GetComponent<SpriteRenderer>();
 
             StateMachine.Initialize(LaunchState);
         }
@@ -72,9 +74,16 @@ namespace Player.Raccoon
             if (StateMachine.CurrentState == LaunchState) gameObject.SetActive(false);
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
+        private void OnTriggerStay2D(Collider2D other)
         {
-            if (StateMachine.CurrentState == ReturnToPlayerState && other.CompareTag("Player")) Destroy(gameObject);
+            if (StateMachine.CurrentState == ReturnToPlayerState && other.CompareTag("Player"))
+            {
+                if (ReturnToPlayerState.DestroyRaccoon) Destroy(gameObject);
+                else
+                {
+                    Sprite.enabled = false;
+                }
+            }
         }
     }
 }
