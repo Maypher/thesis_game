@@ -109,7 +109,12 @@ namespace Player.Raccoon.States
             // Movement completed, reset variables or perform any required actions
             treeBranch.transform.position = endPos;
 
-            if (treeMovementFinished) { GameObject.Destroy(treeBranch); DestroyRaccoon = true; }
+            if (treeMovementFinished) 
+            {
+                var emmiter = treeBranch.GetComponentInChildren<ParticleSystem>().emission;
+                emmiter.enabled = false;
+                GameObject.Destroy(treeBranch, 3); DestroyRaccoon = true; 
+            }
             else
             {
                 treeMovementFinished = true;
