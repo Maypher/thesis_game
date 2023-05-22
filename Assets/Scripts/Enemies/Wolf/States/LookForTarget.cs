@@ -28,6 +28,9 @@ namespace Enemies.Wolf.States
             finished = false;
             flipCounter = stateData.flipTimes;
             lastFlip = 0;
+
+            wolf.SetAnimationParameter("lookForPlayer", true);
+            wolf.Anim.SetLayerWeight(1, 1);
         }
 
         public override void Exit()
@@ -35,6 +38,10 @@ namespace Enemies.Wolf.States
             base.Exit();
 
             wolf.FOV.transform.localEulerAngles = Vector3.zero;
+            wolf.WolfHead.localEulerAngles = Vector3.zero;
+            wolf.SetAnimationParameter("lookForPlayer", false);
+
+            wolf.Anim.SetLayerWeight(1, 0);
         }
 
         public override void LogicUpdate()
@@ -48,6 +55,7 @@ namespace Enemies.Wolf.States
                 {
                     lastFlip = Time.time;
                     wolf.FOV.transform.Rotate(new(0, 180, 0));
+                    wolf.SetAnimationParameter("flipHead");
                     flipCounter--;
                 }
             }
@@ -57,7 +65,7 @@ namespace Enemies.Wolf.States
         {
             base.PhysicsUpdate();
         }
-      
+
         public override void CheckStateChange()
         {
             base.CheckStateChange();

@@ -34,6 +34,7 @@ namespace Enemies.Wolf
         public States.Attack AttackState { get; private set; }
 
         [field: SerializeField] [field: Header("Wolf Components")] public AttackCheck AttackRange { get; private set; }
+        [field: SerializeField] public Transform WolfHead { get; private set; }
 
         [Header("On collision damage data")]
         [SerializeField] [Tooltip("Attack details for when the player enters in contact with the enemy")] private AttackDetails onCollisionDetails;

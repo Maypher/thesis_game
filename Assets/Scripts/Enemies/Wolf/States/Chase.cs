@@ -32,11 +32,15 @@ namespace Enemies.Wolf.States
             noPlatform = false;
 
             wolf.SetVelocityX(stateData.moveSpeed);
+
+            wolf.SetAnimationParameter("chase", true);
         }
 
         public override void Exit()
         {
             base.Exit();
+
+            wolf.SetAnimationParameter("chase", false);
         }
 
         public override void LogicUpdate()
@@ -45,6 +49,9 @@ namespace Enemies.Wolf.States
 
             if (wolf.GroundCheck.Check())
             {
+                wolf.SetAnimationParameter("chase", true);
+                wolf.SetAnimationParameter("jump", false);
+
                 noLedge = !wolf.CheckLedge();
                 wall = wolf.CheckWall();
 
@@ -53,12 +60,16 @@ namespace Enemies.Wolf.States
                 if (noLedge) 
                 {
                     runningTimer = 0;
-                    JumpGap(); 
+                    JumpGap();
+                    wolf.SetAnimationParameter("jump", true);
+                    wolf.SetAnimationParameter("chase", false);
                 }
                 else if (wall)
                 {
                     runningTimer = 0;
                     JumpWall();
+                    wolf.SetAnimationParameter("jump", true);
+                    wolf.SetAnimationParameter("chase", false);
                 }
                 else runningTimer += Time.deltaTime;
             }
@@ -75,7 +86,7 @@ namespace Enemies.Wolf.States
 
             if (wolf.GroundCheck.Check())
             {
-                if (!wolf.FOV.Check() || noPlatform) stateMachine.ChangeState(wolf.LookForTargetState);
+                if (!wolf.FOV.Check() /*|| noPlatform*/) stateMachine.ChangeState(wolf.LookForTargetState);
                 else
                 {
                     if (Time.time >= startTime + stateData.chaseTime && runningTimer >= 1) stateMachine.ChangeState(wolf.TiredState);

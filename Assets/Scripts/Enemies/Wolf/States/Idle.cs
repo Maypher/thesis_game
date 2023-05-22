@@ -19,16 +19,19 @@ namespace Enemies.Wolf.States
 
         public override void Enter()
         {
+            base.Enter();
+            
             entity.SetVelocityX(0);
             idleTime = UnityEngine.Random.Range(stateData.MinIdleTime, stateData.MaxIdleTime);
 
-
-            base.Enter();
+            wolf.SetAnimationParameter("idle", true);
         }
 
         public override void Exit()
         {
             base.Exit();
+
+            wolf.SetAnimationParameter("idle", false);
         }
 
         public override void LogicUpdate()

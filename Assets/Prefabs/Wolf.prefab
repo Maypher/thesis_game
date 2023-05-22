@@ -238,6 +238,7 @@ GameObject:
   - component: {fileID: 1828668046842578920}
   - component: {fileID: 1828668046842578903}
   - component: {fileID: 1200578031768964306}
+  - component: {fileID: 8647633758605545297}
   m_Layer: 7
   m_Name: Wolf
   m_TagString: Untagged
@@ -287,7 +288,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &1828668046842578920
 Animator:
   serializedVersion: 4
@@ -298,7 +299,7 @@ Animator:
   m_GameObject: {fileID: 1828668046842578926}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: accb1a2017fab0c4cb2fea059ec9652d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -339,6 +340,7 @@ MonoBehaviour:
   lookForTargetData: {fileID: 11400000, guid: 3e364d76d78a6884599087b25aceb5ec, type: 2}
   attackData: {fileID: 11400000, guid: 3eea10776f980c94e97bb934a343ea5b, type: 2}
   <AttackRange>k__BackingField: {fileID: 1828668046783681729}
+  <WolfHead>k__BackingField: {fileID: 0}
   onCollisionDetails:
     damage: 1
     attackPostion: {x: 0, y: 0}
@@ -358,9 +360,20 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.41, y: 0}
-  m_Size: {x: 2.05, y: 1.08}
+  m_Offset: {x: 0.41, y: -0.17242695}
+  m_Size: {x: 2.0500002, y: 1.4248546}
   m_Direction: 1
+--- !u!210 &8647633758605545297
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828668046842578926}
+  m_Enabled: 1
+  m_SortingLayerID: 947238479
+  m_SortingLayer: 3
+  m_SortingOrder: 0
 --- !u!1 &1828668047188126789
 GameObject:
   m_ObjectHideFlags: 0

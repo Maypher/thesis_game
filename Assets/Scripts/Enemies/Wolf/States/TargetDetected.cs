@@ -19,11 +19,15 @@ namespace Enemies.Wolf.States
             base.Enter();
 
             wolf.SetVelocityX(0);
+
+            wolf.SetAnimationParameter("warn", true);
         }
 
         public override void Exit()
         {
             base.Exit();
+
+            wolf.SetAnimationParameter("warn", false);
         }
 
         public override void LogicUpdate()

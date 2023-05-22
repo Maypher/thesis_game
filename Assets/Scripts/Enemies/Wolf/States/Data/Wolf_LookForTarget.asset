@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e729d005fb1fd8c4ea1dda2210e86d2a, type: 3}
   m_Name: Wolf_LookForTarget
   m_EditorClassIdentifier: 
-  flipTimes: 2
-  minFlipDuration: 0.5
-  maxFlipDuration: 1.2
+  flipTimes: 4
+  minFlipDuration: 3
+  maxFlipDuration: 4
