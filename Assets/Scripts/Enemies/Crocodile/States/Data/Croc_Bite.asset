@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeDuration: 1
   shakeIntensity: 0.06
-  timeAfterBite: 2
+  timeAfterBite: 1
   attackDetails:
     damage: 3
     attackPostion: {x: -11.639999, y: -1.82}

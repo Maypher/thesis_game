@@ -14,8 +14,6 @@ namespace Enemies.Crocodile.States
 
         private bool killedPlayer;
 
-        private float biteTime;
-
         public Bite(Crocodile entity, StateMachine<Crocodile> stateMachine, Data.D_Bite stateData) : base(entity, stateMachine)
         {
             this.stateData = stateData;
@@ -27,12 +25,12 @@ namespace Enemies.Crocodile.States
         {
             base.Enter();
 
-            biteTime = 0;
             finishBite = false;
             killedPlayer = false;
 
 
-            crocodile.FinishAnimation += FinishBite;
+            crocodile.AnimationEvent += FinishBite;
+            crocodile.FinishAnimation += GoDown;
             GameManager.Player.PlayerDeath += KillPlayer;
             
             crocodile.StartCoroutine(ShakeCoroutine());
@@ -43,14 +41,15 @@ namespace Enemies.Crocodile.States
             base.Exit();
 
             GameManager.Player.PlayerDeath -= KillPlayer;
-            crocodile.FinishAnimation -= FinishBite;
+            crocodile.AnimationEvent -= FinishBite;
+            crocodile.FinishAnimation -= GoDown;
         }
 
         public override void CheckStateChange()
         {
             base.CheckStateChange();
 
-            if (finishBite && Time.time >= biteTime + stateData.timeAfterBite && !killedPlayer) stateMachine.ChangeState(crocodile.HideState);
+            if (finishBite && !killedPlayer) stateMachine.ChangeState(crocodile.HideState);
         }
 
 
@@ -94,9 +93,6 @@ namespace Enemies.Crocodile.States
                 stateData.attackDetails.attackPostion = crocodile.AttackCheck.transform.position;
                 enemy.GetComponent<IDamageable>()?.TakeDamage(stateData.attackDetails);
             }
-
-            finishBite = true;
-            biteTime = Time.time;
         }
 
         public void FinishAttack()
@@ -108,8 +104,6 @@ namespace Enemies.Crocodile.States
 
         private void FinishBite() 
         {
-            finishBite = true;
-
             if (killedPlayer) crocodile.SetAnimationParameter("goodBite");
             else
             {
@@ -117,5 +111,7 @@ namespace Enemies.Crocodile.States
                 crocodile.SetAnimationParameter("underwater", true);
             }
         }
+
+        private void GoDown() => finishBite = true;
     }
 }

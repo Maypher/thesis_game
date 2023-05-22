@@ -10,7 +10,6 @@ namespace Enemies.Crocodile.States.Data
     {
         [Min(0)] public float shakeDuration = 1;
         [Min(0)] public float shakeIntensity = 0.1f;
-        [Min(0)] public float timeAfterBite = 1;
 
         public AttackDetails attackDetails;
     }
