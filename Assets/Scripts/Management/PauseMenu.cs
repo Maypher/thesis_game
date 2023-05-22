@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -36,5 +36,10 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = IsPaused ? 0 : 1;
         GameManager.Instance.SeCursorState(IsPaused, IsPaused ? CursorLockMode.Confined : CursorLockMode.Locked);
         Cursor.visible = IsPaused;
+    }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
