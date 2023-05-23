@@ -16,10 +16,15 @@ namespace Player
         [SerializeField] [Tooltip("Time after rock is static to start fading")] private float timeToFade = 4;
         [SerializeField] private float fadeTime = 1;
 
+        [Header("Particles")]
+        [SerializeField] private ParticleSystem hitParticles;
+        [SerializeField] private ParticleSystem deathParticles;
+
         [SerializeField] private AttackDetails attackDetails;
 
         private float timeToFadeTimer;
         private bool isFading;
+        private bool canDamage;
 
         // Start is called before the first frame update
         void Start()
@@ -33,12 +38,15 @@ namespace Player
             health = MaxHealth;
 
             rb.isKinematic = true;
+
+            canDamage = false;
         }
 
         // Update is called once per frame
         void Update()
         {
             rb.isKinematic = transform.parent;
+            canDamage = !transform.parent;
 
             if (!isFading && !rb.isKinematic && rb.velocity == Vector2.zero)
             {
@@ -49,7 +57,7 @@ namespace Player
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.layer == LayerMask.NameToLayer("Enemies")) 
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Enemies") && canDamage) 
             {
                 AttackDetails ad = attackDetails;
                 ad.attackPostion = collision.GetContact(0).point;
@@ -86,12 +94,20 @@ namespace Player
         {
             health -= attackDetails.damage;
 
+            if (health > 0) hitParticles.Play();
+
             if (health <= 0) Kill();
         }
        
         public void Kill()
         {
-            Destroy(gameObject);
+            sprite.enabled = false;
+            rb.simulated = false;
+            deathParticles.Play();
+
+            GameManager.Player.Rock = null;
+
+            Destroy(gameObject, deathParticles.main.duration);
         }
     }
 }

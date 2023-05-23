@@ -1626,6 +1626,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wolf
       objectReference: {fileID: 0}
+    - target: {fileID: 1828668046842578926, guid: 41c8bae57db5d0b4fb7175194fd9e12c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41c8bae57db5d0b4fb7175194fd9e12c, type: 3}
 --- !u!1 &1182262984
