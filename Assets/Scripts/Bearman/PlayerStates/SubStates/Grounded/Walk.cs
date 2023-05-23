@@ -43,6 +43,8 @@ namespace Player.Substates.Grounded
             player.CanJump = true;
             player.SetAnimationParameter("isMoving", true);
             GameManager.UserInput.Player.Move.performed += Move_performed;
+
+            player.AnimationEvent += PlayFootstep;
         }
 
 
@@ -52,6 +54,7 @@ namespace Player.Substates.Grounded
 
             player.SetAnimationParameter("isMoving", false);
             GameManager.UserInput.Player.Move.performed -= Move_performed;
+            player.AnimationEvent -= PlayFootstep;
         }
 
         public override void Input()
@@ -127,6 +130,13 @@ namespace Player.Substates.Grounded
             else if (dash) stateMachine.ChangeState(player.DashState);
             else if (punch) stateMachine.ChangeState(player.PunchState);
             else if (entity.Rb.velocity.x == 0 && inputDirection == 0) stateMachine.ChangeState(player.IdleState);
+        }
+
+        private void PlayFootstep()
+        {
+            int pos = (int) Mathf.Floor(Random.Range(0, stateData.footsteps.Length));
+
+            player.AudioSource.PlayOneShot(stateData.footsteps[pos]);
         }
     }
 }

@@ -17,5 +17,7 @@ namespace Player.Substates.Data
         public AnimationCurve deceleration;
         public float timeToFullStop = 1f;
 
+        [Header("SFX")]
+        public AudioClip[] footsteps;
     }
 }

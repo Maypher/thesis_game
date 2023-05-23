@@ -84,12 +84,15 @@ namespace Player
         public SpriteRenderer SpriteRenderer { get; private set; }
         #endregion
 
-
         #region Particles
         [Header("Particles")]
         [SerializeField] private ParticleSystem groundpoundParticles;
 
         public ParticleSystem GroundPoundParticles { get { return groundpoundParticles; } }
+        #endregion
+
+        #region SFX
+        [field: SerializeField] public AudioSource AudioSource { get; private set; }
         #endregion
 
         public override void Awake()

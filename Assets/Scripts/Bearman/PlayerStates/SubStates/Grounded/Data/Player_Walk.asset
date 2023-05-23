@@ -63,3 +63,18 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   timeToFullStop: 0.2
+  footsteps:
+  - {fileID: 8300000, guid: 8eda4e73b6c6ea442b1a50f2fb7b9ccc, type: 3}
+  - {fileID: 8300000, guid: 2ad7db51b266da14d963cf7a9d53d351, type: 3}
+  - {fileID: 8300000, guid: 9321898204a1bf44890cd8bf47fae202, type: 3}
+  - {fileID: 8300000, guid: 5956ec19b76580d4f8a5afffeaa49ff4, type: 3}
+  - {fileID: 8300000, guid: 10d11395c7a33de4fa9fba878e85c2c4, type: 3}
+  - {fileID: 8300000, guid: 6143dff7028444040b2509516ad20de7, type: 3}
+  - {fileID: 8300000, guid: fa9d6a102f53b3540a2282ff561598fa, type: 3}
+  - {fileID: 8300000, guid: a12de73d17b7b75418c3f0227e6ce0e4, type: 3}
+  - {fileID: 8300000, guid: 9ee683dd1a3bb404abe5cb2574181f26, type: 3}
+  - {fileID: 8300000, guid: f756f7f7da19e7943b7f55ed630fbf7b, type: 3}
+  - {fileID: 8300000, guid: 991121e98af287e4b9ba01073ffd1cbd, type: 3}
+  - {fileID: 8300000, guid: 973ad3c58c05bb44caf61797ae24f08e, type: 3}
+  - {fileID: 8300000, guid: 65f3b0281b4571b4a956a65838639199, type: 3}
+  - {fileID: 8300000, guid: 541dfd742bbf1cc4ea4fc224d6b9c842, type: 3}
