@@ -32,6 +32,7 @@ namespace Player.Substates.Airborne
             {
                 lastActive = Time.time;
                 player.SetAnimationParameter("dashing", true);
+                player.AudioSource.PlayOneShot(stateData.dashSFX, .2f);
                 player.StartCoroutine(DoDash());
             }
         }

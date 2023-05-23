@@ -10,6 +10,7 @@ namespace Player.Substates.Data
         public float dashForce = 5f;
         public float dashTime = .2f;
         public float cooldownTime = .5f;
+        public AudioClip dashSFX;
         public AttackDetails attackDetails;
     }
 }
