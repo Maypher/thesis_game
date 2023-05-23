@@ -66,10 +66,6 @@ namespace Player.Substates.Grounded
 
         private void AnimationFinished() => animationFinished = true;
 
-        private void SpawnRock()
-        {
-            player.Rock = MonoBehaviour.Instantiate(stateData.rockPrefab, rockSpawnLocation);
-            player.Rock.GetComponent<Rigidbody2D>().simulated = false;
-        }
+        private void SpawnRock() => player.Rock = MonoBehaviour.Instantiate(stateData.rockPrefab, rockSpawnLocation);
     }
 }

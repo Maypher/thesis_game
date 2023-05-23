@@ -9,6 +9,9 @@ namespace Player
         private Rigidbody2D rb;
         private SpriteRenderer sprite;
 
+        [SerializeField] private int MaxHealth = 3;
+        private int health;
+
         [Header("Fade data")]
         [SerializeField] [Tooltip("Time after rock is static to start fading")] private float timeToFade = 4;
         [SerializeField] private float fadeTime = 1;
@@ -17,8 +20,6 @@ namespace Player
 
         private float timeToFadeTimer;
         private bool isFading;
-
-        private GameObject enemyToAttack;
 
         // Start is called before the first frame update
         void Start()
@@ -29,28 +30,25 @@ namespace Player
             isFading = false;
             timeToFadeTimer = 0;
 
-            enemyToAttack = null;
+            health = MaxHealth;
+
+            rb.isKinematic = true;
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (!isFading)
-            {
-                if (!transform.parent && rb.velocity == Vector2.zero) rb.isKinematic = true;
-                
-                if (rb.isKinematic)
-                {
-                    timeToFadeTimer += Time.deltaTime;
-                    if (timeToFadeTimer > timeToFade) StartCoroutine(FadeOut());
-                }
+            rb.isKinematic = transform.parent;
 
+            if (!isFading && !rb.isKinematic && rb.velocity == Vector2.zero)
+            {
+                timeToFadeTimer += Time.deltaTime;
+                if (timeToFadeTimer > timeToFade) StartCoroutine(FadeOut());
             }
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            // 7 = enemy layer
             if (collision.gameObject.layer == LayerMask.NameToLayer("Enemies")) 
             {
                 AttackDetails ad = attackDetails;
@@ -86,12 +84,14 @@ namespace Player
 
         public void TakeDamage(AttackDetails attackDetails)
         {
-            throw new System.NotImplementedException();
+            health -= attackDetails.damage;
+
+            if (health <= 0) Kill();
         }
        
         public void Kill()
         {
-            throw new System.NotImplementedException();
+            Destroy(gameObject);
         }
     }
 }

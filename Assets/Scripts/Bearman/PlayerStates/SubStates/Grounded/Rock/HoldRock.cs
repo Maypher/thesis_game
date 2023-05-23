@@ -37,6 +37,7 @@ namespace Player.Substates.Grounded
             base.Exit();
 
             player.SetAnimationParameter("isMoving", false);
+            if (!player.Rock) player.SetAnimationParameter("holdingRock", false);
 
             player.FinishAnimation -= Stop;
         }
@@ -67,6 +68,7 @@ namespace Player.Substates.Grounded
             base.CheckStateChange();
 
             if (throwRock) stateMachine.ChangeState(player.ThrowRockState);
+            else if (!player.Rock) stateMachine.ChangeState(player.IdleState);
         }
 
         private void Move()

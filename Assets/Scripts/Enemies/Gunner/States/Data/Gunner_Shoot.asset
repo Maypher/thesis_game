@@ -19,7 +19,7 @@ MonoBehaviour:
   bulletTrail: {fileID: 3994490297619365259, guid: 3f86dae9e2e4f7d4c8add2b3d2677e6c, type: 3}
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 64
   attackDetails:
     damage: 1
     attackPostion: {x: -6.1671643, y: 1.9435111}

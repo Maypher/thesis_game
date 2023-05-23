@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9107763853071131255}
   - component: {fileID: 1232653480104475599}
   - component: {fileID: -2009487379206054332}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,4 +136,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85eeec92143ab634a82ad43902938ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHealth: 3
+  timeToFade: 4
   fadeTime: 1
+  attackDetails:
+    damage: 0
+    attackPostion: {x: 0, y: 0}
+    knockbackForce: 0
+    knockbackAngle: {x: 0, y: 0}
