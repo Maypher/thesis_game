@@ -7,16 +7,26 @@ namespace Enemies.Crocodile.States
 {
     public class Idle : CrocodileState
     {
-        private bool targetOnTop;
+        private readonly Data.D_Idle stateData;
 
-        public Idle(Crocodile entity, StateMachine<Crocodile> stateMachine) : base(entity, stateMachine)
+        private bool targetOnTop;
+        private float lastGrowlTime;
+        private float growlTime;
+
+        public Idle(Crocodile entity, StateMachine<Crocodile> stateMachine, Data.D_Idle stateData) : base(entity, stateMachine)
         {
+            this.stateData = stateData;
         }
+
         public override void Enter()
         {
             base.Enter();
 
             targetOnTop = false;
+
+            lastGrowlTime = 0;
+
+            growlTime = Random.Range(stateData.minTimeToSound, stateData.maxTimeToSound);
         }
 
         public override void LogicUpdate()
@@ -24,6 +34,13 @@ namespace Enemies.Crocodile.States
             base.LogicUpdate();
 
             targetOnTop = crocodile.AttackCheck.Check();
+
+            if (Time.time >= lastGrowlTime + growlTime&& !crocodile.GrowlSFX.isPlaying)
+            {
+                crocodile.GrowlSFX.Play();
+                lastGrowlTime = Time.time;
+                growlTime = Random.Range(stateData.minTimeToSound, stateData.maxTimeToSound);
+            }
         }
 
         public override void PhysicsUpdate()

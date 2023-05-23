@@ -10,6 +10,7 @@ namespace Enemies.Crocodile
         public StateMachine.StateMachine<Crocodile> StateMachine { get; private set; } = new();
 
         #region state data
+        [SerializeField] private States.Data.D_Idle idleData;
         [SerializeField] private States.Data.D_Bite biteData;
         [SerializeField] private States.Data.D_Hide hideData;
         #endregion
@@ -25,9 +26,13 @@ namespace Enemies.Crocodile
         public Transform Sprite { get; private set; }
         public Collider2D Ground { get; private set; }
 
+        #region SFX
+        [field: SerializeField] [field: Header("SFX")] public AudioSource GrowlSFX { get; private set; }
+        #endregion
+
         public override void Awake()
         {
-            IdleState = new(this, StateMachine);
+            IdleState = new(this, StateMachine, idleData);
             BiteState = new(this, StateMachine, biteData);
             HideState = new(this, StateMachine, hideData);
         }
