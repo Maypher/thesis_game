@@ -17,6 +17,7 @@ MonoBehaviour:
   fallForce: 10
   airHangTime: 0.1
   screenShakeProfile: {fileID: 11400000, guid: fec6d607e7e9ecf438b19d3a4f1fd01e, type: 2}
+  groundpoundLandSFX: {fileID: 8300000, guid: 34d8ddbf70464764fa9c42fbaae46e3d, type: 3}
   attackDetails:
     damage: 0
     attackPostion: {x: 0, y: 0}

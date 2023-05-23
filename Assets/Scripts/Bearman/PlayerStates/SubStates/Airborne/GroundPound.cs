@@ -66,6 +66,7 @@ namespace Player.Substates.Airborne
             {
                 player.SetAnimationParameter("groundPound");
                 player.GroundPoundParticles.Play();
+                player.AudioSource.PlayOneShot(stateData.groundpoundLandSFX);
                 landed = true;
                 CameraShakeManager.instance.CameraShakeFromProfile(stateData.screenShakeProfile, player.CameraImpulseSource);
             }

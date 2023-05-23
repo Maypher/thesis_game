@@ -13,6 +13,9 @@ namespace Player.Substates.Data
         public float airHangTime = .3f;
         public ScreenShakeProfile screenShakeProfile;
 
+        [Header("SFX")]
+        public AudioClip groundpoundLandSFX;
+
         public AttackDetails attackDetails;
     }
 }
