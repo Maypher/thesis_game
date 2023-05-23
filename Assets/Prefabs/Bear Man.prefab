@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 2019705933}
   - component: {fileID: 1934092541}
   - component: {fileID: 521948085}
+  - component: {fileID: 6933261328229814332}
   m_Layer: 6
   m_Name: Bear Man
   m_TagString: Player
@@ -333,6 +334,14 @@ SortingGroup:
   m_SortingLayerID: 947238479
   m_SortingLayer: 3
   m_SortingOrder: 0
+--- !u!81 &6933261328229814332
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4684614431714139777}
+  m_Enabled: 1
 --- !u!1 &4684614431803913727
 GameObject:
   m_ObjectHideFlags: 0
