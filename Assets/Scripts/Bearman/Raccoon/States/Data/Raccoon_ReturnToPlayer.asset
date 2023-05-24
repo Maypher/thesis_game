@@ -21,3 +21,4 @@ MonoBehaviour:
   goDownduration: 5
   goUpEasing: 2
   goUpDuration: 1
+  treeShakingSFX: {fileID: 8300000, guid: 759732a01fe2e7d40a488995ec61089f, type: 3}

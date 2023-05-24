@@ -20,5 +20,7 @@ namespace Player.Raccoon.States.Data
         public float goDownduration = 5;
         public EasingType goUpEasing;
         public float goUpDuration = 1;
+        [Header("SFX")]
+        public AudioClip treeShakingSFX;
     }
 }

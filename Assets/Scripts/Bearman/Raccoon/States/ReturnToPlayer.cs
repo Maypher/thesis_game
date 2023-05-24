@@ -40,6 +40,8 @@ namespace Player.Raccoon.States
 
             treeMovementFinished = false;
 
+            raccoon.AudioSource.time = Random.Range(0f, stateData.treeShakingSFX.length - 10);
+            raccoon.AudioSource.PlayOneShot(stateData.treeShakingSFX);
             raccoon.StartCoroutine(MoveTreeCoroutine(treeInitialPos, treeInitialPos + stateData.maxTreeMovement, stateData.goDownduration, stateData.goDownEasing));
         }
 
@@ -113,14 +115,15 @@ namespace Player.Raccoon.States
             {
                 var emmiter = treeBranch.GetComponentInChildren<ParticleSystem>().emission;
                 emmiter.enabled = false;
-                GameObject.Destroy(treeBranch, 3); DestroyRaccoon = true; 
+                GameObject.Destroy(treeBranch, 3); 
+                DestroyRaccoon = true; 
             }
             else
             {
                 treeMovementFinished = true;
                 raccoon.Sprite.enabled = true;
                 raccoon.transform.position = treeBranch.transform.Find("RaccoonJumpPos").transform.position;
-
+                raccoon.AudioSource.Stop();
                 raccoon.StartCoroutine(MoveTreeCoroutine(endPos, treeInitialPos, stateData.goUpDuration, stateData.goUpEasing));
             }
         }
