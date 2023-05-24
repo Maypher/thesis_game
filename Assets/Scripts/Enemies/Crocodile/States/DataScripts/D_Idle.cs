@@ -9,5 +9,6 @@ namespace Enemies.Crocodile.States.Data
     {
         [Min(0)] public float minTimeToSound = 1;
         [Min(0)] public float maxTimeToSound = 6;
+        public AudioClip growlSFX;
     }
 }

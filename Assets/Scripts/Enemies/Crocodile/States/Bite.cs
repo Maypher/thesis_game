@@ -32,7 +32,7 @@ namespace Enemies.Crocodile.States
             crocodile.AnimationEvent += FinishBite;
             crocodile.FinishAnimation += GoDown;
             GameManager.Player.PlayerDeath += KillPlayer;
-            
+
             crocodile.StartCoroutine(ShakeCoroutine());
         }
 
@@ -81,6 +81,7 @@ namespace Enemies.Crocodile.States
 
             crocodile.Sprite.transform.position = startPosition;
             crocodile.SetAnimationParameter("bite");
+            crocodile.AudioSource.PlayOneShot(stateData.biteSFX);
             Attack();
         }
 

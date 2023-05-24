@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minTimeToSound: 0
   maxTimeToSound: 0
+  growlSFX: {fileID: 8300000, guid: 4f7850e8424fe1d4999c90bfdccbcc7f, type: 3}

@@ -246,6 +246,10 @@ PrefabInstance:
       value: 12.4865675
       objectReference: {fileID: 0}
     - target: {fileID: 8319458508816981085, guid: 98458d20c555c9c489a367c000b93f68, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319458508816981085, guid: 98458d20c555c9c489a367c000b93f68, type: 3}
       propertyPath: rolloffMode
       value: 1
       objectReference: {fileID: 0}
@@ -293,6 +297,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8506999667477024034, guid: 98458d20c555c9c489a367c000b93f68, type: 3}
+      propertyPath: <AudioSource>k__BackingField
+      value: 
+      objectReference: {fileID: 1491365317}
     - target: {fileID: 8506999667477024039, guid: 98458d20c555c9c489a367c000b93f68, type: 3}
       propertyPath: m_Name
       value: Crocodile
@@ -2230,6 +2238,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1404224138}
   m_CullTransparentMesh: 1
+--- !u!82 &1491365317 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8319458508816981085, guid: 98458d20c555c9c489a367c000b93f68, type: 3}
+  m_PrefabInstance: {fileID: 56341456}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1609894740
 GameObject:
   m_ObjectHideFlags: 0

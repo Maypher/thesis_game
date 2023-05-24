@@ -35,9 +35,9 @@ namespace Enemies.Crocodile.States
 
             targetOnTop = crocodile.AttackCheck.Check();
 
-            if (Time.time >= lastGrowlTime + growlTime&& !crocodile.GrowlSFX.isPlaying)
+            if (Time.time >= lastGrowlTime + growlTime&& !crocodile.AudioSource.isPlaying)
             {
-                crocodile.GrowlSFX.Play();
+                crocodile.AudioSource.PlayOneShot(stateData.growlSFX);
                 lastGrowlTime = Time.time;
                 growlTime = Random.Range(stateData.minTimeToSound, stateData.maxTimeToSound);
             }

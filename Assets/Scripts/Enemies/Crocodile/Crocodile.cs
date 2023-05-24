@@ -27,7 +27,7 @@ namespace Enemies.Crocodile
         public Collider2D Ground { get; private set; }
 
         #region SFX
-        [field: SerializeField] [field: Header("SFX")] public AudioSource GrowlSFX { get; private set; }
+        [field: SerializeField] [field: Header("SFX")] public AudioSource AudioSource { get; private set; }
         #endregion
 
         public override void Awake()

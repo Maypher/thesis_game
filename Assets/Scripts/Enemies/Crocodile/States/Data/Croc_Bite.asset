@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeDuration: 1
   shakeIntensity: 0.06
-  timeAfterBite: 1
+  biteSFX: {fileID: 8300000, guid: f398e7a31f08c464c86f3f66e3974afe, type: 3}
   attackDetails:
     damage: 3
     attackPostion: {x: -11.639999, y: -1.82}
