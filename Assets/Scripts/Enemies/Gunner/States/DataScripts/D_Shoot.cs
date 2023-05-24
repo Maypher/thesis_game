@@ -15,6 +15,7 @@ namespace Enemies.Gunner.States.Data
 
         [Header("Attack")]
         public GameObject bulletTrail;
+        public float fireTime = .2f;
         public LayerMask whatIsEnemy;
         public AttackDetails attackDetails;
     }
