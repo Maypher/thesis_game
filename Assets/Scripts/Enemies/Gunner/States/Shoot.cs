@@ -14,9 +14,14 @@ namespace Enemies.Gunner.States
 
         private float lastShot;
 
+        private bool canAttack;
+
+        private readonly GameObject shootFire;
+
         public Shoot(Gunner entity, StateMachine<Gunner> stateMachine, Data.D_Shoot stateData) : base(entity, stateMachine)
         {
             this.stateData = stateData;
+            shootFire = gunner.transform.Find("Gun").Find("shootFire").gameObject;
         }
 
 
@@ -25,13 +30,21 @@ namespace Enemies.Gunner.States
             base.Enter();
 
             lastShot = Time.time;
+
+
+            canAttack = false;
+            gunner.FinishAnimation += StartAttacking;
+
+            gunner.SetAnimationParameter("attack", true);
         }
 
         public override void Exit()
         {
             base.Exit();
+            gunner.FinishAnimation -= StartAttacking;
+            gunner.SetAnimationParameter("attack", false);
         }
-      
+
         public override void CheckStateChange()
         {
             base.CheckStateChange();
@@ -41,6 +54,8 @@ namespace Enemies.Gunner.States
 
         public override void LogicUpdate()
         {
+            if (!canAttack) return;
+
             base.LogicUpdate();
 
             Vector3 direction = GameManager.Player.transform.position - gunner.Gun.transform.position;
@@ -60,6 +75,7 @@ namespace Enemies.Gunner.States
         public void Attack()
         {
             GameObject.Instantiate(stateData.bulletTrail, gunner.Gun.transform.position, gunner.Gun.transform.rotation);
+            gunner.StartCoroutine(ShowFire());
 
             RaycastHit2D enemy = Physics2D.Raycast(gunner.Gun.transform.position, gunner.Gun.transform.right, 20, stateData.whatIsEnemy);
 
@@ -73,6 +89,15 @@ namespace Enemies.Gunner.States
         public void FinishAttack()
         {
             throw new System.NotImplementedException();
+        }
+
+        private void StartAttacking() => canAttack = true;
+
+        private IEnumerator ShowFire()
+        {
+            shootFire.SetActive(true);
+            yield return new WaitForSeconds(stateData.fireTime);
+            shootFire.SetActive(false);
         }
     }
 }

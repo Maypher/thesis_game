@@ -48,7 +48,7 @@ namespace Enemies.Gunner.States
 
         public override void LogicUpdate()
         {
-            base.LogicUpdate();
+            /*base.LogicUpdate();
 
             if (stateData.canFlip && Time.time >= lastFlip + timeToFlip) 
             {
@@ -66,7 +66,7 @@ namespace Enemies.Gunner.States
             {
                 gunner.Gun.transform.rotation = Quaternion.RotateTowards(gunner.Gun.transform.rotation, Quaternion.identity, .5f);
                 hasNoRotationAtStart = gunner.Gun.transform.rotation == Quaternion.identity;
-            }
+            }*/
         }
 
         public override void PhysicsUpdate()

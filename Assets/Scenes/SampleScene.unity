@@ -802,11 +802,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 807549677331472595, guid: c791cdfd51b135e4da63d32bed5aa466, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.7061644
+      value: -6.67
       objectReference: {fileID: 0}
     - target: {fileID: 807549677331472595, guid: c791cdfd51b135e4da63d32bed5aa466, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.7715111
+      value: 1.56
       objectReference: {fileID: 0}
     - target: {fileID: 807549677331472595, guid: c791cdfd51b135e4da63d32bed5aa466, type: 3}
       propertyPath: m_LocalPosition.z
@@ -843,10 +843,6 @@ PrefabInstance:
     - target: {fileID: 807549677331472599, guid: c791cdfd51b135e4da63d32bed5aa466, type: 3}
       propertyPath: m_Name
       value: Gunner
-      objectReference: {fileID: 0}
-    - target: {fileID: 807549677331472599, guid: c791cdfd51b135e4da63d32bed5aa466, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c791cdfd51b135e4da63d32bed5aa466, type: 3}
