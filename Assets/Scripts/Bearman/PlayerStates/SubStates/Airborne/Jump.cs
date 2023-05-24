@@ -22,6 +22,8 @@ namespace Player.Substates.Airborne
 
             player.SetVelocityY(stateData.jumpForce);
             player.Rb.gravityScale = stateData.jumpGravity;
+
+            player.AudioSource.PlayOneShot(stateData.jumpSfx, .4f);
         }
 
         public override void CheckStateChange()

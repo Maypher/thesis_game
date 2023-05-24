@@ -8,5 +8,6 @@ namespace Player.Substates.Data
     public class D_ThrowRaccoon : StateMachine.StateData
     {
         public StateMachine.Entity raccoon;
+        public AudioClip throwSFX;
     }
 }

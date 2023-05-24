@@ -9,5 +9,7 @@ namespace Player.Substates.Data
     {
         public float invincibilityTime = 1;
         public int flashTimes = 3;
+
+        public AudioClip damageSFX;
     }
 }

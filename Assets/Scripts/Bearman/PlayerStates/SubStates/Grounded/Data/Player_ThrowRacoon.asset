@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc5228e0440d7904c8d53c3616321fe0, type: 3}
   m_Name: Player_ThrowRacoon
   m_EditorClassIdentifier: 
-  throwForce: 500
   raccoon: {fileID: 4880251223772007022, guid: aa6b14efe6e25b04ab6a2c23cee25612, type: 3}
+  throwSFX: {fileID: 8300000, guid: 69150b2247af31c4981fb7af71589d21, type: 3}

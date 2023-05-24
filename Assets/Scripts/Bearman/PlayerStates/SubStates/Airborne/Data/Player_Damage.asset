@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invincibilityTime: 1
   flashTimes: 3
-  enemyLayer: 3
+  damageSFX: {fileID: 8300000, guid: 066ee0e7013997a4185db21b9cf629f1, type: 3}

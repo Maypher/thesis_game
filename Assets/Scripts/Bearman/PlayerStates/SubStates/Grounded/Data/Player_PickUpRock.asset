@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04a23a841b57db449bc60cc407ea722, type: 3}
   m_Name: Player_PickUpRock
   m_EditorClassIdentifier: 
-  rockSpawnLocation: {fileID: 0}
   rockPrefab: {fileID: 5985811449973228552, guid: d812a186d0838774cbae0149db296894, type: 3}
+  pickUpRockSFX: {fileID: 8300000, guid: 74a2354f3f3d2824181e1686afc49108, type: 3}

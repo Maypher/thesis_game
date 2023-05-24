@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 7
   jumpGravity: 1
+  jumpSfx: {fileID: 8300000, guid: 9142c9248bc73124d9341fd401b0088c, type: 3}

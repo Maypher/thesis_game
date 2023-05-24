@@ -9,5 +9,6 @@ namespace Player.Substates.Data
     {
         public float jumpForce = 5f;
         [Tooltip("When jumping less gravity than normal can be applied")] public float jumpGravity = 1f;
+        public AudioClip jumpSfx;
     }
 }

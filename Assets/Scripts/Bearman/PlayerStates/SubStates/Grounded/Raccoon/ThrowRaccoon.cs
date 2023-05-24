@@ -69,6 +69,7 @@ namespace Player.Substates.Grounded
         {
             player.Raccoon = (Raccoon.Raccoon)GameObject.Instantiate(stateData.raccoon, launchPos.position, launchPos.transform.rotation);
             if (player.FacingDirection == -1) player.Raccoon.Flip();
+            player.AudioSource.PlayOneShot(stateData.throwSFX);
         }
     }
 }

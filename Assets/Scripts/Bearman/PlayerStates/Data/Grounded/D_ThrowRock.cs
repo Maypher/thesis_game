@@ -8,5 +8,6 @@ namespace Player.Substates.Data
     public class D_ThrowRock : StateMachine.StateData
     {
         public Vector2 throwForce = new(2, 3);
+        public AudioClip throwSFX;
     }
 }

@@ -8,5 +8,6 @@ namespace Player.Substates.Data
     public class D_PickUpRock : StateMachine.StateData
     {
         public GameObject rockPrefab;
+        public AudioClip pickUpRockSFX;
     }
 }

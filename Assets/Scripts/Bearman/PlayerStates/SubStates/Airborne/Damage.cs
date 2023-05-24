@@ -20,7 +20,8 @@ namespace Player.Substates.Airborne
 
             player.CanBeDamaged = false;
             player.SetAnimationParameter("takeDamage", true);
-            
+
+            player.AudioSource.PlayOneShot(stateData.damageSFX, .4f);
             player.StartCoroutine(InvinsibilityFrames());
         }
 
