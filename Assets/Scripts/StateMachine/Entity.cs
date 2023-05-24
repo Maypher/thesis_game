@@ -21,6 +21,7 @@ namespace StateMachine
         public Rigidbody2D Rb { get; private set; }
         public Animator Anim { get; private set; }
         public GroundCheck GroundCheck { get; private set; }
+        public AudioSource AudioSource { get; private set; }
         #endregion
 
         public virtual void Awake()
@@ -33,6 +34,7 @@ namespace StateMachine
             Rb = GetComponent<Rigidbody2D>();
             Anim = GetComponent<Animator>();
             GroundCheck = GetComponentInChildren<GroundCheck>();
+            AudioSource = GetComponent<AudioSource>();
 
         }
 

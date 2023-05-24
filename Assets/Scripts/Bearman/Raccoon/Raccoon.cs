@@ -14,8 +14,6 @@ namespace Player.Raccoon
         #region Components
         public AttackCheck PlayerCheck { get; private set; }
         public SpriteRenderer Sprite { get; private set; }
-        
-        [field: SerializeField] [field: Header("SFX")] public AudioSource AudioSource { get; private set; }
         #endregion
 
         #region State Data

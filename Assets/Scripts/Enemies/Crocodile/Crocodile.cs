@@ -26,10 +26,6 @@ namespace Enemies.Crocodile
         public Transform Sprite { get; private set; }
         public Collider2D Ground { get; private set; }
 
-        #region SFX
-        [field: SerializeField] [field: Header("SFX")] public AudioSource AudioSource { get; private set; }
-        #endregion
-
         public override void Awake()
         {
             IdleState = new(this, StateMachine, idleData);
