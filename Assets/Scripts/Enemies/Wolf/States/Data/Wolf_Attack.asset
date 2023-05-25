@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b55d2ac23f8a3e74ba80b3398c86c711, type: 3}
   m_Name: Wolf_Attack
   m_EditorClassIdentifier: 
+  attackSFX: {fileID: 8300000, guid: b88e8134080edea4db856f8c6126de92, type: 3}
   details:
     damage: 5
     attackPostion: {x: -16.29759, y: -2.30677}

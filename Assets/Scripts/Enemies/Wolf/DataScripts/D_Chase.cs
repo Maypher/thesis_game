@@ -17,5 +17,10 @@ namespace Enemies.Wolf.States.Data
         public float maxJumpDistanceX;
         public float maxJumpDistanceY;
         public LayerMask whatIsGround;
+
+        [Header("SFX")]
+        public float minBarkTime = 2;
+        public float maxBarkTime = 4;
+        public AudioClip[] barkSFX;
     }
 }

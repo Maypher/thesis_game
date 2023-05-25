@@ -11,6 +11,8 @@ namespace Enemies.Wolf.States
 
         private bool wall, noLedge, noPlatform;
 
+        private float lastBark, timeToBark;
+
         // Used in the transition to tired state. Since the wolf shouldn't transition to it when jumping
         // a ground check is required but the position of the ground makes the wolf be halfway out of the ground
         // when landing and transitioning in that frame wouldn't make sense. Thus a timer is added
@@ -33,7 +35,11 @@ namespace Enemies.Wolf.States
 
             wolf.SetVelocityX(stateData.moveSpeed);
 
+            timeToBark = Random.Range(stateData.minBarkTime, stateData.maxBarkTime);
+
             wolf.SetAnimationParameter("chase", true);
+            wolf.AudioSource.PlayOneShot(stateData.barkSFX[(int) Mathf.Floor(Random.Range(0, stateData.barkSFX.Length))]);
+            lastBark = Time.time;
         }
 
         public override void Exit()
@@ -46,6 +52,12 @@ namespace Enemies.Wolf.States
         public override void LogicUpdate()
         {
             base.LogicUpdate();
+
+            if (Time.time >= lastBark + timeToBark) 
+            { 
+                wolf.AudioSource.PlayOneShot(stateData.barkSFX[(int)Mathf.Floor(Random.Range(0, stateData.barkSFX.Length))]);
+                lastBark = Time.time;
+            }
 
             if (wolf.GroundCheck.Check())
             {

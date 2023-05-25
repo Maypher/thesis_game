@@ -21,6 +21,7 @@ namespace Enemies.Wolf.States
 
             // Play animation
             (this as IAttack).Attack();
+            wolf.AudioSource.PlayOneShot(stateData.attackSFX);
         }
 
         public void FinishAttack()

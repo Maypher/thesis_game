@@ -21,3 +21,9 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
+  barkSFX:
+  - {fileID: 8300000, guid: 112c733be27cd714a980aeb53a7366b3, type: 3}
+  - {fileID: 8300000, guid: d48c9af6bc2e1a54cbe69532549e933f, type: 3}
+  - {fileID: 8300000, guid: 8a34409fb5801ec4caa48e3b1158aec4, type: 3}
+  - {fileID: 8300000, guid: fca4b1a9e80ef2343ab09ed8dcca5abc, type: 3}
+  - {fileID: 8300000, guid: e2c7ea25fe08c7d49a604eb49b2b5eda, type: 3}

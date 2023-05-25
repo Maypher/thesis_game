@@ -21,6 +21,7 @@ namespace Enemies.Wolf.States
             wolf.SetVelocityX(0);
 
             wolf.SetAnimationParameter("warn", true);
+            wolf.AudioSource.PlayOneShot(stateData.warnSFX);
         }
 
         public override void Exit()
@@ -28,6 +29,7 @@ namespace Enemies.Wolf.States
             base.Exit();
 
             wolf.SetAnimationParameter("warn", false);
+            wolf.AudioSource.Stop();
         }
 
         public override void LogicUpdate()

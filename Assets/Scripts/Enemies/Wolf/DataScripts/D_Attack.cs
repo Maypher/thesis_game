@@ -7,6 +7,7 @@ namespace Enemies.Wolf.States.Data
     [CreateAssetMenu(menuName = "Enemies/Wolf/StateData/AttackState")]
     public class D_Attack : StateMachine.StateData
     {
+        public AudioClip attackSFX;
         public AttackDetails details;
     }
 }

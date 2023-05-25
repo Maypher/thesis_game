@@ -11,5 +11,6 @@ namespace Enemies.Wolf.States.Data
         [Min(0)] public float MinIdleTime = 2f;
         public float MaxIdleTime = 5f;
         [Tooltip("Chances of the character turning around when exiting the state")] [Range(0, 1)] public float flipChance = .4f;
+        public AudioClip smellSFX;
     }
 }

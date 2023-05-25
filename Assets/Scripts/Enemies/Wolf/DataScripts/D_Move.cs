@@ -10,5 +10,7 @@ namespace Enemies.Wolf.States.Data
         public float minWalkTime = 3f;
         public float maxWalkTime = 5f;
         public float moveSpeed = 5f;
+
+        public AudioClip pantingSFX;
     }
 }

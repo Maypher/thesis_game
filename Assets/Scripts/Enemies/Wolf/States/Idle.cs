@@ -25,6 +25,7 @@ namespace Enemies.Wolf.States
             idleTime = UnityEngine.Random.Range(stateData.MinIdleTime, stateData.MaxIdleTime);
 
             wolf.SetAnimationParameter("idle", true);
+            wolf.AudioSource.PlayOneShot(stateData.smellSFX);
         }
 
         public override void Exit()
@@ -32,6 +33,7 @@ namespace Enemies.Wolf.States
             base.Exit();
 
             wolf.SetAnimationParameter("idle", false);
+            wolf.AudioSource.Stop();
         }
 
         public override void LogicUpdate()

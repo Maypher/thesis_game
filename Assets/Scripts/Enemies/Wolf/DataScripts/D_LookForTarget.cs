@@ -10,5 +10,6 @@ namespace Enemies.Wolf.States.Data
         public int flipTimes;
         [Min(0)] public float minFlipDuration;
         [Min(0)] public float maxFlipDuration;
+        public AudioClip lookSFX;
     }
 }

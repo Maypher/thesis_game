@@ -20,12 +20,14 @@ namespace Enemies.Wolf.States
             wolf.SetVelocityX(0);
 
             wolf.SetAnimationParameter("tired", true);
+            wolf.AudioSource.PlayOneShot(stateData.tiredSFX);
         }
 
         public override void Exit()
         {
             base.Exit();
             wolf.SetAnimationParameter("tired", false);
+            wolf.AudioSource.Stop();
         }
 
         public override void LogicUpdate()

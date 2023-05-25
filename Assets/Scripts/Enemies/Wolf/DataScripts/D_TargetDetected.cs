@@ -8,5 +8,6 @@ namespace Enemies.Wolf.States.Data
     public class D_TargetDetected : StateMachine.StateData
     {
         public float warnTime = 2f;
+        public AudioClip warnSFX;
     }
 }

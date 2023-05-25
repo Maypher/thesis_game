@@ -7,6 +7,7 @@ namespace Enemies.Wolf.States.Data
     [CreateAssetMenu(menuName = "Enemies/Wolf/StateData/TiredState")]
     public class D_Tired : StateMachine.StateData
     {
+        public AudioClip tiredSFX;
         public float tiredTime = 3f;
     }
 }

@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MinIdleTime: 2
   MaxIdleTime: 5
+  flipChance: 0.4
+  smellSFX: {fileID: 8300000, guid: e0b13231d4449a543a166ba8613a627c, type: 3}

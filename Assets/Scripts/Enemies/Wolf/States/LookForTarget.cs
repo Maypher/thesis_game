@@ -31,6 +31,10 @@ namespace Enemies.Wolf.States
 
             wolf.SetAnimationParameter("lookForPlayer", true);
             wolf.Anim.SetLayerWeight(1, 1);
+
+            wolf.AudioSource.clip = stateData.lookSFX;
+            wolf.AudioSource.Play();
+            wolf.AudioSource.loop = true;
         }
 
         public override void Exit()
@@ -42,6 +46,9 @@ namespace Enemies.Wolf.States
             wolf.SetAnimationParameter("lookForPlayer", false);
 
             wolf.Anim.SetLayerWeight(1, 0);
+
+            wolf.AudioSource.Stop();
+            wolf.AudioSource.loop = false;
         }
 
         public override void LogicUpdate()

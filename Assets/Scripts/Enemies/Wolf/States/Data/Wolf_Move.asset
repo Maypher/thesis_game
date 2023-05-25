@@ -15,3 +15,4 @@ MonoBehaviour:
   minWalkTime: 3
   maxWalkTime: 5
   moveSpeed: 5
+  pantingSFX: {fileID: 8300000, guid: f392d271f8b5ce44c9205098da9a6a66, type: 3}

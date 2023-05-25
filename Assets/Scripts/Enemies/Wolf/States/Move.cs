@@ -23,11 +23,16 @@ namespace Enemies.Wolf.States
             walkTime = Random.Range(stateData.minWalkTime, stateData.maxWalkTime);
 
             entity.SetVelocityX(stateData.moveSpeed);
+            wolf.AudioSource.loop = true;
+            wolf.AudioSource.clip = stateData.pantingSFX;
+            wolf.AudioSource.Play();
         }
 
         public override void Exit()
         {
             base.Exit();
+            wolf.AudioSource.loop = false;
+            wolf.AudioSource.Stop();
         }
 
         public override void LogicUpdate()

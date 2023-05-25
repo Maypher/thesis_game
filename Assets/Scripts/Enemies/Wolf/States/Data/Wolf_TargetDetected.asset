@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Wolf_TargetDetected
   m_EditorClassIdentifier: 
   warnTime: 2
+  warnSFX: {fileID: 8300000, guid: c033c4a7b25a685489e3f8c314f02a06, type: 3}
