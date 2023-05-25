@@ -18,11 +18,14 @@ namespace Enemies.Wolf.States
             base.Enter();
 
             wolf.SetVelocityX(0);
+
+            wolf.SetAnimationParameter("tired", true);
         }
 
         public override void Exit()
         {
             base.Exit();
+            wolf.SetAnimationParameter("tired", false);
         }
 
         public override void LogicUpdate()
