@@ -36,6 +36,9 @@ namespace Enemies.Gunner.States
             gunner.FinishAnimation += StartAttacking;
 
             gunner.SetAnimationParameter("attack", true);
+
+            gunner.AudioSource.loop =true;
+            gunner.AudioSource.PlayOneShot(stateData.laughSFX, .4f);
         }
 
         public override void Exit()
@@ -43,6 +46,8 @@ namespace Enemies.Gunner.States
             base.Exit();
             gunner.FinishAnimation -= StartAttacking;
             gunner.SetAnimationParameter("attack", false);
+            gunner.AudioSource.loop = false;
+            gunner.StartCoroutine(FadeOutAudio());
         }
 
         public override void CheckStateChange()
@@ -76,6 +81,7 @@ namespace Enemies.Gunner.States
         {
             GameObject.Instantiate(stateData.bulletTrail, gunner.Gun.transform.position, gunner.Gun.transform.rotation);
             gunner.StartCoroutine(ShowFire());
+            gunner.AudioSource.PlayOneShot(stateData.shootSFX, .2f);
 
             RaycastHit2D enemy = Physics2D.Raycast(gunner.Gun.transform.position, gunner.Gun.transform.right, 20, stateData.whatIsEnemy);
 
@@ -98,6 +104,20 @@ namespace Enemies.Gunner.States
             shootFire.SetActive(true);
             yield return new WaitForSeconds(stateData.fireTime);
             shootFire.SetActive(false);
+        }
+
+        private IEnumerator FadeOutAudio()
+        {
+            while (gunner.AudioSource.volume > 0)
+            {
+                float newVolume = gunner.AudioSource.volume - (stateData.laughFadeTime * Time.deltaTime);
+                newVolume  = newVolume > 0f ? newVolume : 0;
+                gunner.AudioSource.volume = newVolume;
+                yield return null;
+            }
+
+            gunner.AudioSource.Stop();
+            gunner.AudioSource.volume = 1;
         }
     }
 }

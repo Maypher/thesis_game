@@ -18,5 +18,10 @@ namespace Enemies.Gunner.States.Data
         public float fireTime = .2f;
         public LayerMask whatIsEnemy;
         public AttackDetails attackDetails;
+
+        [Header("SFX")]
+        public AudioClip shootSFX;
+        public AudioClip laughSFX;
+        public float laughFadeTime = 1;
     }
 }

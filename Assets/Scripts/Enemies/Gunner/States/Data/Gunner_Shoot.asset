@@ -17,11 +17,15 @@ MonoBehaviour:
   minShootInterval: 1
   maxShootInterval: 1
   bulletTrail: {fileID: 3994490297619365259, guid: 3f86dae9e2e4f7d4c8add2b3d2677e6c, type: 3}
+  fireTime: 0.2
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 64
   attackDetails:
     damage: 1
-    attackPostion: {x: -6.1671643, y: 1.9435111}
+    attackPostion: {x: -7.07, y: 1.854}
     knockbackForce: 2
     knockbackAngle: {x: 1, y: 1}
+  shootSFX: {fileID: 8300000, guid: fc4fd5d7ee6ad8f45ab20decc2729a42, type: 3}
+  laughSFX: {fileID: 8300000, guid: b940b47a111592345abef2cb04027c10, type: 3}
+  laughFadeTime: 1
