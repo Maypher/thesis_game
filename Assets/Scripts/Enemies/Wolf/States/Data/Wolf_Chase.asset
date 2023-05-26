@@ -21,6 +21,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
+  minBarkTime: 2
+  maxBarkTime: 4
   barkSFX:
   - {fileID: 8300000, guid: 112c733be27cd714a980aeb53a7366b3, type: 3}
   - {fileID: 8300000, guid: d48c9af6bc2e1a54cbe69532549e933f, type: 3}

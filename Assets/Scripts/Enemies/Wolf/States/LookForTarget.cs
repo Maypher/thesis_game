@@ -27,7 +27,7 @@ namespace Enemies.Wolf.States
 
             finished = false;
             flipCounter = stateData.flipTimes;
-            lastFlip = 0;
+            lastFlip = Time.time;
 
             wolf.SetAnimationParameter("lookForPlayer", true);
             wolf.Anim.SetLayerWeight(1, 1);
@@ -35,20 +35,26 @@ namespace Enemies.Wolf.States
             wolf.AudioSource.clip = stateData.lookSFX;
             wolf.AudioSource.Play();
             wolf.AudioSource.loop = true;
+
+            wolf.SetAnimationParameter("flipHead");
         }
 
         public override void Exit()
         {
             base.Exit();
 
-            wolf.FOV.transform.localEulerAngles = Vector3.zero;
-            wolf.WolfHead.localEulerAngles = Vector3.zero;
             wolf.SetAnimationParameter("lookForPlayer", false);
+            wolf.WolfHead.localEulerAngles = Vector3.zero;
 
             wolf.Anim.SetLayerWeight(1, 0);
 
             wolf.AudioSource.Stop();
             wolf.AudioSource.loop = false;
+
+            int directionToPlayer = (int)Mathf.Sign(GameManager.Player.transform.position.x - wolf.transform.position.x);
+
+            if (wolf.FOV.Check() && wolf.FacingDirection != directionToPlayer) wolf.Flip();
+            wolf.FOV.Scale.Set(Mathf.Abs(wolf.FOV.Scale.x), wolf.FOV.Scale.y);
         }
 
         public override void LogicUpdate()
@@ -61,7 +67,7 @@ namespace Enemies.Wolf.States
                 else
                 {
                     lastFlip = Time.time;
-                    wolf.FOV.transform.Rotate(new(0, 180, 0));
+                    wolf.FOV.Scale.Set(wolf.FOV.Scale.x * -1, wolf.FOV.Scale.y);
                     wolf.SetAnimationParameter("flipHead");
                     flipCounter--;
                 }
@@ -78,7 +84,7 @@ namespace Enemies.Wolf.States
             base.CheckStateChange();
 
             if (finished) stateMachine.ChangeState(wolf.MoveState);
-            else if (wolf.FOV.Check()) stateMachine.ChangeState(wolf.ChaseState);
+            else if (wolf.FOV.Check()) stateMachine.ChangeState(wolf.TargetDetectedState);
         }
     }
 }

@@ -26,6 +26,8 @@ namespace Enemies.Wolf.States
             wolf.AudioSource.loop = true;
             wolf.AudioSource.clip = stateData.pantingSFX;
             wolf.AudioSource.Play();
+
+            wolf.SetAnimationParameter("walk", true);
         }
 
         public override void Exit()
@@ -33,6 +35,8 @@ namespace Enemies.Wolf.States
             base.Exit();
             wolf.AudioSource.loop = false;
             wolf.AudioSource.Stop();
+
+            wolf.SetAnimationParameter("walk", false);
         }
 
         public override void LogicUpdate()

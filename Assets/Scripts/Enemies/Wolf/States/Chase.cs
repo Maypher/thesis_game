@@ -34,11 +34,9 @@ namespace Enemies.Wolf.States
             noPlatform = false;
 
             wolf.SetVelocityX(stateData.moveSpeed);
+            wolf.SetAnimationParameter("chase", true);
 
             timeToBark = Random.Range(stateData.minBarkTime, stateData.maxBarkTime);
-
-            wolf.SetAnimationParameter("chase", true);
-            wolf.AudioSource.PlayOneShot(stateData.barkSFX[(int) Mathf.Floor(Random.Range(0, stateData.barkSFX.Length))]);
             lastBark = Time.time;
         }
 
@@ -57,6 +55,7 @@ namespace Enemies.Wolf.States
             { 
                 wolf.AudioSource.PlayOneShot(stateData.barkSFX[(int)Mathf.Floor(Random.Range(0, stateData.barkSFX.Length))]);
                 lastBark = Time.time;
+                timeToBark = Random.Range(stateData.minBarkTime, stateData.maxBarkTime);
             }
 
             if (wolf.GroundCheck.Check())

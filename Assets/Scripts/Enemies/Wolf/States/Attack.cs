@@ -22,6 +22,7 @@ namespace Enemies.Wolf.States
             // Play animation
             (this as IAttack).Attack();
             wolf.AudioSource.PlayOneShot(stateData.attackSFX);
+            wolf.SetVelocityX(-4);
         }
 
         public void FinishAttack()
@@ -45,7 +46,7 @@ namespace Enemies.Wolf.States
         {
             base.CheckStateChange();
 
-            stateMachine.ChangeState(wolf.TargetDetectedState);
+            if(wolf.GroundCheck.Check()) stateMachine.ChangeState(wolf.TargetDetectedState);
         }
     }
 }
