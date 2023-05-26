@@ -1746,6 +1746,10 @@ PrefabInstance:
       propertyPath: Scale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1828668047188126787, guid: 41c8bae57db5d0b4fb7175194fd9e12c, type: 3}
+      propertyPath: _targetMask.m_Bits
+      value: 320
+      objectReference: {fileID: 0}
     - target: {fileID: 1828668047188126788, guid: 41c8bae57db5d0b4fb7175194fd9e12c, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
