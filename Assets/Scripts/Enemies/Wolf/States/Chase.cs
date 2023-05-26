@@ -13,6 +13,8 @@ namespace Enemies.Wolf.States
 
         private float lastBark, timeToBark;
 
+        private float lastAssault = 0;
+
         // Used in the transition to tired state. Since the wolf shouldn't transition to it when jumping
         // a ground check is required but the position of the ground makes the wolf be halfway out of the ground
         // when landing and transitioning in that frame wouldn't make sense. Thus a timer is added
@@ -101,7 +103,11 @@ namespace Enemies.Wolf.States
                 else
                 {
                     if (Time.time >= startTime + stateData.chaseTime && runningTimer >= 1) stateMachine.ChangeState(wolf.TiredState);
-                    else if (wolf.AttackRange.Check()) stateMachine.ChangeState(wolf.AssaultState);
+                    else if (wolf.AttackRange.Check() && Time.time >= lastAssault + stateData.timeBetweenAssaults) 
+                    { 
+                        lastAssault = Time.time;
+                        stateMachine.ChangeState(wolf.AssaultState);
+                    }
                 }
             }
         }

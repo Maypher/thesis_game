@@ -24,7 +24,6 @@ namespace Enemies.Wolf.States
 
             attack = false;
 
-            if (Time.time <= lastJump + stateData.timeBetweenJumps) { stateMachine.ChangeState(wolf.ChaseState); return; }
 
             wolf.AttackCheck.enemyEnteredAttackArea += ChangeToAttack;
 
@@ -57,7 +56,7 @@ namespace Enemies.Wolf.States
             base.CheckStateChange();
 
             if (attack) stateMachine.ChangeState(wolf.AttackState);
-            else if (wolf.GroundCheck.Check() && Time.time >= startTime + 0.2f) 
+            else if (wolf.GroundCheck.Check()) 
             {
                 if (wolf.FOV.Check()) stateMachine.ChangeState(wolf.ChaseState);
                 else stateMachine.ChangeState(wolf.LookForTargetState); 

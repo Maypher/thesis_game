@@ -12,6 +12,7 @@ namespace Enemies.Wolf.States.Data
         public float chaseTime = 3f;
 
         [Header("Jump")]
+        public float timeBetweenAssaults = 2;
         [Min(1)] public float minJumpAngle = 20;
         [Min(1)] public float maxJumpAngle = 45;
         public float maxJumpDistanceX;
