@@ -15,8 +15,10 @@ MonoBehaviour:
   shakeDuration: 1
   shakeIntensity: 0.06
   biteSFX: {fileID: 8300000, guid: f398e7a31f08c464c86f3f66e3974afe, type: 3}
+  goodBiteSFX: {fileID: 8300000, guid: 29fd49f8183af6e48b4e61b3b36ce879, type: 3}
+  badBiteSFX: {fileID: 8300000, guid: 267eb93eeb723cc4d9eb4720b27debf3, type: 3}
   attackDetails:
     damage: 3
-    attackPostion: {x: -11.639999, y: -1.82}
+    attackPostion: {x: 8.360001, y: -2.0299997}
     knockbackForce: 5
     knockbackAngle: {x: 0.8, y: 0.4}
