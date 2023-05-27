@@ -46,11 +46,11 @@ namespace Enemies.Wolf.States
         {
             base.CheckStateChange();
 
-            if (Time.time >= startTime + stateData.warnTime) 
+            if (!wolf.FOV.Check()) stateMachine.ChangeState(wolf.MoveState);
+            else if (Time.time >= startTime + stateData.warnTime) 
             {
                 if (wolf.AttackRange.Check()) stateMachine.ChangeState(wolf.AssaultState);
-                else if (wolf.FOV.Check()) stateMachine.ChangeState(wolf.ChaseState);
-                else stateMachine.ChangeState(wolf.MoveState);
+                else stateMachine.ChangeState(wolf.ChaseState);
             }
         }
     }

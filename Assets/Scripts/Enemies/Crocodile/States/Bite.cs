@@ -43,6 +43,8 @@ namespace Enemies.Crocodile.States
             GameManager.Player.PlayerDeath -= KillPlayer;
             crocodile.AnimationEvent -= FinishBite;
             crocodile.FinishAnimation -= GoDown;
+
+            crocodile.AudioSource.loop = false;
         }
 
         public override void CheckStateChange()
@@ -105,11 +107,19 @@ namespace Enemies.Crocodile.States
 
         private void FinishBite() 
         {
-            if (killedPlayer) crocodile.SetAnimationParameter("goodBite");
+            if (killedPlayer) 
+            {
+                crocodile.SetAnimationParameter("goodBite");
+                crocodile.AudioSource.PlayOneShot(stateData.goodBiteSFX);
+            }
             else
             {
                 crocodile.SetAnimationParameter("failBite");
                 crocodile.SetAnimationParameter("underwater", true);
+                
+                crocodile.AudioSource.clip = stateData.badBiteSFX;
+                crocodile.AudioSource.loop = true;
+                crocodile.AudioSource.PlayDelayed(1f);
             }
         }
 
