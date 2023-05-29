@@ -26,6 +26,11 @@ public class AttackCheck : MonoBehaviour
         if ((_whatIsEnemy.value & (1 << collision.gameObject.layer)) > 0) enemyEnteredAttackArea?.Invoke();
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if ((_whatIsEnemy.value & (1 << collision.gameObject.layer)) > 0) enemyEnteredAttackArea?.Invoke();
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, _checkRadius);
