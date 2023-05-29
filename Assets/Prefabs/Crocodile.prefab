@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 8506999667477024034}
   - component: {fileID: 2081217776529980757}
   - component: {fileID: 8319458508816981085}
+  - component: {fileID: 7606635519666189043}
   m_Layer: 7
   m_Name: Crocodile
   m_TagString: Untagged
@@ -185,7 +186,6 @@ MonoBehaviour:
   idleData: {fileID: 11400000, guid: c37d81fa2adcc18459813dc7eba19315, type: 2}
   biteData: {fileID: 11400000, guid: 72dfd4f0dd179fc4990702de231bac38, type: 2}
   hideData: {fileID: 11400000, guid: 9adf6b838a1c0534594567b9db86f3fb, type: 2}
-  <GrowlSFX>k__BackingField: {fileID: 8319458508816981085}
 --- !u!95 &2081217776529980757
 Animator:
   serializedVersion: 4
@@ -302,6 +302,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!210 &7606635519666189043
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8506999667477024039}
+  m_Enabled: 1
+  m_SortingLayerID: -903979617
+  m_SortingLayer: 2
+  m_SortingOrder: -1
 --- !u!1 &8506999667751213464
 GameObject:
   m_ObjectHideFlags: 0

@@ -43,12 +43,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: background
+    uniqueID: 1297676965
+    locked: 0
+  - name: water
+    uniqueID: 3390987679
+    locked: 0
   - name: Particles
     uniqueID: 2356721249
     locked: 0
-  - name: Ground
-    uniqueID: 267281639
-    locked: 0
   - name: Player
     uniqueID: 947238479
+    locked: 0
+  - name: Foregound
+    uniqueID: 267281639
     locked: 0
