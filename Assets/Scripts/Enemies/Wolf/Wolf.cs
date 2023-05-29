@@ -58,6 +58,8 @@ namespace Enemies.Wolf
             base.Start();
 
             StateMachine.Initialize(MoveState);
+
+            Health = maxHealth;
         }
 
         public override void Update()
