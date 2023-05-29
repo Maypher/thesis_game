@@ -99,7 +99,7 @@ namespace Player.Substates.Airborne
 
         public void Attack()
         {
-            Collider2D[] enemies = player.AttackCheck.GetEnemies();
+            Collider2D[] enemies = player.GroundPoundCheck.GetEnemies();
 
             AttackDetails attackDetails = stateData.attackDetails;
 
