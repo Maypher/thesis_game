@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackSFX: {fileID: 8300000, guid: b88e8134080edea4db856f8c6126de92, type: 3}
   details:
-    damage: 5
-    attackPostion: {x: -16.29759, y: -2.30677}
+    damage: 1
+    attackPostion: {x: 59.075516, y: -0.63444144}
     knockbackForce: 6
     knockbackAngle: {x: 0.8, y: 0.6}

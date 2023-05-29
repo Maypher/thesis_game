@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
+    public static HealthBar instance;
+
     [Header("Face container")]
     [SerializeField] Image faceImg;
 
@@ -25,6 +27,9 @@ public class HealthBar : MonoBehaviour
 
     private void Awake()
     {
+        if (instance == null) instance = this;
+        else Destroy(this);
+
         heartContainer = transform.Find("HeartContainer");
     }
 
@@ -33,8 +38,7 @@ public class HealthBar : MonoBehaviour
     {
         UpdateHearts();
 
-        GameManager.Player.DamageTaken += UpdateHearts;
-        GameManager.Player.DamageTaken += UpdateFace;
+        GameManager.Player.DamageTaken += UpdateData;
     }
 
     private void UpdateHearts()
@@ -49,8 +53,8 @@ public class HealthBar : MonoBehaviour
 
     private void UpdateFace()
     {
-        float healthPercentage = GameManager.Player.Health / GameManager.Player.MaxHealth;
-
+        float healthPercentage = GameManager.Player.Health / (float) GameManager.Player.MaxHealth;
+            
         if (!GameManager.Player.Raccoon)
         {
             if (healthPercentage < 0.33) faceImg.sprite = lowHealthFace;
@@ -65,5 +69,14 @@ public class HealthBar : MonoBehaviour
         }
     }
 
+    public void UpdateData()
+    {
+        UpdateHearts();
+        UpdateFace();
+    }
 
+    private void OnDestroy()
+    {
+        GameManager.Player.DamageTaken -= UpdateData;
+    }
 }

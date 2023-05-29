@@ -82,7 +82,10 @@ namespace Player.Raccoon
                 else
                 {
                     Sprite.enabled = false;
+                    GameManager.Player.Raccoon = null;
                 }
+
+                HealthBar.instance.UpdateData();
             }
         }
     }

@@ -78,7 +78,7 @@ namespace Player
 
         #region external references
         [HideInInspector] public GameObject Rock;
-        [HideInInspector] public Raccoon.Raccoon Raccoon { get { return raccoon; } set { raccoon = value; DamageTaken?.Invoke(); } }
+        [HideInInspector] public Raccoon.Raccoon Raccoon { get { return raccoon; } set { raccoon = value; HealthBar.instance.UpdateData(); } }
         [HideInInspector] private Raccoon.Raccoon raccoon;
 
         public SpriteRenderer SpriteRenderer { get; private set; }
