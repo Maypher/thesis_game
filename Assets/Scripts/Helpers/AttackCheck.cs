@@ -11,6 +11,8 @@ public class AttackCheck : MonoBehaviour
 
     [HideInInspector] public Action enemyEnteredAttackArea;
 
+    private bool calledOnStay = false;
+
     public Collider2D[] GetEnemies()
     {
         return Physics2D.OverlapCircleAll(transform.position, _checkRadius, _whatIsEnemy);
@@ -28,8 +30,14 @@ public class AttackCheck : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if ((_whatIsEnemy.value & (1 << collision.gameObject.layer)) > 0) enemyEnteredAttackArea?.Invoke();
+        if ((_whatIsEnemy.value & (1 << collision.gameObject.layer)) > 0 && !calledOnStay)
+        {
+            enemyEnteredAttackArea?.Invoke();
+            calledOnStay = true;
+        }
     }
+
+    private void OnTriggerExit2D(Collider2D collision) => calledOnStay = false;
 
     private void OnDrawGizmosSelected()
     {

@@ -98,6 +98,11 @@ namespace Player.Substates.Airborne
                 attackDetails.attackPostion = player.DashAttackCheck.transform.position;
                 enemy.GetComponent<IDamageable>()?.TakeDamage(attackDetails);
             }
+
+            if (enemies.Length > 0)
+            {
+                player.SetVelocityX(0);
+            }
         }
 
         public void FinishAttack()
