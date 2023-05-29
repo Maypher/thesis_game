@@ -39,11 +39,10 @@ namespace Enemies.Crocodile
             base.Start();
 
             AttackCheck = GetComponentInChildren<AttackCheck>();
-            StartPosition = transform.position;
             Sprite = transform.Find("Sprite");
             Ground = transform.Find("Ground").GetComponent<Collider2D>();
 
-            StartPosition = transform.position;
+            StartPosition = transform.localPosition;
 
             StateMachine.Initialize(IdleState);
         }

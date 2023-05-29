@@ -63,12 +63,12 @@ namespace Enemies.Crocodile.States
         {
             float hideTimer = 0;
 
-            while (crocodile.transform.position != (Vector3)endPosition)
+            while (crocodile.transform.localPosition != (Vector3)endPosition)
             {
                 hideTimer += Time.deltaTime;
 
                 float t = Mathf.Clamp01(hideTimer / stateData.hideTime);
-                crocodile.transform.position = Vector2.Lerp(crocodile.StartPosition, endPosition, t);
+                crocodile.transform.localPosition = Vector2.Lerp(crocodile.StartPosition, endPosition, t);
                 
                 yield return null;
             }
@@ -82,12 +82,12 @@ namespace Enemies.Crocodile.States
         {
             float riseTimer = 0;
 
-            while (crocodile.transform.position != (Vector3) crocodile.StartPosition)
+            while (crocodile.transform.localPosition != (Vector3) crocodile.StartPosition)
             {
                 riseTimer += Time.deltaTime;
 
                 float t = Mathf.Clamp01(riseTimer / stateData.riseTime);
-                crocodile.transform.position = Vector2.Lerp(endPosition, crocodile.StartPosition, t);
+                crocodile.transform.localPosition = Vector2.Lerp(endPosition, crocodile.StartPosition, t);
 
                 yield return null;
             }

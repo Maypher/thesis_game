@@ -17,13 +17,13 @@ namespace Enemies.Crocodile.States
         public Bite(Crocodile entity, StateMachine<Crocodile> stateMachine, Data.D_Bite stateData) : base(entity, stateMachine)
         {
             this.stateData = stateData;
-
-            startPosition = crocodile.transform.position;
         }
 
         public override void Enter()
         {
             base.Enter();
+
+            startPosition = crocodile.Sprite.localPosition;
 
             finishBite = false;
             killedPlayer = false;
@@ -76,12 +76,11 @@ namespace Enemies.Crocodile.States
 
                 float x = Random.Range(-1f, 1f) * stateData.shakeIntensity;
                 float y = Random.Range(-1f, 1f) * stateData.shakeIntensity;
-                crocodile.Sprite.position = new Vector2(startPosition.x + x, startPosition.y + y);
+                crocodile.Sprite.localPosition = new Vector2(startPosition.x + x, startPosition.y + y);
                 timeElapsed += Time.deltaTime;
                 yield return null;
             }
 
-            crocodile.Sprite.transform.position = startPosition;
             crocodile.SetAnimationParameter("bite");
             crocodile.AudioSource.PlayOneShot(stateData.biteSFX);
             Attack();
