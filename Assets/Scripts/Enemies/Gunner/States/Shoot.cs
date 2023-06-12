@@ -1,8 +1,6 @@
 using Player;
 using StateMachine;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 
@@ -65,9 +63,10 @@ namespace Enemies.Gunner.States
 
             Vector3 direction = GameManager.Player.transform.position - gunner.Gun.transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            if (gunner.transform.eulerAngles.y != 0) angle *= -1;
 
-            gunner.Gun.transform.rotation = Quaternion.RotateTowards(gunner.Gun.transform.rotation, targetRotation, stateData.rotateSpeed * Time.deltaTime);
+            Quaternion q = Quaternion.AngleAxis(angle - gunner.transform.eulerAngles.y, Vector3.forward);
+            gunner.Gun.localRotation = Quaternion.Slerp(gunner.Gun.localRotation, q, Time.deltaTime * stateData.rotateSpeed);
 
             if (Time.time >= lastShot + Random.Range(stateData.minShootInterval, stateData.maxShootInterval)) { Attack(); lastShot = Time.time; }
         }

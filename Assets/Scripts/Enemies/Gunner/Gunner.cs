@@ -9,6 +9,7 @@ namespace Enemies.Gunner
     {
         [Header("Gunner data")]
         [Min(0)] [SerializeField] private int maxHealth;
+
         public int Health { get; private set; }
 
         public StateMachine.StateMachine<Gunner> StateMachine { get; private set; } = new();
