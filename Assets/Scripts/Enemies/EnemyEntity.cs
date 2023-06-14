@@ -18,7 +18,9 @@ namespace Enemies
         [field: SerializeField] [field: Header("Components", order = 1)] public AttackCheck AttackCheck { get; private set; }
         [field: SerializeField] public FieldOfView FOV { get; private set; }
 
+        [Header("Particle systems")]
         [SerializeField] protected ParticleSystem damagePS;
+        [SerializeField] protected ParticleSystem deathPS;
 
         public virtual bool CheckWall() => Physics2D.Raycast(WallCheck.position, transform.right, WallCheckDistance, whatIsGround);
 
@@ -51,6 +53,8 @@ namespace Enemies
 
         public virtual void Kill()
         {
+            deathPS.transform.parent = null;
+            deathPS.Play();
             Destroy(gameObject);
         }
     }
