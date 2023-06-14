@@ -86,13 +86,13 @@ namespace Enemies.Wolf
 
         public override void TakeDamage(AttackDetails attackDetails)
         {
-            base.TakeDamage(attackDetails);
-
             Health -= attackDetails.damage;
 
             SetVelocity(attackDetails.knockbackForce, attackDetails.knockbackAngle, Mathf.Sign(transform.position.x - attackDetails.attackPostion.x));
 
             if (Health <= 0) Kill();
+
+            base.TakeDamage(attackDetails);
         }
     }
 }

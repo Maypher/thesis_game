@@ -15,7 +15,7 @@ public class Background : MonoBehaviour
     void Start()
     {
         material = GetComponent<MeshRenderer>().material;
-        playerRb = GameManager.Player.GetComponent<Rigidbody2D>();
+        playerRb = GameManager.Player.Rb;
     }
 
     // Update is called once per frame
