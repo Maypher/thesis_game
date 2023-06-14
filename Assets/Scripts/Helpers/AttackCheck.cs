@@ -32,8 +32,11 @@ public class AttackCheck : MonoBehaviour
     {
         if ((_whatIsEnemy.value & (1 << collision.gameObject.layer)) > 0 && !calledOnStay)
         {
-            enemyEnteredAttackArea?.Invoke();
-            calledOnStay = true;
+            if (enemyEnteredAttackArea != null)
+            {
+                enemyEnteredAttackArea.Invoke();
+                calledOnStay = true;
+            }
         }
     }
 
