@@ -22,6 +22,11 @@ namespace StateMachine
         public Animator Anim { get; private set; }
         public GroundCheck GroundCheck { get; private set; }
         public AudioSource AudioSource { get; private set; }
+
+
+        [Header("Particle systems")]
+        [SerializeField] protected ParticleSystem damagePS;
+        [SerializeField] protected ParticleSystem deathPS;
         #endregion
 
         public virtual void Awake()
