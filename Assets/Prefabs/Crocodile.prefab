@@ -208,6 +208,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c76be9ec88f63d468d00df6c4f5d2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damagePS: {fileID: 0}
+  deathPS: {fileID: 0}
   idleData: {fileID: 11400000, guid: c37d81fa2adcc18459813dc7eba19315, type: 2}
   biteData: {fileID: 11400000, guid: 72dfd4f0dd179fc4990702de231bac38, type: 2}
   hideData: {fileID: 11400000, guid: 9adf6b838a1c0534594567b9db86f3fb, type: 2}

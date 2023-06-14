@@ -68,11 +68,16 @@ namespace Enemies.Gunner
             Health -= attackDetails.damage;
 
             if (Health <= 0) Kill();
+
+            damagePS.Play();
         }
 
         public void Kill()
         {
+            deathPS.transform.parent = null;
+            deathPS.Play();
             Destroy(gameObject);
+
         }
     }
 }

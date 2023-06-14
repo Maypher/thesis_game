@@ -331,6 +331,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba778e438c7a8764bbb3d6d74cc1094f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damagePS: {fileID: 0}
+  deathPS: {fileID: 0}
   jumpBufferTime: 0.1
   <MaxHealth>k__BackingField: 3
   walkData: {fileID: 11400000, guid: d882e42f2aa2556469296fd9caee6754, type: 2}

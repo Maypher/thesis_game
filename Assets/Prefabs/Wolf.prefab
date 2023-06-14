@@ -5236,6 +5236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb43333cb82bca445bac1f4c403ac4cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damagePS: {fileID: 8442420828305191329}
+  deathPS: {fileID: 2823638815573921109}
   <WallCheck>k__BackingField: {fileID: 1828668046221867707}
   <LedgeCheck>k__BackingField: {fileID: 1828668045499720011}
   whatIsGround:
@@ -5245,8 +5247,6 @@ MonoBehaviour:
   <LedgeCheckDistance>k__BackingField: 1
   <AttackCheck>k__BackingField: {fileID: 1828668046739158558}
   <FOV>k__BackingField: {fileID: 1828668047188126787}
-  damagePS: {fileID: 8442420828305191329}
-  deathPS: {fileID: 2823638815573921109}
   maxHealth: 20
   moveData: {fileID: 11400000, guid: 5268649043f54324f84514dc74ff0f4b, type: 2}
   idleData: {fileID: 11400000, guid: 62e2224630cc75740a222d87f7d1fd40, type: 2}
