@@ -99,15 +99,23 @@ namespace Player.Substates.Airborne
                 enemy.GetComponent<IDamageable>()?.TakeDamage(attackDetails);
             }
 
-            if (enemies.Length > 0)
-            {
-                player.SetVelocityX(0);
-            }
+            if (enemies.Length > 0) player.StartCoroutine(SetAttackInvinsible());
         }
 
         public void FinishAttack()
         {
             throw new System.NotImplementedException();
+        }
+
+        private IEnumerator SetAttackInvinsible()
+        {
+            player.CanBeDamaged = false;
+            player.gameObject.layer = LayerMask.NameToLayer("InvinsibleToEnemies");
+
+            yield return new WaitForSeconds(stateData.invinsibilityTime);
+
+            player.gameObject.layer = LayerMask.NameToLayer("Player");
+            player.CanBeDamaged = true;
         }
     }
 }

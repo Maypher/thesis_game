@@ -16,8 +16,9 @@ MonoBehaviour:
   dashTime: 0.2
   cooldownTime: 1
   dashSFX: {fileID: 8300000, guid: 0a824a689f46fa245b0ca24c4d5a31cd, type: 3}
+  invinsibilityTime: 0.4
   attackDetails:
     damage: 1
     attackPostion: {x: 0, y: 0}
-    knockbackForce: 5
-    knockbackAngle: {x: 0.4, y: 0.6}
+    knockbackForce: 7
+    knockbackAngle: {x: 1, y: 0.3}
