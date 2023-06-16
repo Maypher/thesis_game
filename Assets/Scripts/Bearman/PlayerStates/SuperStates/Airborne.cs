@@ -65,7 +65,7 @@ namespace Player.Superstates
             // A small time is given so the player can be airborne before checking
             if (player.GroundCheck.Check() && player.CanLand && timeInAir > 0.2) 
             {
-                if (wantsToJump && jumpBufferTimer > 0) stateMachine.ChangeState(player.JumpState);
+                if (wantsToJump && jumpBufferTimer > 0 && player.Rb.velocity.y < 0) stateMachine.ChangeState(player.JumpState);
                 else if (GameManager.UserInput.Player.Move.ReadValue<float>() == 0) stateMachine.ChangeState(player.IdleState);
                 else stateMachine.ChangeState(player.WalkState);
             }
