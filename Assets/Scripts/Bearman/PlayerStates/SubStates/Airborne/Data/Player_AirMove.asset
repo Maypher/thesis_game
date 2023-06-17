@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Player_AirMove
   m_EditorClassIdentifier: 
   maxSpeed: 7
-  fallingGravity: 2
+  fallingGravity: 3
   doubleJumpGap: 0.3
   coyoteTime: 0.2

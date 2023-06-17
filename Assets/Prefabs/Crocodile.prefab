@@ -115,14 +115,14 @@ Transform:
   m_GameObject: {fileID: 8506999667477024039}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.4, y: -2.41, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8506999667751213467}
   - {fileID: 8506999668754781746}
   - {fileID: 8506999667161481143}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &8506999667477024038
 Rigidbody2D:
@@ -339,7 +339,7 @@ SortingGroup:
   m_GameObject: {fileID: 8506999667477024039}
   m_Enabled: 1
   m_SortingLayerID: -903979617
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: -1
   m_SortAtRoot: 0
 --- !u!1 &8506999667751213464

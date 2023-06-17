@@ -4854,7 +4854,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 947238479
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -5247,7 +5247,7 @@ MonoBehaviour:
   <LedgeCheckDistance>k__BackingField: 1
   <AttackCheck>k__BackingField: {fileID: 1828668046739158558}
   <FOV>k__BackingField: {fileID: 1828668047188126787}
-  maxHealth: 20
+  maxHealth: 1
   moveData: {fileID: 11400000, guid: 5268649043f54324f84514dc74ff0f4b, type: 2}
   idleData: {fileID: 11400000, guid: 62e2224630cc75740a222d87f7d1fd40, type: 2}
   chaseData: {fileID: 11400000, guid: a68cc8c73776bee4e8a7a1dba217e6e5, type: 2}
@@ -5308,7 +5308,7 @@ SortingGroup:
   m_GameObject: {fileID: 1828668046842578926}
   m_Enabled: 1
   m_SortingLayerID: 947238479
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!82 &2060934316
