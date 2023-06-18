@@ -10,7 +10,6 @@ namespace Enemies.Gunner.Misc
         [SerializeField] private float lifespan = 5;
 
         private float lifetime = 0;
-        private bool moving = true;
 
         // Start is called before the first frame update
         void Start()
@@ -21,7 +20,7 @@ namespace Enemies.Gunner.Misc
         // Update is called once per frame
         void Update()
         {
-            if (moving) transform.position += transform.right * speed * Time.deltaTime;
+            transform.position += speed * Time.deltaTime * transform.right;
 
             lifetime += Time.deltaTime;
 
@@ -33,8 +32,7 @@ namespace Enemies.Gunner.Misc
             // If colliding with player(3 and 8) or ground(6)
             if (collision.gameObject.layer == LayerMask.NameToLayer("Player") || collision.gameObject.layer == LayerMask.NameToLayer("Ground") || collision.gameObject.layer == LayerMask.NameToLayer("InvinsibleToEnemies"))
             {
-                moving = false;
-                // Spawn gushot particles
+                Destroy(gameObject);
             }
         }
     }

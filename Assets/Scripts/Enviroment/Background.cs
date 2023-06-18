@@ -4,24 +4,64 @@ using UnityEngine;
 
 public class Background : MonoBehaviour
 {
-    [SerializeField] private Vector2 movementSpeed;
-    [SerializeField] private float playerVelocityMultiplier = .1f;
+    Transform cam; // Main camera
+    Vector3 camStartPos;
+    float distance; // distance between the camera start pos and its current pos
 
-    private Material material;
+    private GameObject[] backgrounds;
+    private Material[] mats;
+    private float[] backSpeed;
 
-    private Rigidbody2D playerRb;
+    private float farthestBack = 0;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField][Min(0)] private float parallaxSpeed;
+
+    private void Start()
     {
-        material = GetComponent<MeshRenderer>().material;
-        playerRb = GameManager.Player.Rb;
+        cam = Camera.main.transform;
+        camStartPos = cam.position;
+
+        int backCount = transform.childCount;
+        mats = new Material[backCount];
+        backgrounds = new GameObject[backCount];
+        backSpeed = new float[backCount];
+
+
+        for (int i = 0; i < backCount; i++)
+        {
+            backgrounds[i] = transform.GetChild(i).gameObject;
+            mats[i] = backgrounds[i].GetComponent<Renderer>().material;
+        }
+
+
+        BackSpeedCalculate(backCount);
     }
 
-    // Update is called once per frame
-    void Update()
+    void BackSpeedCalculate(int backCount)
     {
-        Vector2 offset = (playerRb.velocity.x * playerVelocityMultiplier) * Time.deltaTime * movementSpeed;
-        material.mainTextureOffset += offset;
+        for (int i = 0; i < backCount; i++) // Find the furthest back element
+        {
+            if (backgrounds[i].transform.position.z - cam.position.z > farthestBack)
+            {
+                farthestBack = backgrounds[i].transform.position.z - cam.position.z;
+            }
+        }
+
+        for (int i = 0; i < backCount; i++) // Set the speed of backgrounds
+        {
+            backSpeed[i] = 1 - (backgrounds[i].transform.position.z - cam.position.z) / farthestBack;
+        }
+    }
+
+    private void LateUpdate()
+    {
+        distance = cam.position.x - camStartPos.x;
+        transform.position = new Vector2(cam.position.x, transform.position.y);
+
+        for (int i = 0; i < backgrounds.Length; i++)
+        {
+            float speed = backSpeed[i] * parallaxSpeed;
+            mats[i].SetTextureOffset("_MainTex", new(distance * speed, 0));
+        }
     }
 }

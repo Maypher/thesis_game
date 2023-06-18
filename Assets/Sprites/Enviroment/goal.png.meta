@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dd460a3c500ed974e8cc7726df53711d
+guid: 5a7c82ac0a831c741a6d2c71bb2bf104
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 256
+  spritePixelsToUnits: 400
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,49 +110,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: slopes256 1_0
+      name: goal_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 256
-        height: 256
+        y: 137
+        width: 502
+        height: 458
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -128, y: -128}
-        - {x: 128, y: -128}
-        - {x: 128, y: 128}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4c2730a3ad91104da8fb1d7c55d7316
-      internalID: -112382052
+      spriteID: 1eada1f653ac75e41a807150ebc34d7e
+      internalID: 1511657659
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slopes256 1_1
+      name: goal_1
       rect:
         serializedVersion: 2
-        x: 256
-        y: 0
-        width: 256
-        height: 256
+        x: 578
+        y: 592
+        width: 795
+        height: 443
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -128, y: 128}
-        - {x: -128, y: -128}
-        - {x: 128, y: -128}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa1085467eaf82748a26c77f70ab3a9c
-      internalID: -1844693230
+      spriteID: e8a9186d6ebbaff459e88d9fbe15bf49
+      internalID: -2086661846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goal_2
+      rect:
+        serializedVersion: 2
+        x: 1418
+        y: 0
+        width: 382
+        height: 441
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2c54ab2f935c1747adb131cae46f0c0
+      internalID: -1215325952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goal_3
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 595
+        width: 204
+        height: 683
+      alignment: 9
+      pivot: {x: 0.6125925, y: -0.00051750307}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7117fb3239a3d494380ae46461daf487
+      internalID: -1881171959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goal_4
+      rect:
+        serializedVersion: 2
+        x: 1464
+        y: 439
+        width: 181
+        height: 885
+      alignment: 9
+      pivot: {x: 0.30840087, y: -0.00012976005}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c1d88ef25449cd43bfa73ade9558cd9
+      internalID: -2127546733
       vertices: []
       indices: 
       edges: []
@@ -168,8 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      slopes256 1_0: -112382052
-      slopes256 1_1: -1844693230
+      goal_0: 1511657659
+      goal_1: -2086661846
+      goal_2: -1215325952
+      goal_3: -1881171959
+      goal_4: -2127546733
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

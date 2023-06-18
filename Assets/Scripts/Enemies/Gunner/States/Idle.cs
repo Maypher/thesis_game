@@ -9,14 +9,6 @@ namespace Enemies.Gunner.States
     {
         private readonly Data.D_Idle stateData;
 
-        private float lastFlip;
-        private float timeToFlip;
-
-        // Since other states also rotate the gun, when using Mathf.PingPong() the rotation will immediately snap back to where it left off
-        // when changing the state making it seem like it teleports. By using this it makes sure the rotation is zeroed out before using PingPong()
-        private bool hasNoRotationAtStart;
-        private float rotationTimer;
-
         public Idle(Gunner entity, StateMachine<Gunner> stateMachine, Data.D_Idle stateData) : base(entity, stateMachine)
         {
             this.stateData = stateData;
@@ -25,12 +17,6 @@ namespace Enemies.Gunner.States
         public override void Enter()
         {
             base.Enter();
-
-            lastFlip = Time.time;
-            timeToFlip = Random.Range(stateData.minFlipTime, stateData.maxFlipTime);
-
-            rotationTimer = 0;
-            hasNoRotationAtStart = false;
         }
        
         public override void Exit()

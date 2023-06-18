@@ -54,17 +54,17 @@ public class HealthBar : MonoBehaviour
     private void UpdateFace()
     {
         float healthPercentage = GameManager.Player.Health / (float) GameManager.Player.MaxHealth;
-            
+
         if (!GameManager.Player.Raccoon)
         {
-            if (healthPercentage < 0.33) faceImg.sprite = lowHealthFace;
-            else if (healthPercentage < 0.66) faceImg.sprite = halfHealthFace;
+            if (healthPercentage <= 0.34) faceImg.sprite = lowHealthFace;
+            else if (healthPercentage <= 0.67) faceImg.sprite = halfHealthFace;
             else faceImg.sprite = fullHealthFace;
         }
         else
         {
-            if (healthPercentage < 0.33) faceImg.sprite = lowHealthFaceHatless;
-            else if (healthPercentage < 0.66) faceImg.sprite = halfHealthFaceHatless;
+            if (healthPercentage <= 0.34) faceImg.sprite = lowHealthFaceHatless;
+            else if (healthPercentage <= 0.67) faceImg.sprite = halfHealthFaceHatless;
             else faceImg.sprite = fullHealthFaceHatless;
         }
     }

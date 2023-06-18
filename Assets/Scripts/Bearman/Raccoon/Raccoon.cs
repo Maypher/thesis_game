@@ -83,9 +83,9 @@ namespace Player.Raccoon
                 {
                     Sprite.enabled = false;
                     GameManager.Player.Raccoon = null;
+                    HealthBar.instance.UpdateData();
                 }
 
-                HealthBar.instance.UpdateData();
             }
         }
     }

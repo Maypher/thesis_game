@@ -9,7 +9,7 @@ namespace Enemies.Wolf.States
     {
         private readonly Data.D_Chase stateData;
 
-        private bool wall, noLedge, noPlatform;
+        private bool wall, noLedge;
 
         private float lastBark, timeToBark;
 
@@ -33,7 +33,6 @@ namespace Enemies.Wolf.States
             runningTimer = 0;
             wall = false;
             noLedge = false;
-            noPlatform = false;
 
             wolf.SetVelocityX(stateData.moveSpeed);
             wolf.SetAnimationParameter("chase", true);
@@ -136,7 +135,6 @@ namespace Enemies.Wolf.States
                 wolf.SetVelocityX(forceRequired.x);
                 wolf.SetVelocityY(forceRequired.y);
             }
-            noPlatform = true;
         }
 
         private void JumpWall()
@@ -144,7 +142,6 @@ namespace Enemies.Wolf.States
             Collider2D collider = Physics2D.Raycast(wolf.WallCheck.position, wolf.transform.right, wolf.WallCheckDistance, stateData.whatIsGround).collider;
 
             if (collider) wolf.SetVelocityY(5);
-            noPlatform = true;
         }
     }
 }

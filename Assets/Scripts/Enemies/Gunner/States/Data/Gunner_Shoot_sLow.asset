@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c82148844d1d4984aa30f763e12f59b2, type: 3}
-  m_Name: Gunner_Shoot
+  m_Name: Gunner_Shoot_sLow
   m_EditorClassIdentifier: 
   rotateSpeed: 50
   gunRecoilAngleRange: 20
   minShootInterval: 1
   maxShootInterval: 1
   bulletTrail: {fileID: 3994490297619365259, guid: 3f86dae9e2e4f7d4c8add2b3d2677e6c, type: 3}
-  fireTime: 1.5
+  fireTime: 2
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 64
   attackDetails:
     damage: 1
-    attackPostion: {x: 336.41998, y: -4.5759997}
+    attackPostion: {x: 336.11, y: -0.37600002}
     knockbackForce: 2
     knockbackAngle: {x: 1, y: 1}
   shootSFX: {fileID: 8300000, guid: fc4fd5d7ee6ad8f45ab20decc2729a42, type: 3}
