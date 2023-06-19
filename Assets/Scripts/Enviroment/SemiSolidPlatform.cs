@@ -10,6 +10,8 @@ public class SemiSolidPlatform : MonoBehaviour
     [SerializeField] private float disabledTime = .6f;
     private float timer;
 
+    private bool playerOnTop;
+
     private Collider2D hitbox;
 
 
@@ -18,12 +20,14 @@ public class SemiSolidPlatform : MonoBehaviour
         timer = 0;
 
         hitbox = GetComponent<Collider2D>();
+
+        playerOnTop = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.UserInput.Player.Crouch.IsPressed())
+        if (GameManager.UserInput.Player.Crouch.IsPressed() && playerOnTop)
         {
             timer += Time.deltaTime;
 
@@ -37,8 +41,18 @@ public class SemiSolidPlatform : MonoBehaviour
 
     private IEnumerator DisableCollision()
     {
-        hitbox.enabled = false;
+        Physics2D.IgnoreCollision(hitbox, GameManager.Player.GetComponent<Collider2D>());
         yield return new WaitForSeconds(disabledTime);
-        hitbox.enabled = true;
+        Physics2D.IgnoreCollision(hitbox, GameManager.Player.GetComponent<Collider2D>(), false);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        playerOnTop = collision.collider.CompareTag("Player");
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        playerOnTop = collision.collider.CompareTag("Player");
     }
 }

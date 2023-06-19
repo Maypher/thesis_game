@@ -52,11 +52,17 @@ TagManager:
   - name: water
     uniqueID: 3390987679
     locked: 0
+  - name: Trees
+    uniqueID: 2567016327
+    locked: 0
   - name: Ground
     uniqueID: 2387618949
     locked: 0
   - name: Player
     uniqueID: 947238479
+    locked: 0
+  - name: enemies
+    uniqueID: 3685895923
     locked: 0
   - name: Foregound
     uniqueID: 267281639

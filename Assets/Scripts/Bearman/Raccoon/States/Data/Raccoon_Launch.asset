@@ -13,3 +13,8 @@ MonoBehaviour:
   m_Name: Raccoon_Launch
   m_EditorClassIdentifier: 
   launchForce: 15
+  attackDetails:
+    damage: 1
+    attackPostion: {x: 0, y: 0}
+    knockbackForce: 0
+    knockbackAngle: {x: 0, y: 0}

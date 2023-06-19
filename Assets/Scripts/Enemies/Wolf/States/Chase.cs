@@ -62,7 +62,7 @@ namespace Enemies.Wolf.States
             if (wolf.GroundCheck.Check())
             {
                 wolf.SetAnimationParameter("chase", true);
-                wolf.SetAnimationParameter("jump", false);
+                wolf.SetAnimationParameter("jumping", false);
 
                 noLedge = !wolf.CheckLedge();
                 wall = wolf.CheckWall();
@@ -73,14 +73,14 @@ namespace Enemies.Wolf.States
                 {
                     runningTimer = 0;
                     JumpGap();
-                    wolf.SetAnimationParameter("jump", true);
+                    wolf.SetAnimationParameter("jumping", true);
                     wolf.SetAnimationParameter("chase", false);
                 }
                 else if (wall)
                 {
                     runningTimer = 0;
                     JumpWall();
-                    wolf.SetAnimationParameter("jump", true);
+                    wolf.SetAnimationParameter("jumping", true);
                     wolf.SetAnimationParameter("chase", false);
                 }
                 else runningTimer += Time.deltaTime;

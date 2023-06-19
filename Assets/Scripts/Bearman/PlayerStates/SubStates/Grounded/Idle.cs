@@ -15,6 +15,8 @@ namespace Player.Substates.Grounded
         private bool callBackRaccoon;
         private bool dash;
         private bool punch;
+
+        private float lastFlex;
         public Idle(Player entity, StateMachine<Player> stateMachine, Data.D_Idle stateData) : base(entity, stateMachine)
         {
             this.stateData = stateData;
@@ -30,6 +32,8 @@ namespace Player.Substates.Grounded
             isCrouching = false;
             callBackRaccoon = false;
             punch = false;
+
+            lastFlex = startTime;
         }
 
         public override void Input()
@@ -53,9 +57,10 @@ namespace Player.Substates.Grounded
         {
             base.LogicUpdate();
 
-            if (Time.time >= startTime + stateData.timeToFlex)
+            if (Time.time >= lastFlex + stateData.timeToFlex)
             {
-                player.SetAnimationParameter("Flex");
+                player.SetAnimationParameter("flex");
+                lastFlex = Time.time;
             }
         }
 

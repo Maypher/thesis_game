@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0cd39ab4eeb8ef4996e70c9e8719dbf, type: 3}
   m_Name: Player_Idle
   m_EditorClassIdentifier: 
-  timeToFlex: 2
+  timeToFlex: 6

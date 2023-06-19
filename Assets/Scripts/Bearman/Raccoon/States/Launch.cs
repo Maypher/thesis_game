@@ -59,6 +59,8 @@ namespace Player.Raccoon.States
 
             foreach (Collider2D enemy in enemies)
             {
+                Debug.Log(enemy);
+
                 attackDetails.attackPostion = raccoon.AttackCheck.transform.position;
                 enemy.GetComponent<IDamageable>()?.TakeDamage(attackDetails);
             }

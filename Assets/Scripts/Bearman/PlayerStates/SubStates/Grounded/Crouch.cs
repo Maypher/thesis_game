@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Player.Substates.Grounded
 {
-    public class Crouch : PlayerState
+    public class Crouch : Superstates.Ground
     {
         private bool isCrouching;
         private bool pickUpRock;

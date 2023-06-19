@@ -186,7 +186,7 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""52ce1a45-b265-49d0-a747-137bbbe0a7e8"",
-                    ""path"": ""<Keyboard>/downArrow"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -208,7 +208,7 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""1dba9a7c-8d0a-4c25-b4ef-628fd5f2d7ab"",
-                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -219,7 +219,7 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""29fac2f9-2144-4d9a-a84a-af3653a1f3ba"",
-                    ""path"": ""<Keyboard>/downArrow"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -230,7 +230,7 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""ec1c2eaf-55e4-4101-90dc-348ca067c2aa"",
-                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -252,7 +252,7 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d1f8a5cb-eb75-4f26-b7e3-912e282c55ef"",
-                    ""path"": ""<Keyboard>/upArrow"",
+                    ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -263,7 +263,7 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""721703a1-4512-42df-abeb-77a9e52b096a"",
-                    ""path"": ""<Keyboard>/downArrow"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",

@@ -37,6 +37,7 @@ namespace Player.Substates.Grounded
         public override void Exit()
         {
             base.Exit();
+            player.AnimationEvent -= AnimationFinished;
         }
 
         public override void Input()

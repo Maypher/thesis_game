@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ded81f43f506d4548b11d9ea84d25eb1, type: 3}
   m_Name: Player_ThrowRock
   m_EditorClassIdentifier: 
-  throwForce: {x: 3, y: 3}
+  throwForce: {x: 10, y: 8}
+  throwSFX: {fileID: 0}
